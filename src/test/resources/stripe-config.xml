@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns="http://www.mulesoft.org/schema/mule/core"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:spring="http://www.springframework.org/schema/beans"
+      xmlns:stripe="http://www.mulesoft.org/schema/mule/stripe"
+      xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+        http://www.mulesoft.org/schema/mule/stripe http://www.mulesoft.org/schema/mule/stripe/1.0/mule-stripe.xsd">
+
+    <stripe:config-type name="config" consumerKey="my-key" consumerSecret="my-secret">
+        <stripe:oauth-callback-config domain="localhost" localPort="8082" path="callback"/>
+    </stripe:config-type>
+
+    <flow name="testFlow">
+        <stripe:greet config-ref="config" friend="Foo"/>
+    </flow>
+</mule>

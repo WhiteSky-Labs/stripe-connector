@@ -1,0 +1,27 @@
+# maven
+target/
+
+# IntelliJ
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# eclipse
+.classpath
+.settings/
+.project
+
+# Mule Studio
+demo/**/.studio/
+demo/**/bin/
+demo/**/src/test/resources/input/*
+demo/**/src/test/resources/output/*
+
+# OS X
+.DS_Store
+
+# Windows
+
+# Linux
+/bin
