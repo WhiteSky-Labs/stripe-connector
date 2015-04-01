@@ -1,3 +1,3 @@
-<!-- BEGIN_INCLUDE(stripe:greet) -->
-    <stripe:greet config-ref="" friend="#[map-payload:friend]" />
-<!-- END_INCLUDE(stripe:greet) -->
+<!-- BEGIN_INCLUDE(stripe:list-all-customers) -->
+    <stripe:list-all-customers config-ref="" limit="#[map-payload:limit]" />
+<!-- END_INCLUDE(stripe:list-all-customers) -->
