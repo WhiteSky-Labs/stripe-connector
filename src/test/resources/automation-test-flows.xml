@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:context="http://www.springframework.org/schema/context" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:stripe="http://www.mulesoft.org/schema/mule/stripe" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="EE-3.6.0" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd         http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd http://www.mulesoft.org/schema/mule/stripe http://www.mulesoft.org/schema/mule/stripe/current/mule-stripe.xsd">
+
+<context:property-placeholder location="automation-credentials.properties"/>
+
+<stripe:config-type apiKey="${stripe.apiKey}" apiVersion="${stripe.apiVersion}" doc:name="Stripe" name="Stripe"/>
+
+<flow doc:name="ListAllCustomers" name="list-all-customers">
+	<stripe:list-all-customers config-ref="Stripe"/>
+</flow>
+
+<flow doc:name="CreateCustomer" name="create-customer">
+	<stripe:create-customer config-ref="Stripe" accountBalance="#[flowVars.accountBalance]" couponCode="#[flowVars.couponCode]" description="#[flowVars.description]" email="#[flowVars.email]">
+		<stripe:metadata ref="#[flowVars.MetadataRef]"/>
+	</stripe:create-customer>
+</flow>
+<flow doc:name="RetrieveCustomer" name="retrieve-customer">
+	<stripe:retrieve-customer config-ref="Stripe" id="#[flowVars.id]"/>
+</flow>
+    <flow doc:name="UpdateCustomer" name="update-customer">
+	<stripe:update-customer config-ref="Stripe" id="#[flowVars.id]">
+		<stripe:metadata ref="#[flowVars.metadata]"/>
+	</stripe:update-customer>
+</flow>
+    <flow doc:name="DeleteCustomer" name="delete-customer">
+	<stripe:delete-customer config-ref="Stripe" id="#[flowVars.id]"/>
+</flow>
+</mule>
