@@ -1,3 +1,15 @@
 <!-- BEGIN_INCLUDE(stripe:list-all-customers) -->
     <stripe:list-all-customers config-ref="" limit="#[map-payload:limit]" />
 <!-- END_INCLUDE(stripe:list-all-customers) -->
+<!-- BEGIN_INCLUDE(stripe:create-customer) -->
+    <stripe:create-customer config-ref="" accountBalance="#[map-payload:accountBalance]" couponCode="#[map-payload:couponCode]" description="#[map-payload:description]" email="#[map-payload:email]" metadata="#[map-payload:metadata]" />
+<!-- END_INCLUDE(stripe:create-customer) -->
+<!-- BEGIN_INCLUDE(stripe:retrieve-customer) -->
+    <stripe:retrieve-customer config-ref="" id="#[map-payload:id]" />
+<!-- END_INCLUDE(stripe:retrieve-customer) -->  
+<!-- BEGIN_INCLUDE(stripe:update-customer) -->
+    <stripe:update-customer config-ref="" id="#[map-payload:id]" accountBalance="#[map-payload:accountBalance]" couponCode="#[map-payload:couponCode]" description="#[map-payload:description]" email="#[map-payload:email]" metadata="#[map-payload:metadata]" />
+<!-- END_INCLUDE(stripe:update-customer) --> 
+<!-- BEGIN_INCLUDE(stripe:delete-customer) -->
+    <stripe:retrieve-customer config-ref="" id="#[map-payload:id]" />
+<!-- END_INCLUDE(stripe:delete-customer) -->  

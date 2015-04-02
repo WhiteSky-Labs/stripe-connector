@@ -9,11 +9,5 @@
         http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
         http://www.mulesoft.org/schema/mule/stripe http://www.mulesoft.org/schema/mule/stripe/1.0/mule-stripe.xsd">
 
-    <stripe:config-type name="config" consumerKey="my-key" consumerSecret="my-secret">
-        <stripe:oauth-callback-config domain="localhost" localPort="8082" path="callback"/>
-    </stripe:config-type>
-
-    <flow name="testFlow">
-        <stripe:greet config-ref="config" friend="Foo"/>
-    </flow>
+    
 </mule>

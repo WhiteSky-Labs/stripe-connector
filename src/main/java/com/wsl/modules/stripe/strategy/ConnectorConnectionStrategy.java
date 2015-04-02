@@ -14,9 +14,9 @@ import org.mule.api.annotations.Disconnect;
 import org.mule.api.annotations.param.ConnectionKey;
 import org.mule.api.ConnectionException;
 import org.mule.api.ConnectionExceptionCode;
-import org.mule.api.annotations.display.Password;
 import org.mule.api.annotations.Configurable;
 import org.mule.api.annotations.param.Default;
+import org.slf4j.LoggerFactory;
 
 import com.stripe.Stripe;
 import com.stripe.exception.APIConnectionException;
@@ -25,8 +25,7 @@ import com.stripe.exception.AuthenticationException;
 import com.stripe.exception.CardException;
 import com.stripe.exception.InvalidRequestException;
 import com.stripe.model.Balance;
-import com.stripe.model.Customer;
-import com.stripe.model.CustomerCollection;
+
 
 /**
  * Connection Management Strategy
@@ -35,10 +34,25 @@ import com.stripe.model.CustomerCollection;
  */
 @ConnectionManagement(configElementName = "config-type", friendlyName = "Connection Management type strategy")
 public class ConnectorConnectionStrategy {
-    
+	private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ConnectorConnectionStrategy.class);
+	
     @Configurable
     @Default("2015-03-24")
     private String apiVersion;
+    
+    /**
+     * @param apiKey
+     */
+    private static void staticSetApiKey(String apiKey){
+    	Stripe.apiKey = apiKey;
+    }
+    
+    /**
+     * @param apiVersion
+     */
+    private static void staticSetApiVersion(String apiVersion){
+    	Stripe.apiVersion = apiVersion;
+    }
     
     /**
      * Connect
@@ -48,38 +62,21 @@ public class ConnectorConnectionStrategy {
      */
     @Connect
     @TestConnectivity
-    public void connect(@ConnectionKey String apiKey)
+    public void connect(@ConnectionKey final String apiKey)
         throws ConnectionException {
-        Stripe.apiKey = apiKey;
-        Stripe.apiVersion = this.apiVersion;
+    	
+        staticSetApiKey(apiKey);
+        staticSetApiVersion(this.apiVersion);
         try {
-			Balance balance = Balance.retrieve();
-		} catch (AuthenticationException e) {
+			Balance.retrieve();
+		} catch (AuthenticationException | InvalidRequestException
+				| APIConnectionException | CardException | APIException e) {
+			LOGGER.error("Error connecting to Stripe", e);
 			throw new ConnectionException(
 		             ConnectionExceptionCode.INCORRECT_CREDENTIALS, 
 		             e.getMessage(),
-		             "Your API Key is probably incorrect");
-		} catch (InvalidRequestException e) {
-			throw new ConnectionException(
-		             ConnectionExceptionCode.UNKNOWN, 
-		             e.getMessage(),
-		             "The request was invalid. Your API version might be incorrect.");
-		} catch (APIConnectionException e) {
-			throw new ConnectionException(
-		             ConnectionExceptionCode.CANNOT_REACH, 
-		             e.getMessage(),
-		             "Could not get a connection to Stripe. Check your API Version and Connectivity.");
-		} catch (CardException e) {
-			throw new ConnectionException(
-		             ConnectionExceptionCode.UNKNOWN, 
-		             e.getMessage(),
-		             "A Card Error shouldn't happen here. Check your API Version.");
-		} catch (APIException e) {
-			throw new ConnectionException(
-		             ConnectionExceptionCode.CANNOT_REACH, 
-		             e.getMessage(),
-		             "There was an issue with the API, check your API Version and Key");
-		}    	
+		             "Unable to Connect to Stripe");
+		}     	
         //if we manage to get here, it means that the connection was 
         // successful, hence, no need to return a boolean           
     }
@@ -89,7 +86,7 @@ public class ConnectorConnectionStrategy {
      */
     @Disconnect
     public void disconnect() {
-        Stripe.apiKey = null;
+        staticSetApiKey(null);
     }
 
     /**
@@ -97,16 +94,13 @@ public class ConnectorConnectionStrategy {
      */
     @ValidateConnection
     public boolean isConnected() {
-        if (Stripe.apiKey != null) {
-        	return true;
-        } else {
-        	return false;
-        }
+        return Stripe.apiKey != null;
     }
 
     /**
      * The Connection Identifier
-     * For now, we are using the Stripe SDK Version, arbitrarily
+     * For now, we are using the Stripe SDK Version, arbitrarily     
+     * @return The Connection Identifier
      */
     @ConnectionIdentifier
     public String connectionId() {

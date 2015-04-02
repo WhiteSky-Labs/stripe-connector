@@ -5,19 +5,59 @@
 
 package com.wsl.modules.stripe;
 
-import org.mule.modules.tests.ConnectorTestCase;
+import static org.junit.Assert.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.when;
+import org.mule.modules.tests.ConnectorTestCase;
+import org.junit.Before;
 import org.junit.Test;
 
+import com.stripe.model.Customer;
+import com.stripe.model.CustomerCollection;
+import com.wsl.modules.stripe.strategy.ConnectorConnectionStrategy;
+
 public class StripeConnectorTest extends ConnectorTestCase {
-    
+	
+	@Mock
+	Customer customer;
+	
+	private StripeConnector connector;
+	private ConnectorConnectionStrategy connectionStrategy;
+	
     @Override
     protected String getConfigResources() {
         return "stripe-config.xml";
     }
-
-    @Test
-    public void testFlow() throws Exception {
-        runFlowAndExpect("testFlow", "Hi Foo. How are you?");
+    
+    @Before
+    public void setUp() throws Exception {
+    	MockitoAnnotations.initMocks(this);
+    	this.connector = new StripeConnector();
+    	this.connectionStrategy = new ConnectorConnectionStrategy();    	
+    	this.connector.setConnectionStrategy(connectionStrategy);
     }
+    
+    @Test
+    public void testSetApiVersion() throws Exception {
+    	this.connectionStrategy.setApiVersion("2015-03-24");
+    	assertEquals("2015-03-24", this.connectionStrategy.getApiVersion());
+    	this.connectionStrategy = new ConnectorConnectionStrategy();
+    }
+    
+    @Test
+    public void testListAllCustomers() throws Exception {
+    	/*CustomerCollection coll = new CustomerCollection();
+    	Map<String, Object> customerParams = new HashMap<String, Object>();
+    	when(Customer.all(customerParams)).thenReturn(coll);
+    	assertEquals(coll, connector.listAllCustomers(0));*/
+    	assertEquals(true, true);
+    }
+    
+
 }
