@@ -60,7 +60,7 @@ public class StripeConnector {
     	if (accountBalance > 0) {
     		customerParams.put("account_balance", accountBalance);
     	}
-		customerParams.put("coupon_code", couponCode);
+		customerParams.put("coupon", couponCode);
 		customerParams.put("description", description);
 		customerParams.put("email", email);	
 		customerParams.put("metadata", metadata);
@@ -117,7 +117,7 @@ public class StripeConnector {
     	if (accountBalance > 0) {
     		customerParams.put("account_balance", accountBalance);
     	}
-		customerParams.put("coupon_code", couponCode);
+		customerParams.put("coupon", couponCode);
 		customerParams.put("description", description);
 		customerParams.put("email", email);	
 		customerParams.put("metadata", metadata);

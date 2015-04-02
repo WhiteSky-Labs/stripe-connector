@@ -11,7 +11,7 @@
 
 <flow doc:name="CreateCustomer" name="create-customer">
 	<stripe:create-customer config-ref="Stripe" accountBalance="#[flowVars.accountBalance]" couponCode="#[flowVars.couponCode]" description="#[flowVars.description]" email="#[flowVars.email]">
-		<stripe:metadata ref="#[flowVars.MetadataRef]"/>
+		<stripe:metadata ref="#[flowVars.metadata]"/>
 	</stripe:create-customer>
 </flow>
 <flow doc:name="RetrieveCustomer" name="retrieve-customer">

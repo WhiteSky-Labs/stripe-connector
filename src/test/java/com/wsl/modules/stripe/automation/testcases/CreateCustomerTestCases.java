@@ -28,7 +28,8 @@ public class CreateCustomerTestCases
     public void setup()
         throws Exception
     {    	
-        initializeTestRunMessage("createCustomerTestData");         
+    	initializeTestRunMessage("createCustomerTestData");
+    	
     }
 
     @After
@@ -50,7 +51,7 @@ public class CreateCustomerTestCases
     public void testCreateCustomer()
         throws Exception
     {
-        Object result = runFlowAndGetPayload("create-customer");
+    	Object result = runFlowAndGetPayload("create-customer");
         assertNotNull(result);
         Customer customer = (Customer) result;
         assertNotNull(customer.getId());
@@ -66,9 +67,8 @@ public class CreateCustomerTestCases
     public void testCreateCustomerWithValidOptionalParams()
         throws Exception
     {
-    	initializeTestRunMessage("createCustomerTestDataWithValidParams");
-    	Object result = runFlowAndGetPayload("create-customer");
-    	Map<String, Object> expectedBean = getBeanFromContext("createCustomerTestDataWithValidParams");
+    	Object result = runFlowAndGetPayload("create-customer", "createCustomerWithValidParamsTestData");
+    	Map<String, Object> expectedBean = getBeanFromContext("createCustomerWithValidParamsTestData");
     	assertNotNull(result);
         Customer customer = (Customer) result;
         assertNotNull(customer.getId());

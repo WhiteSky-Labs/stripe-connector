@@ -11,22 +11,22 @@
         <entry key="couponCode" value=""/>
         <entry key="description" value=""/>
         <entry key="email" value=""/>
-        <entry key="metadata" value=""/>
+        <entry key="metadata" value-ref="testMetadata"/>
     </util:map>
     <util:map id="testMetadata" map-class="java.util.HashMap" key-type="java.lang.String" value-type="java.lang.Object">
         <entry key="Key1" value="value1"/>
         <entry key="Key2" value="value2"/>
     </util:map>
-    <	util:map id="createCustomerTestDataWithValidParams" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
- 		<entry key="accountBalance" value="0"/>
+    <util:map id="createCustomerWithValidParamsTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ 		<entry key="accountBalance" value="10"/>
         <entry key="couponCode" value=""/>
-        <entry key="description" value=""/>
-        <entry key="email" value=""/>
-        <entry key="metadata" value=""/>
+        <entry key="description" value="An Arbitrary Description"/>
+        <entry key="email" value="someone@mulesoft.com"/>
+        <entry key="metadata" value-ref="testMetadata"/>
      </util:map>
-	<util:map id="createCustomerTestDataWithInvalidParams" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+	<util:map id="createCustomerWithInvalidParamsTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  		<entry key="accountBalance" value="ABC"/>
-        <entry key="couponCode" value="ABC123"/>
+        <entry key="couponCode" value=""/>
         <entry key="description" value="An Arbitrary Description"/>
         <entry key="email" value="someone@mulesoft.com"/>
         <entry key="metadata" value-ref="testMetadata"/>
