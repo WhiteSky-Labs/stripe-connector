@@ -191,7 +191,7 @@ public class StripeConnector {
     	Iterator<Entry<String, Object>> it = map.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry)it.next();
-            if (pair.getValue() == null || pair.getValue().toString() == ""){
+            if (pair.getValue() == null || pair.getValue().toString().equals("")){
             	it.remove();
             }             
         }

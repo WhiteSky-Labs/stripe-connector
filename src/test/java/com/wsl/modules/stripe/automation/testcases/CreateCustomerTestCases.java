@@ -18,6 +18,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
+import org.mule.api.MessagingException;
+import org.mule.modules.tests.ConnectorTestUtils;
 
 public class CreateCustomerTestCases
     extends StripeTestParent
@@ -78,4 +80,22 @@ public class CreateCustomerTestCases
         assertEquals(expectedBean.get("metadata"), customer.getMetadata());
     }
     
+    @Category({
+        RegressionTests.class,
+        SmokeTests.class
+    })
+    @Test
+    public void testCreateCustomerWithInvalidOptionalParams()
+        throws Exception
+    {
+    	try{
+    		Object result = runFlowAndGetPayload("create-customer", "createCustomerWithInvalidParamsTestData");
+    		fail("Error should be thrown");
+    	} catch (MessagingException e) {
+    		// NumberFormatException for invalid integer
+    		assertTrue(e.getCause().getMessage().contains("For input string"));
+    	} catch (Exception e) {
+    		fail(ConnectorTestUtils.getStackTrace(e));
+    	}    	
+    }
 }

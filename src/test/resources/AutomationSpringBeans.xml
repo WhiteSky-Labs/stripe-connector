@@ -39,13 +39,13 @@
     </util:map>
 <!--updateCustomer-->
 <util:map id="updateCustomerTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
- <entry key="id" value=""/>
+ 		<entry key="id" value=""/>
         <entry key="accountBalance" value="0"/>
         <entry key="couponCode" value=""/>
         <entry key="description" value=""/>
-        <entry key="email" value=""/>
+        <entry key="email" value="update@test.com"/>
         <entry key="sourceToken" value=""/>
-        <entry key="metadata" value=""/>
+        <entry key="metadata" value-ref="testMetadata"/>
     </util:map>
 <!--deleteCustomer-->
 <util:map id="deleteCustomerTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">

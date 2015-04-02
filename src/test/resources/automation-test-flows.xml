@@ -18,7 +18,7 @@
 	<stripe:retrieve-customer config-ref="Stripe" id="#[flowVars.id]"/>
 </flow>
     <flow doc:name="UpdateCustomer" name="update-customer">
-	<stripe:update-customer config-ref="Stripe" id="#[flowVars.id]">
+	<stripe:update-customer config-ref="Stripe" id="#[flowVars.id]" accountBalance="#[flowVars.accountBalance]" couponCode="#[flowVars.couponCode]" description="#[flowVars.description]" email="#[flowVars.email]">
 		<stripe:metadata ref="#[flowVars.metadata]"/>
 	</stripe:update-customer>
 </flow>

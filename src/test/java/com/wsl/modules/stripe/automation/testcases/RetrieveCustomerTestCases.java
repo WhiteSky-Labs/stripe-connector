@@ -1,32 +1,44 @@
 
 package com.wsl.modules.stripe.automation.testcases;
 
+import static org.junit.Assert.*;
+
+import com.stripe.model.Customer;
 import com.wsl.modules.stripe.automation.RegressionTests;
 import com.wsl.modules.stripe.automation.SmokeTests;
 import com.wsl.modules.stripe.automation.StripeTestParent;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
+import org.mule.api.MessagingException;
+import org.mule.modules.tests.ConnectorTestUtils;
 
 public class RetrieveCustomerTestCases
     extends StripeTestParent
 {
-
+	private String customerId;
 
     @Before
     public void setup()
         throws Exception
     {
-        //TODO: Add setup required to run test or remove method
+    	runFlowAndGetPayload("create-customer", "createCustomerTestData");
+        Object result = runFlowAndGetPayload("create-customer", "createCustomerTestData");
+        Customer customer = (Customer)result;
+        this.customerId = customer.getId();
         initializeTestRunMessage("retrieveCustomerTestData");
+        upsertOnTestRunMessage("id", this.customerId);
     }
 
     @After
     public void tearDown()
         throws Exception
     {
-        //TODO: Add code to reset sandbox state to the one before the test was run or remove
+    	initializeTestRunMessage("deleteCustomerTestData");
+        upsertOnTestRunMessage("id", this.customerId);
+        runFlowAndGetPayload("delete-customer");
     }
 
     @Category({
@@ -38,7 +50,30 @@ public class RetrieveCustomerTestCases
         throws Exception
     {
         Object result = runFlowAndGetPayload("retrieve-customer");
-        throw new RuntimeException("NOT IMPLEMENTED METHOD");
+        assertNotNull(result);
+        Customer cust = (Customer)result;
+        assertEquals(this.customerId, cust.getId());
     }
+    
+    @Category({
+        RegressionTests.class,
+        SmokeTests.class
+    })
+    @Test
+    public void testRetrieveNonexistentCustomer()
+        throws Exception
+    {
+    	try {
+        	upsertOnTestRunMessage("id", "InvalidID");
+            Object result = runFlowAndGetPayload("retrieve-customer");
+            fail("Getting a customer that doesn't exist should throw an error.");
+    	} catch (MessagingException e){
+    		assertTrue(e.getCause().getMessage().contains("Could not retrieve the customer"));
+    	} catch (Exception e){
+    		fail(ConnectorTestUtils.getStackTrace(e));
+    	}
+        
+    }
+    
 
 }
