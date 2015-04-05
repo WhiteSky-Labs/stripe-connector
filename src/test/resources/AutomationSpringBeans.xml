@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
-<import resource="ConnectorTestCaseSpringBeans.xml"/>
+    <import resource="ConnectorTestCaseSpringBeans.xml"/>
     <!--listAllCustomers-->
     <util:map id="listAllCustomersTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
- <entry key="limit" value="0"/>
+ 		<entry key="limit" value="0"/>
+ 		<entry key="startingAfter" value=""/>
+ 		<entry key="endingBefore" value=""/>
     </util:map>
     <!--createCustomer-->
     <util:map id="createCustomerTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
@@ -13,7 +15,7 @@
         <entry key="email" value=""/>
         <entry key="metadata" value-ref="testMetadata"/>
     </util:map>
-    <util:map id="testMetadata" map-class="java.util.HashMap" key-type="java.lang.String" value-type="java.lang.Object">
+    <util:map id="testMetadata" key-type="java.lang.String" map-class="java.util.HashMap" value-type="java.lang.Object">
         <entry key="Key1" value="value1"/>
         <entry key="Key2" value="value2"/>
     </util:map>
@@ -24,21 +26,19 @@
         <entry key="email" value="someone@mulesoft.com"/>
         <entry key="metadata" value-ref="testMetadata"/>
      </util:map>
-	<util:map id="createCustomerWithInvalidParamsTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+    <util:map id="createCustomerWithInvalidParamsTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  		<entry key="accountBalance" value="ABC"/>
         <entry key="couponCode" value=""/>
         <entry key="description" value="An Arbitrary Description"/>
         <entry key="email" value="someone@mulesoft.com"/>
         <entry key="metadata" value-ref="testMetadata"/>
     </util:map>
-
-
-<!--retrieveCustomer-->
-<util:map id="retrieveCustomerTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+    <!--retrieveCustomer-->
+    <util:map id="retrieveCustomerTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  <entry key="id" value=""/>
     </util:map>
-<!--updateCustomer-->
-<util:map id="updateCustomerTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+    <!--updateCustomer-->
+    <util:map id="updateCustomerTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  		<entry key="id" value=""/>
         <entry key="accountBalance" value="0"/>
         <entry key="couponCode" value=""/>
@@ -47,9 +47,122 @@
         <entry key="sourceToken" value=""/>
         <entry key="metadata" value-ref="testMetadata"/>
     </util:map>
-<!--deleteCustomer-->
-<util:map id="deleteCustomerTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+    <!--deleteCustomer-->
+    <util:map id="deleteCustomerTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  <entry key="id" value=""/>
     </util:map>
+    <!--createPlan-->
+    <util:map id="createPlanTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ 		<entry key="id" value="testplan"/>
+        <entry key="amount" value="123"/>
+        <entry key="currency" value="USD"/>
+        <entry key="interval" value="week"/>
+        <entry key="intervalCount" value="1"/>
+        <entry key="planName" value="testplan"/>
+        <entry key="trialPeriodDays" value="0"/>
+        <entry key="statementDescriptor" value=""/>
+        <entry key="metadata" value-ref="testMetadata"/>
+    </util:map>
+    <util:map id="createPlanWithValidParamsTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ 		<entry key="id" value="testplan"/>
+        <entry key="amount" value="123"/>
+        <entry key="currency" value="USD"/>
+        <entry key="interval" value="week"/>
+        <entry key="intervalCount" value="1"/>
+        <entry key="planName" value="testplan"/>
+        <entry key="trialPeriodDays" value="5"/>
+        <entry key="statementDescriptor" value="test"/>
+        <entry key="metadata" value-ref="testMetadata"/>
+    </util:map>
+    <!--retrievePlan-->
+    <util:map id="retrievePlanTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="id" value=""/>
+    </util:map>
+    <!--updatePlan-->
+    <util:map id="updatePlanTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ 		<entry key="id" value=""/>
+        <entry key="planName" value="updatedPlanName"/>
+        <entry key="statementDescriptor" value="updatedPlanDescriptor"/>
+        <entry key="metadata" value-ref="testMetadata"/>
+    </util:map>
+    <!--deletePlan-->
+    <util:map id="deletePlanTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="id" value=""/>
+    </util:map>
+    <!--listAllPlans-->
+    <util:map id="listAllPlansTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ 		<entry key="createdTimestamp" value=""/>
+        <entry key="endingBefore" value=""/>
+        <entry key="limit" value="0"/>
+        <entry key="startingAfter" value=""/>
+    </util:map>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--createCoupon-->
+<util:map id="createCouponTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ 		<entry key="id" value="testCoupon"/>
+        <entry key="duration" value="once"/>
+        <entry key="amountOff" value="0"/>
+        <entry key="currency" value=""/>
+        <entry key="durationInMonths" value="0"/>
+        <entry key="maxRedemptions" value="0"/>
+        <entry key="percentOff" value="25"/>
+        <entry key="redeemBy" value=""/>
+        <entry key="metadata" value-ref="testMetadata"/>
+    </util:map>
+    <util:map id="createCouponWithValidParamsTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ 		<entry key="id" value="testCoupon"/>
+        <entry key="duration" value="repeating"/>
+        <entry key="amountOff" value="0"/>
+        <entry key="currency" value=""/>
+        <entry key="durationInMonths" value="6"/>
+        <entry key="maxRedemptions" value="4"/>
+        <entry key="percentOff" value="25"/>
+        <entry key="redeemBy" value=""/>
+        <entry key="metadata" value-ref="testMetadata"/>
+    </util:map>
+<!--retrieveCoupon-->
+<util:map id="retrieveCouponTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="id" value=""/>
+    </util:map>
+<!--updateCoupon-->
+<util:map id="updateCouponTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ 		<entry key="id" value="updateTestCoupon"/>
+        <entry key="metadata" value-ref="testMetadata"/>
+    </util:map>
+<!--deleteCoupon-->
+<util:map id="deleteCouponTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="id" value=""/>
+    </util:map>
+<!--listAllCoupons-->
+<util:map id="listAllCouponsTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ 		<entry key="createdTimestamp" value=""/>
+        <entry key="endingBefore" value=""/>
+        <entry key="limit" value="0"/>
+        <entry key="startingAfter" value=""/>
+        <entry key="created" value=""/>
+    </util:map>
 </beans>

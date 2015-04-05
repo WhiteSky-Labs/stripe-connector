@@ -1,5 +1,5 @@
 <!-- BEGIN_INCLUDE(stripe:list-all-customers) -->
-    <stripe:list-all-customers config-ref="" limit="#[map-payload:limit]" />
+    <stripe:list-all-customers config-ref="" limit="#[map-payload:limit]" startingAfter="#[map-payload:startingAfter]" endingBefore="#[map-payload:endingBefore]" />
 <!-- END_INCLUDE(stripe:list-all-customers) -->
 <!-- BEGIN_INCLUDE(stripe:create-customer) -->
     <stripe:create-customer config-ref="" accountBalance="#[map-payload:accountBalance]" couponCode="#[map-payload:couponCode]" description="#[map-payload:description]" email="#[map-payload:email]" metadata="#[map-payload:metadata]" />
@@ -13,3 +13,30 @@
 <!-- BEGIN_INCLUDE(stripe:delete-customer) -->
     <stripe:retrieve-customer config-ref="" id="#[map-payload:id]" />
 <!-- END_INCLUDE(stripe:delete-customer) -->  
+<!-- BEGIN_INCLUDE(stripe:create-plan) -->
+	<stripe:create-plan config-ref="" id="#[map-payload:id]" amount="#[map-payload:amount]" currency="#[map-payload:currency]" interval="#[map-payload:interval]" intervalCount="#[map-payload:intervalCount]" planName="#[map-payload:planName]" trialPeriodDays="#[map-payload:trialPeriodDays]" statementDescriptor="#[map-payload:statementDescriptor]" metadata="#[map-payload:metadata]" />
+<!-- END_INCLUDE(stripe:create-plan) -->
+<!-- BEGIN_INCLUDE(stripe:retrieve-plan) -->
+    <stripe:retrieve-plan config-ref="" id="#[map-payload:id]" />
+<!-- END_INCLUDE(stripe:retrieve-plan) -->  
+<!-- BEGIN_INCLUDE(stripe:update-plan) -->
+	<stripe:update-plan config-ref="" id="#[map-payload:id]" planName="#[map-payload:planName]" statementDescriptor="#[map-payload:statementDescriptor]" metadata="#[map-payload:metadata]" />
+<!-- END_INCLUDE(stripe:update-plan) -->
+<!-- BEGIN_INCLUDE(stripe:list-all-plans) -->
+	<stripe:list-all-plans config-ref="" createdTimestamp="#[map-payload:createdTimestamp]" created="#[map-payload:created]" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" startingAfter="#[map-payload:startingAfter]" />
+<!-- END_INCLUDE(stripe:list-all-plans) -->
+<!-- BEGIN_INCLUDE(stripe:create-coupon) -->
+	<stripe:create-coupon config-ref="" id="#[map-payload:id]" duration="#[map-payload:duration]" amountOff="#[map-payload:amountOff]" currency="#[map-payload:currency]" durationInMonths="#[map-payload:durationInMonths]" maxRedemptions="#[map-payload:maxRedemptions]" percentOff="#[map-payload:percentOff]" redeemBy="#[map-payload:redeemBy]" metadata="#[map-payload:metadata]" />
+<!-- END_INCLUDE(stripe:create-coupon) -->
+<!-- BEGIN_INCLUDE(stripe:retrieve-coupon) -->
+    <stripe:retrieve-coupon config-ref="" id="#[map-payload:id]" />
+<!-- END_INCLUDE(stripe:retrieve-coupon) -->  
+<!-- BEGIN_INCLUDE(stripe:update-coupon) -->
+    <stripe:update-coupon config-ref="" id="#[map-payload:id]" metadata="#[map-payload:metadata]"/>
+<!-- END_INCLUDE(stripe:update-coupon) -->  
+<!-- BEGIN_INCLUDE(stripe:delete-coupon) -->
+    <stripe:delete-coupon config-ref="" id="#[map-payload:id]"/>
+<!-- END_INCLUDE(stripe:delete-coupon) -->  
+<!-- BEGIN_INCLUDE(stripe:list-all-coupons) -->
+	<stripe:list-all-coupons config-ref="" createdTimestamp="#[map-payload:createdTimestamp" created="#[map-payload:created]" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" startingAfter="#[map-payoad:startingAfter]" /> 
+<!-- END_INCLUDE(stripe:list-all-coupons) -->

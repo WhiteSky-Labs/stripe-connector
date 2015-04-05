@@ -6,12 +6,11 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import com.stripe.model.Customer;
 import com.stripe.model.CustomerCollection;
+import com.stripe.model.Plan;
+import com.stripe.model.PlanCollection;
 import com.wsl.modules.stripe.automation.RegressionTests;
 import com.wsl.modules.stripe.automation.SmokeTests;
 import com.wsl.modules.stripe.automation.StripeTestParent;
@@ -21,30 +20,29 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
-public class ListAllCustomersTestCases
+public class ListAllPlansTestCases
     extends StripeTestParent
 {
 
-	private String customerId;
+	private String planId = "listPlansTestPlan";
 
     @Before
     public void setup()
         throws Exception
     {
-        Object result = runFlowAndGetPayload("create-customer", "createCustomerTestData");
-        Customer customer = (Customer)result;
-        this.customerId = customer.getId();
-        
-    	initializeTestRunMessage("listAllCustomersTestData");
+    	initializeTestRunMessage("createPlanTestData");
+    	upsertOnTestRunMessage("id", planId);
+        Object result = runFlowAndGetPayload("create-plan");
+        initializeTestRunMessage("listAllPlansTestData");
     }
 
     @After
     public void tearDown()
         throws Exception
     {
-        initializeTestRunMessage("deleteCustomerTestData");
-        upsertOnTestRunMessage("id", this.customerId);
-        runFlowAndGetPayload("delete-customer");
+        initializeTestRunMessage("deletePlanTestData");
+        upsertOnTestRunMessage("id", this.planId);
+        runFlowAndGetPayload("delete-plan");
     }
 
     @Category({
@@ -52,21 +50,21 @@ public class ListAllCustomersTestCases
         SmokeTests.class
     })
     @Test
-    public void testListAllCustomers()
+    public void testListAllPlans()
         throws Exception
     {
-        Object result = runFlowAndGetPayload("list-all-customers");
+        Object result = runFlowAndGetPayload("list-all-plans");
         assertNotNull(result);
-        CustomerCollection coll = (CustomerCollection)result;
-        Iterator<Customer> it = coll.getData().iterator();
-        boolean foundCustomer = false;
+        PlanCollection coll = (PlanCollection)result;
+        Iterator<Plan> it = coll.getData().iterator();
+        boolean foundPlan = false;
         while (it.hasNext()) {
-            Customer cust = it.next();
-            if (cust.getId().equals(this.customerId)){
-            	foundCustomer = true;
+            Plan plan = it.next();
+            if (plan.getId().equals(this.planId)){
+            	foundPlan = true;
             }
         }
-        assertTrue(foundCustomer);
+        assertTrue(foundPlan);
     }
     
     @Category({
@@ -74,13 +72,13 @@ public class ListAllCustomersTestCases
         SmokeTests.class
     })
     @Test
-    public void testListCustomersWithLimit()
+    public void testListPlansWithLimit()
         throws Exception
     {
     	upsertOnTestRunMessage("limit", "1");
-    	Object result = runFlowAndGetPayload("list-all-customers");
+    	Object result = runFlowAndGetPayload("list-all-plans");
         assertNotNull(result);
-        CustomerCollection coll = (CustomerCollection)result;
+        PlanCollection coll = (PlanCollection)result;
         
         assertEquals(1, coll.getData().size());        
     }

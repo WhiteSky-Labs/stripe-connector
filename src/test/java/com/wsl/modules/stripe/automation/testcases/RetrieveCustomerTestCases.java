@@ -24,8 +24,7 @@ public class RetrieveCustomerTestCases
     public void setup()
         throws Exception
     {
-    	runFlowAndGetPayload("create-customer", "createCustomerTestData");
-        Object result = runFlowAndGetPayload("create-customer", "createCustomerTestData");
+    	Object result = runFlowAndGetPayload("create-customer", "createCustomerTestData");
         Customer customer = (Customer)result;
         this.customerId = customer.getId();
         initializeTestRunMessage("retrieveCustomerTestData");

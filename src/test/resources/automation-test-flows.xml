@@ -6,11 +6,11 @@
 <stripe:config-type apiKey="${stripe.apiKey}" apiVersion="${stripe.apiVersion}" doc:name="Stripe" name="Stripe"/>
 
 <flow doc:name="ListAllCustomers" name="list-all-customers">
-	<stripe:list-all-customers config-ref="Stripe"/>
+	<stripe:list-all-customers config-ref="Stripe" endingBefore="#[flowVars.endingBefore]" limit="#[flowVars.limit]" startingAfter="#[flowVars.startingAfter]"/>
 </flow>
 
 <flow doc:name="CreateCustomer" name="create-customer">
-	<stripe:create-customer config-ref="Stripe" accountBalance="#[flowVars.accountBalance]" couponCode="#[flowVars.couponCode]" description="#[flowVars.description]" email="#[flowVars.email]">
+	<stripe:create-customer accountBalance="#[flowVars.accountBalance]" config-ref="Stripe" couponCode="#[flowVars.couponCode]" description="#[flowVars.description]" email="#[flowVars.email]">
 		<stripe:metadata ref="#[flowVars.metadata]"/>
 	</stripe:create-customer>
 </flow>
@@ -18,11 +18,53 @@
 	<stripe:retrieve-customer config-ref="Stripe" id="#[flowVars.id]"/>
 </flow>
     <flow doc:name="UpdateCustomer" name="update-customer">
-	<stripe:update-customer config-ref="Stripe" id="#[flowVars.id]" accountBalance="#[flowVars.accountBalance]" couponCode="#[flowVars.couponCode]" description="#[flowVars.description]" email="#[flowVars.email]">
+	<stripe:update-customer accountBalance="#[flowVars.accountBalance]" config-ref="Stripe" couponCode="#[flowVars.couponCode]" description="#[flowVars.description]" email="#[flowVars.email]" id="#[flowVars.id]">
 		<stripe:metadata ref="#[flowVars.metadata]"/>
 	</stripe:update-customer>
 </flow>
     <flow doc:name="DeleteCustomer" name="delete-customer">
 	<stripe:delete-customer config-ref="Stripe" id="#[flowVars.id]"/>
+</flow>
+<flow doc:name="CreatePlan" name="create-plan">
+	<stripe:create-plan amount="#[flowVars.amount]" config-ref="Stripe" currency="#[flowVars.currency]" id="#[flowVars.id]" interval="#[flowVars.interval]" intervalCount="#[flowVars.intervalCount]" planName="#[flowVars.planName]" statementDescriptor="#[flowVars.statementDescriptor]" trialPeriodDays="#[flowVars.trialPeriodDays]">
+		<stripe:metadata ref="#[flowVars.metadata]"/>
+	</stripe:create-plan>
+</flow>
+    <flow doc:name="RetrievePlan" name="retrieve-plan">
+	<stripe:retrieve-plan config-ref="Stripe" id="#[flowVars.id]"/>
+</flow>
+    <flow doc:name="UpdatePlan" name="update-plan">
+	<stripe:update-plan config-ref="Stripe" id="#[flowVars.id]" planName="#[flowVars.planName]" statementDescriptor="#[flowVars.statementDescriptor]">
+		<stripe:metadata ref="#[flowVars.metadata]"/>
+	</stripe:update-plan>
+</flow>
+    <flow doc:name="DeletePlan" name="delete-plan">
+	<stripe:delete-plan config-ref="Stripe" id="#[flowVars.id]"/>
+</flow>
+    <flow doc:name="ListAllPlans" name="list-all-plans">
+	<stripe:list-all-plans config-ref="Stripe">
+		<stripe:created ref="#[flowVars.CreatedRef]"/>
+	</stripe:list-all-plans>
+</flow>
+<flow doc:name="CreateCoupon" name="create-coupon">
+	<stripe:create-coupon config-ref="Stripe" id="#[flowVars.id]" duration="#[flowVars.duration]" amountOff="#[flowVars.amountOff]" currency="#[flowVars.currency]" durationInMonths="#[flowVars.durationInMonths]" maxRedemptions="#[flowVars.maxRedemptions]" percentOff="#[flowVars.percentOff]" redeemBy="#[flowVars.redeemBy]">
+		<stripe:metadata ref="#[metadata]"/>
+	</stripe:create-coupon>
+</flow>
+    <flow doc:name="RetrieveCoupon" name="retrieve-coupon">
+	<stripe:retrieve-coupon config-ref="Stripe" id="#[flowVars.id]"/>
+</flow>
+    <flow doc:name="UpdateCoupon" name="update-coupon">
+	<stripe:update-coupon config-ref="Stripe" id="#[flowVars.id]">
+		<stripe:metadata ref="#[flowVars.metadata]"/>
+	</stripe:update-coupon>
+</flow>
+    <flow doc:name="DeleteCoupon" name="delete-coupon">
+	<stripe:delete-coupon config-ref="Stripe" id="#[flowVars.id]"/>
+</flow>
+    <flow doc:name="ListAllCoupons" name="list-all-coupons">
+	<stripe:list-all-coupons config-ref="Stripe"  createdTimestamp="#[flowVars.createdTimestamp]" endingBefore="#[flowVars.endingBefore]" limit="#[flowVars.limit]" startingAfter="#[flowVars.startingAfter]">
+		<stripe:created ref="#[flowVars.CreatedRef]"/>
+	</stripe:list-all-coupons>
 </flow>
 </mule>

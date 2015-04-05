@@ -1,0 +1,63 @@
+
+package com.wsl.modules.stripe.automation.testcases;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import java.util.Map;
+
+import com.stripe.model.Customer;
+import com.stripe.model.Plan;
+import com.wsl.modules.stripe.automation.RegressionTests;
+import com.wsl.modules.stripe.automation.SmokeTests;
+import com.wsl.modules.stripe.automation.StripeTestParent;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
+
+public class UpdatePlanTestCases
+    extends StripeTestParent
+{
+
+	private String planId = "updateTestPlan";
+
+    @Before
+    public void setup()
+        throws Exception
+    {
+    	initializeTestRunMessage("createPlanTestData");
+    	upsertOnTestRunMessage("id", planId);
+    	Object result = runFlowAndGetPayload("create-plan");
+        initializeTestRunMessage("updatePlanTestData");
+        upsertOnTestRunMessage("id", this.planId);
+    }
+
+    @After
+    public void tearDown()
+        throws Exception
+    {
+    	initializeTestRunMessage("deletePlanTestData");
+        upsertOnTestRunMessage("id", this.planId);
+        runFlowAndGetPayload("delete-plan");
+    }
+
+    @Category({
+        RegressionTests.class,
+        SmokeTests.class
+    })
+    @Test
+    public void testUpdatePlan()
+        throws Exception
+    {
+    	Map<String, Object> expectedBean = getBeanFromContext("updatePlanTestData");
+    	upsertOnTestRunMessage("id", this.planId);
+        Object result = runFlowAndGetPayload("update-plan");
+        assertNotNull(result);
+        Plan plan = (Plan) result;
+        assertEquals(expectedBean.get("planName"), plan.getName());
+        assertEquals(expectedBean.get("statementDescriptor"), plan.getStatementDescriptor());
+        
+    }
+}
