@@ -40,3 +40,12 @@
 <!-- BEGIN_INCLUDE(stripe:list-all-coupons) -->
 	<stripe:list-all-coupons config-ref="" createdTimestamp="#[map-payload:createdTimestamp" created="#[map-payload:created]" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" startingAfter="#[map-payoad:startingAfter]" /> 
 <!-- END_INCLUDE(stripe:list-all-coupons) -->
+<!-- BEGIN_INCLUDE(stripe:retrieve-balance) -->
+    <stripe:retrieve-balance config-ref=""/>
+<!-- END_INCLUDE(stripe:retrieve-balance) -->  
+<!-- BEGIN_INCLUDE(stripe:retrieve-balance-transaction) -->
+    <stripe:retrieve-balance-transaction config-ref="" id="#[map-payload:id]"/>
+<!-- END_INCLUDE(stripe:retrieve-balance-transaction) -->  
+<!-- BEGIN_INCLUDE(stripe:list-all-balance-history) -->
+	<stripe:list-all-balance-history config-ref="" availableOnTimestamp="#[map-payload:availableOnTimestamp]" availableOn="#[map-payload:availableOn]" createdTimestamp="#[map-payload:createdTimestamp" created="#[map-payload:created]" currency="#[map-payload:currency]" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" sourceId="#[map-payload:sourceId]" startingAfter="#[map-payoad:startingAfter]" transfer="#[map-payload:transfer]" type="#[map-payload:type]"/> 
+<!-- END_INCLUDE(stripe:list-all-coupons) -->

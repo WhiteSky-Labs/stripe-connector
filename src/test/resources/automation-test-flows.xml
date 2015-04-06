@@ -47,7 +47,7 @@
 	</stripe:list-all-plans>
 </flow>
 <flow doc:name="CreateCoupon" name="create-coupon">
-	<stripe:create-coupon config-ref="Stripe" id="#[flowVars.id]" duration="#[flowVars.duration]" amountOff="#[flowVars.amountOff]" currency="#[flowVars.currency]" durationInMonths="#[flowVars.durationInMonths]" maxRedemptions="#[flowVars.maxRedemptions]" percentOff="#[flowVars.percentOff]" redeemBy="#[flowVars.redeemBy]">
+	<stripe:create-coupon amountOff="#[flowVars.amountOff]" config-ref="Stripe" currency="#[flowVars.currency]" duration="#[flowVars.duration]" durationInMonths="#[flowVars.durationInMonths]" id="#[flowVars.id]" maxRedemptions="#[flowVars.maxRedemptions]" percentOff="#[flowVars.percentOff]" redeemBy="#[flowVars.redeemBy]">
 		<stripe:metadata ref="#[metadata]"/>
 	</stripe:create-coupon>
 </flow>
@@ -63,8 +63,20 @@
 	<stripe:delete-coupon config-ref="Stripe" id="#[flowVars.id]"/>
 </flow>
     <flow doc:name="ListAllCoupons" name="list-all-coupons">
-	<stripe:list-all-coupons config-ref="Stripe"  createdTimestamp="#[flowVars.createdTimestamp]" endingBefore="#[flowVars.endingBefore]" limit="#[flowVars.limit]" startingAfter="#[flowVars.startingAfter]">
+	<stripe:list-all-coupons config-ref="Stripe" createdTimestamp="#[flowVars.createdTimestamp]" endingBefore="#[flowVars.endingBefore]" limit="#[flowVars.limit]" startingAfter="#[flowVars.startingAfter]">
 		<stripe:created ref="#[flowVars.CreatedRef]"/>
 	</stripe:list-all-coupons>
+</flow>
+<flow doc:name="RetrieveBalance" name="retrieve-balance">
+	<stripe:retrieve-balance config-ref="Stripe"/>
+</flow>
+    <flow doc:name="RetrieveBalanceTransaction" name="retrieve-balance-transaction">
+	<stripe:retrieve-balance-transaction config-ref="Stripe" id="#[flowVars.id]"/>
+</flow>
+    <flow doc:name="ListAllBalanceHistory" name="list-all-balance-history">
+	<stripe:list-all-balance-history config-ref="Stripe" availableOnTimestamp="#[flowVars.availableOnTimestamp]" createdTimestamp="#[flowVars.createdTimestamp]" currency="#[flowVars.currency]" endingBefore="#[flowVars.endingBefore]" limit="#[flowVars.limit]" sourceId="#[flowVars.sourceId]" startingAfter="#[flowVars.startingAfter]" transfer="#[flowVars.transfer]" type="#[flowVars.startingAfter]">
+		<stripe:available-on ref="#[flowVars.AvailableOnRef]"/>
+		<stripe:created ref="#[flowVars.CreatedRef]"/>
+	</stripe:list-all-balance-history>
 </flow>
 </mule>

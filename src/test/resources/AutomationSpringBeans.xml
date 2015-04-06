@@ -96,33 +96,8 @@
         <entry key="limit" value="0"/>
         <entry key="startingAfter" value=""/>
     </util:map>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--createCoupon-->
-<util:map id="createCouponTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+    <!--createCoupon-->
+    <util:map id="createCouponTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  		<entry key="id" value="testCoupon"/>
         <entry key="duration" value="once"/>
         <entry key="amountOff" value="0"/>
@@ -144,25 +119,84 @@
         <entry key="redeemBy" value=""/>
         <entry key="metadata" value-ref="testMetadata"/>
     </util:map>
-<!--retrieveCoupon-->
-<util:map id="retrieveCouponTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+    <!--retrieveCoupon-->
+    <util:map id="retrieveCouponTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  <entry key="id" value=""/>
     </util:map>
-<!--updateCoupon-->
-<util:map id="updateCouponTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+    <!--updateCoupon-->
+    <util:map id="updateCouponTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  		<entry key="id" value="updateTestCoupon"/>
         <entry key="metadata" value-ref="testMetadata"/>
     </util:map>
-<!--deleteCoupon-->
-<util:map id="deleteCouponTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+    <!--deleteCoupon-->
+    <util:map id="deleteCouponTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  <entry key="id" value=""/>
     </util:map>
-<!--listAllCoupons-->
-<util:map id="listAllCouponsTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+    <!--listAllCoupons-->
+    <util:map id="listAllCouponsTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  		<entry key="createdTimestamp" value=""/>
         <entry key="endingBefore" value=""/>
         <entry key="limit" value="0"/>
         <entry key="startingAfter" value=""/>
+        <entry key="created" value=""/>
+    </util:map>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--retrieveBalance-->
+<util:map id="retrieveBalanceTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ </util:map>
+<!--retrieveBalanceTransaction-->
+<util:map id="retrieveBalanceTransactionTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="id" value="txn_15oTnK2aSsQzRUZqLP87dhIH"/>
+    </util:map>
+<!--listAllBalanceHistory-->
+<util:map id="listAllBalanceHistoryTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="availableOnTimestamp" value=""/>
+        <entry key="createdTimestamp" value=""/>
+        <entry key="currency" value=""/>
+        <entry key="endingBefore" value=""/>
+        <entry key="limit" value="0"/>
+        <entry key="sourceId" value=""/>
+        <entry key="startingAfter" value=""/>
+        <entry key="transfer" value=""/>
+        <entry key="type" value=""/>    		
+        <entry key="available-on" value=""/>
         <entry key="created" value=""/>
     </util:map>
 </beans>
