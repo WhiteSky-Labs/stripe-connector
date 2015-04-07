@@ -49,3 +49,21 @@
 <!-- BEGIN_INCLUDE(stripe:list-all-balance-history) -->
 	<stripe:list-all-balance-history config-ref="" availableOnTimestamp="#[map-payload:availableOnTimestamp]" availableOn="#[map-payload:availableOn]" createdTimestamp="#[map-payload:createdTimestamp" created="#[map-payload:created]" currency="#[map-payload:currency]" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" sourceId="#[map-payload:sourceId]" startingAfter="#[map-payoad:startingAfter]" transfer="#[map-payload:transfer]" type="#[map-payload:type]"/> 
 <!-- END_INCLUDE(stripe:list-all-coupons) -->
+<!-- BEGIN_INCLUDE(stripe:create-card) -->
+    <stripe:create-card config-ref="" cardOwner="#[map-payload:cardOwner]" ownerId="#[map-payload:ownerId]" sourceToken="#[map-payload:sourceToken]" source="#[map-payload:source]"/>
+<!-- END_INCLUDE(stripe:create=card) -->  
+<!-- BEGIN_INCLUDE(stripe:retrieve-card) -->
+    <stripe:retrieve-card config-ref="" cardOwner="#[map-payload:cardOwner]" ownerId="#[map-payload:ownerId]" id="#[map-payload:id]" />
+<!-- END_INCLUDE(stripe:retrieve-card) -->  
+<!-- BEGIN_INCLUDE(stripe:update-card) -->
+    <stripe:update-card config-ref="" cardOwner="#[map-payload:cardOwner]" ownerId="#[map-payload:ownerId]" id="#[map-payload:id]" addressCity="#[map-payload:addressCity]" addressCountry="#[map-payload:addressCountry]" addressLine1="#[map-payload:addressLine1]" addressLine2="#[map-payload:addressLine2]" addressState="#[map-payload:addressState]" addressZip="#[map-payload:addressZip]" expMonth="#[map-payload:expMonth]" expYear="#[map-payload:expYear]" metadata="#[map-payload:metadata]" cardName="#[map-payload:cardName]"/>
+<!-- END_INCLUDE(stripe:update-card) -->
+<!-- BEGIN_INCLUDE(stripe:delete-card) -->
+    <stripe:delete-card config-ref="" cardOwner="#[map-payload:cardOwner]" ownerId="#[map-payload:ownerId]" id="#[map-payload:id]" />
+<!-- END_INCLUDE(stripe:delete-card) -->  
+<!-- BEGIN_INCLUDE(stripe:list-all-customer-cards) -->
+	<stripe:list-all-customer-cards config-ref="" ownerId="#[map-payload:ownerId]" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" startingAfter="#[map-payoad:startingAfter]" /> 
+<!-- END_INCLUDE(stripe:list-all-customer-cards) -->
+<!-- BEGIN_INCLUDE(stripe:list-all-recipient-cards) -->
+	<stripe:list-all-recipient-cards config-ref="" ownerId="#[map-payload:ownerId]" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" startingAfter="#[map-payoad:startingAfter]" /> 
+<!-- END_INCLUDE(stripe:list-all-recipient-cards) -->

@@ -74,9 +74,28 @@
 	<stripe:retrieve-balance-transaction config-ref="Stripe" id="#[flowVars.id]"/>
 </flow>
     <flow doc:name="ListAllBalanceHistory" name="list-all-balance-history">
-	<stripe:list-all-balance-history config-ref="Stripe" availableOnTimestamp="#[flowVars.availableOnTimestamp]" createdTimestamp="#[flowVars.createdTimestamp]" currency="#[flowVars.currency]" endingBefore="#[flowVars.endingBefore]" limit="#[flowVars.limit]" sourceId="#[flowVars.sourceId]" startingAfter="#[flowVars.startingAfter]" transfer="#[flowVars.transfer]" type="#[flowVars.startingAfter]">
+	<stripe:list-all-balance-history availableOnTimestamp="#[flowVars.availableOnTimestamp]" config-ref="Stripe" createdTimestamp="#[flowVars.createdTimestamp]" currency="#[flowVars.currency]" endingBefore="#[flowVars.endingBefore]" limit="#[flowVars.limit]" sourceId="#[flowVars.sourceId]" startingAfter="#[flowVars.startingAfter]" transfer="#[flowVars.transfer]" type="#[flowVars.startingAfter]">
 		<stripe:available-on ref="#[flowVars.AvailableOnRef]"/>
 		<stripe:created ref="#[flowVars.CreatedRef]"/>
 	</stripe:list-all-balance-history>
+</flow>
+<flow doc:name="CreateCard" name="create-card">
+	<stripe:create-card config-ref="Stripe" ownerId="#[flowVars.ownerId]">
+		<stripe:source ref="#[flowVars.source]"/>
+	</stripe:create-card>
+</flow>
+<flow doc:name="RetrieveCard" name="retrieve-card">
+	<stripe:retrieve-card config-ref="Stripe" id="#[flowVars.id]" ownerId="#[flowVars.ownerId]"/>
+</flow>
+    <flow doc:name="UpdateCard" name="update-card">
+	<stripe:update-card config-ref="Stripe" id="#[flowVars.id]" ownerId="#[flowVars.ownerId]" addressCity="#[flowVars.addressCity]" addressCountry="#[flowVars.addressCountry]" addressLine1="#[flowVars.addressLine1]" addressLine2="#[flowVars.addressLine2]" addressState="#[flowVars.addressState]" addressZip="#[flowVars.addressZip]" expMonth="#[flowVars.expMonth]" expYear="#[flowVars.expYear]" cardName="#[flowVars.cardName]">
+		<stripe:metadata ref="#[flowVars.metadata]"/>
+	</stripe:update-card>
+</flow>
+    <flow doc:name="DeleteCard" name="delete-card">
+	<stripe:delete-card config-ref="Stripe" id="#[flowVars.id]" ownerId="#[flowVars.ownerId]"/>
+</flow>
+    <flow doc:name="ListAllCustomerCards" name="list-all-customer-cards">
+	<stripe:list-all-customer-cards config-ref="Stripe" ownerId="#[flowVars.ownerId]" endingBefore="#[flowVars.endingBefore]" limit="#[flowVars.limit]" startingAfter="#[flowVars.startingAfter]"/>
 </flow>
 </mule>

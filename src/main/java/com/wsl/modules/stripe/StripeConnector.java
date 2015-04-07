@@ -26,12 +26,17 @@ import com.stripe.exception.InvalidRequestException;
 import com.stripe.model.Balance;
 import com.stripe.model.BalanceTransaction;
 import com.stripe.model.BalanceTransactionCollection;
+import com.stripe.model.Card;
 import com.stripe.model.Coupon;
 import com.stripe.model.CouponCollection;
 import com.stripe.model.Customer;
 import com.stripe.model.CustomerCollection;
+import com.stripe.model.DeletedCard;
+import com.stripe.model.PaymentSource;
+import com.stripe.model.PaymentSourceCollection;
 import com.stripe.model.Plan;
 import com.stripe.model.PlanCollection;
+import com.wsl.modules.stripe.complextypes.Source;
 import com.wsl.modules.stripe.exceptions.StripeConnectorException;
 import com.wsl.modules.stripe.strategy.ConnectorConnectionStrategy;
 
@@ -480,7 +485,7 @@ public class StripeConnector {
     		return Coupon.all(params);			
 		} catch (AuthenticationException | InvalidRequestException
 				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not delete the coupon", e);
+			throw new StripeConnectorException("Could not list coupons", e);
 		}
     }
     
@@ -500,7 +505,7 @@ public class StripeConnector {
     		return Balance.retrieve();			
 		} catch (AuthenticationException | InvalidRequestException
 				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not delete the coupon", e);
+			throw new StripeConnectorException("Could not retrieve the balance", e);
 		}
     }
     
@@ -571,7 +576,182 @@ public class StripeConnector {
     		return BalanceTransaction.all(params);
 		} catch (AuthenticationException | InvalidRequestException
 				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not delete the coupon", e);
+			throw new StripeConnectorException("Could not list the balance history", e);
+		}
+    }
+    
+    /**
+     * Create a Card
+     * Note that this is only available for Customers at this time, as Recipients (of Transfers) have been deprecated by Stripe.
+     * Stripe Connect is the recommended means for transferring funds.
+     *
+     * {@sample.xml ../../../doc/stripe-connector.xml.sample stripe:create-card}
+     * 
+     * @param ownerId the ID for the Customer or Recipient
+     * @param sourceToken The source can either be a token, like the ones returned by Stripe.js, 
+     * @param source or a dictionary containing a user’s credit card details (with the options shown below). Whenever you create a new card for a customer, Stripe will automatically validate the card.
+     * @return Returns the created Card.
+     * @throws StripeConnectorException when there is a problem with the Connector
+     */
+    @Processor
+    @ReconnectOn(exceptions = { Exception.class })
+    public Card createCard(String ownerId, @Optional String sourceToken, @Optional Source source)    
+    		throws StripeConnectorException {
+    	Map<String, Object> params = new HashMap<String, Object>();
+    	
+    	if (sourceToken != null && !sourceToken.isEmpty()){
+    		params.put("source", sourceToken);
+    	} else {
+    		Map<String, Object> sourceDict = source.toDictionary();
+    		sourceDict = removeOptionals(sourceDict);
+    		params.put("source", sourceDict);    		
+    	}
+    	try {
+			Customer customer = Customer.retrieve(ownerId);
+			return customer.createCard(params);
+		} catch (AuthenticationException | InvalidRequestException
+				| APIConnectionException | CardException | APIException e) {
+			throw new StripeConnectorException("Could not create the Card", e);
+		}
+    }
+    
+    /**
+     * Retrieve a Card
+     * Note that this is only available for Customers at this time, as Recipients (of Transfers) have been deprecated by Stripe.
+     * Stripe Connect is the recommended means for transferring funds.
+     * 
+     * {@sample.xml ../../../doc/stripe-connector.xml.sample stripe:retrieve-card}
+     * 
+     * @param ownerId The ID of the owner of the card.
+     * @param id The ID of the card to be retrieved.
+     * @return Returns the retrieved Card.
+     * @throws StripeConnectorException when there is a problem with the Connector
+     */
+    @Processor
+    @ReconnectOn(exceptions = { Exception.class })
+    public Card retrieveCard(String ownerId, String id)    
+    		throws StripeConnectorException {
+    	try {
+			Customer customer = Customer.retrieve(ownerId);
+			PaymentSource source = customer.getSources().retrieve(id);
+			if (source.getObject().equals("card")){
+				return (Card) source; 
+			} else {
+				throw new CardException("The source was not a card", "001", id, new Exception("Source was not a card type"));
+			}		
+		} catch (AuthenticationException | InvalidRequestException
+				| APIConnectionException | CardException | APIException e) {
+			throw new StripeConnectorException("Could not retrieve the Card", e);
+		}
+    }
+    
+    /**
+     * Update a Card
+     * Note that this is only available for Customers at this time, as Recipients (of Transfers) have been deprecated by Stripe.
+     * Stripe Connect is the recommended means for transferring funds.
+     * 
+     * {@sample.xml ../../../doc/stripe-connector.xml.sample stripe:update-card}
+     * 
+     * @param ownerId The ID of the owner of the card.
+     * @param id The ID of the card to be updated.
+     * @param addressCity The City component of the Card Address
+     * @param addressCountry The Country component of the Card Address
+     * @param addressLine1 The Address, Line 1, component of the Card Address
+     * @param addressLine2 The Address, Line 2, component of the Card Address
+     * @param addressState The State component of the Card Address
+     * @param addressZip The Zipcode component of the Card Address
+     * @param expMonth The Card's expiry month
+     * @param expYear The Card's expiry year
+     * @param metadata Arbitrary metadata to attach to the card
+     * @param cardName The name for the card
+     * 
+     * @return Returns the updated Card.
+     * @throws StripeConnectorException when there is a problem with the Connector
+     */
+    @Processor
+    @ReconnectOn(exceptions = { Exception.class })
+    public Card updateCard(String ownerId, String id, @Optional String addressCity, @Optional String addressCountry, @Optional String addressLine1, @Optional String addressLine2, @Optional String addressState, @Optional String addressZip, @Optional String expMonth, @Optional String expYear, @Optional Map<String, Object> metadata, @Optional String cardName)    
+    		throws StripeConnectorException {
+    	Map<String, Object> params = new HashMap<String, Object>();
+    	params.put("address_city", addressCity);
+    	params.put("address_country", addressCountry);
+    	params.put("address_line1", addressLine1);
+    	params.put("address_line2", addressLine2);
+    	params.put("address_state", addressState);
+    	params.put("address_zip", addressZip);
+    	params.put("exp_month", expMonth);
+    	params.put("exp_year", expYear);
+    	params.put("metadata", metadata);
+    	params.put("name", cardName);
+    	params = removeOptionals(params);
+    	try {
+			Customer customer = Customer.retrieve(ownerId);
+			PaymentSource source = customer.getSources().retrieve(id);
+			return (Card) source.update(params);		
+		} catch (AuthenticationException | InvalidRequestException
+				| APIConnectionException | CardException | APIException e) {
+			throw new StripeConnectorException("Could not update the Card", e);
+		}
+    }
+    
+    /**
+     * Delete a Card
+     *
+     * {@sample.xml ../../../doc/stripe-connector.xml.sample stripe:delete-card}
+     * 
+     * @param ownerId The ID of the owner of the card.
+     * @param id The ID of the card to be deleted.
+     * @return Returns the deleted card object.
+     * @throws StripeConnectorException when there is a problem with the Connector
+     */
+    @Processor
+    @ReconnectOn(exceptions = { Exception.class })
+    public DeletedCard deleteCard(String ownerId, String id)    
+    		throws StripeConnectorException {
+    	try {
+			Customer customer = Customer.retrieve(ownerId);
+			for(PaymentSource source : customer.getSources().getData()){
+			  if(source.getId().equals(id)){
+			    return (DeletedCard) source.delete();
+			  }
+			}
+			// if we get to here, the card wasn't found - throw an exception
+    		throw new CardException("The card wasn't found", "001", id, new Exception("Card id was not found"));
+		} catch (AuthenticationException | InvalidRequestException
+				| APIConnectionException | CardException | APIException e) {
+			throw new StripeConnectorException("Could not delete the Card", e);
+		}
+    }
+    
+    /**
+     * List all Customer Cards
+     * Note that this is only available for Customers at this time, as Recipients (of Transfers) have been deprecated by Stripe.
+     * Stripe Connect is the recommended means for transferring funds.
+     * 
+     * {@sample.xml ../../../doc/stripe-connector.xml.sample stripe:list-all-customer-cards}
+     * 
+     * @param ownerId The ID of the customer whose cards will be retrieved
+     * @param endingBefore A cursor for use in pagination. ending_before is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with obj_bar, your subsequent call can include ending_before=obj_bar in order to fetch the previous page of the list.
+     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items.
+     * @param startingAfter A cursor for use in pagination. starting_after is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with obj_foo, your subsequent call can include starting_after=obj_foo in order to fetch the next page of the list.
+     * @return Returns a list of the cards stored on the customer or recipient.
+     * @throws StripeConnectorException when there is a problem with the Connector
+     */
+    @Processor
+    @ReconnectOn(exceptions = { Exception.class })
+    public PaymentSourceCollection listAllCustomerCards(String ownerId, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter)    
+    		throws StripeConnectorException {
+    	Map<String, Object> params = new HashMap<String, Object>();
+    	params.put("limit", limit);
+    	params.put("ending_before", endingBefore);
+    	params.put("startingAfter", startingAfter);
+    	params = removeOptionalsAndZeroes(params);
+    	try {
+    		Customer customer = Customer.retrieve(ownerId);
+    		return customer.getSources().all(params);
+		} catch (AuthenticationException | InvalidRequestException
+				| APIConnectionException | CardException | APIException e) {
+			throw new StripeConnectorException("Could not list the customer cards", e);
 		}
     }
     

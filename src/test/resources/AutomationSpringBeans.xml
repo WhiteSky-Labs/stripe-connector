@@ -140,53 +140,15 @@
         <entry key="startingAfter" value=""/>
         <entry key="created" value=""/>
     </util:map>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--retrieveBalance-->
-<util:map id="retrieveBalanceTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+    <!--retrieveBalance-->
+    <util:map id="retrieveBalanceTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  </util:map>
-<!--retrieveBalanceTransaction-->
-<util:map id="retrieveBalanceTransactionTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+    <!--retrieveBalanceTransaction-->
+    <util:map id="retrieveBalanceTransactionTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  <entry key="id" value="txn_15oTnK2aSsQzRUZqLP87dhIH"/>
     </util:map>
-<!--listAllBalanceHistory-->
-<util:map id="listAllBalanceHistoryTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+    <!--listAllBalanceHistory-->
+    <util:map id="listAllBalanceHistoryTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  <entry key="availableOnTimestamp" value=""/>
         <entry key="createdTimestamp" value=""/>
         <entry key="currency" value=""/>
@@ -198,5 +160,59 @@
         <entry key="type" value=""/>    		
         <entry key="available-on" value=""/>
         <entry key="created" value=""/>
+    </util:map>
+    <!--createCard-->
+    <util:map id="createCardTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ 	<entry key="ownerId" value=""/>
+    <entry key="sourceToken" value=""/>
+    <entry key="source" value-ref="createCard_Source"/>
+    </util:map>
+    <bean class="com.wsl.modules.stripe.complextypes.Source" id="createCard_Source">
+        <property name="number" value="4242424242424242"/>
+        <property name="expMonth" value="2"/>
+        <property name="expYear" value="22"/>
+    </bean>
+    <util:map id="createCardInvalidTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ 	<entry key="ownerId" value=""/>
+    <entry key="sourceToken" value=""/>
+    <entry key="source" value-ref="createCard_SourceInvalid"/>
+</util:map>
+    <bean class="com.wsl.modules.stripe.complextypes.Source" id="createCard_SourceInvalid">
+        <property name="number" value="123844267891123"/>
+        <property name="expMonth" value="2"/>
+        <property name="expYear" value="22"/>
+    </bean>
+
+<!--retrieveCard-->
+<util:map id="retrieveCardTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ 	<entry key="ownerId" value=""/>
+    <entry key="id" value=""/>
+    </util:map>    
+<!--updateCard-->
+<util:map id="updateCardTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ 		<entry key="ownerId" value=""/>
+        <entry key="id" value=""/>
+        <entry key="addressCity" value="San Francisco"/>
+        <entry key="addressCountry" value="USA"/>
+        <entry key="addressLine1" value=""/>
+        <entry key="addressLine2" value=""/>
+        <entry key="addressState" value=""/>
+        <entry key="addressZip" value=""/>
+        <entry key="expMonth" value=""/>
+        <entry key="expYear" value=""/>
+        <entry key="cardName" value="TestName"/>
+        <entry key="metadata" value-ref="testMetadata"/>
+    </util:map>    
+<!--deleteCard-->
+<util:map id="deleteCardTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+        <entry key="ownerId" value=""/>
+        <entry key="id" value=""/>
+    </util:map>
+<!--listAllCustomerCards-->
+<util:map id="listAllCustomerCardsTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="ownerId" value=""/>
+        <entry key="endingBefore" value=""/>
+        <entry key="limit" value="0"/>
+        <entry key="startingAfter" value=""/>
     </util:map>
 </beans>
