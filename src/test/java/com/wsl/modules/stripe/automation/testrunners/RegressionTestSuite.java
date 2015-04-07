@@ -2,19 +2,21 @@
 package com.wsl.modules.stripe.automation.testrunners;
 
 import com.wsl.modules.stripe.automation.RegressionTests;
-import com.wsl.modules.stripe.automation.testcases.DeleteCardTestCases;
-import com.wsl.modules.stripe.automation.testcases.ListAllCustomerCardsTestCases;
-import com.wsl.modules.stripe.automation.testcases.RetrieveCardTestCases;
-import com.wsl.modules.stripe.automation.testcases.UpdateCardTestCases;
+import com.wsl.modules.stripe.automation.testcases.CaptureChargeTestCases;
+import com.wsl.modules.stripe.automation.testcases.CreateChargeTestCases;
+import com.wsl.modules.stripe.automation.testcases.ListAllChargesTestCases;
+import com.wsl.modules.stripe.automation.testcases.RetrieveChargeTestCases;
+import com.wsl.modules.stripe.automation.testcases.UpdateChargeTestCases;
 import org.junit.runner.RunWith;
 
 @RunWith(org.junit.experimental.categories.Categories.class)
 @org.junit.experimental.categories.Categories.IncludeCategory(RegressionTests.class)
 @org.junit.runners.Suite.SuiteClasses({
-    RetrieveCardTestCases.class,
-    UpdateCardTestCases.class,
-    DeleteCardTestCases.class,
-    ListAllCustomerCardsTestCases.class,    
+    CreateChargeTestCases.class,
+    RetrieveChargeTestCases.class,
+    UpdateChargeTestCases.class,
+    CaptureChargeTestCases.class,
+    ListAllChargesTestCases.class
 })
 public class RegressionTestSuite {
 

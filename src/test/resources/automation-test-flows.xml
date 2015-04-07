@@ -88,7 +88,7 @@
 	<stripe:retrieve-card config-ref="Stripe" id="#[flowVars.id]" ownerId="#[flowVars.ownerId]"/>
 </flow>
     <flow doc:name="UpdateCard" name="update-card">
-	<stripe:update-card config-ref="Stripe" id="#[flowVars.id]" ownerId="#[flowVars.ownerId]" addressCity="#[flowVars.addressCity]" addressCountry="#[flowVars.addressCountry]" addressLine1="#[flowVars.addressLine1]" addressLine2="#[flowVars.addressLine2]" addressState="#[flowVars.addressState]" addressZip="#[flowVars.addressZip]" expMonth="#[flowVars.expMonth]" expYear="#[flowVars.expYear]" cardName="#[flowVars.cardName]">
+	<stripe:update-card addressCity="#[flowVars.addressCity]" addressCountry="#[flowVars.addressCountry]" addressLine1="#[flowVars.addressLine1]" addressLine2="#[flowVars.addressLine2]" addressState="#[flowVars.addressState]" addressZip="#[flowVars.addressZip]" cardName="#[flowVars.cardName]" config-ref="Stripe" expMonth="#[flowVars.expMonth]" expYear="#[flowVars.expYear]" id="#[flowVars.id]" ownerId="#[flowVars.ownerId]">
 		<stripe:metadata ref="#[flowVars.metadata]"/>
 	</stripe:update-card>
 </flow>
@@ -96,6 +96,26 @@
 	<stripe:delete-card config-ref="Stripe" id="#[flowVars.id]" ownerId="#[flowVars.ownerId]"/>
 </flow>
     <flow doc:name="ListAllCustomerCards" name="list-all-customer-cards">
-	<stripe:list-all-customer-cards config-ref="Stripe" ownerId="#[flowVars.ownerId]" endingBefore="#[flowVars.endingBefore]" limit="#[flowVars.limit]" startingAfter="#[flowVars.startingAfter]"/>
+	<stripe:list-all-customer-cards config-ref="Stripe" endingBefore="#[flowVars.endingBefore]" limit="#[flowVars.limit]" ownerId="#[flowVars.ownerId]" startingAfter="#[flowVars.startingAfter]"/>
+</flow>
+<flow doc:name="CreateCharge" name="create-charge">
+	<stripe:create-charge amount="#[flowVars.amount]" config-ref="Stripe" currency="#[flowVars.currency]" customerId="#[flowVars.customerId]" description="#[flowVars.description]" capture="#[flowVars.capture]" statementDescriptor="#[flowVars.statementDescriptor]" receiptEmail="#[flowVars.receiptEmail]"	destination="#[flowVars.destination]" applicationFee="#[flowVars.applicationFee]">
+		<stripe:source ref="#[flowVars.source]"/>
+		<stripe:metadata ref="#[flowVars.metadata]"/>		
+	</stripe:create-charge>
+</flow>
+    <flow doc:name="RetrieveCharge" name="retrieve-charge">
+	<stripe:retrieve-charge config-ref="Stripe" id="#[flowVars.id]"/>
+</flow>
+    <flow doc:name="UpdateCharge" name="update-charge">
+	<stripe:update-charge config-ref="Stripe" id="#[flowVars.id]" description="#[flowVars.description]" receiptEmail="#[flowVars.receiptEmail]">
+		<stripe:metadata ref="#[flowVars.metadata]"/>		
+	</stripe:update-charge>
+</flow>
+    <flow doc:name="CaptureCharge" name="capture-charge">
+	<stripe:capture-charge config-ref="Stripe" id="#[flowVars.id]" amount="#[flowVars.amount]" applicationFee="#[flowVars.applicationFee]" statementDescriptor="#[flowVars.statementDescriptor]" receiptEmail="#[flowVars.receiptEmail]"/>	  
+</flow>
+    <flow doc:name="ListAllCharges" name="list-all-charges">
+	<stripe:list-all-charges config-ref="Stripe" createdTimestamp="#[flowVars.createdTimestamp]" customer="#[flowVars.customer]" endingBefore="#[flowVars.endingBefore]" limit="#[limit]" startingAfter="#[flowVars.startingAfter]"/>
 </flow>
 </mule>

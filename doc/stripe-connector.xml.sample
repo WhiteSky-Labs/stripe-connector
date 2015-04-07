@@ -67,3 +67,18 @@
 <!-- BEGIN_INCLUDE(stripe:list-all-recipient-cards) -->
 	<stripe:list-all-recipient-cards config-ref="" ownerId="#[map-payload:ownerId]" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" startingAfter="#[map-payoad:startingAfter]" /> 
 <!-- END_INCLUDE(stripe:list-all-recipient-cards) -->
+<!-- BEGIN_INCLUDE(stripe:create-charge) -->
+	<stripe:create-charge config-ref="" amount="#[map-payload:amount]" currency="#[map-payload:currency]" customerId="#[map-payload:customerId]" source="#[map-payoad:source]" description="#[map-payload:description]" metadata="#[map-payload:metadata]" capture="#[map-payload:capture]" statementDescriptor="#[map-payload:statementDescriptor]" receiptEmail="#[map-payload:receiptEmail]" destination="#[map-payload:destination]" applicationFee="#[map-payload:applicationFee]" shipping="#[map-payload:shipping]"/> 
+<!-- END_INCLUDE(stripe:create-charge) -->
+<!-- BEGIN_INCLUDE(stripe:retrieve-charge) -->
+	<stripe:retrieve-charge config-ref="" id="#[map-payload:id]"/> 
+<!-- END_INCLUDE(stripe:retrieve-charge) -->
+<!-- BEGIN_INCLUDE(stripe:update-charge) -->
+	<stripe:update-charge config-ref="" id="#[map-payload:id]" description="#[map-payload:description]" metadata="#[map-payload:metadata]" receiptEmail="#[map-payload:receiptEmail]" fraudDetails="#[map-payload:fraudDetails]"/> 
+<!-- END_INCLUDE(stripe:update-charge) -->
+<!-- BEGIN_INCLUDE(stripe:capture-charge) -->
+	<stripe:capture-charge config-ref="" id="#[map-payload:id]" amount="#[map-payload:amount]" description="#[map-payload:description]" statementDescriptor="#[map-payload:statementDescriptor]" receiptEmail="#[map-payload:receiptEmail]" applicationFee="#[map-payload:applicationFee]" /> 
+<!-- END_INCLUDE(stripe:capture-charge) -->
+<!-- BEGIN_INCLUDE(stripe:list-all-charges) -->
+	<stripe:list-all-charges config-ref="" createdTimestamp="#[map-payload:createdTimestamp]" created="#[map-payload:created]" customer="#[map-payload:customer]" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" startingAfter="#[map-payoad:startingAfter]" /> 
+<!-- END_INCLUDE(stripe:list-all-charges) -->
