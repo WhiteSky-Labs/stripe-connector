@@ -97,3 +97,15 @@
 <!-- BEGIN_INCLUDE(stripe:list-active-subscriptions) -->
 	<stripe:list-active-subscriptions config-ref="" customerId="#[map-payload:customerId]" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" startingAfter="#[map-payoad:startingAfter]" /> 
 <!-- END_INCLUDE(stripe:list-active-subscriptions) -->
+<!-- BEGIN_INCLUDE(stripe:create-refund) -->
+	<stripe:create-refund config-ref="" id="#[map-payload:id]" amount="#[map-payload:amount]" refundApplicationFee="#[map-payload:refundApplicationFee]" reason="#[map-payload:reason]" metadata="#[map-payload:metadata]"/>
+<!-- END_INCLUDE(stripe:create-refund) -->
+<!-- BEGIN_INCLUDE(stripe:retrieve-refund) -->
+	<stripe:retrieve-refund config-ref="" id="#[map-payload:id]" chargeId="#[map-payload:chargeId]"/>
+<!-- END_INCLUDE(stripe:retrieve-refund) -->	
+<!-- BEGIN_INCLUDE(stripe:update-refund) -->
+	<stripe:update-refund config-ref="" id="#[map-payload:id]" chargeId="#[map-payload:chargeId]" metadata="#[map-payload:metadata]"/>
+<!-- END_INCLUDE(stripe:update-refund) -->
+<!-- BEGIN_INCLUDE(stripe:list-all-refunds) -->
+	<stripe:list-all-refunds config-ref="" chargeId="#[map-payload:chargeId]" metadata="#[map-payload:metadata]" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" startingAfter="#[map-payoad:startingAfter]"/>
+<!-- END_INCLUDE(stripe:list-all-refunds) -->

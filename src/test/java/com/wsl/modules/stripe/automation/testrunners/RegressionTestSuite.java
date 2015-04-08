@@ -2,21 +2,19 @@
 package com.wsl.modules.stripe.automation.testrunners;
 
 import com.wsl.modules.stripe.automation.RegressionTests;
-import com.wsl.modules.stripe.automation.testcases.CancelSubscriptionTestCases;
-import com.wsl.modules.stripe.automation.testcases.CreateSubscriptionTestCases;
-import com.wsl.modules.stripe.automation.testcases.ListActiveSubscriptionsTestCases;
-import com.wsl.modules.stripe.automation.testcases.RetrieveSubscriptionTestCases;
-import com.wsl.modules.stripe.automation.testcases.UpdateSubscriptionTestCases;
+import com.wsl.modules.stripe.automation.testcases.CreateRefundTestCases;
+import com.wsl.modules.stripe.automation.testcases.ListAllRefundsTestCases;
+import com.wsl.modules.stripe.automation.testcases.RetrieveRefundTestCases;
+import com.wsl.modules.stripe.automation.testcases.UpdateRefundTestCases;
 import org.junit.runner.RunWith;
 
 @RunWith(org.junit.experimental.categories.Categories.class)
 @org.junit.experimental.categories.Categories.IncludeCategory(RegressionTests.class)
 @org.junit.runners.Suite.SuiteClasses({
-    CreateSubscriptionTestCases.class,
-    RetrieveSubscriptionTestCases.class,
-    UpdateSubscriptionTestCases.class,
-    CancelSubscriptionTestCases.class,
-    ListActiveSubscriptionsTestCases.class
+    CreateRefundTestCases.class,
+    RetrieveRefundTestCases.class,
+    UpdateRefundTestCases.class,
+    ListAllRefundsTestCases.class
 })
 public class RegressionTestSuite {
 

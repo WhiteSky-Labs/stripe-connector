@@ -119,7 +119,7 @@
 	<stripe:list-all-charges config-ref="Stripe" createdTimestamp="#[flowVars.createdTimestamp]" customer="#[flowVars.customer]" endingBefore="#[flowVars.endingBefore]" limit="#[limit]" startingAfter="#[flowVars.startingAfter]"/>
 </flow>
 <flow doc:name="CreateSubscription" name="create-subscription">
-	<stripe:create-subscription config-ref="Stripe" customerId="#[flowVars.customerId]" plan="#[flowVars.plan]" coupon="#[flowVars.coupon]" trialEnd="#[flowVars.trialEnd]" sourceToken="#[flowVars.sourceToken]" quantity="#[flowVars.quantity]" applicationFeePercent="#[flowVars.applicationFeePercent]" taxPercent="#[flowVars.taxPercent]">
+	<stripe:create-subscription applicationFeePercent="#[flowVars.applicationFeePercent]" config-ref="Stripe" coupon="#[flowVars.coupon]" customerId="#[flowVars.customerId]" plan="#[flowVars.plan]" quantity="#[flowVars.quantity]" sourceToken="#[flowVars.sourceToken]" taxPercent="#[flowVars.taxPercent]" trialEnd="#[flowVars.trialEnd]">
 		<stripe:source ref="#[flowVars.source]"/>
 		<stripe:metadata ref="#[flowVars.metadata]"/>
 	</stripe:create-subscription>
@@ -128,7 +128,7 @@
 	<stripe:retrieve-subscription config-ref="Stripe" customerId="#[flowVars.customerId]" subscriptionId="#[flowVars.subscriptionId]"/>
 </flow>
     <flow doc:name="UpdateSubscription" name="update-subscription">
-	<stripe:update-subscription config-ref="Stripe" customerId="#[flowVars.customerId]" plan="#[flowVars.plan]" subscriptionId="#[flowVars.subscriptionId]" prorate="#[flowVars.prorate]" coupon="#[flowVars.coupon]" trialEnd="#[flowVars.trialEnd]" sourceToken="#[flowVars.sourceToken]" quantity="#[flowVars.quantity]" applicationFeePercent="#[flowVars.applicationFeePercent]" taxPercent="#[flowVars.taxPercent]" >
+	<stripe:update-subscription applicationFeePercent="#[flowVars.applicationFeePercent]" config-ref="Stripe" coupon="#[flowVars.coupon]" customerId="#[flowVars.customerId]" plan="#[flowVars.plan]" prorate="#[flowVars.prorate]" quantity="#[flowVars.quantity]" sourceToken="#[flowVars.sourceToken]" subscriptionId="#[flowVars.subscriptionId]" taxPercent="#[flowVars.taxPercent]" trialEnd="#[flowVars.trialEnd]">
 		<stripe:source ref="#[flowVars.source]"/>
 		<stripe:metadata ref="#[flowVars.metadata]"/>
 	</stripe:update-subscription>
@@ -138,5 +138,22 @@
 </flow>
     <flow doc:name="ListActiveSubscriptions" name="list-active-subscriptions">
 	<stripe:list-active-subscriptions config-ref="Stripe" customerId="#[flowVars.customerId]"/>
+</flow>
+<flow doc:name="CreateRefund" name="create-refund">
+	<stripe:create-refund config-ref="Stripe" id="#[flowVars.id]" amount="#[flowVars.amount]" refundApplicationFee="#[flowVars.refundApplicationFee]" reason="#[flowVars.reason]">
+		<stripe:metadata ref="#[flowVars.metadata]"/>
+	</stripe:create-refund>
+	
+</flow>
+    <flow doc:name="RetrieveRefund" name="retrieve-refund">
+	<stripe:retrieve-refund chargeId="#[flowVars.chargeId]" config-ref="Stripe" id="#[flowVars.id]"/>
+</flow>
+    <flow doc:name="UpdateRefund" name="update-refund">
+	<stripe:update-refund chargeId="#[flowVars.chargeId]" config-ref="Stripe" id="#[flowVars.id]">
+		<stripe:metadata ref="#[flowVars.metadata]"/>
+	</stripe:update-refund>
+</flow>
+    <flow doc:name="ListAllRefunds" name="list-all-refunds">
+	<stripe:list-all-refunds chargeId="#[flowVars.chargeId]" config-ref="Stripe"/>
 </flow>
 </mule>

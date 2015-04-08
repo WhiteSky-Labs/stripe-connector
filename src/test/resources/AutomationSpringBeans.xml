@@ -257,79 +257,8 @@
         <entry key="startingAfter" value=""/>
         <entry key="created" value=""/>
     </util:map>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--createSubscription-->
-<util:map id="createSubscriptionTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+    <!--createSubscription-->
+    <util:map id="createSubscriptionTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  <entry key="customerId" value=""/>
         <entry key="plan" value=""/>
         <entry key="coupon" value=""/>
@@ -340,14 +269,14 @@
         <entry key="applicationFeePercent" value="0"/>
         <entry key="taxPercent" value="0"/>
         <entry key="metadata" value-ref="testMetadata"/>
-    </util:map>    
-<!--retrieveSubscription-->
-<util:map id="retrieveSubscriptionTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+    </util:map>
+    <!--retrieveSubscription-->
+    <util:map id="retrieveSubscriptionTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  <entry key="customerId" value=""/>
         <entry key="subscriptionId" value=""/>
     </util:map>
-<!--updateSubscription-->
-<util:map id="updateSubscriptionTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+    <!--updateSubscription-->
+    <util:map id="updateSubscriptionTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  		<entry key="customerId" value=""/>
         <entry key="subscriptionId" value=""/>
         <entry key="plan" value=""/>
@@ -361,14 +290,41 @@
         <entry key="taxPercent" value="0"/>
         <entry key="metadata" value-ref="testMetadata"/>
     </util:map>
-<!--cancelSubscription-->
-<util:map id="cancelSubscriptionTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+    <!--cancelSubscription-->
+    <util:map id="cancelSubscriptionTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  <entry key="customerId" value=""/>
         <entry key="subscriptionId" value=""/>
     </util:map>
-<!--listActiveSubscriptions-->
-<util:map id="listActiveSubscriptionsTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+    <!--listActiveSubscriptions-->
+    <util:map id="listActiveSubscriptionsTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  <entry key="customerId" value=""/>
+        <entry key="endingBefore" value=""/>
+        <entry key="limit" value="0"/>
+        <entry key="startingAfter" value=""/>
+    </util:map>
+
+<!--createRefund-->
+<util:map id="createRefundTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="id" value=""/>
+        <entry key="amount" value="10"/>
+        <entry key="refundApplicationFee" value="false"/>
+        <entry key="reason" value="duplicate"/>
+        <entry key="metadata" value-ref="testMetadata"/>
+    </util:map>
+<!--retrieveRefund-->
+<util:map id="retrieveRefundTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ 	<entry key="id" value=""/>
+        <entry key="chargeId" value=""/>
+    </util:map>
+<!--updateRefund-->
+<util:map id="updateRefundTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="id" value=""/>
+        <entry key="chargeId" value=""/>
+        <entry key="metadata" value-ref="testMetadata"/>
+    </util:map>
+<!--listAllRefunds-->
+<util:map id="listAllRefundsTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="chargeId" value=""/>
         <entry key="endingBefore" value=""/>
         <entry key="limit" value="0"/>
         <entry key="startingAfter" value=""/>
