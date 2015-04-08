@@ -214,9 +214,8 @@
         <entry key="limit" value="0"/>
         <entry key="startingAfter" value=""/>
     </util:map>
-
-<!--createCharge-->
-<util:map id="createChargeTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+    <!--createCharge-->
+    <util:map id="createChargeTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  		<entry key="amount" value="1000"/>
         <entry key="currency" value="usd"/>
         <entry key="customerId" value=""/>
@@ -229,33 +228,149 @@
         <entry key="applicationFee" value="0"/>
         <entry key="metadata" value-ref="testMetadata"/>
         <entry key="shipping" value=""/>
-    </util:map>    
-<!--retrieveCharge-->
-<util:map id="retrieveChargeTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+    </util:map>
+    <!--retrieveCharge-->
+    <util:map id="retrieveChargeTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  	<entry key="id" value=""/>
 </util:map>
-<!--updateCharge-->
-<util:map id="updateChargeTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+    <!--updateCharge-->
+    <util:map id="updateChargeTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
 	<entry key="id" value=""/>
     <entry key="description" value="Update Charge Test"/>
     <entry key="receiptEmail" value="update@test.com"/>
     <entry key="metadata" value-ref="testMetadata"/>    
     </util:map>
-<!--captureCharge-->
-<util:map id="captureChargeTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+    <!--captureCharge-->
+    <util:map id="captureChargeTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  		<entry key="id" value=""/>
         <entry key="amount" value="1000"/>
         <entry key="applicationFee" value="0"/>
         <entry key="statementDescriptor" value="Captured"/>
         <entry key="receiptEmail" value="capture@test.com"/>
     </util:map>
-<!--listAllCharges-->
-<util:map id="listAllChargesTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+    <!--listAllCharges-->
+    <util:map id="listAllChargesTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  		<entry key="createdTimestamp" value=""/>
         <entry key="customer" value=""/>
         <entry key="endingBefore" value=""/>
         <entry key="limit" value="0"/>
         <entry key="startingAfter" value=""/>
         <entry key="created" value=""/>
+    </util:map>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--createSubscription-->
+<util:map id="createSubscriptionTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="customerId" value=""/>
+        <entry key="plan" value=""/>
+        <entry key="coupon" value=""/>
+        <entry key="trialEnd" value=""/>
+        <entry key="sourceToken" value=""/>
+        <entry key="source" value-ref="createCard_Source"/>
+        <entry key="quantity" value="1"/>
+        <entry key="applicationFeePercent" value="0"/>
+        <entry key="taxPercent" value="0"/>
+        <entry key="metadata" value-ref="testMetadata"/>
+    </util:map>    
+<!--retrieveSubscription-->
+<util:map id="retrieveSubscriptionTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="customerId" value=""/>
+        <entry key="subscriptionId" value=""/>
+    </util:map>
+<!--updateSubscription-->
+<util:map id="updateSubscriptionTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ 		<entry key="customerId" value=""/>
+        <entry key="subscriptionId" value=""/>
+        <entry key="plan" value=""/>
+        <entry key="coupon" value=""/>
+        <entry key="prorate" value="true"/>
+        <entry key="trialEnd" value=""/>
+        <entry key="sourceToken" value=""/>
+        <entry key="source" value-ref="createCard_Source"/>
+        <entry key="quantity" value="1"/>
+        <entry key="applicationFeePercent" value="0"/>
+        <entry key="taxPercent" value="0"/>
+        <entry key="metadata" value-ref="testMetadata"/>
+    </util:map>
+<!--cancelSubscription-->
+<util:map id="cancelSubscriptionTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="customerId" value=""/>
+        <entry key="subscriptionId" value=""/>
+    </util:map>
+<!--listActiveSubscriptions-->
+<util:map id="listActiveSubscriptionsTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="customerId" value=""/>
+        <entry key="endingBefore" value=""/>
+        <entry key="limit" value="0"/>
+        <entry key="startingAfter" value=""/>
     </util:map>
 </beans>

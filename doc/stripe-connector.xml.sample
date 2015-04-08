@@ -82,3 +82,18 @@
 <!-- BEGIN_INCLUDE(stripe:list-all-charges) -->
 	<stripe:list-all-charges config-ref="" createdTimestamp="#[map-payload:createdTimestamp]" created="#[map-payload:created]" customer="#[map-payload:customer]" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" startingAfter="#[map-payoad:startingAfter]" /> 
 <!-- END_INCLUDE(stripe:list-all-charges) -->
+<!-- BEGIN_INCLUDE(stripe:create-subscription) -->
+	<stripe:create-subscription config-ref="" customerId="#[map-payload:customerId]" plan="#[map-payload:plan]" coupon="#[map-payload:coupon]" trialEnd="#[map-payload:trialEnd]" sourceToken="#[map-payload:sourceToken]" source="#[map-payload:source]" quantity="#[map-payoad:quantity]" applicationFeePercent="#[map-payoad:applicationFeePercent]" taxPercent="#[map-payoad:taxPercent]" metadata="#[map-payoad:metadata]" /> 
+<!-- END_INCLUDE(stripe:create-subscription) -->
+<!-- BEGIN_INCLUDE(stripe:retrieve-subscription) -->
+	<stripe:retrieve-subscription config-ref="" customerId="#[map-payload:customerId]" subscriptionId="#[map-payload:subscriptionId]"/> 
+<!-- END_INCLUDE(stripe:retrieve-charge) -->
+<!-- BEGIN_INCLUDE(stripe:update-subscription) -->
+	<stripe:update-subscription config-ref="" customerId="#[map-payload:customerId]" subscriptionId="#[map-payload:subscriptionId]" plan="#[map-payload:plan]" coupon="#[map-payload:coupon]" prorate="#[map-payload:prorate]" trialEnd="#[map-payload:trialEnd]" sourceToken="#[map-payload:sourceToken]" source="#[map-payload:source]" quantity="#[map-payoad:quantity]" applicationFeePercent="#[map-payoad:applicationFeePercent]" taxPercent="#[map-payoad:taxPercent]" metadata="#[map-payoad:metadata]" /> 
+<!-- END_INCLUDE(stripe:update-subscription) -->
+<!-- BEGIN_INCLUDE(stripe:cancel-subscription) -->
+	<stripe:cancel-subscription config-ref="" customerId="#[map-payload:customerId]" subscriptionId="#[map-payload:subscriptionId]"/> 
+<!-- END_INCLUDE(stripe:cancel-charge) -->
+<!-- BEGIN_INCLUDE(stripe:list-active-subscriptions) -->
+	<stripe:list-active-subscriptions config-ref="" customerId="#[map-payload:customerId]" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" startingAfter="#[map-payoad:startingAfter]" /> 
+<!-- END_INCLUDE(stripe:list-active-subscriptions) -->
