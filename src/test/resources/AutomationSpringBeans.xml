@@ -302,31 +302,82 @@
         <entry key="limit" value="0"/>
         <entry key="startingAfter" value=""/>
     </util:map>
-
-<!--createRefund-->
-<util:map id="createRefundTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+    <!--createRefund-->
+    <util:map id="createRefundTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  <entry key="id" value=""/>
         <entry key="amount" value="10"/>
         <entry key="refundApplicationFee" value="false"/>
         <entry key="reason" value="duplicate"/>
         <entry key="metadata" value-ref="testMetadata"/>
     </util:map>
-<!--retrieveRefund-->
-<util:map id="retrieveRefundTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+    <!--retrieveRefund-->
+    <util:map id="retrieveRefundTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  	<entry key="id" value=""/>
         <entry key="chargeId" value=""/>
     </util:map>
-<!--updateRefund-->
-<util:map id="updateRefundTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+    <!--updateRefund-->
+    <util:map id="updateRefundTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  <entry key="id" value=""/>
         <entry key="chargeId" value=""/>
         <entry key="metadata" value-ref="testMetadata"/>
     </util:map>
-<!--listAllRefunds-->
-<util:map id="listAllRefundsTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+    <!--listAllRefunds-->
+    <util:map id="listAllRefundsTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  <entry key="chargeId" value=""/>
         <entry key="endingBefore" value=""/>
         <entry key="limit" value="0"/>
         <entry key="startingAfter" value=""/>
+    </util:map>
+    <!--createInvoice-->
+    <util:map id="createInvoiceTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="customerId" value=""/>
+        <entry key="applicationFee" value="0"/>
+        <entry key="description" value="TestInvoice"/>
+        <entry key="statementDescriptor" value="TestInvoice"/>
+        <entry key="subscription" value=""/>
+        <entry key="taxPercent" value="0.0"/>
+        <entry key="metadata" value-ref="testMetadata"/>
+    </util:map>
+    <!--retrieveInvoice-->
+    <util:map id="retrieveInvoiceTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="id" value=""/>
+    </util:map>
+    <!--retrieveInvoiceLineItems-->
+    <util:map id="retrieveInvoiceLineItemsTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ 		<entry key="id" value=""/>
+        <entry key="customer" value=""/>
+        <entry key="endingBefore" value=""/>
+        <entry key="limit" value="0"/>
+        <entry key="startingAfter" value=""/>
+        <entry key="subscription" value=""/>
+    </util:map>
+    <!--updateInvoice-->
+    <util:map id="updateInvoiceTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ 		<entry key="invoiceId" value=""/>
+        <entry key="applicationFee" value="0"/>
+        <entry key="closed" value="false"/>
+        <entry key="description" value="UpdatedDescription"/>
+        <entry key="forgiven" value="false"/>
+        <entry key="statementDescriptor" value="UpdatedDescriptor"/>
+        <entry key="taxPercent" value="0.0"/>
+        <entry key="metadata" value-ref="testMetadata"/>
+    </util:map>
+    <!--payInvoice-->
+    <util:map id="payInvoiceTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="id" value=""/>
+    </util:map>
+    <!--retrieveAllInvoices-->
+    <util:map id="retrieveAllInvoicesTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="customerId" value=""/>
+        <entry key="dateTimestamp" value=""/>
+        <entry key="endingBefore" value=""/>
+        <entry key="limit" value="0"/>
+        <entry key="startingAfter" value=""/>
+        <entry key="date" value=""/>
+    </util:map>
+<!--retrieveUpcomingInvoice-->
+<util:map id="retrieveUpcomingInvoiceTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="customerId" value=""/>
+        <entry key="subscription" value=""/>
     </util:map>
 </beans>

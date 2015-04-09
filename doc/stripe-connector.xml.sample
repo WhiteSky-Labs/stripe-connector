@@ -109,3 +109,25 @@
 <!-- BEGIN_INCLUDE(stripe:list-all-refunds) -->
 	<stripe:list-all-refunds config-ref="" chargeId="#[map-payload:chargeId]" metadata="#[map-payload:metadata]" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" startingAfter="#[map-payoad:startingAfter]"/>
 <!-- END_INCLUDE(stripe:list-all-refunds) -->
+<!-- BEGIN_INCLUDE(stripe:create-invoice) -->
+	<stripe:create-invoice config-ref="" customerId="#[map-payload:customerId]" applicationFee="#[map-payload:applicationFee]" description="#[map-payload:description]" metadata="#[map-payload:metadata]" statementDescriptor="#[map-payload:statementDescriptor]" subscription="#[map-payload:subscription]" taxPercent="#[map-payoad:taxPercent]"/>
+<!-- END_INCLUDE(stripe:create-invoice) -->
+<!-- BEGIN_INCLUDE(stripe:retrieve-invoice) -->
+	<stripe:retrieve-invoice config-ref="" id="#[map-payload:id]"/>
+<!-- END_INCLUDE(stripe:retrieve-invoice) -->
+<!-- BEGIN_INCLUDE(stripe:retrieve-invoice-line-items) -->
+	<stripe:retrieve-invoice-line-items config-ref="" id="#[map-payload:id]" customer="#[map-payload:customer]" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" startingAfter="#[map-payload:startingAfter]" subscription="#[map-payload:subscription]"/>
+<!-- END_INCLUDE(stripe:retrieve-invoice-line-items) -->
+<!-- BEGIN_INCLUDE(stripe:retrieve-upcoming-invoice) -->
+	<stripe:retrieve-upcoming-invoice config-ref="" id="#[map-payload:id]" customerId="#[map-payload:customerId]" subscription="#[map-payload:subscription]"/>
+<!-- END_INCLUDE(stripe:retrieve-upcoming-invoice) -->
+<!-- BEGIN_INCLUDE(stripe:update-invoice) -->
+	<stripe:update-invoice config-ref="" invoiceId="#[map-payload:invoiceId]" applicationFee="#[map-payload:applicationFee]" closed="#[map-payload:closed]" description="#[map-payload:description]" forgiven="#[map-payload:forgiven]" metadata="#[map-payload:metadata]" statementDescriptor="#[map-payload:statementDescriptor]" taxPercent="#[map-payoad:taxPercent]"/>
+<!-- END_INCLUDE(stripe:update-invoice) -->
+<!-- BEGIN_INCLUDE(stripe:pay-invoice) -->
+	<stripe:pay-invoice config-ref="" id="#[map-payload:id]"/>
+<!-- END_INCLUDE(stripe:pay-invoice) -->
+<!-- BEGIN_INCLUDE(stripe:retrieve-all-invoices) -->
+	<stripe:retrieve-all-invoices config-ref="" customerId="#[map-payload:customerId]" dateTimestamp="#[map-payload:dateTimestamp]" date="#[map-payload:date]" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" startingAfter="#[map-payload:startingAfter]" />
+<!-- END_INCLUDE(stripe:retrieve-all-invoices) -->
+    	

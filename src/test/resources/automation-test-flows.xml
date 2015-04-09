@@ -140,7 +140,7 @@
 	<stripe:list-active-subscriptions config-ref="Stripe" customerId="#[flowVars.customerId]"/>
 </flow>
 <flow doc:name="CreateRefund" name="create-refund">
-	<stripe:create-refund config-ref="Stripe" id="#[flowVars.id]" amount="#[flowVars.amount]" refundApplicationFee="#[flowVars.refundApplicationFee]" reason="#[flowVars.reason]">
+	<stripe:create-refund amount="#[flowVars.amount]" config-ref="Stripe" id="#[flowVars.id]" reason="#[flowVars.reason]" refundApplicationFee="#[flowVars.refundApplicationFee]">
 		<stripe:metadata ref="#[flowVars.metadata]"/>
 	</stripe:create-refund>
 	
@@ -155,5 +155,30 @@
 </flow>
     <flow doc:name="ListAllRefunds" name="list-all-refunds">
 	<stripe:list-all-refunds chargeId="#[flowVars.chargeId]" config-ref="Stripe"/>
+</flow>
+<flow doc:name="CreateInvoice" name="create-invoice">
+	<stripe:create-invoice applicationFee="#[flowVars.applicationFee]" config-ref="Stripe" customerId="#[flowVars.customerId]" description="#[flowVars.description]" statementDescriptor="#[flowVars.statementDescriptor]" subscription="#[flowVars.subscription]" taxPercent="#[flowVars.taxPercent]">
+		<stripe:metadata ref="#[flowVars.metadata]"/>
+	</stripe:create-invoice>
+</flow>
+    <flow doc:name="RetrieveInvoice" name="retrieve-invoice">
+	<stripe:retrieve-invoice config-ref="Stripe" id="#[flowVars.id]"/>
+</flow>
+    <flow doc:name="RetrieveInvoiceLineItems" name="retrieve-invoice-line-items">
+	<stripe:retrieve-invoice-line-items config-ref="Stripe" customer="#[flowVars.customer]" endingBefore="#[flowVars.endingBefore]" id="#[flowVars.id]" limit="#[flowVars.limit]" startingAfter="#[flowVars.startingAfter]" subscription="#[flowVars.subscription]"/>
+</flow>
+    <flow doc:name="UpdateInvoice" name="update-invoice">
+	<stripe:update-invoice applicationFee="#[flowVars.applicationFee]" closed="#[flowVars.closed]" config-ref="Stripe" description="#[flowVars.description]" forgiven="#[flowVars.forgiven]" invoiceId="#[flowVars.invoiceId]" statementDescriptor="#[flowVars.statementDescriptor]" taxPercent="#[flowVars.taxPercent]">
+		<stripe:metadata ref="#[flowVars.metadata]"/>
+	</stripe:update-invoice>
+</flow>
+    <flow doc:name="PayInvoice" name="pay-invoice">
+	<stripe:pay-invoice config-ref="Stripe" id="#[flowVars.id]"/>
+</flow>
+    <flow doc:name="RetrieveAllInvoices" name="retrieve-all-invoices">
+	<stripe:retrieve-all-invoices config-ref="Stripe" dateTimestamp="#[flowVars.dateTimestamp]" endingBefore="#[flowVars.endingBefore]" limit="#[flowVars.limit]" startingAfter="#[flowVars.startingAfter]"/>		
+</flow>
+<flow doc:name="RetrieveUpcomingInvoice" name="retrieve-upcoming-invoice">
+	<stripe:retrieve-upcoming-invoice config-ref="Stripe" customerId="#[flowVars.customerId]" subscription="#[flowVars.subscription]"/>
 </flow>
 </mule>
