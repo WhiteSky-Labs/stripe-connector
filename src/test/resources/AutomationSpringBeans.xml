@@ -171,6 +171,7 @@
         <property name="number" value="4242424242424242"/>
         <property name="expMonth" value="2"/>
         <property name="expYear" value="22"/>
+        <property name="cvc" value="222"/>
     </bean>
     <util:map id="createCardInvalidTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  	<entry key="ownerId" value=""/>
@@ -449,11 +450,11 @@
 		<entry key="tosAcceptance" value-ref="testAcceptance"/>
 		<entry key="transferSchedule" value-ref="testTransferSchedule"/>
     </util:map>
-	<bean class="com.wsl.modules.stripe.complextypes.BankAccount" id="testBankAccount">
-        <property name="country" value="usa"/>
+    <bean class="com.wsl.modules.stripe.complextypes.BankAccount" id="testBankAccount">
+        <property name="country" value="us"/>
         <property name="currency" value="usd"/>
-        <property name="routingNumber" value="123456"/>
-        <property name="accountNumber" value="1234567890"/>		
+        <property name="routingNumber" value="110000000"/>
+        <property name="accountNumber" value="000123456789"/>		
     </bean>
     <bean class="com.wsl.modules.stripe.complextypes.LegalEntity" id="testLegalEntity">
         <property name="businessName" value="TestBusiness"/>
@@ -464,5 +465,19 @@
     <bean class="com.wsl.modules.stripe.complextypes.TransferSchedule" id="testTransferSchedule">
         <property name="delayDays" value="5"/>
     </bean>
-
+<!--createCardToken-->
+<util:map id="createCardTokenTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="cardId" value=""/>
+        <entry key="customer" value=""/>
+        <entry key="card" value-ref="createCard_Source"/>
+    </util:map>
+<!--createBankAccountToken-->
+<util:map id="createBankAccountTokenTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="bankAccountId" value=""/>
+ <entry key="bankAccount" value-ref="testBankAccount"/>
+    </util:map>    
+<!--retrieveToken-->
+<util:map id="retrieveTokenTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="id" value=""/>
+    </util:map>
 </beans>

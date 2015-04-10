@@ -10,6 +10,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Represents a Legal Entity in the Stripe API
+ * @author WhiteSky Labs
+ *
+ */
 public class LegalEntity {
 	private String type;
 	private Address address;

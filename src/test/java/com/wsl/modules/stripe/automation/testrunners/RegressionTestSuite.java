@@ -8,12 +8,14 @@ package com.wsl.modules.stripe.automation.testrunners;
 
 import com.wsl.modules.stripe.automation.RegressionTests;
 import com.wsl.modules.stripe.automation.testcases.*;
-
 import org.junit.runner.RunWith;
 
 @RunWith(org.junit.experimental.categories.Categories.class)
 @org.junit.experimental.categories.Categories.IncludeCategory(RegressionTests.class)
 @org.junit.runners.Suite.SuiteClasses({
+    CreateCardTokenTestCases.class,
+    CreateBankAccountTokenTestCases.class,
+    RetrieveTokenTestCases.class,
 	CancelSubscriptionTestCases.class,
 	RetrieveAccountTestCases.class,
 	CaptureChargeTestCases.class,
@@ -63,7 +65,6 @@ import org.junit.runner.RunWith;
 	ListAllRefundsTestCases.class,
 	UpdateSubscriptionTestCases.class,
 	PayInvoiceTestCases.class
-
 })
 public class RegressionTestSuite {
 

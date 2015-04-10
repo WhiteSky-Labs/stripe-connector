@@ -49,6 +49,7 @@ import com.stripe.model.Plan;
 import com.stripe.model.PlanCollection;
 import com.stripe.model.Refund;
 import com.stripe.model.Subscription;
+import com.stripe.model.Token;
 import com.wsl.modules.stripe.complextypes.Acceptance;
 import com.wsl.modules.stripe.complextypes.BankAccount;
 import com.wsl.modules.stripe.complextypes.LegalEntity;
@@ -618,7 +619,7 @@ public class StripeConnector {
     	
     	if (sourceToken != null && !sourceToken.isEmpty()){
     		params.put("source", sourceToken);
-    	} else {
+    	} else if (source != null){
     		Map<String, Object> sourceDict = source.toDictionary();
     		sourceDict = removeOptionals(sourceDict);
     		params.put("source", sourceDict);    		
@@ -982,7 +983,7 @@ public class StripeConnector {
 		params.put("trial_end", trialEnd);
 		if (sourceToken != null && !sourceToken.isEmpty()){
 			params.put("source", sourceToken);
-		} else {
+		} else if (source != null){
 			params.put("source", removeOptionals(source.toDictionary()));
 		}
 		params.put("quantity", quantity);
@@ -1057,7 +1058,7 @@ public class StripeConnector {
 		params.put("trial_end", trialEnd);
 		if (sourceToken != null && !sourceToken.isEmpty()){
 			params.put("source", sourceToken);
-		} else {
+		} else if (source != null){
 			params.put("source", removeOptionals(source.toDictionary()));
 		}
 		params.put("quantity", quantity);
@@ -1668,6 +1669,88 @@ public class StripeConnector {
 		} catch (AuthenticationException | InvalidRequestException
 				| APIConnectionException | CardException | APIException e) {
 			throw new StripeConnectorException("Could not update the Account", e);
+		}
+    }
+    
+    /**
+     * Create a Card Token
+	 * 
+     * {@sample.xml ../../../doc/stripe-connector.xml.sample stripe:create-card-token}
+     * 
+     * @param cardId The card this token will represent. If you also pass in a customer, the card must be the ID of a card belonging to the customer... 
+     * @param card ... Otherwise, if you do not pass a customer, a Map containing a user's credit card details
+     * @param customer For use with Stripe Connect only; this can only be used with an OAuth access token or Stripe-Account header.. For more details, see the shared customers documentation. A customer (owned by the application's account) to create a token for.
+     * @return The created card token object is returned if successful. Otherwise, this call throws an error.
+     * @throws StripeConnectorException when there is a problem with the Connector
+     */
+    @Processor
+    @ReconnectOn(exceptions = { Exception.class })
+    public Token createCardToken(@Optional String cardId, @Optional Source card, @Optional String customer)
+    		throws StripeConnectorException {
+    	Map<String, Object> params = new HashMap<String, Object>();
+    	if (cardId != null && !cardId.isEmpty()){
+    		params.put("card", cardId);
+    	} else if (card != null) {
+    		params.put("card", card.toDictionary());
+    	}
+    	params.put("customer", customer);
+    	params = removeOptionals(params);
+    	try {    		
+    		return Token.create(params);    		
+		} catch (AuthenticationException | InvalidRequestException
+				| APIConnectionException | CardException | APIException e) {
+			throw new StripeConnectorException("Could not create a Card Token", e);
+		}
+    }
+    
+    /**
+     * Create a Bank Account Token
+     * Creates a single use token that wraps the details of a bank account. This token can be used in place of a bank account Map with any API method. These tokens can only be used once: by attaching them to a recipient.
+	 * 
+     * {@sample.xml ../../../doc/stripe-connector.xml.sample stripe:create-bank-account-token}
+     * 
+     * @param bankAccountId The bank account's ID, or...
+     * @param bankAccount ... Otherwise, if you do not pass a bank account ID, a Map containing a the account details    
+     * @return The created bank account token object is returned if successful. Otherwise, this call throws an error.
+     * @throws StripeConnectorException when there is a problem with the Connector
+     */
+    @Processor
+    @ReconnectOn(exceptions = { Exception.class })
+    public Token createBankAccountToken(@Optional String bankAccountId, @Optional BankAccount bankAccount)
+    		throws StripeConnectorException {
+    	Map<String, Object> params = new HashMap<String, Object>();
+    	if (bankAccountId != null && !bankAccountId.isEmpty()){
+    		params.put("bank_account", bankAccountId);
+    	} else if (bankAccount != null) {
+    		params.put("bank_account", bankAccount.toDictionary());
+    	}
+    	try {    		
+    		return Token.create(params);    		
+		} catch (AuthenticationException | InvalidRequestException
+				| APIConnectionException | CardException | APIException e) {
+			throw new StripeConnectorException("Could not create a Bank Account Token", e);
+		}
+    }
+    
+    /**
+     * Retrieve a Token
+     * Retrieves the token with the given ID
+	 * 
+     * {@sample.xml ../../../doc/stripe-connector.xml.sample stripe:retrieve-token}
+     * 
+     * @param id	The ID of the desired token
+     * @return Returns a token if a valid ID was provided. Throws an error otherwise.
+     * @throws StripeConnectorException when there is a problem with the Connector
+     */
+    @Processor
+    @ReconnectOn(exceptions = { Exception.class })
+    public Token retrieveToken(String id)
+    		throws StripeConnectorException {
+    	try {    		
+    		return Token.retrieve(id);    		
+		} catch (AuthenticationException | InvalidRequestException
+				| APIConnectionException | CardException | APIException e) {
+			throw new StripeConnectorException("Could not retrieve the Token", e);
 		}
     }
     

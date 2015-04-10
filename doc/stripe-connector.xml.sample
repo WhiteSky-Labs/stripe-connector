@@ -208,3 +208,16 @@
 		<stripe:metadata ref="#[map-payload:metadata]"/>
 	</stripe:update-account>
 <!-- END_INCLUDE(stripe:update-account) -->
+<!-- BEGIN_INCLUDE(stripe:create-card-token) -->
+    <stripe:create-card-token config-ref="" cardId="#[map-payload:cardId]" customer="#[map-payload:customer]">
+    	<stripe:card ref="#[map-payload:card]"/>
+    </stripe:create-card-token>
+<!-- END_INCLUDE(stripe:create-card-token) -->  
+<!-- BEGIN_INCLUDE(stripe:create-bank-account-token) -->
+    <stripe:create-bank-account-token config-ref="" bankAccountId="#[map-payload:bankAccountId]">
+    	<stripe:bank-account ref="#[map-payload:bankAccount]"/>
+    </stripe:create-bank-account-token>
+<!-- END_INCLUDE(stripe:create-bank-account-token) -->  
+<!-- BEGIN_INCLUDE(stripe:retrieve-token) -->
+	<stripe:retrieve-token config-ref="" id="#[map-payload:id]"/>
+<!-- END_INCLUDE(stripe:retrieve-token) -->

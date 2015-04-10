@@ -8,6 +8,11 @@ package com.wsl.modules.stripe.complextypes;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Represents a Stripe Address INPUT object
+ * @author WhiteSky Labs
+ *
+ */
 public class Address {
 	private String line1;
 	private String line2;

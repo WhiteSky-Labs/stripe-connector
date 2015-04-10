@@ -8,6 +8,11 @@ package com.wsl.modules.stripe.complextypes;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Represents a Date of Birth input to Stripe
+ * @author WhiteSky Labs
+ *
+ */
 public class DateOfBirth {
 	private int day;
 	private int month;

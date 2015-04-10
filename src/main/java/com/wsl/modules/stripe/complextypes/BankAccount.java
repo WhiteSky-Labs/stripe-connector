@@ -8,6 +8,11 @@ package com.wsl.modules.stripe.complextypes;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Represents a Bank Account input in Stripe
+ * @author WhiteSky Labs
+ *
+ */
 public class BankAccount {
 	private String country;
 	private String currency;

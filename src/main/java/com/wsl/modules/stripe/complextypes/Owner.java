@@ -8,6 +8,11 @@ package com.wsl.modules.stripe.complextypes;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Represents a business Owner in the Stripe Input API
+ * @author WhiteSky Labs
+ *
+ */
 public class Owner {
 	private Address address;
 	private DateOfBirth dob;

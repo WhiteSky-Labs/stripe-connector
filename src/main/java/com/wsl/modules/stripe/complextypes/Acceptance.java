@@ -8,6 +8,11 @@ package com.wsl.modules.stripe.complextypes;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Represents an acceptance of Stripe's Terms of Service
+ * @author WhiteSky Labs
+ *
+ */
 public class Acceptance {
 	private String date;
 	private String ip;
