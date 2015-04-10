@@ -209,16 +209,22 @@
 	</stripe:update-account>
 </flow>
 <flow doc:name="CreateCardToken" name="create-card-token">
-	<stripe:create-card-token config-ref="Stripe" cardId="#[flowVars.cardId]" customer="#[flowVars.customer]">
+	<stripe:create-card-token cardId="#[flowVars.cardId]" config-ref="Stripe" customer="#[flowVars.customer]">
 		<stripe:card ref="#[flowVars.card]"/>
 	</stripe:create-card-token>
 </flow>
     <flow doc:name="CreateBankAccountToken" name="create-bank-account-token">
-	<stripe:create-bank-account-token config-ref="Stripe" bankAccountId="#[flowVars.bankAccountId]">
+	<stripe:create-bank-account-token bankAccountId="#[flowVars.bankAccountId]" config-ref="Stripe">
 		<stripe:bank-account ref="#[flowVars.bankaccount]"/>
 	</stripe:create-bank-account-token>
 </flow>
     <flow doc:name="RetrieveToken" name="retrieve-token">
 	<stripe:retrieve-token config-ref="Stripe" id="#[flowVars.id]"/>
+</flow>
+<flow doc:name="RetrieveEvent" name="retrieve-event">
+	<stripe:retrieve-event config-ref="Stripe" id="#[flowVars.id]"/>
+</flow>
+   <flow doc:name="ListAllEvents" name="list-all-events">
+	<stripe:list-all-events config-ref="Stripe" createdTimestamp="#[flowVars.createdTimestamp]" endingBefore="#[flowVars.endingBefore]" limit="#[limit]" startingAfter="#[startingAfter]" type="#[type]"/>		
 </flow>
 </mule>
