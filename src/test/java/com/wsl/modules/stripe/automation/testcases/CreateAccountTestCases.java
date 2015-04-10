@@ -8,43 +8,39 @@ package com.wsl.modules.stripe.automation.testcases;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.Map;
+import java.util.UUID;
 
+import com.stripe.model.Account;
+import com.stripe.model.Card;
 import com.stripe.model.Customer;
 import com.wsl.modules.stripe.automation.RegressionTests;
 import com.wsl.modules.stripe.automation.SmokeTests;
 import com.wsl.modules.stripe.automation.StripeTestParent;
+import com.wsl.modules.stripe.complextypes.Source;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
+import org.mule.api.MessagingException;
+import org.mule.modules.tests.ConnectorTestUtils;
 
-public class UpdateCustomerTestCases
+public class CreateAccountTestCases
     extends StripeTestParent
 {
-
-	private String customerId;
-
+	private String email;
+	
     @Before
     public void setup()
         throws Exception
-    {
-    	Object result = runFlowAndGetPayload("create-customer", "createCustomerTestData");
-        Customer customer = (Customer)result;
-        this.customerId = customer.getId();
-        initializeTestRunMessage("updateCustomerTestData");
-        upsertOnTestRunMessage("id", this.customerId);
-    }
-
-    @After
-    public void tearDown()
-        throws Exception
-    {
-    	initializeTestRunMessage("deleteCustomerTestData");
-        upsertOnTestRunMessage("id", this.customerId);
-        runFlowAndGetPayload("delete-customer");
+    {    	
+    	initializeTestRunMessage("createAccountTestData");
+    	email = "test" + UUID.randomUUID() + "@gmail.com";
+    	upsertOnTestRunMessage("email", email);
     }
 
     @Category({
@@ -52,15 +48,13 @@ public class UpdateCustomerTestCases
         SmokeTests.class
     })
     @Test
-    public void testUpdateCustomer()
+    public void testCreateAccount()
         throws Exception
-    {
-    	Map<String, Object> expectedBean = getBeanFromContext("updateCustomerTestData");
-    	upsertOnTestRunMessage("id", this.customerId);
-        Object result = runFlowAndGetPayload("update-customer");
+    {    	
+    	Object result = runFlowAndGetPayload("create-account");
         assertNotNull(result);
-        Customer cust = (Customer)result;
-        assertEquals(expectedBean.get("email"), cust.getEmail());
+        Account account = (Account) result;
+        assertNotNull(account.getId());
+        assertEquals(this.email, account.getEmail());
     }
-
 }

@@ -2,43 +2,62 @@
     <stripe:list-all-customers config-ref="" limit="#[map-payload:limit]" startingAfter="#[map-payload:startingAfter]" endingBefore="#[map-payload:endingBefore]" />
 <!-- END_INCLUDE(stripe:list-all-customers) -->
 <!-- BEGIN_INCLUDE(stripe:create-customer) -->
-    <stripe:create-customer config-ref="" accountBalance="#[map-payload:accountBalance]" couponCode="#[map-payload:couponCode]" description="#[map-payload:description]" email="#[map-payload:email]" metadata="#[map-payload:metadata]" />
+    <stripe:create-customer config-ref="" accountBalance="#[map-payload:accountBalance]" couponCode="#[map-payload:couponCode]" description="#[map-payload:description]" email="#[map-payload:email]">
+    	<stripe:metadata ref="#[map-payload:metadata]"/>
+    </stripe:create-customer>
 <!-- END_INCLUDE(stripe:create-customer) -->
 <!-- BEGIN_INCLUDE(stripe:retrieve-customer) -->
     <stripe:retrieve-customer config-ref="" id="#[map-payload:id]" />
 <!-- END_INCLUDE(stripe:retrieve-customer) -->  
 <!-- BEGIN_INCLUDE(stripe:update-customer) -->
-    <stripe:update-customer config-ref="" id="#[map-payload:id]" accountBalance="#[map-payload:accountBalance]" couponCode="#[map-payload:couponCode]" description="#[map-payload:description]" email="#[map-payload:email]" metadata="#[map-payload:metadata]" />
+    <stripe:update-customer config-ref="" id="#[map-payload:id]" accountBalance="#[map-payload:accountBalance]" couponCode="#[map-payload:couponCode]" description="#[map-payload:description]" email="#[map-payload:email]">
+    	<stripe:metadata ref="#[map-payload:metadata]"/>
+    </stripe:update-customer>
 <!-- END_INCLUDE(stripe:update-customer) --> 
 <!-- BEGIN_INCLUDE(stripe:delete-customer) -->
     <stripe:retrieve-customer config-ref="" id="#[map-payload:id]" />
 <!-- END_INCLUDE(stripe:delete-customer) -->  
 <!-- BEGIN_INCLUDE(stripe:create-plan) -->
-	<stripe:create-plan config-ref="" id="#[map-payload:id]" amount="#[map-payload:amount]" currency="#[map-payload:currency]" interval="#[map-payload:interval]" intervalCount="#[map-payload:intervalCount]" planName="#[map-payload:planName]" trialPeriodDays="#[map-payload:trialPeriodDays]" statementDescriptor="#[map-payload:statementDescriptor]" metadata="#[map-payload:metadata]" />
+	<stripe:create-plan config-ref="" id="#[map-payload:id]" amount="#[map-payload:amount]" currency="#[map-payload:currency]" interval="#[map-payload:interval]" intervalCount="#[map-payload:intervalCount]" planName="#[map-payload:planName]" trialPeriodDays="#[map-payload:trialPeriodDays]" statementDescriptor="#[map-payload:statementDescriptor]">
+		<stripe:metadata ref="#[map-payload:metadata]"/>
+	</stripe:create-plan>
 <!-- END_INCLUDE(stripe:create-plan) -->
 <!-- BEGIN_INCLUDE(stripe:retrieve-plan) -->
     <stripe:retrieve-plan config-ref="" id="#[map-payload:id]" />
-<!-- END_INCLUDE(stripe:retrieve-plan) -->  
+<!-- END_INCLUDE(stripe:retrieve-plan) -->
+<!-- BEGIN_INCLUDE(stripe:delete-plan) -->
+    <stripe:retrieve-plan config-ref="" id="#[map-payload:id]" />
+<!-- END_INCLUDE(stripe:delete-plan) -->  
 <!-- BEGIN_INCLUDE(stripe:update-plan) -->
-	<stripe:update-plan config-ref="" id="#[map-payload:id]" planName="#[map-payload:planName]" statementDescriptor="#[map-payload:statementDescriptor]" metadata="#[map-payload:metadata]" />
+	<stripe:update-plan config-ref="" id="#[map-payload:id]" planName="#[map-payload:planName]" statementDescriptor="#[map-payload:statementDescriptor]" >
+		<stripe:metadata ref="#[map-payload:metadata]"/>
+	</stripe:update-plan>
 <!-- END_INCLUDE(stripe:update-plan) -->
 <!-- BEGIN_INCLUDE(stripe:list-all-plans) -->
-	<stripe:list-all-plans config-ref="" createdTimestamp="#[map-payload:createdTimestamp]" created="#[map-payload:created]" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" startingAfter="#[map-payload:startingAfter]" />
+	<stripe:list-all-plans config-ref="" createdTimestamp="#[map-payload:createdTimestamp]" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" startingAfter="#[map-payload:startingAfter]">
+		<stripe:created ref="#[map-payload:created]"/>
+	</stripe:list-all-plans>
 <!-- END_INCLUDE(stripe:list-all-plans) -->
 <!-- BEGIN_INCLUDE(stripe:create-coupon) -->
-	<stripe:create-coupon config-ref="" id="#[map-payload:id]" duration="#[map-payload:duration]" amountOff="#[map-payload:amountOff]" currency="#[map-payload:currency]" durationInMonths="#[map-payload:durationInMonths]" maxRedemptions="#[map-payload:maxRedemptions]" percentOff="#[map-payload:percentOff]" redeemBy="#[map-payload:redeemBy]" metadata="#[map-payload:metadata]" />
+	<stripe:create-coupon config-ref="" id="#[map-payload:id]" duration="#[map-payload:duration]" amountOff="#[map-payload:amountOff]" currency="#[map-payload:currency]" durationInMonths="#[map-payload:durationInMonths]" maxRedemptions="#[map-payload:maxRedemptions]" percentOff="#[map-payload:percentOff]" redeemBy="#[map-payload:redeemBy]" >
+		<stripe:metadata ref="#[map-payload:metadata]"/>
+	</stripe:create-coupon>
 <!-- END_INCLUDE(stripe:create-coupon) -->
 <!-- BEGIN_INCLUDE(stripe:retrieve-coupon) -->
     <stripe:retrieve-coupon config-ref="" id="#[map-payload:id]" />
 <!-- END_INCLUDE(stripe:retrieve-coupon) -->  
 <!-- BEGIN_INCLUDE(stripe:update-coupon) -->
-    <stripe:update-coupon config-ref="" id="#[map-payload:id]" metadata="#[map-payload:metadata]"/>
+    <stripe:update-coupon config-ref="" id="#[map-payload:id]" >
+    	<stripe:metadata ref="#[map-payload:metadata]"/>
+    </stripe:update-coupon>
 <!-- END_INCLUDE(stripe:update-coupon) -->  
 <!-- BEGIN_INCLUDE(stripe:delete-coupon) -->
     <stripe:delete-coupon config-ref="" id="#[map-payload:id]"/>
 <!-- END_INCLUDE(stripe:delete-coupon) -->  
 <!-- BEGIN_INCLUDE(stripe:list-all-coupons) -->
-	<stripe:list-all-coupons config-ref="" createdTimestamp="#[map-payload:createdTimestamp" created="#[map-payload:created]" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" startingAfter="#[map-payoad:startingAfter]" /> 
+	<stripe:list-all-coupons config-ref="" createdTimestamp="#[map-payload:createdTimestamp" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" startingAfter="#[map-payoad:startingAfter]" >
+		<stripe:created ref="#[map-payload:created]"/>
+	</stripe:list-all-coupons> 
 <!-- END_INCLUDE(stripe:list-all-coupons) -->
 <!-- BEGIN_INCLUDE(stripe:retrieve-balance) -->
     <stripe:retrieve-balance config-ref=""/>
@@ -47,19 +66,26 @@
     <stripe:retrieve-balance-transaction config-ref="" id="#[map-payload:id]"/>
 <!-- END_INCLUDE(stripe:retrieve-balance-transaction) -->  
 <!-- BEGIN_INCLUDE(stripe:list-all-balance-history) -->
-	<stripe:list-all-balance-history config-ref="" availableOnTimestamp="#[map-payload:availableOnTimestamp]" availableOn="#[map-payload:availableOn]" createdTimestamp="#[map-payload:createdTimestamp" created="#[map-payload:created]" currency="#[map-payload:currency]" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" sourceId="#[map-payload:sourceId]" startingAfter="#[map-payoad:startingAfter]" transfer="#[map-payload:transfer]" type="#[map-payload:type]"/> 
-<!-- END_INCLUDE(stripe:list-all-coupons) -->
+	<stripe:list-all-balance-history config-ref="" availableOnTimestamp="#[map-payload:availableOnTimestamp]" createdTimestamp="#[map-payload:createdTimestamp" currency="#[map-payload:currency]" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" sourceId="#[map-payload:sourceId]" startingAfter="#[map-payoad:startingAfter]" transfer="#[map-payload:transfer]" type="#[map-payload:type]">
+		<stripe:available-on ref="#[map-payload:availableOn]"/>
+		<stripe:created ref="#[map-payload:created]"/>
+	</stripe:list-all-balance-history> 
+<!-- END_INCLUDE(stripe:list-all-balance-history) -->
 <!-- BEGIN_INCLUDE(stripe:create-card) -->
-    <stripe:create-card config-ref="" cardOwner="#[map-payload:cardOwner]" ownerId="#[map-payload:ownerId]" sourceToken="#[map-payload:sourceToken]" source="#[map-payload:source]"/>
-<!-- END_INCLUDE(stripe:create=card) -->  
+    <stripe:create-card config-ref="" ownerId="#[map-payload:ownerId]" sourceToken="#[map-payload:sourceToken]">
+    	<stripe:source ref="#[map-payload:source]"/>
+    </stripe:create-card>
+<!-- END_INCLUDE(stripe:create-card) -->  
 <!-- BEGIN_INCLUDE(stripe:retrieve-card) -->
-    <stripe:retrieve-card config-ref="" cardOwner="#[map-payload:cardOwner]" ownerId="#[map-payload:ownerId]" id="#[map-payload:id]" />
+    <stripe:retrieve-card config-ref="" ownerId="#[map-payload:ownerId]" id="#[map-payload:id]" />
 <!-- END_INCLUDE(stripe:retrieve-card) -->  
 <!-- BEGIN_INCLUDE(stripe:update-card) -->
-    <stripe:update-card config-ref="" cardOwner="#[map-payload:cardOwner]" ownerId="#[map-payload:ownerId]" id="#[map-payload:id]" addressCity="#[map-payload:addressCity]" addressCountry="#[map-payload:addressCountry]" addressLine1="#[map-payload:addressLine1]" addressLine2="#[map-payload:addressLine2]" addressState="#[map-payload:addressState]" addressZip="#[map-payload:addressZip]" expMonth="#[map-payload:expMonth]" expYear="#[map-payload:expYear]" metadata="#[map-payload:metadata]" cardName="#[map-payload:cardName]"/>
+    <stripe:update-card config-ref="" ownerId="#[map-payload:ownerId]" id="#[map-payload:id]" addressCity="#[map-payload:addressCity]" addressCountry="#[map-payload:addressCountry]" addressLine1="#[map-payload:addressLine1]" addressLine2="#[map-payload:addressLine2]" addressState="#[map-payload:addressState]" addressZip="#[map-payload:addressZip]" expMonth="#[map-payload:expMonth]" expYear="#[map-payload:expYear]" cardName="#[map-payload:cardName]">
+    	<stripe:metadata ref="#[map-payload:metadata]"/>
+    </stripe:update-card>
 <!-- END_INCLUDE(stripe:update-card) -->
 <!-- BEGIN_INCLUDE(stripe:delete-card) -->
-    <stripe:delete-card config-ref="" cardOwner="#[map-payload:cardOwner]" ownerId="#[map-payload:ownerId]" id="#[map-payload:id]" />
+    <stripe:delete-card config-ref="" ownerId="#[map-payload:ownerId]" id="#[map-payload:id]" />
 <!-- END_INCLUDE(stripe:delete-card) -->  
 <!-- BEGIN_INCLUDE(stripe:list-all-customer-cards) -->
 	<stripe:list-all-customer-cards config-ref="" ownerId="#[map-payload:ownerId]" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" startingAfter="#[map-payoad:startingAfter]" /> 
@@ -68,49 +94,70 @@
 	<stripe:list-all-recipient-cards config-ref="" ownerId="#[map-payload:ownerId]" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" startingAfter="#[map-payoad:startingAfter]" /> 
 <!-- END_INCLUDE(stripe:list-all-recipient-cards) -->
 <!-- BEGIN_INCLUDE(stripe:create-charge) -->
-	<stripe:create-charge config-ref="" amount="#[map-payload:amount]" currency="#[map-payload:currency]" customerId="#[map-payload:customerId]" source="#[map-payoad:source]" description="#[map-payload:description]" metadata="#[map-payload:metadata]" capture="#[map-payload:capture]" statementDescriptor="#[map-payload:statementDescriptor]" receiptEmail="#[map-payload:receiptEmail]" destination="#[map-payload:destination]" applicationFee="#[map-payload:applicationFee]" shipping="#[map-payload:shipping]"/> 
+	<stripe:create-charge config-ref="" amount="#[map-payload:amount]" currency="#[map-payload:currency]" customerId="#[map-payload:customerId]" description="#[map-payload:description]" capture="#[map-payload:capture]" statementDescriptor="#[map-payload:statementDescriptor]" receiptEmail="#[map-payload:receiptEmail]" destination="#[map-payload:destination]" applicationFee="#[map-payload:applicationFee]" >
+		<stripe:source ref="#[map-payload:source]"/>
+		<stripe:metadata ref="#[map-payload:metadata]"/>
+		<stripe:shipping ref="#[map-payload:shipping]"/>		
+	</stripe:create-charge> 
 <!-- END_INCLUDE(stripe:create-charge) -->
 <!-- BEGIN_INCLUDE(stripe:retrieve-charge) -->
 	<stripe:retrieve-charge config-ref="" id="#[map-payload:id]"/> 
 <!-- END_INCLUDE(stripe:retrieve-charge) -->
 <!-- BEGIN_INCLUDE(stripe:update-charge) -->
-	<stripe:update-charge config-ref="" id="#[map-payload:id]" description="#[map-payload:description]" metadata="#[map-payload:metadata]" receiptEmail="#[map-payload:receiptEmail]" fraudDetails="#[map-payload:fraudDetails]"/> 
+	<stripe:update-charge config-ref="" id="#[map-payload:id]" description="#[map-payload:description]" receiptEmail="#[map-payload:receiptEmail]">
+		<stripe:metadata ref="#[map-payload:metadata]"/>
+		<stripe:fraud-details ref="#[map-payload:fraudDetails]"/>		
+	</stripe:update-charge> 
 <!-- END_INCLUDE(stripe:update-charge) -->
 <!-- BEGIN_INCLUDE(stripe:capture-charge) -->
-	<stripe:capture-charge config-ref="" id="#[map-payload:id]" amount="#[map-payload:amount]" description="#[map-payload:description]" statementDescriptor="#[map-payload:statementDescriptor]" receiptEmail="#[map-payload:receiptEmail]" applicationFee="#[map-payload:applicationFee]" /> 
+	<stripe:capture-charge config-ref="" id="#[map-payload:id]" amount="#[map-payload:amount]" statementDescriptor="#[map-payload:statementDescriptor]" receiptEmail="#[map-payload:receiptEmail]" applicationFee="#[map-payload:applicationFee]" /> 
 <!-- END_INCLUDE(stripe:capture-charge) -->
 <!-- BEGIN_INCLUDE(stripe:list-all-charges) -->
-	<stripe:list-all-charges config-ref="" createdTimestamp="#[map-payload:createdTimestamp]" created="#[map-payload:created]" customer="#[map-payload:customer]" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" startingAfter="#[map-payoad:startingAfter]" /> 
+	<stripe:list-all-charges config-ref="" createdTimestamp="#[map-payload:createdTimestamp]" customer="#[map-payload:customer]" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" startingAfter="#[map-payoad:startingAfter]">
+		<stripe:created ref="#[map-payload:created]"/>
+	</stripe:list-all-charges> 
 <!-- END_INCLUDE(stripe:list-all-charges) -->
 <!-- BEGIN_INCLUDE(stripe:create-subscription) -->
-	<stripe:create-subscription config-ref="" customerId="#[map-payload:customerId]" plan="#[map-payload:plan]" coupon="#[map-payload:coupon]" trialEnd="#[map-payload:trialEnd]" sourceToken="#[map-payload:sourceToken]" source="#[map-payload:source]" quantity="#[map-payoad:quantity]" applicationFeePercent="#[map-payoad:applicationFeePercent]" taxPercent="#[map-payoad:taxPercent]" metadata="#[map-payoad:metadata]" /> 
+	<stripe:create-subscription config-ref="" customerId="#[map-payload:customerId]" plan="#[map-payload:plan]" coupon="#[map-payload:coupon]" trialEnd="#[map-payload:trialEnd]" sourceToken="#[map-payload:sourceToken]" quantity="#[map-payoad:quantity]" applicationFeePercent="#[map-payoad:applicationFeePercent]" taxPercent="#[map-payoad:taxPercent]">
+		<stripe:source ref="#[map-payload:source]"/>
+		<stripe:metadata ref="#[map-payload:metadata]"/>		
+	</stripe:create-subscription> 
 <!-- END_INCLUDE(stripe:create-subscription) -->
 <!-- BEGIN_INCLUDE(stripe:retrieve-subscription) -->
 	<stripe:retrieve-subscription config-ref="" customerId="#[map-payload:customerId]" subscriptionId="#[map-payload:subscriptionId]"/> 
-<!-- END_INCLUDE(stripe:retrieve-charge) -->
+<!-- END_INCLUDE(stripe:retrieve-subscription) -->
 <!-- BEGIN_INCLUDE(stripe:update-subscription) -->
-	<stripe:update-subscription config-ref="" customerId="#[map-payload:customerId]" subscriptionId="#[map-payload:subscriptionId]" plan="#[map-payload:plan]" coupon="#[map-payload:coupon]" prorate="#[map-payload:prorate]" trialEnd="#[map-payload:trialEnd]" sourceToken="#[map-payload:sourceToken]" source="#[map-payload:source]" quantity="#[map-payoad:quantity]" applicationFeePercent="#[map-payoad:applicationFeePercent]" taxPercent="#[map-payoad:taxPercent]" metadata="#[map-payoad:metadata]" /> 
+	<stripe:update-subscription config-ref="" customerId="#[map-payload:customerId]" subscriptionId="#[map-payload:subscriptionId]" plan="#[map-payload:plan]" coupon="#[map-payload:coupon]" prorate="#[map-payload:prorate]" trialEnd="#[map-payload:trialEnd]" sourceToken="#[map-payload:sourceToken]" quantity="#[map-payoad:quantity]" applicationFeePercent="#[map-payoad:applicationFeePercent]" taxPercent="#[map-payoad:taxPercent]" >
+		<stripe:source ref="#[map-payload:source]"/>
+		<stripe:metadata ref="#[map-payload:metadata]"/>		
+	</stripe:update-subscription> 
 <!-- END_INCLUDE(stripe:update-subscription) -->
 <!-- BEGIN_INCLUDE(stripe:cancel-subscription) -->
 	<stripe:cancel-subscription config-ref="" customerId="#[map-payload:customerId]" subscriptionId="#[map-payload:subscriptionId]"/> 
-<!-- END_INCLUDE(stripe:cancel-charge) -->
+<!-- END_INCLUDE(stripe:cancel-subscription) -->
 <!-- BEGIN_INCLUDE(stripe:list-active-subscriptions) -->
 	<stripe:list-active-subscriptions config-ref="" customerId="#[map-payload:customerId]" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" startingAfter="#[map-payoad:startingAfter]" /> 
 <!-- END_INCLUDE(stripe:list-active-subscriptions) -->
 <!-- BEGIN_INCLUDE(stripe:create-refund) -->
-	<stripe:create-refund config-ref="" id="#[map-payload:id]" amount="#[map-payload:amount]" refundApplicationFee="#[map-payload:refundApplicationFee]" reason="#[map-payload:reason]" metadata="#[map-payload:metadata]"/>
+	<stripe:create-refund config-ref="" id="#[map-payload:id]" amount="#[map-payload:amount]" refundApplicationFee="#[map-payload:refundApplicationFee]" reason="#[map-payload:reason]" >
+		<stripe:metadata ref="#[map-payload:metadata]"/>
+	</stripe:create-refund>
 <!-- END_INCLUDE(stripe:create-refund) -->
 <!-- BEGIN_INCLUDE(stripe:retrieve-refund) -->
 	<stripe:retrieve-refund config-ref="" id="#[map-payload:id]" chargeId="#[map-payload:chargeId]"/>
 <!-- END_INCLUDE(stripe:retrieve-refund) -->	
 <!-- BEGIN_INCLUDE(stripe:update-refund) -->
-	<stripe:update-refund config-ref="" id="#[map-payload:id]" chargeId="#[map-payload:chargeId]" metadata="#[map-payload:metadata]"/>
+	<stripe:update-refund config-ref="" id="#[map-payload:id]" chargeId="#[map-payload:chargeId]">
+		<stripe:metadata ref="#[map-payload:metadata]"/>
+	</stripe:update-refund>
 <!-- END_INCLUDE(stripe:update-refund) -->
 <!-- BEGIN_INCLUDE(stripe:list-all-refunds) -->
-	<stripe:list-all-refunds config-ref="" chargeId="#[map-payload:chargeId]" metadata="#[map-payload:metadata]" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" startingAfter="#[map-payoad:startingAfter]"/>
+	<stripe:list-all-refunds config-ref="" chargeId="#[map-payload:chargeId]" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" startingAfter="#[map-payoad:startingAfter]"/>	
 <!-- END_INCLUDE(stripe:list-all-refunds) -->
 <!-- BEGIN_INCLUDE(stripe:create-invoice) -->
-	<stripe:create-invoice config-ref="" customerId="#[map-payload:customerId]" applicationFee="#[map-payload:applicationFee]" description="#[map-payload:description]" metadata="#[map-payload:metadata]" statementDescriptor="#[map-payload:statementDescriptor]" subscription="#[map-payload:subscription]" taxPercent="#[map-payoad:taxPercent]"/>
+	<stripe:create-invoice config-ref="" customerId="#[map-payload:customerId]" applicationFee="#[map-payload:applicationFee]" description="#[map-payload:description]" statementDescriptor="#[map-payload:statementDescriptor]" subscription="#[map-payload:subscription]" taxPercent="#[map-payoad:taxPercent]">
+		<stripe:metadata ref="#[map-payload:metadata]"/>
+	</stripe:create-invoice>
 <!-- END_INCLUDE(stripe:create-invoice) -->
 <!-- BEGIN_INCLUDE(stripe:retrieve-invoice) -->
 	<stripe:retrieve-invoice config-ref="" id="#[map-payload:id]"/>
@@ -119,7 +166,7 @@
 	<stripe:retrieve-invoice-line-items config-ref="" id="#[map-payload:id]" customer="#[map-payload:customer]" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" startingAfter="#[map-payload:startingAfter]" subscription="#[map-payload:subscription]"/>
 <!-- END_INCLUDE(stripe:retrieve-invoice-line-items) -->
 <!-- BEGIN_INCLUDE(stripe:retrieve-upcoming-invoice) -->
-	<stripe:retrieve-upcoming-invoice config-ref="" id="#[map-payload:id]" customerId="#[map-payload:customerId]" subscription="#[map-payload:subscription]"/>
+	<stripe:retrieve-upcoming-invoice config-ref="" customerId="#[map-payload:customerId]" subscription="#[map-payload:subscription]"/>
 <!-- END_INCLUDE(stripe:retrieve-upcoming-invoice) -->
 <!-- BEGIN_INCLUDE(stripe:update-invoice) -->
 	<stripe:update-invoice config-ref="" invoiceId="#[map-payload:invoiceId]" applicationFee="#[map-payload:applicationFee]" closed="#[map-payload:closed]" description="#[map-payload:description]" forgiven="#[map-payload:forgiven]" metadata="#[map-payload:metadata]" statementDescriptor="#[map-payload:statementDescriptor]" taxPercent="#[map-payoad:taxPercent]"/>
@@ -128,6 +175,36 @@
 	<stripe:pay-invoice config-ref="" id="#[map-payload:id]"/>
 <!-- END_INCLUDE(stripe:pay-invoice) -->
 <!-- BEGIN_INCLUDE(stripe:retrieve-all-invoices) -->
-	<stripe:retrieve-all-invoices config-ref="" customerId="#[map-payload:customerId]" dateTimestamp="#[map-payload:dateTimestamp]" date="#[map-payload:date]" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" startingAfter="#[map-payload:startingAfter]" />
+	<stripe:retrieve-all-invoices config-ref="" customerId="#[map-payload:customerId]" dateTimestamp="#[map-payload:dateTimestamp]" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" startingAfter="#[map-payload:startingAfter]">
+		<stripe:date ref="#[map-payload:date]"/>
+	</stripe:retrieve-all-invoices>
 <!-- END_INCLUDE(stripe:retrieve-all-invoices) -->
-    	
+<!-- BEGIN_INCLUDE(stripe:retrieve-application-fee) -->
+	<stripe:retrieve-application-fee config-ref="" id="#[map-payload:id]"/>
+<!-- END_INCLUDE(stripe:retrieve-application-fee) -->
+<!-- BEGIN_INCLUDE(stripe:list-all-application-fees) -->
+	<stripe:list-all-application-fees config-ref="" charge="#[map-payload:charge]" createdTimestamp="#[map-payload:createdTimestamp]" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" startingAfter="#[map-payload:startingAfter]" >
+		<stripe:created ref="#[map-payload:created]"/>		
+	</stripe:list-all-application-fees>
+<!-- END_INCLUDE(stripe:list-all-application-fees) -->
+<!-- BEGIN_INCLUDE(stripe:create-account) -->
+	<stripe:create-account config-ref="" managed="#[map-payload:managed]" country="#[map-payload:country]" email="#[map-payload:email]" businessName="#[map-payload:businessName]" businessUrl="#[map-payload:businessUrl]" supportPhone="#[map-payload:supportPhone]" debitNegativeBalances="#[map-payload:debitNegativeBalances]" defaultCurrency="#[map-payload:defaultCurrency]" productDescription="#[map-payload:productDescription]" statementDescriptor="#[map-payload:statementDescriptor]"  >
+		<stripe:bank-account ref="#[map-payload:bankAccount]"/>
+		<stripe:legal-entity ref="#[map-payload:legalEntity]"/>
+		<stripe:tos-acceptance ref="#[map-payload:tosAcceptance]"/>
+		<stripe:transfer-schedule ref="#[map-payload:transferSchedule]"/>
+		<stripe:metadata ref="#[map-payload:metadata]"/>
+	</stripe:create-account>
+<!-- END_INCLUDE(stripe:create-account) -->
+<!-- BEGIN_INCLUDE(stripe:retrieve-account) -->
+	<stripe:retrieve-account config-ref="" id="#[map-payload:id]"/>
+<!-- END_INCLUDE(stripe:retrieve-account) -->
+<!-- BEGIN_INCLUDE(stripe:update-account) -->
+	<stripe:update-account config-ref="" id="#[map-payload:id]" email="#[map-payload:email]" businessName="#[map-payload:businessName]" businessUrl="#[map-payload:businessUrl]" supportPhone="#[map-payload:supportPhone]" debitNegativeBalances="#[map-payload:debitNegativeBalances]" defaultCurrency="#[map-payload:defaultCurrency]" productDescription="#[map-payload:productDescription]" statementDescriptor="#[map-payload:statementDescriptor]"  >
+		<stripe:bank-account ref="#[map-payload:bankAccount]"/>
+		<stripe:legal-entity ref="#[map-payload:legalEntity]"/>
+		<stripe:tos-acceptance ref="#[map-payload:tosAcceptance]"/>
+		<stripe:transfer-schedule ref="#[map-payload:transferSchedule]"/>
+		<stripe:metadata ref="#[map-payload:metadata]"/>
+	</stripe:update-account>
+<!-- END_INCLUDE(stripe:update-account) -->

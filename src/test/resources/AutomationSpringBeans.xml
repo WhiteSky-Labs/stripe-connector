@@ -375,9 +375,94 @@
         <entry key="startingAfter" value=""/>
         <entry key="date" value=""/>
     </util:map>
-<!--retrieveUpcomingInvoice-->
-<util:map id="retrieveUpcomingInvoiceTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+    <!--retrieveUpcomingInvoice-->
+    <util:map id="retrieveUpcomingInvoiceTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  <entry key="customerId" value=""/>
         <entry key="subscription" value=""/>
     </util:map>
+    <!--retrieveApplicationFee-->
+    <util:map id="retrieveApplicationFeeTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="id" value=""/>
+    </util:map>
+    <!--listAllApplicationFees-->
+    <util:map id="listAllApplicationFeesTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="charge" value=""/>
+        <entry key="createdTimestamp" value=""/>
+        <entry key="endingBefore" value=""/>
+        <entry key="limit" value="0"/>
+        <entry key="startingAfter" value=""/>
+        <entry key="created" value=""/>
+    </util:map>
+    <!--createAccount-->
+    <util:map id="createAccountTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="managed" value="false"/>
+        <entry key="country" value=""/>
+        <entry key="email" value=""/>
+        <entry key="businessName" value=""/>
+        <entry key="businessUrl" value=""/>
+        <entry key="supportPhone" value=""/>
+        <entry key="debitNegativeBalances" value="false"/>
+        <entry key="defaultCurrency" value=""/>
+        <entry key="productDescription" value=""/>
+        <entry key="statementDescriptor" value=""/>
+        <entry key="metadata" value-ref="testMetadata"/>
+        <entry key="bankAccount" value-ref="testBankAccount"/>
+		<entry key="legalEntity" value-ref="testLegalEntity"/>
+		<entry key="tosAcceptance" value-ref="testAcceptance"/>
+		<entry key="transferSchedule" value-ref="testTransferSchedule"/>
+    </util:map>
+    <!--retrieveAccount-->
+    <util:map id="retrieveAccountTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="id" value=""/>
+    </util:map>
+    <!--updateAccount-->
+    <util:map id="createManagedAccountTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="managed" value="true"/>
+        <entry key="country" value=""/>
+        <entry key="email" value=""/>
+        <entry key="businessName" value="TestBusiness"/>
+        <entry key="businessUrl" value="www.test.com"/>
+        <entry key="supportPhone" value=""/>
+        <entry key="debitNegativeBalances" value="false"/>
+        <entry key="defaultCurrency" value="usd"/>
+        <entry key="productDescription" value=""/>
+        <entry key="statementDescriptor" value=""/>
+        <entry key="metadata" value-ref="testMetadata"/>
+        <entry key="bankAccount" value-ref="testBankAccount"/>
+		<entry key="legalEntity" value-ref="testLegalEntity"/>
+		<entry key="tosAcceptance" value-ref="testAcceptance"/>
+		<entry key="transferSchedule" value-ref="testTransferSchedule"/>
+    </util:map>
+    <util:map id="updateAccountTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="id" value=""/>
+        <entry key="email" value=""/>
+        <entry key="businessName" value="UpdatedBusinessName"/>
+        <entry key="businessUrl" value=""/>
+        <entry key="supportPhone" value=""/>
+        <entry key="debitNegativeBalances" value="false"/>
+        <entry key="defaultCurrency" value=""/>
+        <entry key="productDescription" value=""/>
+        <entry key="statementDescriptor" value=""/>
+        <entry key="metadata" value-ref="testMetadata"/>
+        <entry key="bankAccount" value-ref="testBankAccount"/>
+		<entry key="legalEntity" value-ref="testLegalEntity"/>
+		<entry key="tosAcceptance" value-ref="testAcceptance"/>
+		<entry key="transferSchedule" value-ref="testTransferSchedule"/>
+    </util:map>
+	<bean class="com.wsl.modules.stripe.complextypes.BankAccount" id="testBankAccount">
+        <property name="country" value="usa"/>
+        <property name="currency" value="usd"/>
+        <property name="routingNumber" value="123456"/>
+        <property name="accountNumber" value="1234567890"/>		
+    </bean>
+    <bean class="com.wsl.modules.stripe.complextypes.LegalEntity" id="testLegalEntity">
+        <property name="businessName" value="TestBusiness"/>
+    </bean>
+    <bean class="com.wsl.modules.stripe.complextypes.Acceptance" id="testAcceptance">
+        <property name="ip" value="127.0.0.1"/>        
+    </bean>
+    <bean class="com.wsl.modules.stripe.complextypes.TransferSchedule" id="testTransferSchedule">
+        <property name="delayDays" value="5"/>
+    </bean>
+
 </beans>

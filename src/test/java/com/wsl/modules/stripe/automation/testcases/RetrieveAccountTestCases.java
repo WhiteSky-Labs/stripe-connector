@@ -11,8 +11,9 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import com.stripe.model.BalanceTransaction;
-import com.stripe.model.Coupon;
+import java.util.UUID;
+
+import com.stripe.model.Account;
 import com.wsl.modules.stripe.automation.RegressionTests;
 import com.wsl.modules.stripe.automation.SmokeTests;
 import com.wsl.modules.stripe.automation.StripeTestParent;
@@ -24,14 +25,25 @@ import org.junit.experimental.categories.Category;
 import org.mule.api.MessagingException;
 import org.mule.modules.tests.ConnectorTestUtils;
 
-public class RetrieveBalanceTransactionTestCases
+public class RetrieveAccountTestCases
     extends StripeTestParent
 {
+
+	private String accountId;
+	private String email;
+	
     @Before
     public void setup()
         throws Exception
     {    	
-        initializeTestRunMessage("retrieveBalanceTransactionTestData");      
+    	initializeTestRunMessage("createAccountTestData");
+    	email = "test" + UUID.randomUUID() + "@gmail.com";
+    	upsertOnTestRunMessage("email", email);
+    	Object result = runFlowAndGetPayload("create-account");
+    	Account account = (Account) result;
+    	this.accountId = account.getId();
+    	initializeTestRunMessage("retrieveAccountTestData");
+    	upsertOnTestRunMessage("id", this.accountId);
     }
 
     @Category({
@@ -39,14 +51,14 @@ public class RetrieveBalanceTransactionTestCases
         SmokeTests.class
     })
     @Test
-    public void testRetrieveBalanceTransaction()
+    public void testRetrieveAccount()
         throws Exception
-    {
-        Object result = runFlowAndGetPayload("retrieve-balance-transaction");
+    {    	
+    	Object result = runFlowAndGetPayload("retrieve-account");
         assertNotNull(result);
-        BalanceTransaction transaction = (BalanceTransaction) result;
-        assertEquals("usd", transaction.getCurrency());
-        assertEquals(12300, transaction.getAmount().intValue());
+        Account account = (Account) result;
+        assertNotNull(account.getId());
+        assertEquals(this.email, account.getEmail());        
     }
     
     @Category({
@@ -54,19 +66,18 @@ public class RetrieveBalanceTransactionTestCases
         SmokeTests.class
     })
     @Test
-    public void testRetrieveNonexistentTransaction()
+    public void testRetrieveNonexistentAccount()
         throws Exception
     {
     	try {
         	upsertOnTestRunMessage("id", "InvalidID");
-            Object result = runFlowAndGetPayload("retrieve-balance-transaction");
-            fail("Getting a balance transaction that doesn't exist should throw an error.");
+            Object result = runFlowAndGetPayload("retrieve-account");
+            fail("Getting an account that doesn't exist should throw an error.");
     	} catch (MessagingException e){
-    		assertTrue(e.getCause().getMessage().contains("Could not retrieve the Balance Transaction"));
+    		assertTrue(e.getCause().getMessage().contains("Could not retrieve the Account"));
     	} catch (Exception e){
     		fail(ConnectorTestUtils.getStackTrace(e));
     	}
         
     }
-
 }

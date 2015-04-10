@@ -1,3 +1,8 @@
+/**
+ * (c) 2003-2015 MuleSoft, Inc. The software in this package is published under the terms of the CPAL v1.0 license,
+ * a copy of which has been included with this distribution in the LICENSE.md file.
+ */
+
 
 package com.wsl.modules.stripe.automation.testcases;
 
@@ -9,6 +14,7 @@ import java.util.Iterator;
 
 import com.stripe.model.BalanceTransaction;
 import com.stripe.model.BalanceTransactionCollection;
+import com.stripe.model.Charge;
 import com.stripe.model.Coupon;
 import com.stripe.model.CouponCollection;
 import com.wsl.modules.stripe.automation.RegressionTests;
@@ -24,12 +30,15 @@ public class ListAllBalanceHistoryTestCases
     extends StripeTestParent
 {
 
-	private String transactionId = "txn_15oTnK2aSsQzRUZqLP87dhIH";
+	private String transactionId;
 	
     @Before
     public void setup()
         throws Exception
     {
+    	initializeTestRunMessage("createChargeTestData");
+    	Charge charge = (Charge) runFlowAndGetPayload("create-charge");
+    	this.transactionId = charge.getBalanceTransaction();
     	initializeTestRunMessage("listAllBalanceHistoryTestData");
     }
 
@@ -44,7 +53,7 @@ public class ListAllBalanceHistoryTestCases
         SmokeTests.class
     })
     @Test
-    public void testListAllBalanceTransactions()
+    public void testListAllBalanceHistory()
         throws Exception
     {
         Object result = runFlowAndGetPayload("list-all-balance-history");
@@ -66,7 +75,7 @@ public class ListAllBalanceHistoryTestCases
         SmokeTests.class
     })
     @Test
-    public void testListBalanceTransactionsWithLimit()
+    public void testListBalanceHistoryWithLimit()
         throws Exception
     {
     	upsertOnTestRunMessage("limit", "1");

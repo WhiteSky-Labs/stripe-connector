@@ -23,6 +23,9 @@ import com.stripe.exception.APIException;
 import com.stripe.exception.AuthenticationException;
 import com.stripe.exception.CardException;
 import com.stripe.exception.InvalidRequestException;
+import com.stripe.model.Account;
+import com.stripe.model.ApplicationFee;
+import com.stripe.model.ApplicationFeeCollection;
 import com.stripe.model.Balance;
 import com.stripe.model.BalanceTransaction;
 import com.stripe.model.BalanceTransactionCollection;
@@ -46,7 +49,11 @@ import com.stripe.model.Plan;
 import com.stripe.model.PlanCollection;
 import com.stripe.model.Refund;
 import com.stripe.model.Subscription;
+import com.wsl.modules.stripe.complextypes.Acceptance;
+import com.wsl.modules.stripe.complextypes.BankAccount;
+import com.wsl.modules.stripe.complextypes.LegalEntity;
 import com.wsl.modules.stripe.complextypes.Source;
+import com.wsl.modules.stripe.complextypes.TransferSchedule;
 import com.wsl.modules.stripe.exceptions.StripeConnectorException;
 import com.wsl.modules.stripe.strategy.ConnectorConnectionStrategy;
 
@@ -320,7 +327,7 @@ public class StripeConnector {
     /**
      * List All Plans
      *
-     * {@sample.xml ../../../doc/stripe-connector.xml.sample stripe:list-all-plan}
+     * {@sample.xml ../../../doc/stripe-connector.xml.sample stripe:list-all-plans}
      *
      * @param createdTimestamp A filter on the list based on the object created field. The value can be a string with an integer Unix timestamp.
      * @param created A filter on the list based on the object created field. The value can be a dictionary containing gt, gte, lt and/or lte values. You cannot supply a created value and this dictionary at the same time.
@@ -1257,8 +1264,8 @@ public class StripeConnector {
      * 
      * @param customerId The customer to create the invoice for
      * @param applicationFee A fee in cents that will be applied to the invoice and transferred to the application owner’s Stripe account.
-     * @param description
-     * @param metadata
+     * @param description The invoice description
+     * @param metadata Arbitrary key-value pairs to attach to the invoice
      * @param statementDescriptor Extra information about a charge for the customer’s credit card statement.
      * @param subscription The ID of the subscription to invoice. If not set, the created invoice will include all pending invoice items for the customer. If set, the created invoice will exclude pending invoice items that pertain to other subscriptions.
      * @param taxPercent The percent tax rate applied to the invoice, represented as a decimal number.
@@ -1378,9 +1385,9 @@ public class StripeConnector {
      * @param invoiceId The invoice to update
      * @param applicationFee A fee in cents that will be applied to the invoice and transferred to the application owner’s Stripe account.
      * @param closed Boolean representing whether an invoice is closed or not. To close an invoice, pass true.
-     * @param description
+     * @param description The invoice description
      * @param forgiven Boolean representing whether an invoice is forgiven or not. To forgive an invoice, pass true. Forgiving an invoice instructs us to update the subscription status as if the invoice were succcessfully paid. Once an invoice has been forgiven, it cannot be unforgiven or reopened.    
-     * @param metadata
+     * @param metadata Arbitrary key-value pairs to attach to the invoice
      * @param statementDescriptor Extra information about a charge for the customer’s credit card statement.
      * @param taxPercent The percent tax rate applied to the invoice, represented as a decimal number.
      * @return Returns the invoice object     
@@ -1464,6 +1471,203 @@ public class StripeConnector {
 		} catch (AuthenticationException | InvalidRequestException
 				| APIConnectionException | CardException | APIException e) {
 			throw new StripeConnectorException("Could not retrieve Invoices", e);
+		}
+    }
+    
+    /**
+     * Retrieve an Application Fee
+	 * 
+     * {@sample.xml ../../../doc/stripe-connector.xml.sample stripe:retrieve-application-fee}
+     * 
+     * @param id The identifier of the fee to be retrieved.
+     * @return Returns Application Fee
+     * @throws StripeConnectorException when there is a problem with the Connector
+     */
+    @Processor
+    @ReconnectOn(exceptions = { Exception.class })
+    public ApplicationFee retrieveApplicationFee(String id)
+    		throws StripeConnectorException {
+    	try {    		
+    		return ApplicationFee.retrieve(id);    		
+		} catch (AuthenticationException | InvalidRequestException
+				| APIConnectionException | CardException | APIException e) {
+			throw new StripeConnectorException("Could not retrieve the Application Fee", e);
+		}
+    }
+    
+    /**
+     * List all Application Fees
+	 * 
+     * {@sample.xml ../../../doc/stripe-connector.xml.sample stripe:list-all-application-fees}
+     * 
+     * @param charge Only return application fees for the charge specified by this charge ID.
+     * @param createdTimestamp A filter on the list based on the created field. The value can be a string with an integer Unix timestamp,...
+     * @param created or it can be a dictionary with the following options: gt, gte, lt, lte
+     * @param endingBefore A cursor for use in pagination. ending_before is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with obj_bar, your subsequent call can include ending_before=obj_bar in order to fetch the previous page of the list.
+     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items.
+     * @param startingAfter A cursor for use in pagination. starting_after is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with obj_foo, your subsequent call can include starting_after=obj_foo in order to fetch the next page of the list.
+     * @return Returns Application Fee
+     * @throws StripeConnectorException when there is a problem with the Connector
+     */
+    @Processor
+    @ReconnectOn(exceptions = { Exception.class })
+    public ApplicationFeeCollection listAllApplicationFees(@Optional String charge, @Optional String createdTimestamp, @Optional Map<String, String> created, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter)
+    		throws StripeConnectorException {
+    	Map<String, Object> params = new HashMap<String, Object>();
+    	params.put("charge", charge);
+    	if (createdTimestamp != null && !createdTimestamp.isEmpty()){
+    		params.put("created", createdTimestamp);
+    	} else {
+    		params.put("created", created);
+    	}
+    	params.put("endingBefore", endingBefore);
+    	params.put("limit", limit);
+    	params.put("startingAfter", startingAfter);
+    	params = removeOptionalsAndZeroes(params);
+    	try {    		
+    		return ApplicationFee.all(params);    		
+		} catch (AuthenticationException | InvalidRequestException
+				| APIConnectionException | CardException | APIException e) {
+			throw new StripeConnectorException("Could not list Application Fees", e);
+		}
+    }
+    
+    /**
+     * Create an Account
+	 * 
+     * {@sample.xml ../../../doc/stripe-connector.xml.sample stripe:create-account}
+     * 
+     * @param managed Whether you'd like to create a managed or standalone account. Managed accounts have extra parameters available to them, and require that you, the platform, handle all communication with the account holder. Standalone accounts are normal Stripe accounts: Stripe will email the account holder to setup a username and password, and handle all account management directly with them.
+     * @param country The country the account holder resides in or that the business is legally established in. For example, if you are in the United States and the business you’re creating an account for is legally represented in Canada, you would use “CA” as the country for the account being created.
+     * @param email The email address of the account holder. For standalone accounts, Stripe will email your user with instructions for how to set up their account. For managed accounts, this is only to make the account easier to identify to you: Stripe will never directly reach out to your users.
+     * @param businessName The publicly sharable name for this account
+     * @param businessUrl The URL that best shows the service or product provided for this account
+     * @param supportPhone A publicly shareable phone number that can be reached for support for this account
+     * @param bankAccount A bank account to attach to the account. 
+     * @param debitNegativeBalances A boolean for whether or not Stripe should try to reclaim negative balances from the account holder’s bank account. 
+     * @param defaultCurrency Three-letter ISO currency code representing the default currency for the account.
+     * @param legalEntity Information about the holder of this account, i.e. the user receiving funds from this account
+     * @param productDescription Internal-only description of the product being sold or service being provided by this account. It’s used by Stripe for risk and underwriting purposes.
+     * @param statementDescriptor The text that will appear on credit card statements by default if a charge is being made directly on the account.
+     * @param tosAcceptance Details on who accepted the Stripe terms of service, and when they accepted it.
+     * @param transferSchedule Details on when this account will make funds from charges available, and when they will be paid out to the account holder’s bank account. 
+	 * @param metadata A set of key/value pairs that you can attach to an account object. It can be useful for storing additional information about the account in a structured format. This will be unset if you POST an empty value.  
+     * @return Returns an account object if the call succeeded.
+     * @throws StripeConnectorException when there is a problem with the Connector
+     */
+    @Processor
+    @ReconnectOn(exceptions = { Exception.class })
+    public Account createAccount(@Default("false") boolean managed, @Optional String country, @Optional String email, @Optional String businessName, @Optional String businessUrl, @Optional String supportPhone, @Optional BankAccount bankAccount, @Default("false") boolean debitNegativeBalances, @Optional String defaultCurrency, @Optional LegalEntity legalEntity, @Optional String productDescription, @Optional String statementDescriptor, @Optional Acceptance tosAcceptance, @Optional TransferSchedule transferSchedule, @Optional Map<String, Object> metadata)
+    		throws StripeConnectorException {
+    	Map<String, Object> params = new HashMap<String, Object>();
+    	params.put("managed", managed);
+    	params.put("country", country);
+    	params.put("email", email);
+    	params.put("business_name", businessName);
+    	params.put("business_url", businessUrl);
+    	params.put("support_phone", supportPhone);
+    	if (bankAccount != null){
+    		params.put("bank_account", bankAccount.toDictionary());
+    	}
+    	params.put("debit_negative_balances", debitNegativeBalances);
+    	params.put("default_currency", defaultCurrency);
+    	if (legalEntity != null){
+    		params.put("legal_entity", legalEntity.toDictionary());
+    	}
+    	params.put("product_description", productDescription);
+    	params.put("statement_descriptor", statementDescriptor);
+    	if (tosAcceptance != null){
+    		params.put("tos_acceptance", tosAcceptance.toDictionary());
+    	}
+    	if (transferSchedule != null){
+    		params.put("transfer_schedule", transferSchedule.toDictionary());
+    	}
+    	params.put("metadata", metadata);
+    	params = removeOptionals(params);
+    	try {    		
+    		return Account.create(params);
+		} catch (AuthenticationException | InvalidRequestException
+				| APIConnectionException | CardException | APIException e) {
+			throw new StripeConnectorException("Could not create the Account", e);
+		}
+    }
+    
+    /**
+     * Retrieve an Account's Details
+	 * 
+     * {@sample.xml ../../../doc/stripe-connector.xml.sample stripe:retrieve-account}
+     * 
+     * @param id The identifier of the account to be retrieved.
+     * @return Returns Account
+     * @throws StripeConnectorException when there is a problem with the Connector
+     */
+    @Processor
+    @ReconnectOn(exceptions = { Exception.class })
+    public Account retrieveAccount(String id)
+    		throws StripeConnectorException {
+    	try {    		
+    		return Account.retrieve(id);    		
+		} catch (AuthenticationException | InvalidRequestException
+				| APIConnectionException | CardException | APIException e) {
+			throw new StripeConnectorException("Could not retrieve the Account", e);
+		}
+    }
+    
+    /**
+     * Update an Account
+     * You may only update accounts that you manage. To update your own account, you can currently only do so via the dashboard. 
+	 * 
+     * {@sample.xml ../../../doc/stripe-connector.xml.sample stripe:update-account}
+     * 
+     * @param id The account to update
+     * @param email The email address of the account holder. For standalone accounts, Stripe will email your user with instructions for how to set up their account. For managed accounts, this is only to make the account easier to identify to you: Stripe will never directly reach out to your users.
+     * @param businessName The publicly sharable name for this account
+     * @param businessUrl The URL that best shows the service or product provided for this account
+     * @param supportPhone A publicly shareable phone number that can be reached for support for this account
+     * @param bankAccount The bank account to associate with the account
+     * @param debitNegativeBalances A boolean for whether or not Stripe should try to reclaim negative balances from the account holder’s bank account. 
+     * @param defaultCurrency Three-letter ISO currency code representing the default currency for the account.
+     * @param legalEntity Information about the holder of this account, i.e. the user receiving funds from this account
+     * @param productDescription Internal-only description of the product being sold or service being provided by this account. It’s used by Stripe for risk and underwriting purposes.
+     * @param statementDescriptor The text that will appear on credit card statements by default if a charge is being made directly on the account.
+     * @param tosAcceptance Details on who accepted the Stripe terms of service, and when they accepted it.
+     * @param transferSchedule Details on when this account will make funds from charges available, and when they will be paid out to the account holder’s bank account. 
+	 * @param metadata A set of key/value pairs that you can attach to an account object. It can be useful for storing additional information about the account in a structured format. This will be unset if you POST an empty value.  
+     * @return Returns an account object if the call succeeded.
+     * @throws StripeConnectorException when there is a problem with the Connector
+     */
+    @Processor
+    @ReconnectOn(exceptions = { Exception.class })
+    public Account updateAccount(String id, @Optional String email, @Optional String businessName, @Optional String businessUrl, @Optional String supportPhone, @Optional BankAccount bankAccount, @Default("false") boolean debitNegativeBalances, @Optional String defaultCurrency, @Optional LegalEntity legalEntity, @Optional String productDescription, @Optional String statementDescriptor, @Optional Acceptance tosAcceptance, @Optional TransferSchedule transferSchedule, @Optional Map<String, Object> metadata)
+    		throws StripeConnectorException {
+    	Map<String, Object> params = new HashMap<String, Object>();
+    	params.put("email", email);
+    	params.put("business_name", businessName);
+    	params.put("business_url", businessUrl);
+    	params.put("support_phone", supportPhone);
+    	if (bankAccount != null){
+    		params.put("bank_account", bankAccount.toDictionary());
+    	}
+    	params.put("debit_negative_balances", debitNegativeBalances);
+    	params.put("default_currency", defaultCurrency);
+    	if (legalEntity != null){
+    		params.put("legal_entity", legalEntity.toDictionary());
+    	}
+    	params.put("product_description", productDescription);
+    	params.put("statement_descriptor", statementDescriptor);
+    	if (tosAcceptance != null){
+    		params.put("tos_acceptance", tosAcceptance.toDictionary());
+    	}
+    	if (transferSchedule != null){
+    		params.put("transfer_schedule", transferSchedule.toDictionary());
+    	}    	
+    	params.put("metadata", metadata);
+    	params = removeOptionals(params);
+    	try {    	    		
+    		return Account.retrieve(id).update(params);
+		} catch (AuthenticationException | InvalidRequestException
+				| APIConnectionException | CardException | APIException e) {
+			throw new StripeConnectorException("Could not update the Account", e);
 		}
     }
     
