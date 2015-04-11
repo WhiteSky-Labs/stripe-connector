@@ -480,18 +480,46 @@
     <util:map id="retrieveTokenTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  <entry key="id" value=""/>
     </util:map>
-
-<!--retrieveEvent-->
-<util:map id="retrieveEventTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+    <!--retrieveEvent-->
+    <util:map id="retrieveEventTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  <entry key="id" value=""/>
     </util:map>
-<!--listAllEvents-->
-<util:map id="listAllEventsTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+    <!--listAllEvents-->
+    <util:map id="listAllEventsTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  <entry key="createdTimestamp" value=""/>
         <entry key="endingBefore" value=""/>
         <entry key="limit" value="0"/>
         <entry key="startingAfter" value=""/>
         <entry key="type" value=""/>
         <entry key="created" value=""/>
+    </util:map>
+<!--createApplicationFeeRefund-->
+<util:map id="createApplicationFeeRefundTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ 	<entry key="id" value=""/>
+ 	<entry key="amount" value="0"/>
+    <entry key="metadata" value-ref="testMetadata"/>
+</util:map>
+<!--retrieveApplicationFeeRefund-->
+<util:map id="retrieveApplicationFeeRefundTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ 	<entry key="id" value=""/>
+    <entry key="fee" value=""/>
+</util:map>
+<!--updateApplicationFeeRefund-->
+<util:map id="updateApplicationFeeRefundTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ 	<entry key="id" value=""/>
+    <entry key="fee" value=""/>
+    <entry key="metadata" value-ref="updateMetadata"/>
+</util:map>
+<util:map id="updateMetadata" key-type="java.lang.String" map-class="java.util.HashMap" value-type="java.lang.Object">
+        <entry key="Key3" value="value3"/>
+        <entry key="Key4" value="value4"/>
+    </util:map>
+    
+<!--listAllApplicationFeeRefunds-->
+<util:map id="listAllApplicationFeeRefundsTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="id" value=""/>
+        <entry key="endingBefore" value=""/>
+        <entry key="limit" value="0"/>
+        <entry key="startingAfter" value=""/>
     </util:map>
 </beans>

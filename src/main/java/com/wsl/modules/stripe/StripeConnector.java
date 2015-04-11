@@ -42,6 +42,8 @@ import com.stripe.model.DeletedCard;
 import com.stripe.model.DeletedStripeObject;
 import com.stripe.model.Event;
 import com.stripe.model.EventCollection;
+import com.stripe.model.FeeRefund;
+import com.stripe.model.FeeRefundCollection;
 import com.stripe.model.Invoice;
 import com.stripe.model.InvoiceCollection;
 import com.stripe.model.InvoiceLineItemCollection;
@@ -1813,6 +1815,116 @@ public class StripeConnector {
 		} catch (AuthenticationException | InvalidRequestException
 				| APIConnectionException | CardException | APIException e) {
 			throw new StripeConnectorException("Could not list Events", e);
+		}
+    }
+    
+    /**
+     * Create an Application Fee Refund
+     * Refunds an application fee that has previously been collected but not yet refunded. Funds will be refunded to the Stripe account that the fee was originally collected from.
+	 * You can optionally refund only part of an application fee. You can do so as many times as you wish until the entire fee has been refunded.
+	 * Once entirely refunded, an application fee can't be refunded again. This method will throw an error when called on an already-refunded application fee, or when trying to refund more money than is left on an application fee.
+	 * 
+     * {@sample.xml ../../../doc/stripe-connector.xml.sample stripe:create-application-fee-refund}
+     * 
+     * @param id The identifier of the application fee to be refunded.
+     * @param amount A positive integer in cents representing how much of this fee to refund. Can only refund up to the unrefunded amount remaining of the fee.
+     * @return Returns the application fee refund object if the refund succeeded. Throws an error if the fee has already been refunded or an invalid fee identifier was provided.
+     * @throws StripeConnectorException when there is a problem with the Connector
+     */
+    @Processor
+    @ReconnectOn(exceptions = { Exception.class })
+    public ApplicationFee createApplicationFeeRefund(String id, @Default("0") int amount)
+    		throws StripeConnectorException {
+    	Map<String, Object> params = new HashMap<String, Object>();
+    	params.put("amount", amount);
+    	params = removeOptionalsAndZeroes(params);
+    	try {
+    		return ApplicationFee.retrieve(id).refund(params);
+		} catch (AuthenticationException | InvalidRequestException
+				| APIConnectionException | CardException | APIException e) {
+			throw new StripeConnectorException("Could not refund Application Fee", e);
+		}
+    }
+    
+    /**
+     * Retrieve an Application Fee Refund
+     * By default, you can see the 10 most recent refunds stored directly on the application fee object, but you can also retrieve details about a specific refund stored on the application fee.
+	 * 
+     * {@sample.xml ../../../doc/stripe-connector.xml.sample stripe:retrieve-application-fee-refund}
+     * 
+     * @param id The ID of the refund to retrieve
+     * @param fee ID of the Application Fee refunded
+     * @param metadata A set of key/value pairs that you can attach to a refund object. It can be useful for storing additional information about the refund in a structured format. You can unset an individual key by setting its value to null and then saving.
+     * @return Returns the application fee refund object if the refund succeeded. Throws an error if the fee has already been refunded or an invalid fee identifier was provided.
+     * @throws StripeConnectorException when there is a problem with the Connector
+     */
+    @Processor
+    @ReconnectOn(exceptions = { Exception.class })
+    public FeeRefund retrieveApplicationFeeRefund(String id, String fee)
+    		throws StripeConnectorException {
+    	try {
+    		return ApplicationFee.retrieve(fee).getRefunds().retrieve(id);
+		} catch (AuthenticationException | InvalidRequestException
+				| APIConnectionException | CardException | APIException e) {
+			throw new StripeConnectorException("Could not retrieve Application Fee Refund", e);
+		}
+    }
+    
+    /**
+     * Update an Application Fee Refund
+     * Updates the specified application fee refund by setting the values of the parameters passed. Any parameters not provided will be left unchanged.
+	 * This request only accepts metadata as an argument.
+	 * 
+     * {@sample.xml ../../../doc/stripe-connector.xml.sample stripe:update-application-fee-refund}
+     * 
+     * @param id The identifier of the refund.
+     * @param fee The identifier of the Application Fee refunded
+     * @param metadata A set of key/value pairs that you can attach to a refund object. It can be useful for storing additional information about the refund in a structured format. You can unset an individual key by setting its value to null and then saving.
+     * @return Returns the application fee refund object if the refund succeeded. Throws an error if the fee has already been refunded or an invalid fee identifier was provided.
+     * @throws StripeConnectorException when there is a problem with the Connector
+     */
+    @Processor
+    @ReconnectOn(exceptions = { Exception.class })
+    public FeeRefund updateApplicationFeeRefund(String id, String fee, @Optional Map<String, Object> metadata)
+    		throws StripeConnectorException {
+    	Map<String, Object> params = new HashMap<String, Object>();
+    	params.put("metadata", metadata);
+    	try {
+    		FeeRefund refund = ApplicationFee.retrieve(fee).getRefunds().retrieve(id);
+    		return refund.update(params);
+		} catch (AuthenticationException | InvalidRequestException
+				| APIConnectionException | CardException | APIException e) {
+			throw new StripeConnectorException("Could not update Application Fee Refund", e);
+		}
+    }
+    
+    /**
+     * List All Application Fee Refunds
+     * You can see a list of the refunds belonging to a specific application fee. Note that the 10 most recent refunds are always available by default on the application fee object. If you need more than those 10, you can use this API method and the limit and starting_after parameters to page through additional refunds
+	 * 
+     * {@sample.xml ../../../doc/stripe-connector.xml.sample stripe:list-all-application-fee-refunds}
+     * 
+     * @param id The ID of the application fee whose refunds will be retrieved.
+     * @param endingBefore A cursor for use in pagination. ending_before is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with obj_bar, your subsequent call can include ending_before=obj_bar in order to fetch the previous page of the list.
+     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items.
+     * @param startingAfter A cursor for use in pagination. starting_after is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with obj_foo, your subsequent call can include starting_after=obj_foo in order to fetch the next page of the list.
+     * @return A Map with a data property that contains an array of up to limit refunds, starting after starting_after. Each entry in the array is a separate application fee refund object. If no more refunds are available, the resulting array will be empty. If you provide a non-existent application fee ID, this call throws an error.
+     * @throws StripeConnectorException when there is a problem with the Connector
+     */
+    @Processor
+    @ReconnectOn(exceptions = { Exception.class })
+    public FeeRefundCollection listAllApplicationFeeRefunds(String id, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter)
+    		throws StripeConnectorException {
+    	Map<String, Object> params = new HashMap<String, Object>();
+    	params.put("ending_before", endingBefore);
+    	params.put("limit", limit);
+    	params.put("startingAfter", startingAfter);
+    	params = removeOptionalsAndZeroes(params);
+    	try {
+    		return ApplicationFee.retrieve(id).getRefunds().all(params);
+		} catch (AuthenticationException | InvalidRequestException
+				| APIConnectionException | CardException | APIException e) {
+			throw new StripeConnectorException("Could not list Application Fee Refunds", e);
 		}
     }
     

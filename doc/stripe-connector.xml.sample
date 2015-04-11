@@ -229,3 +229,17 @@
 		<stripe:created ref="#[map-payload:created]"/>
 	</stripe:list-all-events>
 <!-- END_INCLUDE(stripe:list-all-events) -->
+<!-- BEGIN_INCLUDE(stripe:create-application-fee-refund) -->
+	<stripe:create-application-fee-refund config-ref="" id="#[map-payload:id]" amount="#[map-payload:amount]"/>
+<!-- END_INCLUDE(stripe:create-application-fee-refund) -->
+<!-- BEGIN_INCLUDE(stripe:retrieve-application-fee-refund) -->
+	<stripe:retrieve-application-fee-refund config-ref="" id="#[map-payload:id]" fee="#[map-payload:fee]"/>
+<!-- END_INCLUDE(stripe:retrieve-application-fee-refund) -->
+<!-- BEGIN_INCLUDE(stripe:update-application-fee-refund) -->
+	<stripe:update-application-fee-refund config-ref="" id="#[map-payload:id]" fee="#[map-payload:fee]">
+		<stripe:metadata ref="#[map-payload:metadata]"/>
+	</stripe:update-application-fee-refund>
+<!-- END_INCLUDE(stripe:update-application-fee-refund) -->
+<!-- BEGIN_INCLUDE(stripe:list-all-application-fee-refunds) -->
+	<stripe:list-all-application-fee-refunds config-ref="" id="#[map-payload:id]" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" startingAfter="#[map-payload:startingAfter]"/>
+<!-- END_INCLUDE(stripe:list-all-application-fee-refunds) -->
