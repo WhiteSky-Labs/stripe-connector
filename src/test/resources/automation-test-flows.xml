@@ -228,7 +228,7 @@
 	<stripe:list-all-events config-ref="Stripe" createdTimestamp="#[flowVars.createdTimestamp]" endingBefore="#[flowVars.endingBefore]" limit="#[limit]" startingAfter="#[startingAfter]" type="#[type]"/>		
 </flow>
 <flow doc:name="CreateApplicationFeeRefund" name="create-application-fee-refund">
-	<stripe:create-application-fee-refund config-ref="Stripe" id="#[flowVars.id]" amount="#[flowVars.amount]"/>
+	<stripe:create-application-fee-refund amount="#[flowVars.amount]" config-ref="Stripe" id="#[flowVars.id]"/>
 </flow>
     <flow doc:name="RetrieveApplicationFeeRefund" name="retrieve-application-fee-refund">
 	<stripe:retrieve-application-fee-refund config-ref="Stripe" fee="#[flowVars.fee]" id="#[flowVars.id]"/>
@@ -239,6 +239,17 @@
 	</stripe:update-application-fee-refund>
 </flow>
     <flow doc:name="ListAllApplicationFeeRefunds" name="list-all-application-fee-refunds">
-	<stripe:list-all-application-fee-refunds config-ref="Stripe" id="#[flowVars.id]" endingBefore="#[flowVars.endingBefore]" limit="#[flowVars.limit]" startingAfter="#[flowVars.startingAfter]"/>
+	<stripe:list-all-application-fee-refunds config-ref="Stripe" endingBefore="#[flowVars.endingBefore]" id="#[flowVars.id]" limit="#[flowVars.limit]" startingAfter="#[flowVars.startingAfter]"/>
+</flow>
+<flow doc:name="CreateBitcoinReceiver" name="create-bitcoin-receiver">
+	<stripe:create-bitcoin-receiver amount="#[flowVars.amount]" config-ref="Stripe" email="#[flowVars.email]" currency="#[flowVars.currency]" description="#[flowVars.description]" refundMispayments="#[flowVars.refundMispayments]">
+		<stripe:metadata ref="#[flowVars.metadata]"/>
+	</stripe:create-bitcoin-receiver>
+</flow>
+    <flow doc:name="RetrieveBitcoinReceiver" name="retrieve-bitcoin-receiver">
+	<stripe:retrieve-bitcoin-receiver config-ref="Stripe" id="#[flowVars.id]"/>
+</flow>
+    <flow doc:name="ListAllBitcoinReceivers" name="list-all-bitcoin-receivers">
+	<stripe:list-all-bitcoin-receivers config-ref="Stripe" active="#[flowVars.active]" endingBefore="#[flowVars.endingBefore]" filled="#[flowVars.filled]" limit="#[flowVars.limit]" startingAfter="#[flowVars.startingAfter]" uncapturedFunds="#[flowVars.uncapturedFunds]"/>
 </flow>
 </mule>

@@ -243,3 +243,14 @@
 <!-- BEGIN_INCLUDE(stripe:list-all-application-fee-refunds) -->
 	<stripe:list-all-application-fee-refunds config-ref="" id="#[map-payload:id]" endingBefore="#[map-payload:endingBefore]" limit="#[map-payload:limit]" startingAfter="#[map-payload:startingAfter]"/>
 <!-- END_INCLUDE(stripe:list-all-application-fee-refunds) -->
+<!-- BEGIN_INCLUDE(stripe:create-bitcoin-receiver) -->
+	<stripe:create-bitcoin-receiver config-ref="" amount="#[map-payload:amount]" currency="#[map-payload:currency]" email="#[map-payload:email]" description="#[map-payload:description]" refundMispayments="#[map-payload:refundMispayments]">
+		<stripe:metadata ref="#[map-payload:metadata]"/>
+	</stripe:create-bitcoin-receiver>
+<!-- END_INCLUDE(stripe:create-bitcoin-receiver) -->
+<!-- BEGIN_INCLUDE(stripe:retrieve-bitcoin-receiver) -->
+	<stripe:retrieve-bitcoin-receiver config-ref="" id="#[map-payload:id]"/>
+<!-- END_INCLUDE(stripe:retrieve-bitcoin-receiver) -->
+<!-- BEGIN_INCLUDE(stripe:list-all-bitcoin-receivers) -->
+	<stripe:list-all-bitcoin-receivers config-ref="" active="#[map-payload:active]" endingBefore="#[map-payload:endingBefore]" filled="#[map-payload:filled]" limit="#[map-payload:limit]" startingAfter="#[map-payload:startingAfter]" uncapturedFunds="#[map-payload:uncapturedFunds]"/>
+<!-- END_INCLUDE(stripe:list-all-bitcoin-receivers) -->

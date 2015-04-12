@@ -1,71 +1,21 @@
+/**
+ * (c) 2003-2015 MuleSoft, Inc. The software in this package is published under the terms of the CPAL v1.0 license,
+ * a copy of which has been included with this distribution in the LICENSE.md file.
+ */
+
 
 package com.wsl.modules.stripe.automation.testrunners;
 
 import com.wsl.modules.stripe.automation.SmokeTests;
-import com.wsl.modules.stripe.automation.testcases.CancelSubscriptionTestCases;
-import com.wsl.modules.stripe.automation.testcases.CaptureChargeTestCases;
-import com.wsl.modules.stripe.automation.testcases.CreateAccountTestCases;
-import com.wsl.modules.stripe.automation.testcases.CreateApplicationFeeRefundTestCases;
-import com.wsl.modules.stripe.automation.testcases.CreateBankAccountTokenTestCases;
-import com.wsl.modules.stripe.automation.testcases.CreateCardTestCases;
-import com.wsl.modules.stripe.automation.testcases.CreateCardTokenTestCases;
-import com.wsl.modules.stripe.automation.testcases.CreateChargeTestCases;
-import com.wsl.modules.stripe.automation.testcases.CreateCouponTestCases;
-import com.wsl.modules.stripe.automation.testcases.CreateCustomerTestCases;
-import com.wsl.modules.stripe.automation.testcases.CreateInvoiceTestCases;
-import com.wsl.modules.stripe.automation.testcases.CreatePlanTestCases;
-import com.wsl.modules.stripe.automation.testcases.CreateRefundTestCases;
-import com.wsl.modules.stripe.automation.testcases.CreateSubscriptionTestCases;
-import com.wsl.modules.stripe.automation.testcases.DeleteCardTestCases;
-import com.wsl.modules.stripe.automation.testcases.DeleteCouponTestCases;
-import com.wsl.modules.stripe.automation.testcases.DeleteCustomerTestCases;
-import com.wsl.modules.stripe.automation.testcases.DeletePlanTestCases;
-import com.wsl.modules.stripe.automation.testcases.ListActiveSubscriptionsTestCases;
-import com.wsl.modules.stripe.automation.testcases.ListAllApplicationFeeRefundsTestCases;
-import com.wsl.modules.stripe.automation.testcases.ListAllApplicationFeesTestCases;
-import com.wsl.modules.stripe.automation.testcases.ListAllBalanceHistoryTestCases;
-import com.wsl.modules.stripe.automation.testcases.ListAllChargesTestCases;
-import com.wsl.modules.stripe.automation.testcases.ListAllCouponsTestCases;
-import com.wsl.modules.stripe.automation.testcases.ListAllCustomerCardsTestCases;
-import com.wsl.modules.stripe.automation.testcases.ListAllCustomersTestCases;
-import com.wsl.modules.stripe.automation.testcases.ListAllEventsTestCases;
-import com.wsl.modules.stripe.automation.testcases.ListAllPlansTestCases;
-import com.wsl.modules.stripe.automation.testcases.ListAllRefundsTestCases;
-import com.wsl.modules.stripe.automation.testcases.PayInvoiceTestCases;
-import com.wsl.modules.stripe.automation.testcases.RetrieveAccountTestCases;
-import com.wsl.modules.stripe.automation.testcases.RetrieveAllInvoicesTestCases;
-import com.wsl.modules.stripe.automation.testcases.RetrieveApplicationFeeRefundTestCases;
-import com.wsl.modules.stripe.automation.testcases.RetrieveApplicationFeeTestCases;
-import com.wsl.modules.stripe.automation.testcases.RetrieveBalanceTestCases;
-import com.wsl.modules.stripe.automation.testcases.RetrieveBalanceTransactionTestCases;
-import com.wsl.modules.stripe.automation.testcases.RetrieveCardTestCases;
-import com.wsl.modules.stripe.automation.testcases.RetrieveChargeTestCases;
-import com.wsl.modules.stripe.automation.testcases.RetrieveCouponTestCases;
-import com.wsl.modules.stripe.automation.testcases.RetrieveCustomerTestCases;
-import com.wsl.modules.stripe.automation.testcases.RetrieveEventTestCases;
-import com.wsl.modules.stripe.automation.testcases.RetrieveInvoiceLineItemsTestCases;
-import com.wsl.modules.stripe.automation.testcases.RetrieveInvoiceTestCases;
-import com.wsl.modules.stripe.automation.testcases.RetrievePlanTestCases;
-import com.wsl.modules.stripe.automation.testcases.RetrieveRefundTestCases;
-import com.wsl.modules.stripe.automation.testcases.RetrieveSubscriptionTestCases;
-import com.wsl.modules.stripe.automation.testcases.RetrieveTokenTestCases;
-import com.wsl.modules.stripe.automation.testcases.RetrieveUpcomingInvoiceTestCases;
-import com.wsl.modules.stripe.automation.testcases.UpdateAccountTestCases;
-import com.wsl.modules.stripe.automation.testcases.UpdateApplicationFeeRefundTestCases;
-import com.wsl.modules.stripe.automation.testcases.UpdateCardTestCases;
-import com.wsl.modules.stripe.automation.testcases.UpdateChargeTestCases;
-import com.wsl.modules.stripe.automation.testcases.UpdateCouponTestCases;
-import com.wsl.modules.stripe.automation.testcases.UpdateCustomerTestCases;
-import com.wsl.modules.stripe.automation.testcases.UpdateInvoiceTestCases;
-import com.wsl.modules.stripe.automation.testcases.UpdatePlanTestCases;
-import com.wsl.modules.stripe.automation.testcases.UpdateRefundTestCases;
-import com.wsl.modules.stripe.automation.testcases.UpdateSubscriptionTestCases;
-
+import com.wsl.modules.stripe.automation.testcases.*;
 import org.junit.runner.RunWith;
 
 @RunWith(org.junit.experimental.categories.Categories.class)
 @org.junit.experimental.categories.Categories.IncludeCategory(SmokeTests.class)
 @org.junit.runners.Suite.SuiteClasses({
+    CreateBitcoinReceiverTestCases.class,
+    RetrieveBitcoinReceiverTestCases.class,
+    ListAllBitcoinReceiversTestCases.class,
     CreateApplicationFeeRefundTestCases.class,
     RetrieveApplicationFeeRefundTestCases.class,
     UpdateApplicationFeeRefundTestCases.class,
