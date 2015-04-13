@@ -5,6 +5,7 @@
 
 package com.wsl.modules.stripe;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -44,8 +45,11 @@ import com.stripe.model.DeletedCard;
 import com.stripe.model.DeletedStripeObject;
 import com.stripe.model.Event;
 import com.stripe.model.EventCollection;
+import com.stripe.model.Fee;
 import com.stripe.model.FeeRefund;
 import com.stripe.model.FeeRefundCollection;
+import com.stripe.model.FileUpload;
+import com.stripe.model.FileUploadCollection;
 import com.stripe.model.Invoice;
 import com.stripe.model.InvoiceCollection;
 import com.stripe.model.InvoiceLineItemCollection;
@@ -58,6 +62,7 @@ import com.stripe.model.Subscription;
 import com.stripe.model.Token;
 import com.wsl.modules.stripe.complextypes.Acceptance;
 import com.wsl.modules.stripe.complextypes.BankAccount;
+import com.wsl.modules.stripe.complextypes.FilePurpose;
 import com.wsl.modules.stripe.complextypes.LegalEntity;
 import com.wsl.modules.stripe.complextypes.Source;
 import com.wsl.modules.stripe.complextypes.TransferSchedule;
@@ -2021,6 +2026,33 @@ public class StripeConnector {
 			throw new StripeConnectorException("Could not list Bitcoin Receivers", e);
 		}
     }
+    
+    /**
+     * Create a file upload
+     * To upload a file to Stripe, you'll need to send a request of type multipart/form-data. The request should contain the file you would like to upload, as well as the parameters for creating a file.
+	 * 
+     * {@sample.xml ../../../doc/stripe-connector.xml.sample stripe:create-file-upload}
+     * 
+     * @param file A file to upload. The file should follow the specifications of RFC 2388 (which defines file transfers for the multipart/form-data protocol).
+     * @param purpose The purpose of the uploaded file. Possible values are identity_document, dispute_evidence.
+     * @return Returns the file object.
+     * @throws StripeConnectorException when there is a problem with the Connector
+     */
+    @Processor
+    @ReconnectOn(exceptions = { Exception.class })
+    public FileUpload createFileUpload(String file, FilePurpose purpose)
+    		throws StripeConnectorException {
+    	Map<String, Object> params = new HashMap<String, Object>();
+    	params.put("file", new File(file));
+    	params.put("purpose", purpose.toString());
+    	try {
+    		return FileUpload.create(params);
+		} catch (AuthenticationException | InvalidRequestException
+				| APIConnectionException | CardException | APIException e) {
+			throw new StripeConnectorException("Could not create the File Upload", e);
+		}
+    }
+    
     
     public ConnectorConnectionStrategy getConnectionStrategy() {
         return connectionStrategy;

@@ -254,3 +254,7 @@
 <!-- BEGIN_INCLUDE(stripe:list-all-bitcoin-receivers) -->
 	<stripe:list-all-bitcoin-receivers config-ref="" active="#[map-payload:active]" endingBefore="#[map-payload:endingBefore]" filled="#[map-payload:filled]" limit="#[map-payload:limit]" startingAfter="#[map-payload:startingAfter]" uncapturedFunds="#[map-payload:uncapturedFunds]"/>
 <!-- END_INCLUDE(stripe:list-all-bitcoin-receivers) -->
+<!-- BEGIN_INCLUDE(stripe:create-file-upload) -->
+	<stripe:create-file-upload config-ref="" file="#[map-payload:file]" purpose="#[map-payload:purpose]"/>
+<!-- END_INCLUDE(stripe:create-file-upload) -->
+

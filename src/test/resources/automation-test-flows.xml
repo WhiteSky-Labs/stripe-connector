@@ -242,7 +242,7 @@
 	<stripe:list-all-application-fee-refunds config-ref="Stripe" endingBefore="#[flowVars.endingBefore]" id="#[flowVars.id]" limit="#[flowVars.limit]" startingAfter="#[flowVars.startingAfter]"/>
 </flow>
 <flow doc:name="CreateBitcoinReceiver" name="create-bitcoin-receiver">
-	<stripe:create-bitcoin-receiver amount="#[flowVars.amount]" config-ref="Stripe" email="#[flowVars.email]" currency="#[flowVars.currency]" description="#[flowVars.description]" refundMispayments="#[flowVars.refundMispayments]">
+	<stripe:create-bitcoin-receiver amount="#[flowVars.amount]" config-ref="Stripe" currency="#[flowVars.currency]" description="#[flowVars.description]" email="#[flowVars.email]" refundMispayments="#[flowVars.refundMispayments]">
 		<stripe:metadata ref="#[flowVars.metadata]"/>
 	</stripe:create-bitcoin-receiver>
 </flow>
@@ -250,6 +250,9 @@
 	<stripe:retrieve-bitcoin-receiver config-ref="Stripe" id="#[flowVars.id]"/>
 </flow>
     <flow doc:name="ListAllBitcoinReceivers" name="list-all-bitcoin-receivers">
-	<stripe:list-all-bitcoin-receivers config-ref="Stripe" active="#[flowVars.active]" endingBefore="#[flowVars.endingBefore]" filled="#[flowVars.filled]" limit="#[flowVars.limit]" startingAfter="#[flowVars.startingAfter]" uncapturedFunds="#[flowVars.uncapturedFunds]"/>
+	<stripe:list-all-bitcoin-receivers active="#[flowVars.active]" config-ref="Stripe" endingBefore="#[flowVars.endingBefore]" filled="#[flowVars.filled]" limit="#[flowVars.limit]" startingAfter="#[flowVars.startingAfter]" uncapturedFunds="#[flowVars.uncapturedFunds]"/>
+</flow>
+<flow doc:name="CreateFileUpload" name="create-file-upload">
+	<stripe:create-file-upload config-ref="Stripe" file="#[flowVars.file]" purpose="#[flowVars.purpose]"/>
 </flow>
 </mule>
