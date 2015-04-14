@@ -5,10 +5,7 @@
 
 package com.wsl.modules.stripe.complextypes;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Represents a Legal Entity in the Stripe API
@@ -177,13 +174,13 @@ public class LegalEntity {
 	 * @return the additionalOwners
 	 */
 	public Owner[] getAdditionalOwners() {
-		return additionalOwners;
+		return this.additionalOwners.clone();
 	}
 	/**
 	 * @param additionalOwners the additionalOwners to set
 	 */
 	public void setAdditionalOwners(Owner[] additionalOwners) {
-		this.additionalOwners = additionalOwners;
+		this.additionalOwners = additionalOwners != null ? additionalOwners.clone() : null;
 	}
 	/**
 	 * Turns the object into a Stripe API-compliant dictionary with the correct values.

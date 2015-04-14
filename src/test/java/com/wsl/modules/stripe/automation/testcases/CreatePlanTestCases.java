@@ -9,24 +9,20 @@ package com.wsl.modules.stripe.automation.testcases;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.stripe.model.Customer;
-import com.stripe.model.Plan;
-import com.wsl.modules.stripe.automation.RegressionTests;
-import com.wsl.modules.stripe.automation.SmokeTests;
-import com.wsl.modules.stripe.automation.StripeTestParent;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
-import org.mule.api.MessagingException;
-import org.mule.modules.tests.ConnectorTestUtils;
+
+import com.stripe.model.Plan;
+import com.wsl.modules.stripe.automation.RegressionTests;
+import com.wsl.modules.stripe.automation.SmokeTests;
+import com.wsl.modules.stripe.automation.StripeTestParent;
 
 public class CreatePlanTestCases
     extends StripeTestParent

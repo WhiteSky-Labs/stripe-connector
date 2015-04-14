@@ -5,25 +5,15 @@
 
 package com.wsl.modules.stripe;
 
-import java.io.File;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import org.mule.api.annotations.ConnectionStrategy;
 import org.mule.api.annotations.Connector;
-import org.mule.api.annotations.Configurable;
 import org.mule.api.annotations.Processor;
 import org.mule.api.annotations.ReconnectOn;
 import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.Optional;
 
-import com.stripe.exception.APIConnectionException;
-import com.stripe.exception.APIException;
-import com.stripe.exception.AuthenticationException;
-import com.stripe.exception.CardException;
-import com.stripe.exception.InvalidRequestException;
 import com.stripe.model.Account;
 import com.stripe.model.ApplicationFee;
 import com.stripe.model.ApplicationFeeCollection;
@@ -42,24 +32,35 @@ import com.stripe.model.Customer;
 import com.stripe.model.CustomerCollection;
 import com.stripe.model.CustomerSubscriptionCollection;
 import com.stripe.model.DeletedCard;
-import com.stripe.model.DeletedStripeObject;
 import com.stripe.model.Event;
 import com.stripe.model.EventCollection;
-import com.stripe.model.Fee;
 import com.stripe.model.FeeRefund;
 import com.stripe.model.FeeRefundCollection;
 import com.stripe.model.FileUpload;
-import com.stripe.model.FileUploadCollection;
 import com.stripe.model.Invoice;
 import com.stripe.model.InvoiceCollection;
 import com.stripe.model.InvoiceLineItemCollection;
-import com.stripe.model.PaymentSource;
 import com.stripe.model.PaymentSourceCollection;
 import com.stripe.model.Plan;
 import com.stripe.model.PlanCollection;
 import com.stripe.model.Refund;
 import com.stripe.model.Subscription;
 import com.stripe.model.Token;
+import com.wsl.modules.stripe.client.StripeAccountClient;
+import com.wsl.modules.stripe.client.StripeApplicationFeeClient;
+import com.wsl.modules.stripe.client.StripeBalanceClient;
+import com.wsl.modules.stripe.client.StripeBitcoinReceiverClient;
+import com.wsl.modules.stripe.client.StripeCardClient;
+import com.wsl.modules.stripe.client.StripeChargeClient;
+import com.wsl.modules.stripe.client.StripeCouponClient;
+import com.wsl.modules.stripe.client.StripeCustomerClient;
+import com.wsl.modules.stripe.client.StripeEventClient;
+import com.wsl.modules.stripe.client.StripeFileUploadClient;
+import com.wsl.modules.stripe.client.StripeInvoiceClient;
+import com.wsl.modules.stripe.client.StripePlanClient;
+import com.wsl.modules.stripe.client.StripeRefundClient;
+import com.wsl.modules.stripe.client.StripeSubscriptionClient;
+import com.wsl.modules.stripe.client.StripeTokenClient;
 import com.wsl.modules.stripe.complextypes.Acceptance;
 import com.wsl.modules.stripe.complextypes.BankAccount;
 import com.wsl.modules.stripe.complextypes.FilePurpose;
@@ -80,6 +81,22 @@ public class StripeConnector {
     @ConnectionStrategy
     ConnectorConnectionStrategy connectionStrategy;
     
+    StripeCustomerClient customerClient = new StripeCustomerClient();
+    StripePlanClient planClient = new StripePlanClient();
+    StripeCouponClient couponClient = new StripeCouponClient();
+    StripeBalanceClient balanceClient = new StripeBalanceClient();
+    StripeCardClient cardClient = new StripeCardClient();
+    StripeChargeClient chargeClient = new StripeChargeClient();
+    StripeSubscriptionClient subClient = new StripeSubscriptionClient();
+    StripeRefundClient refundClient = new StripeRefundClient();
+    StripeInvoiceClient invoiceClient = new StripeInvoiceClient();
+    StripeApplicationFeeClient feeClient = new StripeApplicationFeeClient();
+    StripeAccountClient accountClient = new StripeAccountClient();
+    StripeTokenClient tokenClient = new StripeTokenClient();
+    StripeEventClient eventClient = new StripeEventClient();
+    StripeBitcoinReceiverClient bitcoinClient = new StripeBitcoinReceiverClient();
+    StripeFileUploadClient fileClient = new StripeFileUploadClient();
+    
     /**
      * Create a Customer
      *
@@ -97,21 +114,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public Customer createCustomer(@Default("0") int accountBalance, @Optional String couponCode, @Optional String description, @Optional String email, @Optional Map<String, Object> metadata) 
     		throws StripeConnectorException {
-    	Map<String, Object> customerParams = new HashMap<String, Object>();
-    	if (accountBalance > 0) {
-    		customerParams.put("account_balance", accountBalance);
-    	}
-		customerParams.put("coupon", couponCode);
-		customerParams.put("description", description);
-		customerParams.put("email", email);	
-		customerParams.put("metadata", metadata);
-		customerParams = removeOptionals(customerParams);
-    	try {
-			return Customer.create(customerParams);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not create a customer", e);
-		}
+    	return customerClient.createCustomer(accountBalance, couponCode, description, email, metadata);    	
     }
 
     /**
@@ -127,12 +130,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public Customer retrieveCustomer(String id) 
     		throws StripeConnectorException {
-    	try {
-			return Customer.retrieve(id);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not retrieve the customer", e);
-		}
+    	return customerClient.retrieveCustomer(id);
     }
     
     /**
@@ -152,25 +150,9 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public Customer updateCustomer(String id, @Default("0") final int accountBalance, @Optional final String couponCode, @Optional final String description, @Optional final String email, @Optional final Map<String, Object> metadata, @Optional final String sourceToken) //NOSONAR 
+    public Customer updateCustomer(String id, @Default("0") final int accountBalance, @Optional final String couponCode, @Optional final String description, @Optional final String email, @Optional final Map<String, Object> metadata, @Optional final String sourceToken)  
     		throws StripeConnectorException {
-    	Map<String, Object> customerParams = new HashMap<String, Object>();
-    	if (accountBalance > 0) {
-    		customerParams.put("account_balance", accountBalance);
-    	}
-		customerParams.put("coupon", couponCode);
-		customerParams.put("description", description);
-		customerParams.put("email", email);	
-		customerParams.put("metadata", metadata);
-		customerParams.put("source", sourceToken);
-		customerParams = removeOptionals(customerParams);
-    	try {
-    		Customer cust = retrieveCustomer(id);
-			return cust.update(customerParams);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not update the customer", e);
-		}
+    	return customerClient.updateCustomer(id, accountBalance, couponCode, description, email, metadata, sourceToken);
     }
     
     /**
@@ -186,13 +168,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public Object deleteCustomer(String id) 
     		throws StripeConnectorException {
-    	try {
-			Customer cust = Customer.retrieve(id);
-			return cust.delete();
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not delete the customer", e);
-		}
+    	return customerClient.deleteCustomer(id);
     }
     
 
@@ -210,19 +186,7 @@ public class StripeConnector {
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
     public CustomerCollection listAllCustomers(@Default("0") int limit, @Optional String startingAfter, @Optional String endingBefore) throws StripeConnectorException{
-    	Map<String, Object> customerParams = new HashMap<String, Object>();
-    	if (limit > 0){
-    		customerParams.put("limit", limit);
-    	}
-    	customerParams.put("starting_after", startingAfter);
-    	customerParams.put("ending_before", endingBefore);
-    	customerParams = removeOptionals(customerParams);
-    	try {
-			return Customer.all(customerParams);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not create a customer", e);
-		}
+    	return customerClient.listAllCustomers(limit, startingAfter, endingBefore);
     }
 
     /**
@@ -245,25 +209,7 @@ public class StripeConnector {
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
     public Plan createPlan(String id, int amount, String currency, String interval, @Default("1") int intervalCount, String planName, @Default("0") int trialPeriodDays, @Optional String statementDescriptor, @Optional Map<String, Object> metadata) throws StripeConnectorException{
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	if (trialPeriodDays > 0){
-    		params.put("trial_period_days", trialPeriodDays);
-    	}
-    	params.put("id", id);
-    	params.put("amount", amount);
-    	params.put("currency", currency);
-    	params.put("interval", interval);
-    	params.put("interval_count", intervalCount);
-    	params.put("name", planName);
-    	params.put("statement_descriptor", statementDescriptor);
-    	params.put("metadata", metadata);
-    	params = removeOptionals(params);
-    	try {
-			return Plan.create(params);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not create a plan", e);
-		}
+    	return planClient.createPlan(id, amount, currency, interval, intervalCount, planName, trialPeriodDays, statementDescriptor, metadata);
     }
     
     /**
@@ -278,12 +224,7 @@ public class StripeConnector {
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
     public Plan retrievePlan(String id) throws StripeConnectorException{
-    	try {
-			return Plan.retrieve(id);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not retrieve the plan", e);
-		}
+    	return planClient.retrievePlan(id);
     }
     
     /**
@@ -301,18 +242,7 @@ public class StripeConnector {
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
     public Plan updatePlan(String id, @Optional String planName, @Optional String statementDescriptor, @Optional Map<String, Object> metadata) throws StripeConnectorException{
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	params.put("name", planName);
-    	params.put("statement_descriptor", statementDescriptor);
-    	params.put("metadata", metadata);
-    	params = removeOptionals(params);
-    	try {
-			Plan plan = Plan.retrieve(id);
-			return plan.update(params);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not create a plan", e);
-		}
+    	return planClient.updatePlan(id, planName, statementDescriptor, metadata);
     }
     
     /**
@@ -327,13 +257,7 @@ public class StripeConnector {
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
     public Object deletePlan(String id) throws StripeConnectorException{
-    	try {
-    		Plan plan = Plan.retrieve(id);
-			return plan.delete();
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not retrieve the plan", e);
-		}
+    	return planClient.deletePlan(id);
     }
     
     /**
@@ -352,24 +276,7 @@ public class StripeConnector {
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
     public PlanCollection listAllPlans(@Optional String createdTimestamp, @Optional Map<String, String> created, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter) throws StripeConnectorException{
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	if (limit > 0){
-    		params.put("limit", limit);
-    	}
-    	if (createdTimestamp != null){
-    		params.put("created", createdTimestamp);
-    	} else {
-    		params.put("created", created);
-    	}
-    	params.put("ending_before", endingBefore);
-    	params.put("starting_after", startingAfter);
-    	params = removeOptionals(params);
-    	try {
-    		return Plan.all(params);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not list plans", e);
-		}
+    	return planClient.listAllPlans(createdTimestamp, created, endingBefore, limit, startingAfter);
     }
     
     /**
@@ -393,23 +300,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public Coupon createCoupon(@Optional String id, String duration, @Default("0") int amountOff, @Optional String currency, @Default("0") int durationInMonths, @Default("0") int maxRedemptions, @Default("0") int percentOff, @Optional String redeemBy, @Optional Map<String, Object> metadata) 
     		throws StripeConnectorException {
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	params.put("id", id);
-    	params.put("duration", duration);
-    	params.put("amount_off", amountOff);
-    	params.put("currency", currency);
-    	params.put("duration_in_months", durationInMonths);
-    	params.put("max_redemptions", maxRedemptions);
-    	params.put("metadata", metadata);
-    	params.put("percent_off", percentOff);
-    	params.put("redeem_by", redeemBy);
-		params = removeOptionalsAndZeroes(params);
-    	try {
-			return Coupon.create(params);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not create the coupon", e);
-		}
+    	return couponClient.createCoupon(id, duration, amountOff, currency, durationInMonths, maxRedemptions, percentOff, redeemBy, metadata);
     }
     
     /**
@@ -425,12 +316,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public Coupon retrieveCoupon(String id) 
     		throws StripeConnectorException {
-    	try {
-			return Coupon.retrieve(id);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not retrieve the coupon", e);
-		}
+    	return couponClient.retrieveCoupon(id);
     }
     
     /**
@@ -448,15 +334,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public Coupon updateCoupon(String id, @Optional Map<String, Object> metadata) 
     		throws StripeConnectorException {
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	params.put("metadata", metadata);
-    	try {
-    		Coupon coupon = Coupon.retrieve(id);
-			return coupon.update(params);			
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not update the coupon", e);
-		}
+    	return couponClient.updateCoupon(id, metadata);
     }
     
     /**
@@ -472,13 +350,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public Object deleteCoupon(String id) 
     		throws StripeConnectorException {
-    	try {
-    		Coupon coupon = Coupon.retrieve(id);
-			return coupon.delete();			
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not delete the coupon", e);
-		}
+    	return couponClient.deleteCoupon(id);
     }
     
     /**
@@ -498,24 +370,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public CouponCollection listAllCoupons(@Optional String createdTimestamp, @Optional Map<String, String> created, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter) 
     		throws StripeConnectorException {
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	if (limit != 0){
-    		params.put("limit", limit);
-    	}
-    	if (createdTimestamp != null && !createdTimestamp.isEmpty()){
-    		params.put("created", createdTimestamp);
-    	} else {
-    		params.put("created", created);
-    	}
-    	params.put("ending_before", endingBefore);
-    	params.put("starting_after", startingAfter);
-    	params = removeOptionals(params);
-    	try {
-    		return Coupon.all(params);			
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not list coupons", e);
-		}
+    	return couponClient.listAllCoupons(createdTimestamp, created, endingBefore, limit, startingAfter);
     }
     
     /**
@@ -530,12 +385,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public Balance retrieveBalance()    
     		throws StripeConnectorException {
-    	try {
-    		return Balance.retrieve();			
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not retrieve the balance", e);
-		}
+    	return balanceClient.retrieveBalance();
     }
     
     /**
@@ -551,12 +401,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public BalanceTransaction retrieveBalanceTransaction(String id) 
     		throws StripeConnectorException {
-    	try {
-    		return BalanceTransaction.retrieve(id);			
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not retrieve the Balance Transaction", e);
-		}
+    	return balanceClient.retrieveBalanceTransaction(id);
     }
     
     /**
@@ -582,31 +427,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public BalanceTransactionCollection listAllBalanceHistory(@Optional String availableOnTimestamp, @Optional Map<String, String> availableOn, @Optional String createdTimestamp, @Optional Map<String, String> created, @Optional String currency, @Optional String endingBefore, @Default("0") int limit, @Optional String sourceId, @Optional String startingAfter, @Optional String transfer, @Optional String type)    
     		throws StripeConnectorException {
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	params.put("limit", limit);
-    	if (availableOnTimestamp != null && !availableOnTimestamp.isEmpty()){
-    		params.put("available_on", availableOnTimestamp);
-    	} else {
-    		params.put("available_on", availableOn);    		
-    	}
-    	if (createdTimestamp != null && !createdTimestamp.isEmpty()){
-    		params.put("created", createdTimestamp);
-    	} else {
-    		params.put("created", created);    		
-    	}
-    	params.put("currency", currency);
-    	params.put("ending_before", endingBefore);
-    	params.put("source", sourceId);
-    	params.put("startingAfter", startingAfter);
-    	params.put("transfer", transfer);
-    	params.put("type", type);    	
-    	params = removeOptionalsAndZeroes(params);
-    	try {
-    		return BalanceTransaction.all(params);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not list the balance history", e);
-		}
+    	return balanceClient.listAllBalanceHistory(availableOnTimestamp, availableOn, createdTimestamp, created, currency, endingBefore, limit, sourceId, startingAfter, transfer, type);
     }
     
     /**
@@ -626,22 +447,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public Card createCard(String ownerId, @Optional String sourceToken, @Optional Source source)    
     		throws StripeConnectorException {
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	
-    	if (sourceToken != null && !sourceToken.isEmpty()){
-    		params.put("source", sourceToken);
-    	} else if (source != null){
-    		Map<String, Object> sourceDict = source.toDictionary();
-    		sourceDict = removeOptionals(sourceDict);
-    		params.put("source", sourceDict);    		
-    	}
-    	try {
-			Customer customer = Customer.retrieve(ownerId);
-			return customer.createCard(params);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not create the Card", e);
-		}
+    	return cardClient.createCard(ownerId, sourceToken, source);
     }
     
     /**
@@ -660,18 +466,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public Card retrieveCard(String ownerId, String id)    
     		throws StripeConnectorException {
-    	try {
-			Customer customer = Customer.retrieve(ownerId);
-			PaymentSource source = customer.getSources().retrieve(id);
-			if (source.getObject().equals("card")){
-				return (Card) source; 
-			} else {
-				throw new CardException("The source was not a card", "001", id, new Exception("Source was not a card type"));
-			}		
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not retrieve the Card", e);
-		}
+    	return cardClient.retrieveCard(ownerId, id);
     }
     
     /**
@@ -701,26 +496,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public Card updateCard(String ownerId, String id, @Optional String addressCity, @Optional String addressCountry, @Optional String addressLine1, @Optional String addressLine2, @Optional String addressState, @Optional String addressZip, @Optional String expMonth, @Optional String expYear, @Optional Map<String, Object> metadata, @Optional String cardName)    
     		throws StripeConnectorException {
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	params.put("address_city", addressCity);
-    	params.put("address_country", addressCountry);
-    	params.put("address_line1", addressLine1);
-    	params.put("address_line2", addressLine2);
-    	params.put("address_state", addressState);
-    	params.put("address_zip", addressZip);
-    	params.put("exp_month", expMonth);
-    	params.put("exp_year", expYear);
-    	params.put("metadata", metadata);
-    	params.put("name", cardName);
-    	params = removeOptionals(params);
-    	try {
-			Customer customer = Customer.retrieve(ownerId);
-			PaymentSource source = customer.getSources().retrieve(id);
-			return (Card) source.update(params);		
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not update the Card", e);
-		}
+    	return cardClient.updateCard(ownerId, id, addressCity, addressCountry, addressLine1, addressLine2, addressState, addressZip, expMonth, expYear, metadata, cardName);
     }
     
     /**
@@ -737,19 +513,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public DeletedCard deleteCard(String ownerId, String id)    
     		throws StripeConnectorException {
-    	try {
-			Customer customer = Customer.retrieve(ownerId);
-			for(PaymentSource source : customer.getSources().getData()){
-			  if(source.getId().equals(id)){
-			    return (DeletedCard) source.delete();
-			  }
-			}
-			// if we get to here, the card wasn't found - throw an exception
-    		throw new CardException("The card wasn't found", "001", id, new Exception("Card id was not found"));
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not delete the Card", e);
-		}
+    	return cardClient.deleteCard(ownerId, id);
     }
     
     /**
@@ -770,18 +534,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public PaymentSourceCollection listAllCustomerCards(String ownerId, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter)    
     		throws StripeConnectorException {
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	params.put("limit", limit);
-    	params.put("ending_before", endingBefore);
-    	params.put("startingAfter", startingAfter);
-    	params = removeOptionalsAndZeroes(params);
-    	try {
-    		Customer customer = Customer.retrieve(ownerId);
-    		return customer.getSources().all(params);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not list the customer cards", e);
-		}
+    	return cardClient.listAllCustomerCards(ownerId, endingBefore, limit, startingAfter);
     }
     
     /**
@@ -809,32 +562,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public Charge createCharge(int amount, String currency, @Optional String customerId, @Optional Source source, @Optional String description, @Optional Map<String, Object> metadata, @Default("true") boolean capture, @Optional String statementDescriptor, @Optional String receiptEmail, @Optional String destination, @Default("0") int applicationFee, @Optional Map<String, Object> shipping)    
     		throws StripeConnectorException {
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	
-    	if (source != null){
-    		Map<String, Object> sourceDict = source.toDictionary();
-    		sourceDict = removeOptionals(sourceDict);
-    		params.put("source", sourceDict);    		
-    	}
-	    params.put("amount", amount);
-		params.put("currency", currency);
-		params.put("customer", customerId);
-		params.put("description", description);
-		params.put("metadata", metadata);
-		params.put("capture", capture);
-		params.put("statement_descriptor", statementDescriptor);
-		params.put("receipt_email", receiptEmail);
-		params.put("destination", destination);
-		params.put("application_fee", applicationFee);
-		params.put("shipping", shipping);
-		params = removeOptionalsAndZeroes(params);
-		
-    	try {
-			return Charge.create(params);			
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not create the Charge", e);
-		}
+    	return chargeClient.createCharge(amount, currency, customerId, source, description, metadata, capture, statementDescriptor, receiptEmail, destination, applicationFee, shipping);
     }
     
     /**
@@ -850,12 +578,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public Charge retrieveCharge(String id)    
     		throws StripeConnectorException {
-    	try {
-			return Charge.retrieve(id);			
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not retrieve the Charge", e);
-		}
+    	return chargeClient.retrieveCharge(id);
     }
     
     /**
@@ -877,26 +600,11 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public Charge updateCharge(String id, @Optional String description, @Optional Map<String, Object> metadata, @Optional String receiptEmail, @Optional Map<String, Object> fraudDetails)    
     		throws StripeConnectorException {
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	params.put("description", description);
-		params.put("metadata", metadata);
-		params.put("receipt_email", receiptEmail);
-		params.put("fraud_details", fraudDetails);
-		params = removeOptionals(params);
-		
-    	try {
-    		Charge charge = Charge.retrieve(id);
-			return charge.update(params);	
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not update the Charge", e);
-		}
+    	return chargeClient.updateCharge(id, description, metadata, receiptEmail, fraudDetails);
     }
     
     /**
      * Capture a Charge
-     * 
-     * {@sample.xml ../../../doc/stripe-connector.xml.sample stripe:capture-charge}
      * 
      * @param id The id of the charge to capture
      * @param amount The amount to capture, which must be less than or equal to the original amount. Any additional amount will be automatically refunded.
@@ -910,21 +618,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public Charge captureCharge(String id, @Default("0") int amount, @Default("0") int applicationFee, @Optional String statementDescriptor, @Optional String receiptEmail)    
     		throws StripeConnectorException {
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	
-    	params.put("amount", amount);
-		params.put("statement_descriptor", statementDescriptor);
-		params.put("receipt_email", receiptEmail);
-		params.put("application_fee", applicationFee);
-		params = removeOptionalsAndZeroes(params);
-		
-    	try {
-			Charge charge = Charge.retrieve(id);
-			return charge.capture(params);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not capture the Charge", e);
-		}
+    	return chargeClient.captureCharge(id, amount, applicationFee, statementDescriptor, receiptEmail);
     }
     
     /**
@@ -945,24 +639,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public ChargeCollection listAllCharges(@Optional String createdTimestamp, @Optional Map<String, String> created, @Optional String customer, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter)    
     		throws StripeConnectorException {
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	params.put("limit", limit);
-    	params.put("ending_before", endingBefore);
-    	params.put("startingAfter", startingAfter);
-    	params.put("customer", customer);
-    	if (createdTimestamp != null && !createdTimestamp.isEmpty()){
-    		params.put("created", createdTimestamp);
-    	} else {
-    		params.put("created", created);
-    	}
-    	
-    	params = removeOptionalsAndZeroes(params);
-    	try {
-    		return Charge.all(params);    		
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not list the charges", e);
-		}
+    	return chargeClient.listAllCharges(createdTimestamp, created, customer, endingBefore, limit, startingAfter);
     }
     
     /**
@@ -987,29 +664,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public Subscription createSubscription(String customerId, String plan, @Optional String coupon, @Optional String trialEnd, @Optional String sourceToken, @Optional Source source, @Default("1") int quantity, @Default("0") double applicationFeePercent, @Default("0") double taxPercent, @Optional Map<String, Object> metadata)    
     		throws StripeConnectorException {
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	
-    	params.put("plan", plan);
-		params.put("coupon", coupon);
-		params.put("trial_end", trialEnd);
-		if (sourceToken != null && !sourceToken.isEmpty()){
-			params.put("source", sourceToken);
-		} else if (source != null){
-			params.put("source", removeOptionals(source.toDictionary()));
-		}
-		params.put("quantity", quantity);
-		params.put("application_fee_percent", applicationFeePercent);
-		params.put("tax_percent", taxPercent);
-		params.put("metadata", metadata);
-		params = removeOptionalsAndZeroes(params);
-		
-    	try {
-			Customer customer = Customer.retrieve(customerId);
-			return customer.createSubscription(params);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not create the Subscription", e);
-		}
+    	return subClient.createSubscription(customerId, plan, coupon, trialEnd, sourceToken, source, quantity, applicationFeePercent, taxPercent, metadata);
     }
     
     /**
@@ -1026,14 +681,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public Subscription retrieveSubscription(String customerId, String subscriptionId)    
     		throws StripeConnectorException {
-    	
-    	try {
-			Customer customer = Customer.retrieve(customerId);
-			return customer.getSubscriptions().retrieve(subscriptionId);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not retrieve the Subscription", e);
-		}
+    	return subClient.retrieveSubscription(customerId, subscriptionId);
     }
     
     /**
@@ -1061,30 +709,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public Subscription updateSubscription(String customerId, String subscriptionId, String plan, @Optional String coupon, @Default("true") boolean prorate, @Optional String trialEnd, @Optional String sourceToken, @Optional Source source, @Default("1") int quantity, @Default("0") double applicationFeePercent, @Default("0") double taxPercent, @Optional Map<String, Object> metadata)    
     		throws StripeConnectorException {
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	
-    	params.put("plan", plan);
-		params.put("coupon", coupon);
-		params.put("prorate", prorate);
-		params.put("trial_end", trialEnd);
-		if (sourceToken != null && !sourceToken.isEmpty()){
-			params.put("source", sourceToken);
-		} else if (source != null){
-			params.put("source", removeOptionals(source.toDictionary()));
-		}
-		params.put("quantity", quantity);
-		params.put("application_fee_percent", applicationFeePercent);
-		params.put("tax_percent", taxPercent);
-		params.put("metadata", metadata);
-		params = removeOptionalsAndZeroes(params);
-		
-    	try {
-			Customer customer = Customer.retrieve(customerId);
-			return customer.getSubscriptions().retrieve(subscriptionId).update(params);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not update the Subscription", e);
-		}
+    	return subClient.updateSubscription(customerId, subscriptionId, plan, coupon, prorate, trialEnd, sourceToken, source, quantity, applicationFeePercent, taxPercent, metadata);
     }
     
     /**
@@ -1101,19 +726,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public Subscription cancelSubscription(String customerId, String subscriptionId)    
     		throws StripeConnectorException {
-    	
-    	try {
-			Customer customer = Customer.retrieve(customerId);
-			for(Subscription subscription : customer.getSubscriptions().getData()){
-				if(subscription.getId().equals(subscriptionId)){
-				    return subscription.cancel(null);				    
-				}
-			}
-			throw new APIException("Could not find subscription to cancel", new Exception("Subscription was not found"));
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not cancel the Subscription", e);
-		}
+    	return subClient.cancelSubscription(customerId, subscriptionId);
     }
     
     /**
@@ -1132,18 +745,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public CustomerSubscriptionCollection listActiveSubscriptions(String customerId, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter)    
     		throws StripeConnectorException {
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	params.put("limit", limit);
-    	params.put("ending_before", endingBefore);
-    	params.put("startingAfter", startingAfter);
-    	params = removeOptionalsAndZeroes(params);
-    	try {
-    		Customer customer = Customer.retrieve(customerId);
-    		return customer.getSubscriptions().all(params);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not list the Subscriptions", e);
-		}
+    	return subClient.listActiveSubscriptions(customerId, endingBefore, limit, startingAfter);
     }
     
     /**
@@ -1167,19 +769,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public Refund createRefund(String id, @Default("0") int amount, @Default("false") boolean refundApplicationFee, @Optional String reason, @Optional Map<String, Object> metadata)    
     		throws StripeConnectorException {
-    	Map<String, Object> params = new HashMap<String, Object>();
-		params.put("amount", amount);
-    	params.put("refund_application_fee", refundApplicationFee);
-    	params.put("reason", reason);
-    	params.put("metadata", metadata);
-    	params = removeOptionalsAndZeroes(params);
-    	try {
-    		Charge charge = Charge.retrieve(id);
-    		return charge.getRefunds().create(params);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not create the Refund", e);
-		}
+    	return refundClient.createRefund(id, amount, refundApplicationFee, reason, metadata);
     }
     
     /**
@@ -1197,13 +787,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public Refund retrieveRefund(String id, String chargeId)    
     		throws StripeConnectorException {
-    	try {
-    		Charge charge = Charge.retrieve(chargeId);
-    		return charge.getRefunds().retrieve(id);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not retrieve the Refund", e);
-		}
+    	return refundClient.retrieveRefund(id, chargeId);
     }
     
     /**
@@ -1223,16 +807,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public Refund updateRefund(String id, String chargeId, Map<String, Object> metadata)    
     		throws StripeConnectorException {
-    	try {
-    		Map<String, Object> params = new HashMap<String, Object>();
-    		params.put("metadata", metadata);
-    		Charge charge = Charge.retrieve(chargeId);
-    		Refund refund = charge.getRefunds().retrieve(id);
-    		return refund.update(params);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not update the Refund", e);
-		}
+    	return refundClient.updateRefund(id, chargeId, metadata);
     }
     
     /**
@@ -1252,18 +827,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public ChargeRefundCollection listAllRefunds(String chargeId, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter)    
     		throws StripeConnectorException {
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	params.put("limit", limit);
-    	params.put("ending_before", endingBefore);
-    	params.put("startingAfter", startingAfter);
-    	params = removeOptionalsAndZeroes(params);
-    	try {
-    		Charge charge = Charge.retrieve(chargeId);
-    		return charge.getRefunds().all(params);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not list the Refunds", e);
-		}
+    	return refundClient.listAllRefunds(chargeId, endingBefore, limit, startingAfter);
     }
     
     /**
@@ -1288,21 +852,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public Invoice createInvoice(String customerId, @Default("0") int applicationFee, @Optional String description, @Optional Map<String, Object> metadata, @Optional String statementDescriptor, @Optional String subscription, @Default("0.0") double taxPercent)    
     		throws StripeConnectorException {
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	params.put("customer", customerId);
-    	params.put("application_fee", applicationFee);
-    	params.put("description", description);
-    	params.put("metadata", metadata);
-    	params.put("statement_descriptor", statementDescriptor);
-    	params.put("subscription", subscription);
-    	params.put("tax_percent", taxPercent);
-    	params = removeOptionalsAndZeroes(params);
-    	try {    		
-    		return Invoice.create(params);    		
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not create the Invoice", e);
-		}
+    	return invoiceClient.createInvoice(customerId, applicationFee, description, metadata, statementDescriptor, subscription, taxPercent);
     }
     
     /**
@@ -1318,12 +868,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public Invoice retrieveInvoice(String id)    
     		throws StripeConnectorException {
-    	try {    		
-    		return Invoice.retrieve(id);    		
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not retrieve the Invoice", e);
-		}
+    	return invoiceClient.retrieveInvoice(id);
     }
     
     /**
@@ -1345,20 +890,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public InvoiceLineItemCollection retrieveInvoiceLineItems(String id, @Optional String customer, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter, @Optional String subscription)    
     		throws StripeConnectorException {
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	params.put("customer", customer);
-    	params.put("endingBefore", endingBefore);
-    	params.put("limit", limit);
-    	params.put("startingAfter", startingAfter);
-    	params.put("subscription", subscription);
-    	params = removeOptionalsAndZeroes(params);
-    	try {    		
-    		Invoice invoice = Invoice.retrieve(id);
-    		return invoice.getLines().all(params);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not retrieve the Invoice Line Items", e);
-		}
+    	return invoiceClient.retrieveInvoiceLineItems(id, customer, endingBefore, limit, startingAfter, subscription);
     }
     
     /**
@@ -1377,16 +909,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public Invoice retrieveUpcomingInvoice(String customerId, @Optional String subscription)    
     		throws StripeConnectorException {
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	params.put("customer", customerId);
-    	params.put("subscription", subscription);
-    	params = removeOptionalsAndZeroes(params);
-    	try {    		
-    		return Invoice.upcoming(params);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not retrieve the upcoming Invoice", e);
-		}
+    	return invoiceClient.retrieveUpcomingInvoice(customerId, subscription);
     }
     
     /**
@@ -1409,22 +932,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public Invoice updateInvoice(String invoiceId, @Default("0") int applicationFee, @Default("false") boolean closed, @Optional String description, @Default("false") boolean forgiven, @Optional Map<String, Object> metadata, @Optional String statementDescriptor, @Default("0.0") double taxPercent)    
     		throws StripeConnectorException {
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	params.put("application_fee", applicationFee);
-    	params.put("closed", closed);
-    	params.put("description", description);
-    	params.put("forgiven", forgiven);
-    	params.put("metadata", metadata);
-    	params.put("statement_descriptor", statementDescriptor);
-    	params.put("tax_percent", taxPercent);
-    	params = removeOptionalsAndZeroes(params);
-    	try {    		
-    		Invoice invoice = Invoice.retrieve(invoiceId);
-    		return invoice.update(params);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not update the Invoice", e);
-		}
+    	return invoiceClient.updateInvoice(invoiceId, applicationFee, closed, description, forgiven, metadata, statementDescriptor, taxPercent);
     }
     
     /**
@@ -1440,13 +948,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public Invoice payInvoice(String id)    
     		throws StripeConnectorException {
-    	try {    		
-    		Invoice invoice = Invoice.retrieve(id);
-    		return invoice.pay();
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not pay the Invoice", e);
-		}
+    	return invoiceClient.payInvoice(id);
     }
     
     /**
@@ -1467,23 +969,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public InvoiceCollection retrieveAllInvoices(@Optional String customerId, @Optional String dateTimestamp, @Optional Map<String, Object> date, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter)
     		throws StripeConnectorException {
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	params.put("customer", customerId);
-    	if (dateTimestamp != null && !dateTimestamp.isEmpty()){
-    		params.put("date", dateTimestamp);
-    	} else {
-    		params.put("date", date);
-    	}
-    	params.put("endingBefore", endingBefore);
-    	params.put("limit", limit);
-    	params.put("startingAfter", startingAfter);
-    	params = removeOptionalsAndZeroes(params);
-    	try {    		
-    		return Invoice.all(params);    		
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not retrieve Invoices", e);
-		}
+    	return invoiceClient.retrieveAllInvoices(customerId, dateTimestamp, date, endingBefore, limit, startingAfter);
     }
     
     /**
@@ -1499,12 +985,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public ApplicationFee retrieveApplicationFee(String id)
     		throws StripeConnectorException {
-    	try {    		
-    		return ApplicationFee.retrieve(id);    		
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not retrieve the Application Fee", e);
-		}
+    	return feeClient.retrieveApplicationFee(id);
     }
     
     /**
@@ -1525,23 +1006,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public ApplicationFeeCollection listAllApplicationFees(@Optional String charge, @Optional String createdTimestamp, @Optional Map<String, String> created, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter)
     		throws StripeConnectorException {
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	params.put("charge", charge);
-    	if (createdTimestamp != null && !createdTimestamp.isEmpty()){
-    		params.put("created", createdTimestamp);
-    	} else {
-    		params.put("created", created);
-    	}
-    	params.put("endingBefore", endingBefore);
-    	params.put("limit", limit);
-    	params.put("startingAfter", startingAfter);
-    	params = removeOptionalsAndZeroes(params);
-    	try {    		
-    		return ApplicationFee.all(params);    		
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not list Application Fees", e);
-		}
+    	return feeClient.listAllApplicationFees(charge, createdTimestamp, created, endingBefore, limit, startingAfter);
     }
     
     /**
@@ -1571,37 +1036,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public Account createAccount(@Default("false") boolean managed, @Optional String country, @Optional String email, @Optional String businessName, @Optional String businessUrl, @Optional String supportPhone, @Optional BankAccount bankAccount, @Default("false") boolean debitNegativeBalances, @Optional String defaultCurrency, @Optional LegalEntity legalEntity, @Optional String productDescription, @Optional String statementDescriptor, @Optional Acceptance tosAcceptance, @Optional TransferSchedule transferSchedule, @Optional Map<String, Object> metadata)
     		throws StripeConnectorException {
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	params.put("managed", managed);
-    	params.put("country", country);
-    	params.put("email", email);
-    	params.put("business_name", businessName);
-    	params.put("business_url", businessUrl);
-    	params.put("support_phone", supportPhone);
-    	if (bankAccount != null){
-    		params.put("bank_account", bankAccount.toDictionary());
-    	}
-    	params.put("debit_negative_balances", debitNegativeBalances);
-    	params.put("default_currency", defaultCurrency);
-    	if (legalEntity != null){
-    		params.put("legal_entity", legalEntity.toDictionary());
-    	}
-    	params.put("product_description", productDescription);
-    	params.put("statement_descriptor", statementDescriptor);
-    	if (tosAcceptance != null){
-    		params.put("tos_acceptance", tosAcceptance.toDictionary());
-    	}
-    	if (transferSchedule != null){
-    		params.put("transfer_schedule", transferSchedule.toDictionary());
-    	}
-    	params.put("metadata", metadata);
-    	params = removeOptionals(params);
-    	try {    		
-    		return Account.create(params);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not create the Account", e);
-		}
+    	return accountClient.createAccount(managed, country, email, businessName, businessUrl, supportPhone, bankAccount, debitNegativeBalances, defaultCurrency, legalEntity, productDescription, statementDescriptor, tosAcceptance, transferSchedule, metadata);
     }
     
     /**
@@ -1617,12 +1052,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public Account retrieveAccount(String id)
     		throws StripeConnectorException {
-    	try {    		
-    		return Account.retrieve(id);    		
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not retrieve the Account", e);
-		}
+    	return accountClient.retrieveAccount(id);
     }
     
     /**
@@ -1652,35 +1082,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public Account updateAccount(String id, @Optional String email, @Optional String businessName, @Optional String businessUrl, @Optional String supportPhone, @Optional BankAccount bankAccount, @Default("false") boolean debitNegativeBalances, @Optional String defaultCurrency, @Optional LegalEntity legalEntity, @Optional String productDescription, @Optional String statementDescriptor, @Optional Acceptance tosAcceptance, @Optional TransferSchedule transferSchedule, @Optional Map<String, Object> metadata)
     		throws StripeConnectorException {
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	params.put("email", email);
-    	params.put("business_name", businessName);
-    	params.put("business_url", businessUrl);
-    	params.put("support_phone", supportPhone);
-    	if (bankAccount != null){
-    		params.put("bank_account", bankAccount.toDictionary());
-    	}
-    	params.put("debit_negative_balances", debitNegativeBalances);
-    	params.put("default_currency", defaultCurrency);
-    	if (legalEntity != null){
-    		params.put("legal_entity", legalEntity.toDictionary());
-    	}
-    	params.put("product_description", productDescription);
-    	params.put("statement_descriptor", statementDescriptor);
-    	if (tosAcceptance != null){
-    		params.put("tos_acceptance", tosAcceptance.toDictionary());
-    	}
-    	if (transferSchedule != null){
-    		params.put("transfer_schedule", transferSchedule.toDictionary());
-    	}    	
-    	params.put("metadata", metadata);
-    	params = removeOptionals(params);
-    	try {    	    		
-    		return Account.retrieve(id).update(params);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not update the Account", e);
-		}
+    	return accountClient.updateAccount(id, email, businessName, businessUrl, supportPhone, bankAccount, debitNegativeBalances, defaultCurrency, legalEntity, productDescription, statementDescriptor, tosAcceptance, transferSchedule, metadata);
     }
     
     /**
@@ -1698,20 +1100,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public Token createCardToken(@Optional String cardId, @Optional Source card, @Optional String customer)
     		throws StripeConnectorException {
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	if (cardId != null && !cardId.isEmpty()){
-    		params.put("card", cardId);
-    	} else if (card != null) {
-    		params.put("card", card.toDictionary());
-    	}
-    	params.put("customer", customer);
-    	params = removeOptionals(params);
-    	try {    		
-    		return Token.create(params);    		
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not create a Card Token", e);
-		}
+    	return tokenClient.createCardToken(cardId, card, customer);
     }
     
     /**
@@ -1729,18 +1118,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public Token createBankAccountToken(@Optional String bankAccountId, @Optional BankAccount bankAccount)
     		throws StripeConnectorException {
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	if (bankAccountId != null && !bankAccountId.isEmpty()){
-    		params.put("bank_account", bankAccountId);
-    	} else if (bankAccount != null) {
-    		params.put("bank_account", bankAccount.toDictionary());
-    	}
-    	try {    		
-    		return Token.create(params);    		
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not create a Bank Account Token", e);
-		}
+    	return tokenClient.createBankAccountToken(bankAccountId, bankAccount);
     }
     
     /**
@@ -1757,12 +1135,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public Token retrieveToken(String id)
     		throws StripeConnectorException {
-    	try {    		
-    		return Token.retrieve(id);    		
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not retrieve the Token", e);
-		}
+    	return tokenClient.retrieveToken(id);
     }
     
     /**
@@ -1779,12 +1152,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public Event retrieveEvent(String id)
     		throws StripeConnectorException {
-    	try {    		
-    		return Event.retrieve(id);    		
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not retrieve the Event", e);
-		}
+    	return eventClient.retrieveEvent(id);
     }
     
     /**
@@ -1806,23 +1174,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public EventCollection listAllEvents(@Optional String createdTimestamp, @Optional Map<String, String> created, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter, @Optional String type)
     		throws StripeConnectorException {
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	if (createdTimestamp != null && !createdTimestamp.isEmpty()){
-    		params.put("created", createdTimestamp);    		
-    	} else {
-    		params.put("created", created);    	
-    	}
-    	params.put("ending_before", endingBefore);
-    	params.put("limit", limit);
-    	params.put("startingAfter", startingAfter);
-    	params.put("type", type);
-    	params = removeOptionalsAndZeroes(params);
-    	try {
-    		return Event.all(params);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not list Events", e);
-		}
+    	return eventClient.listAllEvents(createdTimestamp, created, endingBefore, limit, startingAfter, type);
     }
     
     /**
@@ -1842,15 +1194,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public ApplicationFee createApplicationFeeRefund(String id, @Default("0") int amount)
     		throws StripeConnectorException {
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	params.put("amount", amount);
-    	params = removeOptionalsAndZeroes(params);
-    	try {
-    		return ApplicationFee.retrieve(id).refund(params);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not refund Application Fee", e);
-		}
+    	return feeClient.createApplicationFeeRefund(id, amount);
     }
     
     /**
@@ -1869,12 +1213,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public FeeRefund retrieveApplicationFeeRefund(String id, String fee)
     		throws StripeConnectorException {
-    	try {
-    		return ApplicationFee.retrieve(fee).getRefunds().retrieve(id);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not retrieve Application Fee Refund", e);
-		}
+    	return feeClient.retrieveApplicationFeeRefund(id, fee);
     }
     
     /**
@@ -1894,15 +1233,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public FeeRefund updateApplicationFeeRefund(String id, String fee, @Optional Map<String, Object> metadata)
     		throws StripeConnectorException {
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	params.put("metadata", metadata);
-    	try {
-    		FeeRefund refund = ApplicationFee.retrieve(fee).getRefunds().retrieve(id);
-    		return refund.update(params);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not update Application Fee Refund", e);
-		}
+    	return feeClient.updateApplicationFeeRefund(id, fee, metadata);
     }
     
     /**
@@ -1922,17 +1253,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public FeeRefundCollection listAllApplicationFeeRefunds(String id, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter)
     		throws StripeConnectorException {
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	params.put("ending_before", endingBefore);
-    	params.put("limit", limit);
-    	params.put("startingAfter", startingAfter);
-    	params = removeOptionalsAndZeroes(params);
-    	try {
-    		return ApplicationFee.retrieve(id).getRefunds().all(params);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not list Application Fee Refunds", e);
-		}
+    	return feeClient.listAllApplicationFeeRefunds(id, endingBefore, limit, startingAfter);
     }
     
     /**
@@ -1954,20 +1275,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public BitcoinReceiver createBitcoinReceiver(int amount, @Default("USD") String currency, String email, @Optional String description, @Optional Map<String, Object> metadata, @Default("false") boolean refundMispayments)
     		throws StripeConnectorException {
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	params.put("amount", amount);
-    	params.put("currency", currency);
-    	params.put("email", email);
-    	params.put("description", description);
-    	params.put("metadata", metadata);
-    	params.put("refund_mispayments", refundMispayments);
-    	params = removeOptionalsAndZeroes(params);
-    	try {
-    		return BitcoinReceiver.create(params);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not create Bitcoin Receiver", e);
-		}
+    	return bitcoinClient.createBitcoinReceiver(amount, currency, email, description, metadata, refundMispayments);
     }
     
     /**
@@ -1984,12 +1292,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public BitcoinReceiver retrieveBitcoinReceiver(String id)
     		throws StripeConnectorException {
-    	try {
-    		return BitcoinReceiver.retrieve(id);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not retrieve Bitcoin Receiver", e);
-		}
+    	return bitcoinClient.retrieveBitcoinReceiver(id);
     }
     
     /**
@@ -2011,20 +1314,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public BitcoinReceiverCollection listAllBitcoinReceivers(@Optional String active, @Optional String endingBefore, @Optional String filled, @Default("0") int limit, @Optional String startingAfter, @Optional String uncapturedFunds)
     		throws StripeConnectorException {
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	params.put("active", active);
-    	params.put("ending_before", endingBefore);
-    	params.put("filled", filled);
-    	params.put("limit", limit);
-    	params.put("startingAfter", startingAfter);
-    	params.put("uncapturedFunds", uncapturedFunds);
-    	params = removeOptionalsAndZeroes(params);
-    	try {
-    		return BitcoinReceiver.all(params);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not list Bitcoin Receivers", e);
-		}
+    	return bitcoinClient.listAllBitcoinReceivers(active, endingBefore, filled, limit, startingAfter, uncapturedFunds);
     }
     
     /**
@@ -2042,15 +1332,7 @@ public class StripeConnector {
     @ReconnectOn(exceptions = { Exception.class })
     public FileUpload createFileUpload(String file, FilePurpose purpose)
     		throws StripeConnectorException {
-    	Map<String, Object> params = new HashMap<String, Object>();
-    	params.put("file", new File(file));
-    	params.put("purpose", purpose.toString());
-    	try {
-    		return FileUpload.create(params);
-		} catch (AuthenticationException | InvalidRequestException
-				| APIConnectionException | CardException | APIException e) {
-			throw new StripeConnectorException("Could not create the File Upload", e);
-		}
+    	return fileClient.createFileUpload(file, purpose);
     }
     
     
@@ -2060,28 +1342,6 @@ public class StripeConnector {
 
     public void setConnectionStrategy(ConnectorConnectionStrategy connectionStrategy) {
         this.connectionStrategy = connectionStrategy;
-    }
-
-    private Map<String, Object> removeOptionals(Map<String, Object> map){
-    	Iterator<Entry<String, Object>> it = map.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry pair = it.next();
-            if (pair.getValue() == null || pair.getValue().toString().equals("")){
-            	it.remove();
-            }             
-        }
-        return map;
-    }
-    
-    private Map<String, Object> removeOptionalsAndZeroes(Map<String, Object> map){
-    	Iterator<Entry<String, Object>> it = map.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry pair = it.next();
-            if (pair.getValue() == null || pair.getValue().toString().equals("") || pair.getValue().toString().equals("0") || pair.getValue().toString().equals("0.0")){
-            	it.remove();
-            }             
-        }
-        return map;
     }
     
 }

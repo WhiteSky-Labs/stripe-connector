@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<connector name="Stripe">
+    <properties>
+        <connectivity-support>true</connectivity-support>
+        <OAuth-authentication>false</OAuth-authentication>
+        <metadata>static</metadata>
+        <datasense-enabled>true</datasense-enabled>
+        <transformer>false</transformer>
+    </properties>
+    <global-config credentialsFile="automation-credentials.properties">
+        <config name="config-type">
+            <attributes>
+                <attribute name="apiVersion" use="required" caption="Api Version" group="General" type="string" javaType="java.lang.String" default="2015-03-24" prefix="stripe" category="General">${stripe.apiVersion}</attribute>
+                <attribute name="apiKey" use="required" caption="Api Key" group="Connection" type="string" javaType="java.lang.String" prefix="stripe" category="General">${stripe.apiKey}</attribute>
+            </attributes>
+        </config>
+    </global-config>
+    <message-processors>
+        <processor name="createCustomer" xmlName="create-customer" caption="Create customer">
+            <properties>
+                <datamapper input="Customer" output="Map"/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+        </processor>
+        <processor name="retrieveCustomer" xmlName="retrieve-customer" caption="Retrieve customer">
+            <properties>
+                <datamapper input="Customer" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="updateCustomer" xmlName="update-customer" caption="Update customer">
+            <properties>
+                <datamapper input="Customer" output="Map"/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="deleteCustomer" xmlName="delete-customer" caption="Delete customer">
+            <properties>
+                <datamapper input="Object" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="listAllCustomers" xmlName="list-all-customers" caption="List all customers">
+            <properties>
+                <datamapper input="CustomerCollection" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+        </processor>
+        <processor name="createPlan" xmlName="create-plan" caption="Create plan">
+            <properties>
+                <datamapper input="Plan" output="Map"/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+                <attribute name="amount" use="required" caption="Amount" group="General" type="integer" javaType="int" category="General"></attribute>
+                <attribute name="currency" use="required" caption="Currency" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+                <attribute name="interval" use="required" caption="Interval" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+                <attribute name="planName" use="required" caption="Plan Name" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="retrievePlan" xmlName="retrieve-plan" caption="Retrieve plan">
+            <properties>
+                <datamapper input="Plan" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="updatePlan" xmlName="update-plan" caption="Update plan">
+            <properties>
+                <datamapper input="Plan" output="Map"/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="deletePlan" xmlName="delete-plan" caption="Delete plan">
+            <properties>
+                <datamapper input="Object" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="listAllPlans" xmlName="list-all-plans" caption="List all plans">
+            <properties>
+                <datamapper input="PlanCollection" output="Map&lt;String,String&gt;"/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+        </processor>
+        <processor name="createCoupon" xmlName="create-coupon" caption="Create coupon">
+            <properties>
+                <datamapper input="Coupon" output="Map"/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="duration" use="required" caption="Duration" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="retrieveCoupon" xmlName="retrieve-coupon" caption="Retrieve coupon">
+            <properties>
+                <datamapper input="Coupon" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="updateCoupon" xmlName="update-coupon" caption="Update coupon">
+            <properties>
+                <datamapper input="Coupon" output="Map"/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="deleteCoupon" xmlName="delete-coupon" caption="Delete coupon">
+            <properties>
+                <datamapper input="Object" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="listAllCoupons" xmlName="list-all-coupons" caption="List all coupons">
+            <properties>
+                <datamapper input="CouponCollection" output="Map&lt;String,String&gt;"/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+        </processor>
+        <processor name="retrieveBalance" xmlName="retrieve-balance" caption="Retrieve balance">
+            <properties>
+                <datamapper input="Balance" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+        </processor>
+        <processor name="retrieveBalanceTransaction" xmlName="retrieve-balance-transaction" caption="Retrieve balance transaction">
+            <properties>
+                <datamapper input="BalanceTransaction" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="listAllBalanceHistory" xmlName="list-all-balance-history" caption="List all balance history">
+            <properties>
+                <datamapper input="BalanceTransactionCollection" output="Map&lt;String,String&gt;"/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+        </processor>
+        <processor name="createCard" xmlName="create-card" caption="Create card">
+            <properties>
+                <datamapper input="Card" output="Source"/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="ownerId" use="required" caption="Owner Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="retrieveCard" xmlName="retrieve-card" caption="Retrieve card">
+            <properties>
+                <datamapper input="Card" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="ownerId" use="required" caption="Owner Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="updateCard" xmlName="update-card" caption="Update card">
+            <properties>
+                <datamapper input="Card" output="Map"/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="ownerId" use="required" caption="Owner Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="deleteCard" xmlName="delete-card" caption="Delete card">
+            <properties>
+                <datamapper input="DeletedCard" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="ownerId" use="required" caption="Owner Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="listAllCustomerCards" xmlName="list-all-customer-cards" caption="List all customer cards">
+            <properties>
+                <datamapper input="PaymentSourceCollection" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="ownerId" use="required" caption="Owner Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="createCharge" xmlName="create-charge" caption="Create charge">
+            <properties>
+                <datamapper input="Charge" output="Source"/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="amount" use="required" caption="Amount" group="General" type="integer" javaType="int" category="General"></attribute>
+                <attribute name="currency" use="required" caption="Currency" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="retrieveCharge" xmlName="retrieve-charge" caption="Retrieve charge">
+            <properties>
+                <datamapper input="Charge" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="updateCharge" xmlName="update-charge" caption="Update charge">
+            <properties>
+                <datamapper input="Charge" output="Map"/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="captureCharge" xmlName="capture-charge" caption="Capture charge">
+            <properties>
+                <datamapper input="Charge" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="listAllCharges" xmlName="list-all-charges" caption="List all charges">
+            <properties>
+                <datamapper input="ChargeCollection" output="Map&lt;String,String&gt;"/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+        </processor>
+        <processor name="createSubscription" xmlName="create-subscription" caption="Create subscription">
+            <properties>
+                <datamapper input="Subscription" output="Source"/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="customerId" use="required" caption="Customer Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+                <attribute name="plan" use="required" caption="Plan" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="retrieveSubscription" xmlName="retrieve-subscription" caption="Retrieve subscription">
+            <properties>
+                <datamapper input="Subscription" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="customerId" use="required" caption="Customer Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+                <attribute name="subscriptionId" use="required" caption="Subscription Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="updateSubscription" xmlName="update-subscription" caption="Update subscription">
+            <properties>
+                <datamapper input="Subscription" output="Source"/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="customerId" use="required" caption="Customer Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+                <attribute name="subscriptionId" use="required" caption="Subscription Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+                <attribute name="plan" use="required" caption="Plan" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="cancelSubscription" xmlName="cancel-subscription" caption="Cancel subscription">
+            <properties>
+                <datamapper input="Subscription" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="customerId" use="required" caption="Customer Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+                <attribute name="subscriptionId" use="required" caption="Subscription Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="listActiveSubscriptions" xmlName="list-active-subscriptions" caption="List active subscriptions">
+            <properties>
+                <datamapper input="CustomerSubscriptionCollection" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="customerId" use="required" caption="Customer Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="createRefund" xmlName="create-refund" caption="Create refund">
+            <properties>
+                <datamapper input="Refund" output="Map"/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="retrieveRefund" xmlName="retrieve-refund" caption="Retrieve refund">
+            <properties>
+                <datamapper input="Refund" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+                <attribute name="chargeId" use="required" caption="Charge Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="updateRefund" xmlName="update-refund" caption="Update refund">
+            <properties>
+                <datamapper input="Refund" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+                <attribute name="chargeId" use="required" caption="Charge Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+                <attribute name="metadata" use="required" caption="Metadata" group="General" type="element-controller-map" javaType="java.util.Map&lt;java.lang.String,java.lang.Object&gt;" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="listAllRefunds" xmlName="list-all-refunds" caption="List all refunds">
+            <properties>
+                <datamapper input="ChargeRefundCollection" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="chargeId" use="required" caption="Charge Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="createInvoice" xmlName="create-invoice" caption="Create invoice">
+            <properties>
+                <datamapper input="Invoice" output="Map"/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="customerId" use="required" caption="Customer Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="retrieveInvoice" xmlName="retrieve-invoice" caption="Retrieve invoice">
+            <properties>
+                <datamapper input="Invoice" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="retrieveInvoiceLineItems" xmlName="retrieve-invoice-line-items" caption="Retrieve invoice line items">
+            <properties>
+                <datamapper input="InvoiceLineItemCollection" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="retrieveUpcomingInvoice" xmlName="retrieve-upcoming-invoice" caption="Retrieve upcoming invoice">
+            <properties>
+                <datamapper input="Invoice" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="customerId" use="required" caption="Customer Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="updateInvoice" xmlName="update-invoice" caption="Update invoice">
+            <properties>
+                <datamapper input="Invoice" output="Map"/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="invoiceId" use="required" caption="Invoice Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="payInvoice" xmlName="pay-invoice" caption="Pay invoice">
+            <properties>
+                <datamapper input="Invoice" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="retrieveAllInvoices" xmlName="retrieve-all-invoices" caption="Retrieve all invoices">
+            <properties>
+                <datamapper input="InvoiceCollection" output="Map"/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+        </processor>
+        <processor name="retrieveApplicationFee" xmlName="retrieve-application-fee" caption="Retrieve application fee">
+            <properties>
+                <datamapper input="ApplicationFee" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="listAllApplicationFees" xmlName="list-all-application-fees" caption="List all application fees">
+            <properties>
+                <datamapper input="ApplicationFeeCollection" output="Map&lt;String,String&gt;"/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+        </processor>
+        <processor name="createAccount" xmlName="create-account" caption="Create account">
+            <properties>
+                <datamapper input="Account" output="BankAccount"/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+        </processor>
+        <processor name="retrieveAccount" xmlName="retrieve-account" caption="Retrieve account">
+            <properties>
+                <datamapper input="Account" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="updateAccount" xmlName="update-account" caption="Update account">
+            <properties>
+                <datamapper input="Account" output="BankAccount"/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="createCardToken" xmlName="create-card-token" caption="Create card token">
+            <properties>
+                <datamapper input="Token" output="Source"/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+        </processor>
+        <processor name="createBankAccountToken" xmlName="create-bank-account-token" caption="Create bank account token">
+            <properties>
+                <datamapper input="Token" output="BankAccount"/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+        </processor>
+        <processor name="retrieveToken" xmlName="retrieve-token" caption="Retrieve token">
+            <properties>
+                <datamapper input="Token" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="retrieveEvent" xmlName="retrieve-event" caption="Retrieve event">
+            <properties>
+                <datamapper input="Event" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="listAllEvents" xmlName="list-all-events" caption="List all events">
+            <properties>
+                <datamapper input="EventCollection" output="Map&lt;String,String&gt;"/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+        </processor>
+        <processor name="createApplicationFeeRefund" xmlName="create-application-fee-refund" caption="Create application fee refund">
+            <properties>
+                <datamapper input="ApplicationFee" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="retrieveApplicationFeeRefund" xmlName="retrieve-application-fee-refund" caption="Retrieve application fee refund">
+            <properties>
+                <datamapper input="FeeRefund" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+                <attribute name="fee" use="required" caption="Fee" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="updateApplicationFeeRefund" xmlName="update-application-fee-refund" caption="Update application fee refund">
+            <properties>
+                <datamapper input="FeeRefund" output="Map"/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+                <attribute name="fee" use="required" caption="Fee" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="listAllApplicationFeeRefunds" xmlName="list-all-application-fee-refunds" caption="List all application fee refunds">
+            <properties>
+                <datamapper input="FeeRefundCollection" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="createBitcoinReceiver" xmlName="create-bitcoin-receiver" caption="Create bitcoin receiver">
+            <properties>
+                <datamapper input="BitcoinReceiver" output="Map"/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="amount" use="required" caption="Amount" group="General" type="integer" javaType="int" category="General"></attribute>
+                <attribute name="email" use="required" caption="Email" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="retrieveBitcoinReceiver" xmlName="retrieve-bitcoin-receiver" caption="Retrieve bitcoin receiver">
+            <properties>
+                <datamapper input="BitcoinReceiver" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </processor>
+        <processor name="listAllBitcoinReceivers" xmlName="list-all-bitcoin-receivers" caption="List all bitcoin receivers">
+            <properties>
+                <datamapper input="BitcoinReceiverCollection" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+        </processor>
+        <processor name="createFileUpload" xmlName="create-file-upload" caption="Create file upload">
+            <properties>
+                <datamapper input="FileUpload" output=""/>
+                <auto-paging>false</auto-paging>
+                <query-support>false</query-support>
+            </properties>
+            <attributes>
+                <attribute name="file" use="required" caption="File" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
+                <attribute name="purpose" use="required" caption="Purpose" group="General" type="enum" javaType="com.wsl.modules.stripe.complextypes.FilePurpose" category="General"></attribute>
+            </attributes>
+        </processor>
+    </message-processors>
+</connector>

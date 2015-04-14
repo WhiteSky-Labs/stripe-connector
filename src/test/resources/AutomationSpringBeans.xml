@@ -546,7 +546,7 @@
 <!--createFileUpload-->
 <util:map id="createFileUploadTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  		<entry key="file" value="/Users/conorcurlett/AnypointStudio/workspace/stripe/stripe-connector/src/test/resources/test.jpg"/>
-        <entry key="purpose" value="identity_document"/>
+        <entry key="purpose" value="IDENTITY_DOCUMENT"/>
     </util:map>
 
 </beans>

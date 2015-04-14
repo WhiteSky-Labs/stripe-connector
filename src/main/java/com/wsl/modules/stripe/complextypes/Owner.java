@@ -5,8 +5,7 @@
 
 package com.wsl.modules.stripe.complextypes;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Represents a business Owner in the Stripe Input API

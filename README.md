@@ -1,34 +1,36 @@
-# Stripe Anypoint Connector
 
-[Connector description including destination service or application with]
+Stripe Anypoint Connector
+=========================
 
-# Mule supported versions
-Examples:
-Mule 3.4.x, 3.5.x
-Mule 3.4.1
-
-# [Destination service or application name] supported versions
-Example:
-Oracle E-Business Suite 12.1 and above.
-
-#Service or application supported modules
-Example:
-Oracle CRM
-Oracle Financials
-or 
-Salesforce API v.24
-Salesforce Metadata API
+By [WhiteSky Labs](http://www.whiteskylabs.com)
 
 
-# Installation 
-For beta connectors you can download the source code and build it with devkit to find it available on your local repository. Then you can add it to Studio…<TBD>
+The Industry-leading Platform for Operational Intelligence
 
-For released connectors you can download them from the update site in Studio. 
-Open MuleStudio, go to Help → Install New Software and select MuleStudio Cloud Connectors Update Site where you’ll find all avaliable connectors.
+Payments Infrastructure for the internet.
 
-#Usage
-For information about usage our documentation at http://github.com/whitesky-labs/stripe-connector.
+Installation and Usage
+----------------------
 
-# Reporting Issues
+For information about usage and installation you can review the documentation at http://whitesky-labs.github.io/stripe-connector/about/.
 
-We use GitHub:Issues for tracking issues with this connector. You can report new issues at this link http://github.com/whitesky-labs/stripe-connector/issues.
+API Documentation is available at http://whitesky-labs.github.io/stripe-connector/apidocs
+
+Compatibility
+----------------------
+
+The Stripe Connector is certified to be compatible with:
+* Mule ESB v3.6.0
+* CloudHub Runtime v3.6.0
+
+The Splunk Connector has been tested compatible with:
+* Stripe API Version 2015-03-24
+* Stripe SDK for Java v1.27.1
+
+If you are interested in support for other versions of MuleSoft's platforms or Stripe versions, please contact [support@whiteskylabs.com](mailto:support@whiteskylabs.com).
+
+Reporting Issues
+----------------
+
+You can report new issues by emailing [support@whiteskylabs.com](mailto:support@whiteskylabs.com).
+
