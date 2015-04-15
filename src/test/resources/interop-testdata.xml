@@ -781,7 +781,6 @@
 <attribute name="personalIdNumber" use="optional" caption="Personal Id Number" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
 <attribute name="ssnLast4" use="optional" caption="Ssn Last4" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
 <attribute name="verificationDocumentId" use="optional" caption="Verification Document Id" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
-<attribute name="additionalOwners-ref" use="optional" caption="Additional Owners Reference" type="string" javaType="com.wsl.modules.stripe.complextypes.Owner[]" base="legal-entity" category="General"></attribute>
                             </attributes>
                         </controller>
                         <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
@@ -847,6 +846,77 @@
 </controller>
                             </attributes>
                             <childElements/>
+                        </childElement>
+                        <childElement name="additional-owners" use="optional" category="General">
+                            <attributes>
+<controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="ref" use="optional" caption="Legal Entity Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+    </attributes>
+</controller>
+<controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="ref" use="optional" caption="Legal Entity Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+    </attributes>
+</controller>
+                            </attributes>
+                            <childElements>
+<childElement name="additional-owner" use="optional" category="General">
+    <attributes>
+        <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+            <attributes>
+                <attribute name="firstName" use="optional" caption="First Name" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
+                <attribute name="lastName" use="optional" caption="Last Name" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
+                <attribute name="verificationDocumentId" use="optional" caption="Verification Document Id" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
+            </attributes>
+        </controller>
+        <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+            <attributes>
+                <attribute name="ref" use="optional" caption="Legal Entity Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </controller>
+    </attributes>
+    <childElements>
+        <childElement name="address" use="optional" category="General">
+            <attributes>
+                <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+                    <attributes>
+                        <attribute name="line1" use="optional" caption="Line1" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+                        <attribute name="line2" use="optional" caption="Line2" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+                        <attribute name="city" use="optional" caption="City" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+                        <attribute name="state" use="optional" caption="State" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+                        <attribute name="postalCode" use="optional" caption="Postal Code" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+                        <attribute name="country" use="optional" caption="Country" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+                    </attributes>
+                </controller>
+                <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+                    <attributes>
+                        <attribute name="ref" use="optional" caption="Legal Entity Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+                    </attributes>
+                </controller>
+            </attributes>
+            <childElements/>
+        </childElement>
+        <childElement name="dob" use="optional" category="General">
+            <attributes>
+                <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+                    <attributes>
+                        <attribute name="day" use="optional" caption="Day" type="integer" javaType="int" base="dob" category="General"></attribute>
+                        <attribute name="month" use="optional" caption="Month" type="integer" javaType="int" base="dob" category="General"></attribute>
+                        <attribute name="year" use="optional" caption="Year" type="integer" javaType="int" base="dob" category="General"></attribute>
+                    </attributes>
+                </controller>
+                <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+                    <attributes>
+                        <attribute name="ref" use="optional" caption="Legal Entity Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+                    </attributes>
+                </controller>
+            </attributes>
+            <childElements/>
+        </childElement>
+    </childElements>
+</childElement>
+                            </childElements>
                         </childElement>
                     </childElements>
                 </childElement>
@@ -947,7 +1017,6 @@
 <attribute name="personalIdNumber" use="optional" caption="Personal Id Number" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
 <attribute name="ssnLast4" use="optional" caption="Ssn Last4" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
 <attribute name="verificationDocumentId" use="optional" caption="Verification Document Id" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
-<attribute name="additionalOwners-ref" use="optional" caption="Additional Owners Reference" type="string" javaType="com.wsl.modules.stripe.complextypes.Owner[]" base="legal-entity" category="General"></attribute>
                             </attributes>
                         </controller>
                         <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
@@ -1013,6 +1082,77 @@
 </controller>
                             </attributes>
                             <childElements/>
+                        </childElement>
+                        <childElement name="additional-owners" use="optional" category="General">
+                            <attributes>
+<controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="ref" use="optional" caption="Legal Entity Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+    </attributes>
+</controller>
+<controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="ref" use="optional" caption="Legal Entity Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+    </attributes>
+</controller>
+                            </attributes>
+                            <childElements>
+<childElement name="additional-owner" use="optional" category="General">
+    <attributes>
+        <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+            <attributes>
+                <attribute name="firstName" use="optional" caption="First Name" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
+                <attribute name="lastName" use="optional" caption="Last Name" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
+                <attribute name="verificationDocumentId" use="optional" caption="Verification Document Id" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
+            </attributes>
+        </controller>
+        <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+            <attributes>
+                <attribute name="ref" use="optional" caption="Legal Entity Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </controller>
+    </attributes>
+    <childElements>
+        <childElement name="address" use="optional" category="General">
+            <attributes>
+                <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+                    <attributes>
+                        <attribute name="line1" use="optional" caption="Line1" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+                        <attribute name="line2" use="optional" caption="Line2" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+                        <attribute name="city" use="optional" caption="City" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+                        <attribute name="state" use="optional" caption="State" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+                        <attribute name="postalCode" use="optional" caption="Postal Code" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+                        <attribute name="country" use="optional" caption="Country" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+                    </attributes>
+                </controller>
+                <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+                    <attributes>
+                        <attribute name="ref" use="optional" caption="Legal Entity Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+                    </attributes>
+                </controller>
+            </attributes>
+            <childElements/>
+        </childElement>
+        <childElement name="dob" use="optional" category="General">
+            <attributes>
+                <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+                    <attributes>
+                        <attribute name="day" use="optional" caption="Day" type="integer" javaType="int" base="dob" category="General"></attribute>
+                        <attribute name="month" use="optional" caption="Month" type="integer" javaType="int" base="dob" category="General"></attribute>
+                        <attribute name="year" use="optional" caption="Year" type="integer" javaType="int" base="dob" category="General"></attribute>
+                    </attributes>
+                </controller>
+                <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+                    <attributes>
+                        <attribute name="ref" use="optional" caption="Legal Entity Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+                    </attributes>
+                </controller>
+            </attributes>
+            <childElements/>
+        </childElement>
+    </childElements>
+</childElement>
+                            </childElements>
                         </childElement>
                     </childElements>
                 </childElement>
