@@ -20,6 +20,7 @@ import com.stripe.model.Customer;
 import com.wsl.modules.stripe.automation.RegressionTests;
 import com.wsl.modules.stripe.automation.SmokeTests;
 import com.wsl.modules.stripe.automation.StripeTestParent;
+import com.wsl.modules.stripe.complextypes.LegalEntity;
 import com.wsl.modules.stripe.complextypes.Source;
 
 import org.junit.After;
@@ -56,5 +57,43 @@ public class CreateAccountTestCases
         Account account = (Account) result;
         assertNotNull(account.getId());
         assertEquals(this.email, account.getEmail());
+    }
+    
+    @Category({
+        RegressionTests.class,
+        SmokeTests.class
+    })
+    @Test
+    public void testCreateAccountWithInvalidParams()
+        throws Exception
+    {
+    	upsertOnTestRunMessage("country", "InvalidCountry");
+        try{
+        	runFlowAndGetPayload("create-account");
+    		fail("Error should be thrown");
+    	} catch (MessagingException e) {
+    		assertTrue(e.getCause().getMessage().contains("Could not create the Account"));
+    	} catch (Exception e) {
+    		fail(ConnectorTestUtils.getStackTrace(e));
+    	}    	
+    }
+    
+    @Category({
+        RegressionTests.class,
+        SmokeTests.class
+    })
+    @Test
+    public void testCreateAccountWithValidParams()
+        throws Exception
+    {
+    	initializeTestRunMessage("createAccountWithParamsTestData");
+    	Map<String, Object> expectedBean = getBeanFromContext("createAccountWithParamsTestData");
+    	upsertOnTestRunMessage("email", email);
+    	Object result = runFlowAndGetPayload("create-account");
+        assertNotNull(result);
+        Account account = (Account) result;
+        assertNotNull(account.getId());
+        assertEquals(this.email, account.getEmail());
+        // Note: The API does not return the Legal Entity at this time, even when it is created correctly. As such, the assertations for this test are minimalistic, but the full creation of Legal Entity has occurred.      
     }
 }

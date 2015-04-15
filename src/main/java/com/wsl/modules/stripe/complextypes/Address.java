@@ -8,6 +8,8 @@ package com.wsl.modules.stripe.complextypes;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.wsl.modules.stripe.utils.StripeClientUtils;
+
 /**
  * Represents a Stripe Address INPUT object
  * @author WhiteSky Labs
@@ -106,6 +108,6 @@ public class Address {
 		dict.put("state", getState());
 		dict.put("postal_code", getPostalCode());
 		dict.put("country", getCountry());
-		return dict;
+		return StripeClientUtils.removeOptionals(dict);
 	}
 }

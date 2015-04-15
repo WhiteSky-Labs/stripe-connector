@@ -8,6 +8,7 @@ package com.wsl.modules.stripe.automation.testcases;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.Iterator;
 
@@ -23,6 +24,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
+import org.mule.api.MessagingException;
+import org.mule.modules.tests.ConnectorTestUtils;
 
 public class ListAllEventsTestCases
     extends StripeTestParent
@@ -64,4 +67,23 @@ public class ListAllEventsTestCases
         assertEquals("plan.created", event.getType());
     }
 
+    @Category({
+        RegressionTests.class,
+        SmokeTests.class
+    })
+    @Test
+    public void testListAllEventsWithError()
+        throws Exception
+    {
+    	try {
+    		upsertOnTestRunMessage("createdTimestamp", "Invalid");
+        	Object result = runFlowAndGetPayload("list-all-events");
+            fail("Should throw an error.");
+    	} catch (MessagingException e){
+    		assertTrue(e.getCause().getMessage().contains("Could not list Events"));
+    	} catch (Exception e){
+    		fail(ConnectorTestUtils.getStackTrace(e));
+    	}
+        
+    }
 }

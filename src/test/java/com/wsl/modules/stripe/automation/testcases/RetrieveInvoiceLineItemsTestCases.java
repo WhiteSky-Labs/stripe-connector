@@ -96,6 +96,26 @@ public class RetrieveInvoiceLineItemsTestCases
         InvoiceLineItemCollection coll = (InvoiceLineItemCollection)result;
         InvoiceLineItem lineItem = coll.getData().get(0);
         assertNotNull(lineItem.getId());
-    }        
+    }  
+    
+    @Category({
+        RegressionTests.class,
+        SmokeTests.class
+    })
+    @Test
+    public void testRetrieveNonexistentInvoiceLineItems()
+        throws Exception
+    {
+    	try {
+        	upsertOnTestRunMessage("id", "InvalidID");
+            Object result = runFlowAndGetPayload("retrieve-invoice-line-items");
+            fail("Getting an Invoice that doesn't exist should throw an error.");
+    	} catch (MessagingException e){
+    		assertTrue(e.getCause().getMessage().contains("Could not retrieve the Invoice Line Items"));
+    	} catch (Exception e){
+    		fail(ConnectorTestUtils.getStackTrace(e));
+    	}
+        
+    }
 
 }

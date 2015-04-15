@@ -74,6 +74,17 @@
         <entry key="statementDescriptor" value="test"/>
         <entry key="metadata" value-ref="testMetadata"/>
     </util:map>
+    <util:map id="createPlanWithInvalidParamsTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ 		<entry key="id" value="testplan"/>
+        <entry key="amount" value="123"/>
+        <entry key="currency" value="invalid"/>
+        <entry key="interval" value="aeon"/>
+        <entry key="intervalCount" value="1"/>
+        <entry key="planName" value="testplan"/>
+        <entry key="trialPeriodDays" value="5"/>
+        <entry key="statementDescriptor" value="test"/>
+        <entry key="metadata" value-ref="testMetadata"/>
+    </util:map>
     <!--retrievePlan-->
     <util:map id="retrievePlanTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  <entry key="id" value=""/>
@@ -114,6 +125,17 @@
         <entry key="amountOff" value="0"/>
         <entry key="currency" value=""/>
         <entry key="durationInMonths" value="6"/>
+        <entry key="maxRedemptions" value="4"/>
+        <entry key="percentOff" value="25"/>
+        <entry key="redeemBy" value=""/>
+        <entry key="metadata" value-ref="testMetadata"/>
+    </util:map>
+    <util:map id="createCouponWithInvalidParamsTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ 		<entry key="id" value="testCoupon"/>
+        <entry key="duration" value="invalidduration"/>
+        <entry key="amountOff" value="0"/>
+        <entry key="currency" value="invalidcurrency"/>
+        <entry key="durationInMonths" value="36"/>
         <entry key="maxRedemptions" value="4"/>
         <entry key="percentOff" value="25"/>
         <entry key="redeemBy" value=""/>
@@ -169,6 +191,12 @@
     </util:map>
     <bean class="com.wsl.modules.stripe.complextypes.Source" id="createCard_Source">
         <property name="number" value="4242424242424242"/>
+        <property name="expMonth" value="2"/>
+        <property name="expYear" value="22"/>
+        <property name="cvc" value="222"/>
+    </bean>
+    <bean class="com.wsl.modules.stripe.complextypes.Source" id="invalidCard">
+        <property name="number" value="123456778999999"/>
         <property name="expMonth" value="2"/>
         <property name="expYear" value="22"/>
         <property name="cvc" value="222"/>
@@ -409,8 +437,21 @@
         <entry key="metadata" value-ref="testMetadata"/>
         <entry key="bankAccount" value-ref="testBankAccount"/>
 		<entry key="legalEntity" value-ref="testLegalEntity"/>
-		<entry key="tosAcceptance" value-ref="testAcceptance"/>
-		<entry key="transferSchedule" value-ref="testTransferSchedule"/>
+    </util:map>
+    <util:map id="createAccountWithParamsTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ 		<entry key="managed" value="false"/>
+        <entry key="country" value="US"/>
+        <entry key="email" value=""/>
+        <entry key="businessName" value="Test Business Name"/>
+        <entry key="businessUrl" value="www.testbusiness.com"/>
+        <entry key="supportPhone" value=""/>
+        <entry key="debitNegativeBalances" value="false"/>
+        <entry key="defaultCurrency" value="usd"/>
+        <entry key="productDescription" value="A testing product"/>
+        <entry key="statementDescriptor" value="Testing Descriptor"/>
+        <entry key="metadata" value-ref="testMetadata"/>
+        <entry key="bankAccount" value-ref="testBankAccount"/>
+		<entry key="legalEntity" value-ref="testComplexLegalEntity"/>		
     </util:map>
     <!--retrieveAccount-->
     <util:map id="retrieveAccountTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
@@ -456,14 +497,45 @@
         <property name="routingNumber" value="110000000"/>
         <property name="accountNumber" value="000123456789"/>		
     </bean>
+    <bean class="com.wsl.modules.stripe.complextypes.BankAccount" id="invalidBankAccount">
+        <property name="country" value="us"/>
+        <property name="currency" value="usd"/>
+        <property name="routingNumber" value="1"/>
+        <property name="accountNumber" value="1"/>		
+    </bean>
     <bean class="com.wsl.modules.stripe.complextypes.LegalEntity" id="testLegalEntity">
         <property name="businessName" value="TestBusiness"/>
     </bean>
+    <bean class="com.wsl.modules.stripe.complextypes.Address" id="testAddress">
+        <property name="line1" value="1 Infinite Loop"/>
+        <property name="line2" value=""/>
+        <property name="city" value="Cupertino"/>
+        <property name="state" value="CA"/>
+        <property name="postalCode" value="95014"/>
+        <property name="country" value="US"/>
+    </bean>
+    <bean class="com.wsl.modules.stripe.complextypes.DateOfBirth" id="testDob">
+        <property name="day" value="10"/>
+        <property name="month" value="10"/>
+        <property name="year" value="1970"/>        
+    </bean>
+    <bean class="com.wsl.modules.stripe.complextypes.LegalEntity" id="testComplexLegalEntity">
+        <property name="businessName" value="TestBusiness"/>
+        <property name="type" value="individual"/>
+        <property name="address" ref="testAddress"/>
+        <property name="dob" ref="testDob"/>
+        <property name="firstName" value="Test"/>
+        <property name="lastName" value="Test"/>
+        <property name="personalAddress" ref="testAddress"/>
+        <property name="ssnLast4" value="6753"/>
+    </bean>
     <bean class="com.wsl.modules.stripe.complextypes.Acceptance" id="testAcceptance">
         <property name="ip" value="127.0.0.1"/>        
+        <property name="date" value="1429010653"/>
     </bean>
     <bean class="com.wsl.modules.stripe.complextypes.TransferSchedule" id="testTransferSchedule">
-        <property name="delayDays" value="5"/>
+        <property name="delayDays" value="minimum"/>
+        <property name="interval" value="manual"/>        
     </bean>
     <!--createCardToken-->
     <util:map id="createCardTokenTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
@@ -471,10 +543,19 @@
         <entry key="customer" value=""/>
         <entry key="card" value-ref="createCard_Source"/>
     </util:map>
+    <util:map id="createCardTokenInvalidTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ 	<entry key="cardId" value=""/>
+        <entry key="customer" value=""/>
+        <entry key="card" value-ref="invalidCard"/>
+    </util:map>
     <!--createBankAccountToken-->
     <util:map id="createBankAccountTokenTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  <entry key="bankAccountId" value=""/>
  <entry key="bankAccount" value-ref="testBankAccount"/>
+    </util:map>
+    <util:map id="createBankAccountTokenInvalidTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="bankAccountId" value=""/>
+ <entry key="bankAccount" value-ref="invalidBankAccount"/>
     </util:map>
     <!--retrieveToken-->
     <util:map id="retrieveTokenTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
@@ -545,7 +626,7 @@
     </util:map>
 <!--createFileUpload-->
 <util:map id="createFileUploadTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
- 		<entry key="file" value="/Users/conorcurlett/AnypointStudio/workspace/stripe/stripe-connector/src/test/resources/test.jpg"/>
+ 		<entry key="file" value="src/test/resources/test.jpg"/>
         <entry key="purpose" value="IDENTITY_DOCUMENT"/>
     </util:map>
 

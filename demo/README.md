@@ -48,11 +48,11 @@ Now that you've got your Anypoint Studio up and running, it's time to work on th
 
 The first thing to do in your new app is to configure the connection to Stripe. In the message flow editor, click on the "Global Elements" tab on the bottom of the page. Then click on "Create" button on the top right of the tab. In the "Choose Global Element" type dialog box that opens select "Stripe" under "Connector Configuration" and click okay.
 
-![Create Stripe Config](images/stripecreateconfigref.png)
+![Create Stripe Config](../doc/images/stripecreateconfigref.png)
 
 In the Stripe Configuration box that follows, set the API Key to your Test or Live API Key. You can also set the API Version, which is not recommended.
 
-![Set Stripe Properties](images/setstripeprops.png)
+![Set Stripe Properties](../doc/images/setstripeprops.png)
 
 The XML for the global element should look like this:
 
@@ -61,33 +61,33 @@ The XML for the global element should look like this:
 ###Building the flows, Demo 
 It's time to build the flows which creates a Customer, retrieves them, and deletes the Customer.
 
-![Create Customer flow](images/createcustomer.png)
+![Create Customer flow](../doc/images/createcustomer.png)
 
-![Retrieve and Delete flows](images/retrieveandremovecustomer.png)
+![Retrieve and Delete flows](../doc/images/retrieveandremovecustomer.png)
 
 **Create Customer flow:** This is the flow which creates a Customer in Stripe. Start by dragging an HTTP endpoint from the palette onto the flow. Create a new Connector Configuration for this endpoint and accept the defaults. 
 
-![HTTP Connector Configuration](images/httpconnectorconfiguration.png)
+![HTTP Connector Configuration](../doc/images/httpconnectorconfiguration.png)
 
 Now add a path to your HTTP receiver: "/createcustomer". This is the URL you will call to start the flow.
 
-![HTTP Receiver Configuration](images/httpreceiverconfiguration.png)
+![HTTP Receiver Configuration](../doc/images/httpreceiverconfiguration.png)
 
 Then drag a Stripe Connector onto the flow after the HTTP endpoint. In the configuration window for the Stripe Connector, select the previously created Stripe config from the Config Reference dropdown. Set the Operation to "Create Customer", and provide an email and description. Add an "Object to JSON" transformer at the end to make sure the response is readable by a human. Click okay.
 
-![Create Customer Flow](images/createcustomerdetail.png)
+![Create Customer Flow](../doc/images/createCustomerDetail.png)
 
 This completes the Create Customer flow.
 
 **Retrieve Customer flow:** This is the flow which retrieves the Customer. Start by dragging an HTTP endpoint from the palette onto the workspace (not onto a flow), creating a new flow. Use the existing HTTP configuration. Configure the Path to "/retrieveCustomer". This is the URL you will call to start the flow.
 Then drag a Stripe Connector onto the flow after the HTTP endpoint. In the configuration window for the Stripe Connector, select the previously created Stripe config from the Config Reference dropdown. Set the Operation to "Retrieve Customer", and set the id field to "#[message.inboundProperties.'http.query.params'.id]". Add an "Object to JSON" transformer at the end to make sure the response is readable by a human. Click OK.
 
-![Retrieve Customer Flow](images/retrievecustomerflow.png)
+![Retrieve Customer Flow](../doc/images/retrievecustomerflow.png)
 
 **Delete Customer Flow:** This is the flow which removes the customer you created. Start by dragging an HTTP endpoint from the palette onto the workspace (not onto a flow), creating a new flow. Use the existing HTTP configuration. Configure the Path to "/deleteCustomer". This is the URL you will call to start the flow.
 Then drag a Stripe Connector onto the flow after the HTTP endpoint. In the configuration window for the Stripe Connector, select the previously created Stripe config from the Config Reference dropdown. Set the Operation to "Delete Customer", and set the id field to "#[message.inboundProperties.'http.query.params'.id]". Add an "Object to JSON" transformer at the end to make sure the response is readable by a human. Click OK.
 
-![Delete Customer Flow](images/deletecustomer.png)
+![Delete Customer Flow](../doc/images/deletecustomer.png)
 
 **Flow XML**
 

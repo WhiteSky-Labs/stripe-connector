@@ -7,6 +7,8 @@
 package com.wsl.modules.stripe.automation.testcases;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.Map;
 
@@ -23,6 +25,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
+import org.mule.api.MessagingException;
+import org.mule.modules.tests.ConnectorTestUtils;
 
 public class UpdateSubscriptionTestCases
     extends StripeTestParent
@@ -98,5 +102,25 @@ public class UpdateSubscriptionTestCases
         assertEquals(this.updatedPlanId, sub.getPlan().getId());        
     }
 
+    @Category({
+        RegressionTests.class,
+        SmokeTests.class
+    })
+    @Test
+    public void testUpdateNonexistentSubscription()
+        throws Exception
+    {
+    	try {
+    		upsertOnTestRunMessage("plan", "InvalidPlan");
+        	upsertOnTestRunMessage("subscriptionId", "InvalidID");
+            Object result = runFlowAndGetPayload("update-subscription");
+            fail("Updating a subscription that doesn't exist should throw an error.");
+    	} catch (MessagingException e){
+    		assertTrue(e.getCause().getMessage().contains("Could not update the Subscription"));
+    	} catch (Exception e){
+    		fail(ConnectorTestUtils.getStackTrace(e));
+    	}
+        
+    }
 
 }

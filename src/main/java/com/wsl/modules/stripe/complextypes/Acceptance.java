@@ -8,6 +8,8 @@ package com.wsl.modules.stripe.complextypes;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.wsl.modules.stripe.utils.StripeClientUtils;
+
 /**
  * Represents an acceptance of Stripe's Terms of Service
  * @author WhiteSky Labs
@@ -63,6 +65,6 @@ public class Acceptance {
 		dict.put("date", getDate());
 		dict.put("ip", getIp());
 		dict.put("user_agent", getUserAgent());
-		return dict;
+		return StripeClientUtils.removeOptionals(dict);
 	}
 }

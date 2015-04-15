@@ -7,6 +7,8 @@
 package com.wsl.modules.stripe.automation.testcases;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import com.stripe.model.Card;
 import com.stripe.model.Token;
@@ -18,6 +20,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
+import org.mule.api.MessagingException;
+import org.mule.modules.tests.ConnectorTestUtils;
 
 public class CreateCardTokenTestCases
     extends StripeTestParent
@@ -45,4 +49,23 @@ public class CreateCardTokenTestCases
         assertNotNull(token.getId());
     }
 
+    @Category({
+        RegressionTests.class,
+        SmokeTests.class
+    })
+    @Test
+    public void testCreateInvalidSource()
+        throws Exception
+    {
+    	initializeTestRunMessage("createCardTokenInvalidTestData");
+    	
+        try{
+        	runFlowAndGetPayload("create-card-token");
+    		fail("Error should be thrown");
+    	} catch (MessagingException e) {
+    		assertTrue(e.getCause().getMessage().contains("Could not create a Card Token"));
+    	} catch (Exception e) {
+    		fail(ConnectorTestUtils.getStackTrace(e));
+    	}    	
+    }
 }

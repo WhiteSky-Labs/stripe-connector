@@ -8,6 +8,8 @@ package com.wsl.modules.stripe.complextypes;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.wsl.modules.stripe.utils.StripeClientUtils;
+
 /**
  * Represents a Date of Birth input to Stripe
  * @author WhiteSky Labs
@@ -63,6 +65,6 @@ public class DateOfBirth {
 		dict.put("day", getDay());
 		dict.put("month", getMonth());
 		dict.put("year", getYear());		
-		return dict;
+		return StripeClientUtils.removeOptionalsAndZeroes(dict);
 	}
 }

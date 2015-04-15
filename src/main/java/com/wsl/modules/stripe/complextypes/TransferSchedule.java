@@ -8,6 +8,8 @@ package com.wsl.modules.stripe.complextypes;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.wsl.modules.stripe.utils.StripeClientUtils;
+
 /**
  * Represents a Transfer Schedule in the Stripe Input API
  * @author WhiteSky Labs
@@ -77,7 +79,7 @@ public class TransferSchedule {
 		dict.put("interval", getInterval());
 		dict.put("monthly_anchor", getMonthlyAnchor());
 		dict.put("weekly_anchor", getWeeklyAnchor());
-		return dict;
+		return StripeClientUtils.removeOptionals(dict);		
 	}
 
 }

@@ -9,6 +9,7 @@ package com.wsl.modules.stripe.automation.testcases;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
+import org.mule.api.MessagingException;
+import org.mule.modules.tests.ConnectorTestUtils;
 
 public class CreateCouponTestCases
     extends StripeTestParent
@@ -85,4 +88,22 @@ public class CreateCouponTestCases
         assertEquals(expectedBean.get("maxRedemptions"), coupon.getMaxRedemptions().toString());
     }
 
+    @Category({
+        RegressionTests.class,
+        SmokeTests.class
+    })
+    @Test
+    public void testCreateCouponWithInvalidParams()
+        throws Exception
+    {
+    	initializeTestRunMessage("createCouponWithInvalidParamsTestData");
+        try{
+        	runFlowAndGetPayload("create-coupon");
+    		fail("Error should be thrown");
+    	} catch (MessagingException e) {
+    		assertTrue(e.getCause().getMessage().contains("Could not create the coupon"));
+    	} catch (Exception e) {
+    		fail(ConnectorTestUtils.getStackTrace(e));
+    	}    	
+    }
 }

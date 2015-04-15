@@ -63,5 +63,24 @@ public class CreateRefundTestCases
     	Map<String, String> expectedBean = getBeanFromContext("createRefundTestData");
         assertEquals(expectedBean.get("amount"), refund.getAmount().toString());
     }
+    
+    @Category({
+        RegressionTests.class,
+        SmokeTests.class
+    })
+    @Test
+    public void testCreateInvalidRefund()
+        throws Exception
+    {
+    	upsertOnTestRunMessage("id", "InvalidID");
+        try{
+        	runFlowAndGetPayload("create-refund");
+    		fail("Error should be thrown");
+    	} catch (MessagingException e) {
+    		assertTrue(e.getCause().getMessage().contains("Could not create the Refund"));
+    	} catch (Exception e) {
+    		fail(ConnectorTestUtils.getStackTrace(e));
+    	}    	
+    }
 
 }

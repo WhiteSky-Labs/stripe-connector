@@ -9,6 +9,7 @@ package com.wsl.modules.stripe.automation.testcases;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.UUID;
 
@@ -24,6 +25,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
+import org.mule.api.MessagingException;
+import org.mule.modules.tests.ConnectorTestUtils;
 
 public class CreateApplicationFeeRefundTestCases
     extends StripeTestParent
@@ -68,6 +71,25 @@ public class CreateApplicationFeeRefundTestCases
         assertNotNull(result);
         ApplicationFee fee = (ApplicationFee)result;
         assertTrue(fee.getRefunds().getData().size() == 1);
+    }
+    
+    @Category({
+        RegressionTests.class,
+        SmokeTests.class
+    })
+    @Test
+    public void testCreateInvalidApplicationFeeRefund()
+        throws Exception
+    {
+    	upsertOnTestRunMessage("id", "InvalidID");
+    	try{
+    		runFlowAndGetPayload("create-application-fee-refund");
+    		fail("Error should be thrown");
+    	} catch (MessagingException e) {
+    		assertTrue(e.getCause().getMessage().contains("Could not refund Application Fee"));
+    	} catch (Exception e) {
+    		fail(ConnectorTestUtils.getStackTrace(e));
+    	}    
     }
     
 }

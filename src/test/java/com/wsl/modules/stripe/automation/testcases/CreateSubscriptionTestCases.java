@@ -60,10 +60,12 @@ public class CreateSubscriptionTestCases
     public void tearDown()
         throws Exception
     {
-		initializeTestRunMessage("cancelSubscriptionTestData");
-    	upsertOnTestRunMessage("customerId", customerId);
-    	upsertOnTestRunMessage("subscriptionId", subscriptionId);
-    	runFlowAndGetPayload("cancel-subscription");
+		if (this.subscriptionId != null) {
+			initializeTestRunMessage("cancelSubscriptionTestData");
+			upsertOnTestRunMessage("customerId", customerId);
+	    	upsertOnTestRunMessage("subscriptionId", subscriptionId);
+	    	runFlowAndGetPayload("cancel-subscription");	    	
+		}
     	initializeTestRunMessage("deleteCustomerTestData");
         upsertOnTestRunMessage("id", customerId);
         runFlowAndGetPayload("delete-customer");
@@ -90,4 +92,23 @@ public class CreateSubscriptionTestCases
         assertEquals(this.planId, ((Plan) sub.getPlan()).getId());
     }
     
+    @Category({
+        RegressionTests.class,
+        SmokeTests.class
+    })
+    @Test
+    public void testCreateInvalidSubscription()
+        throws Exception
+    {
+    	try{
+    		upsertOnTestRunMessage("id", "InvalidID");
+    		upsertOnTestRunMessage("applicationFeePercent", "1000");
+    		Object result = runFlowAndGetPayload("create-subscription");
+    		fail("Error should be thrown");
+    	} catch (MessagingException e) {
+    		assertTrue(e.getCause().getMessage().contains("Could not create the Subscription"));
+    	} catch (Exception e) {
+    		fail(ConnectorTestUtils.getStackTrace(e));
+    	}    	
+    }
 }

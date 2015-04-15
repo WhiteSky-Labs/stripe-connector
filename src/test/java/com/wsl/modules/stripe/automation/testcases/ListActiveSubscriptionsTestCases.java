@@ -114,6 +114,4 @@ public class ListActiveSubscriptionsTestCases
 	    assertEquals(1, coll.getData().size());        
 	}
 
-
-
 }

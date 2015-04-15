@@ -189,11 +189,11 @@
 </flow>
 <flow doc:name="CreateAccount" name="create-account">
 	<stripe:create-account businessName="#[flowVars.businessName]" businessUrl="#[flowVars.businessUrl]" config-ref="Stripe" country="#[flowVars.country]" debitNegativeBalances="#[flowVars.debitNegativeBalances]" defaultCurrency="#[flowVars.defaultCurrency]" email="#[flowVars.email]" managed="#[flowVars.managed]" productDescription="#[flowVars.productDescription]" statementDescriptor="#[flowVars.statementDescriptor]" supportPhone="#[flowVars.supportPhone]">
-		<stripe:metadata ref="#[flowVars.testMetadata]"/>
-		<!-- <stripe:bank-account ref="#[flowVars.testBankAccount]"/>
-		<stripe:legal-entity ref="#[flowVars.testLegalEntity]"/>
-		<stripe:acceptance ref="#[flowVars.testAcceptance]"/>
-		<stripe:transfer-schedule ref="#[flowVars.testTransferSchedule]"/> -->
+		<stripe:bank-account ref="#[flowVars.bankAccount]"/>
+		<stripe:legal-entity ref="#[flowVars.legalEntity]"/>
+		<stripe:tos-acceptance ref="#[flowVars.tosAcceptance]"/>
+		<stripe:transfer-schedule ref="#[flowVars.transferSchedule]"/>
+		<stripe:metadata ref="#[flowVars.testMetadata]"/>		
 	</stripe:create-account>
 </flow>
     <flow doc:name="RetrieveAccount" name="retrieve-account">
@@ -201,11 +201,11 @@
 </flow>
     <flow doc:name="UpdateAccount" name="update-account">
 	<stripe:update-account businessName="#[flowVars.businessName]" businessUrl="#[flowVars.businessUrl]" config-ref="Stripe" debitNegativeBalances="#[flowVars.debitNegativeBalances]" defaultCurrency="#[flowVars.defaultCurrency]" email="#[flowVars.email]" id="#[flowVars.id]" productDescription="#[flowVars.productDescription]" statementDescriptor="#[flowVars.statementDescriptor]" supportPhone="#[flowVars.supportPhone]">
+		<stripe:bank-account ref="#[flowVars.bankAccount]"/>
+		<stripe:legal-entity ref="#[flowVars.legalEntity]"/>
+		<stripe:tos-acceptance ref="#[flowVars.tosAcceptance]"/>
+		<stripe:transfer-schedule ref="#[flowVars.transferSchedule]"/>
 		<stripe:metadata ref="#[flowVars.testMetadata]"/>
-		<!-- <stripe:bank-account ref="#[flowVars.testBankAccount]"/>
-		<stripe:legal-entity ref="#[flowVars.testLegalEntity]"/>
-		<stripe:acceptance ref="#[flowVars.testAcceptance]"/>
-		<stripe:transfer-schedule ref="#[flowVars.testTransferSchedule]"/> -->
 	</stripe:update-account>
 </flow>
 <flow doc:name="CreateCardToken" name="create-card-token">

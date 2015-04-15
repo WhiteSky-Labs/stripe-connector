@@ -7,6 +7,8 @@ package com.wsl.modules.stripe.complextypes;
 
 import java.util.*;
 
+import com.wsl.modules.stripe.utils.StripeClientUtils;
+
 /**
  * Represents a Legal Entity in the Stripe API
  * @author WhiteSky Labs
@@ -25,7 +27,7 @@ public class LegalEntity {
 	private String personalIdNumber;
 	private String ssnLast4;
 	private String verificationDocumentId;
-	private Owner[] additionalOwners;
+	private List<Owner> additionalOwners;	
 	/**
 	 * @return the type
 	 */
@@ -173,14 +175,14 @@ public class LegalEntity {
 	/**
 	 * @return the additionalOwners
 	 */
-	public Owner[] getAdditionalOwners() {
-		return this.additionalOwners.clone();
+	public List<Owner> getAdditionalOwners() {
+		return this.additionalOwners;
 	}
 	/**
 	 * @param additionalOwners the additionalOwners to set
 	 */
-	public void setAdditionalOwners(Owner[] additionalOwners) {
-		this.additionalOwners = additionalOwners != null ? additionalOwners.clone() : null;
+	public void setAdditionalOwners(List<Owner> additionalOwners) {
+		this.additionalOwners = additionalOwners;
 	}
 	/**
 	 * Turns the object into a Stripe API-compliant dictionary with the correct values.
@@ -190,24 +192,34 @@ public class LegalEntity {
 	public Map<String, Object> toDictionary(){
 		Map<String, Object> dict = new HashMap<String, Object>();
 		dict.put("type", getType());
-		dict.put("address", getAddress().toDictionary());
-		dict.put("businessName", getBusinessName());
+		if (getAddress() != null){
+			dict.put("address", getAddress().toDictionary());
+		}
+		dict.put("business_name", getBusinessName());
 		dict.put("business_tax_id", getBusinessTaxId());
 		dict.put("business_vat_id", getBusinessVatId());
-		dict.put("dob", getDob().toDictionary());
+		if (getDob() != null){
+			dict.put("dob", getDob().toDictionary());
+		}
 		dict.put("first_name", getFirstName());
 		dict.put("last_name", getLastName());
-		dict.put("personal_address", getAddress().toDictionary());
+		if (getAddress() != null){
+			dict.put("personal_address", getAddress().toDictionary());
+		}
 		dict.put("personal_id_number", getPersonalIdNumber());
 		dict.put("ssn_last_4", getSsnLast4());
-		Map<String, String> verification = new HashMap<String, String>();
-		verification.put("document", getVerificationDocumentId());
-		dict.put("verification", verification);
-		List<Map<String, Object>> objectList = new ArrayList<Map<String,Object>>();		
-		for (Owner owner : getAdditionalOwners()){
-			objectList.add(owner.toDictionary());
+		if (getVerificationDocumentId() != null){
+			Map<String, String> verification = new HashMap<String, String>();
+			verification.put("document", getVerificationDocumentId());
+			dict.put("verification", verification);
 		}
-		dict.put("additional_owners", objectList);		
-		return dict;
+		if (getAdditionalOwners() != null){
+			List<Map<String, Object>> objectList = new ArrayList<Map<String,Object>>();		
+			for (Owner owner : getAdditionalOwners()){
+				objectList.add(owner.toDictionary());
+			}
+			dict.put("additional_owners", objectList);		
+		}
+		return StripeClientUtils.removeOptionalsAndZeroes(dict);
 	}
 }

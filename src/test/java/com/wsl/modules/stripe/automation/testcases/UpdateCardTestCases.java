@@ -7,6 +7,8 @@
 package com.wsl.modules.stripe.automation.testcases;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.Map;
 
@@ -20,6 +22,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
+import org.mule.api.MessagingException;
+import org.mule.modules.tests.ConnectorTestUtils;
 
 public class UpdateCardTestCases
     extends StripeTestParent
@@ -75,5 +79,26 @@ public class UpdateCardTestCases
         assertEquals(expectedBean.get("addressCountry"), card.getAddressCountry());
         assertEquals(expectedBean.get("cardName"), card.getName());
     }
+    
+    @Category({
+        RegressionTests.class,
+        SmokeTests.class
+    })
+    @Test
+    public void testUpdateNonexistentCard()
+        throws Exception
+    {
+    	try {
+        	upsertOnTestRunMessage("id", "InvalidID");
+            runFlowAndGetPayload("update-card");
+            fail("Updating a card that doesn't exist should throw an error.");
+    	} catch (MessagingException e){
+    		assertTrue(e.getCause().getMessage().contains("Could not update the Card"));
+    	} catch (Exception e){
+    		fail(ConnectorTestUtils.getStackTrace(e));
+    	}
+        
+    }
+
 
 }

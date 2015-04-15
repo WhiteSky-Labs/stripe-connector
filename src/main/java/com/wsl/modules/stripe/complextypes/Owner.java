@@ -7,6 +7,8 @@ package com.wsl.modules.stripe.complextypes;
 
 import java.util.*;
 
+import com.wsl.modules.stripe.utils.StripeClientUtils;
+
 /**
  * Represents a business Owner in the Stripe Input API
  * @author WhiteSky Labs
@@ -92,6 +94,7 @@ public class Owner {
 		Map<String, String> verification = new HashMap<String, String>();
 		verification.put("document", getVerificationDocumentId());
 		dict.put("verification", verification);
+		dict = StripeClientUtils.removeOptionals(dict);
 		return dict;
 	}
 }

@@ -8,6 +8,8 @@ package com.wsl.modules.stripe.complextypes;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.wsl.modules.stripe.utils.StripeClientUtils;
+
 /**
  * Represents a Bank Account input in Stripe
  * @author WhiteSky Labs
@@ -78,6 +80,6 @@ public class BankAccount {
 		dict.put("currency", getCurrency());
 		dict.put("routing_number", getRoutingNumber());
 		dict.put("account_number", getAccountNumber());
-		return dict;
+		return StripeClientUtils.removeOptionals(dict);
 	}
 }

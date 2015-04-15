@@ -8,6 +8,8 @@ package com.wsl.modules.stripe.complextypes;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.wsl.modules.stripe.utils.StripeClientUtils;
+
 /**
  * Source represents the inputs for a source type. 
  * Datamapper seems to have trouble interpreting the native Stripe types, so this removes the extraneous overhead to simplify.
@@ -181,6 +183,6 @@ public class Source {
 		dict.put("address_state", this.getAddressState());
 		dict.put("address_zip", this.getAddressZip());
 		dict.put("address_country", this.getAddressCountry());
-		return dict;
+		return StripeClientUtils.removeOptionalsAndZeroes(dict);
 	}
 }
