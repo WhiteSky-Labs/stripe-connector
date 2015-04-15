@@ -113,13 +113,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-  <meta name="description" content="Documentation for Mule Splunk Connector." />
+  <meta name="description" content="Documentation for Mule Stripe Anypoint Connector." />
 
 <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
 <title>
 
 
-| Mule Splunk Connector
+| Mule Stripe Anypoint Connector
 
 </title>
 <link href="../assets/mule-developer-docs.css" rel="stylesheet" type="text/css" />
@@ -160,7 +160,7 @@
   feedback_widget_options.color = "#2F74AE";
   feedback_widget_options.style = "question";
 
-  feedback_widget_options.tag = "Mule Splunk Connector";
+  feedback_widget_options.tag = "Mule Stripe Anypoint Connector";
 
   feedback_widget_options.limit = "3";
 
@@ -173,7 +173,7 @@
 <div id="header">
     <div id="headerLeft">
     
-      <span id="masthead-title">Mule Splunk Connector</span>
+      <span id="masthead-title">Mule Stripe Anypoint Connector</span>
     
     <ul id="header-tabs" class="guide">
     
@@ -252,15 +252,15 @@ information about how the Mule Plugin System works see <a href="http://www.mules
 <pre>
 &lt;repositories&gt;
     &lt;repository&gt;
-        &lt;id&gt;mulesoft-releases&lt;/id&gt;
-        &lt;name&gt;MuleSoft Repository&lt;/name&gt;
-        &lt;url&gt;http://repository-master.mulesoft.org/releases/&lt;/url&gt;
+        &lt;id&gt;${project.distributionManagement.repository.id}&lt;/id&gt;
+        &lt;name&gt;${project.distributionManagement.repository.name}&lt;/name&gt;
+        &lt;url&gt;${project.distributionManagement.repository.url}&lt;/url&gt;
         &lt;layout&gt;default&lt;/layout&gt;
     &lt;/repository&gt;
     &lt;repository&gt;
-        &lt;id&gt;mulesoft-snapshots&lt;/id&gt;
-        &lt;name&gt;MuleSoft Snapshot Repository&lt;/name&gt;
-        &lt;url&gt;http://repository-master.mulesoft.org/snapshots/&lt;/url&gt;
+        &lt;id&gt;${project.distributionManagement.snapshotRepository.id}&lt;/id&gt;
+        &lt;name&gt;${project.distributionManagement.snapshotRepository.name}&lt;/name&gt;
+        &lt;url&gt;${project.distributionManagement.snapshotRepository.url}&lt;/url&gt;
         &lt;layout&gt;default&lt;/layout&gt;
     &lt;/repository&gt;
 &lt;/repositories&gt;
@@ -271,8 +271,8 @@ element your POM:
 
 <pre>
 &lt;dependency&gt;
-    &lt;groupId&gt;org.mule.modules&lt;/groupId&gt;
-    &lt;artifactId&gt;mule-module-splunk&lt;/artifactId&gt;
+    &lt;groupId&gt;com.wsl.modules&lt;/groupId&gt;
+    &lt;artifactId&gt;stripe-connector&lt;/artifactId&gt;
     &lt;version&gt;RELEASE&lt;/version&gt;
 &lt;/dependency&gt;
 </pre>
@@ -281,8 +281,8 @@ or if  you want to be on the bleeding edge
 
 <pre>
 &lt;dependency&gt;
-    &lt;groupId&gt;org.mule.modules&lt;/groupId&gt;
-    &lt;artifactId&gt;mule-module-splunk&lt;/artifactId&gt;
+    &lt;groupId&gt;com.wsl.modules&lt;/groupId&gt;
+    &lt;artifactId&gt;stripe-connector&lt;/artifactId&gt;
     &lt;version&gt;LATEST&lt;/version&gt;
 &lt;/dependency&gt;
 </pre>
@@ -301,8 +301,8 @@ Add an special inclusion to the configuration of the Mule Maven plugin for this 
         &lt;excludeMuleDependencies&gt;false&lt;/excludeMuleDependencies&gt;
         &lt;inclusions&gt;
             &lt;inclusion&gt;
-                &lt;groupId&gt;org.mule.modules&lt;/groupId&gt;
-                &lt;artifactId&gt;mule-module-splunk&lt;/artifactId&gt;
+                &lt;groupId&gt;com.wsl.modules&lt;/groupId&gt;
+                &lt;artifactId&gt;stripe-connector&lt;/artifactId&gt;
             &lt;/inclusion&gt;
         &lt;/inclusions&gt;
     &lt;/configuration&gt;

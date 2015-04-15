@@ -1,0 +1,2547 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <meta name="description" content="Documentation for Mule Stripe Anypoint Connector." />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico" />
+<title>
+
+  StripeConnectorCapabilitiesAdapter
+
+
+| Mule Stripe Anypoint Connector
+
+</title>
+<link href="../../../../../../assets/mule-developer-docs.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../../assets/mule-developer-prettify.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../../assets/customizations.css" rel="stylesheet" type="text/css" />
+<link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet' type='text/css'>
+<script src="../../../../../../assets/search_autocomplete.js" type="text/javascript"></script>
+<script src="../../../../../../assets/jquery-resizable.min.js" type="text/javascript"></script>
+<script src="../../../../../../assets/jquery-toc.js" type="text/javascript"></script>
+<script src="../../../../../../assets/mule-developer-docs.js" type="text/javascript"></script>
+<script src="../../../../../../assets/prettify.js" type="text/javascript"></script>
+<script type="text/javascript">
+  setToRoot("../../../../../../", "../../../../../../assets/");
+</script>
+<script src="../../../../../../assets/mule-developer-reference.js" type="text/javascript"></script>
+<script src="../../../../../../assets/navtree_data.js" type="text/javascript"></script>
+<script src="../../../../../../assets/customizations.js" type="text/javascript"></script>
+<noscript>
+  <style type="text/css">
+    html,body{overflow:auto;}
+    #body-content{position:relative; top:0;}
+    #doc-content{overflow:visible;border-left:3px solid #666;}
+    #side-nav{padding:0;}
+    #side-nav .toggle-list ul {display:block;}
+    #resize-packages-nav{border-bottom:3px solid #666;}
+  </style>
+</noscript>
+<script type="text/javascript" charset="utf-8">
+  var is_ssl = ("https:" == document.location.protocol);
+  var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
+  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  var feedback_widget_options = {};
+
+  feedback_widget_options.display = "overlay";
+  feedback_widget_options.company = "mulesoft";
+  feedback_widget_options.placement = "right";
+  feedback_widget_options.color = "#2F74AE";
+  feedback_widget_options.style = "question";
+
+  feedback_widget_options.tag = "Mule Stripe Anypoint Connector";
+
+  feedback_widget_options.limit = "3";
+
+  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+</script>
+</head>
+
+<body class="">
+
+<div id="header">
+    <div id="headerLeft">
+    
+      <span id="masthead-title">Mule Stripe Anypoint Connector</span>
+    
+    <ul id="header-tabs" class="">
+    
+    	<li id="guide"><a href="../../../../../../guide/install.html">
+	    	<span class="en">Install Guide</span>
+    	</a></li>
+    
+    	<li id="java"><a href="../../../../../../java/packages.html">
+	    	<span class="en">Java API Reference</span>
+    	</a></li>
+    
+    	<li id="mule"><a href="../../../../../../mule/modules.html">
+	    	<span class="en">Mule API Reference</span>
+    	</a></li>
+    
+    </ul>
+    </div>
+    <div id="headerRight">
+      <a href="http://www.mulesoft.com" tabindex="-1">
+      <img src="../../../../../../assets//images/mulesoft-logo-final.gif" alt="MuleSoft" border="0" id="mulesoftlogo"></a><br/>
+      
+  <div id="searchContainer" >
+      <div id="searchForm">
+          <form accept-charset="utf-8" class="gsc-search-box" 
+                onsubmit="return submit_search()">
+            <table class="gsc-search-box" cellpadding="0" cellspacing="0"><tbody>
+                <tr>
+                  <td class="gsc-input">
+                    <input id="search_autocomplete" class="gsc-input" type="text" size="33" autocomplete="off"
+                      title="search developer docs" name="q"
+                      value="search developer docs"
+                      onFocus="search_focus_changed(this, true)"
+                      onBlur="search_focus_changed(this, false)"
+                      onkeydown="return search_changed(event, true, '../../../../../../')"
+                      onkeyup="return search_changed(event, false, '../../../../../../')" />
+                  <div id="search_filtered_div" class="no-display">
+                      <table id="search_filtered" cellspacing=0>
+                      </table>
+                  </div>
+                  </td>
+                  <td class="gsc-search-button">
+                    <input type="submit" value="Search" title="search" id="search-button" class="gsc-search-button" />
+                  </td>
+                  <td class="gsc-clear-button">
+                    <div title="clear results" class="gsc-clear-button">&nbsp;</div>
+                  </td>
+                </tr></tbody>
+              </table>
+          </form>
+      </div><!-- searchForm -->
+  </div><!-- search -->
+      
+    </div>
+</div><!-- header -->
+
+
+  <div class="g-section g-tpl-240" id="body-content">
+    <div class="g-unit g-first side-nav-resizable" id="side-nav">
+      <div id="swapper">
+        <div id="nav-panels">
+          <div id="resize-packages-nav">
+            <div id="packages-nav">
+              <div id="index-links">
+                <a href="../../../../../../java/packages.html"  >Package Index</a> |
+                <a href="../../../../../../java/classes.html" >Class Index</a>
+              </div>
+              <ul>
+                
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/package-summary.html">com.wsl.modules.stripe</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/adapter/package-summary.html">com.wsl.modules.stripe.adapter</a></li>
+    <li class="selected api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/adapters/package-summary.html">com.wsl.modules.stripe.adapters</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/agents/package-summary.html">com.wsl.modules.stripe.agents</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/client/package-summary.html">com.wsl.modules.stripe.client</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/package-summary.html">com.wsl.modules.stripe.complextypes</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/holders/package-summary.html">com.wsl.modules.stripe.complextypes.holders</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/transformers/package-summary.html">com.wsl.modules.stripe.complextypes.transformers</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/config/package-summary.html">com.wsl.modules.stripe.config</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/connectivity/package-summary.html">com.wsl.modules.stripe.connectivity</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/devkit/package-summary.html">com.wsl.modules.stripe.devkit</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/exceptions/package-summary.html">com.wsl.modules.stripe.exceptions</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/pooling/package-summary.html">com.wsl.modules.stripe.pooling</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/processors/package-summary.html">com.wsl.modules.stripe.processors</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/strategy/package-summary.html">com.wsl.modules.stripe.strategy</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/utils/package-summary.html">com.wsl.modules.stripe.utils</a></li>
+              </ul><br/>
+            </div> <!-- end packages -->
+          </div> <!-- end resize-packages -->
+          <div id="classes-nav">
+            <ul>
+              
+              
+    <li><h2>Classes</h2>
+      <ul>
+          <li class="selected api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/adapters/StripeConnectorCapabilitiesAdapter.html">StripeConnectorCapabilitiesAdapter</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/adapters/StripeConnectorConnectionManagementAdapter.html">StripeConnectorConnectionManagementAdapter</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/adapters/StripeConnectorLifecycleInjectionAdapter.html">StripeConnectorLifecycleInjectionAdapter</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/adapters/StripeConnectorMetadataAdapater.html">StripeConnectorMetadataAdapater</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/adapters/StripeConnectorProcessAdapter.html">StripeConnectorProcessAdapter</a></li>
+      </ul>
+    </li>
+              
+              
+              
+              
+            </ul><br/>
+          </div><!-- end classes -->
+        </div><!-- end nav-panels -->
+        <div id="nav-tree" style="display:none">
+          <div id="index-links">
+            <a href="../../../../../../packages.html"  >Package Index</a> | 
+            <a href="../../../../../../classes.html" >Class Index</a>
+          </div>
+        </div><!-- end nav-tree -->
+      </div><!-- end swapper -->
+    </div> <!-- end side-nav -->
+    <script>
+      if (!isMobile) {
+        $("<a href='#' id='nav-swap' onclick='swapNav();return false;' style='font-size:10px;line-height:9px;margin-left:1em;text-decoration:none;'><span id='tree-link'>Use Tree Navigation</span><span id='panel-link' style='display:none'>Use Panel Navigation</span></a>").appendTo("#side-nav");
+        chooseDefaultNav();
+        if ($("#nav-tree").is(':visible')) {
+          init_default_navtree("../../../../../../");
+        } else {
+          addLoadEvent(function() {
+            scrollIntoView("packages-nav");
+            scrollIntoView("classes-nav");
+          });
+        }
+        $("#swapper").css({borderBottom:"2px solid #aaa"});
+      } else {
+        swapNav(); // tree view should be used on mobile
+      }
+    </script>
+
+
+
+<div class="g-unit" id="doc-content">
+
+<div id="api-info-block">
+
+
+
+  
+   
+  
+  
+  
+   
+  
+  
+
+  
+   
+  
+  
+  
+  
+
+  
+   
+  
+  
+  
+  
+
+
+<div class="sum-details-links">
+
+
+Summary:
+
+
+
+
+
+
+
+
+  <a href="#inhfields">Inherited Fields</a>
+  
+
+
+  &#124; <a href="#pubctors">Ctors</a>
+  
+
+
+
+  &#124; <a href="#pubmethods">Methods</a>
+  
+
+
+
+  &#124; <a href="#inhmethods">Inherited Methods</a>
+
+&#124; <a href="#" onclick="return toggleAllClassInherited()" id="toggleAllClassInherited">[Expand All]</a>
+
+</div><!-- end sum-details-links -->
+<div class="api-level">
+  
+
+
+  
+  
+
+</div>
+</div><!-- end api-info-block -->
+
+
+<!-- ======== START OF CLASS DATA ======== -->
+
+<div id="jd-header">
+    public
+     
+     
+    
+    class
+<h1>StripeConnectorCapabilitiesAdapter</h1>
+
+
+
+  
+  
+  
+
+  
+    extends <a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a><br/>
+  
+  
+  
+
+  
+  
+      implements 
+      
+        Capabilities 
+      
+  
+  
+
+
+</div><!-- end header -->
+
+<div id="naMessage"></div>
+
+<div id="jd-content" class="api apilevel-">
+<table class="jd-inheritance-table">
+
+
+    <tr>
+        
+        <td colspan="3" class="jd-inheritance-class-cell">java.lang.Object</td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="2" class="jd-inheritance-class-cell"><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">com.wsl.modules.stripe.StripeConnector</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="1" class="jd-inheritance-class-cell">com.wsl.modules.stripe.adapters.StripeConnectorCapabilitiesAdapter</td>
+    </tr>
+    
+
+</table>
+
+
+
+
+<table class="jd-sumtable jd-sumtable-subclasses"><tr><td colspan="12" style="border:none;margin:0;padding:0;">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="subclasses-direct" class="jd-expando-trigger closed"
+          ><img id="subclasses-direct-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>Known Direct Subclasses
+
+  <div id="subclasses-direct">
+      <div id="subclasses-direct-list"
+              class="jd-inheritedlinks"
+              
+              >
+          
+            
+              <a href="../../../../../../java/com/wsl/modules/stripe/adapters/StripeConnectorMetadataAdapater.html">StripeConnectorMetadataAdapater</a>
+            
+          
+      </div>
+      <div id="subclasses-direct-summary"
+              style="display: none;"
+              >
+  <table class="jd-sumtable-expando">
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/adapters/StripeConnectorMetadataAdapater.html">StripeConnectorMetadataAdapater</a></td>
+              <td class="jd-descrcol" width="100%">A <code>StripeConnectorMetadataAdapater</code> is a wrapper around <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code> that adds support for querying metadata about the extension.&nbsp;</td>
+          </tr>
+  </table>
+      </div>
+  </div>
+</td></tr></table>
+
+
+
+<table class="jd-sumtable jd-sumtable-subclasses"><tr><td colspan="12" style="border:none;margin:0;padding:0;">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="subclasses-indirect" class="jd-expando-trigger closed"
+          ><img id="subclasses-indirect-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>Known Indirect Subclasses
+
+  <div id="subclasses-indirect">
+      <div id="subclasses-indirect-list"
+              class="jd-inheritedlinks"
+              
+              >
+          
+            
+              <a href="../../../../../../java/com/wsl/modules/stripe/adapters/StripeConnectorConnectionManagementAdapter.html">StripeConnectorConnectionManagementAdapter</a>,
+            
+              <a href="../../../../../../java/com/wsl/modules/stripe/adapters/StripeConnectorLifecycleInjectionAdapter.html">StripeConnectorLifecycleInjectionAdapter</a>,
+            
+              <a href="../../../../../../java/com/wsl/modules/stripe/adapters/StripeConnectorProcessAdapter.html">StripeConnectorProcessAdapter</a>
+            
+          
+      </div>
+      <div id="subclasses-indirect-summary"
+              style="display: none;"
+              >
+  <table class="jd-sumtable-expando">
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/adapters/StripeConnectorConnectionManagementAdapter.html">StripeConnectorConnectionManagementAdapter</a></td>
+              <td class="jd-descrcol" width="100%">A <code>StripeConnectorConnectionManagementAdapter</code> is a wrapper around <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code> that implements org.mule.devkit.dynamic.api.helper.Connection interface.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/adapters/StripeConnectorLifecycleInjectionAdapter.html">StripeConnectorLifecycleInjectionAdapter</a></td>
+              <td class="jd-descrcol" width="100%">A <code>StripeConnectorLifecycleInjectionAdapter</code> is a wrapper around <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code> that adds lifecycle methods to the pojo.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/adapters/StripeConnectorProcessAdapter.html">StripeConnectorProcessAdapter</a></td>
+              <td class="jd-descrcol" width="100%">A <code>StripeConnectorProcessAdapter</code> is a wrapper around <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code> that enables custom processing strategies.&nbsp;</td>
+          </tr>
+  </table>
+      </div>
+  </div>
+</td></tr></table>
+
+
+<div class="jd-descr">
+
+
+<h2>Class Overview</h2>
+<p>A <code>StripeConnectorCapabilitiesAdapter</code> is a wrapper around <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code> that implements org.mule.api.Capabilities interface.
+ 
+</p>
+
+
+
+
+
+</div><!-- jd-descr -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Summary</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =========== FIELD SUMMARY =========== -->
+<table id="inhfields" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Fields</div></th></tr>
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-fields-com.wsl.modules.stripe.StripeConnector" class="jd-expando-trigger closed"
+          ><img id="inherited-fields-com.wsl.modules.stripe.StripeConnector-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From class
+<a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html">com.wsl.modules.stripe.StripeConnector</a>
+<div id="inherited-fields-com.wsl.modules.stripe.StripeConnector">
+  <div id="inherited-fields-com.wsl.modules.stripe.StripeConnector-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-fields-com.wsl.modules.stripe.StripeConnector-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          
+          
+          
+          <a href="../../../../../../java/com/wsl/modules/stripe/client/StripeAccountClient.html">StripeAccountClient</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#accountClient">accountClient</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          
+          
+          
+          <a href="../../../../../../java/com/wsl/modules/stripe/client/StripeBalanceClient.html">StripeBalanceClient</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#balanceClient">balanceClient</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          
+          
+          
+          <a href="../../../../../../java/com/wsl/modules/stripe/client/StripeBitcoinReceiverClient.html">StripeBitcoinReceiverClient</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#bitcoinClient">bitcoinClient</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          
+          
+          
+          <a href="../../../../../../java/com/wsl/modules/stripe/client/StripeCardClient.html">StripeCardClient</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#cardClient">cardClient</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          
+          
+          
+          <a href="../../../../../../java/com/wsl/modules/stripe/client/StripeChargeClient.html">StripeChargeClient</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#chargeClient">chargeClient</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          
+          
+          
+          <a href="../../../../../../java/com/wsl/modules/stripe/strategy/ConnectorConnectionStrategy.html">ConnectorConnectionStrategy</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#connectionStrategy">connectionStrategy</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          
+          
+          
+          <a href="../../../../../../java/com/wsl/modules/stripe/client/StripeCouponClient.html">StripeCouponClient</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#couponClient">couponClient</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          
+          
+          
+          <a href="../../../../../../java/com/wsl/modules/stripe/client/StripeCustomerClient.html">StripeCustomerClient</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#customerClient">customerClient</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          
+          
+          
+          <a href="../../../../../../java/com/wsl/modules/stripe/client/StripeEventClient.html">StripeEventClient</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#eventClient">eventClient</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          
+          
+          
+          <a href="../../../../../../java/com/wsl/modules/stripe/client/StripeApplicationFeeClient.html">StripeApplicationFeeClient</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#feeClient">feeClient</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          
+          
+          
+          <a href="../../../../../../java/com/wsl/modules/stripe/client/StripeFileUploadClient.html">StripeFileUploadClient</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#fileClient">fileClient</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          
+          
+          
+          <a href="../../../../../../java/com/wsl/modules/stripe/client/StripeInvoiceClient.html">StripeInvoiceClient</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#invoiceClient">invoiceClient</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          
+          
+          
+          <a href="../../../../../../java/com/wsl/modules/stripe/client/StripePlanClient.html">StripePlanClient</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#planClient">planClient</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          
+          
+          
+          <a href="../../../../../../java/com/wsl/modules/stripe/client/StripeRefundClient.html">StripeRefundClient</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#refundClient">refundClient</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          
+          
+          
+          <a href="../../../../../../java/com/wsl/modules/stripe/client/StripeSubscriptionClient.html">StripeSubscriptionClient</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#subClient">subClient</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          
+          
+          
+          <a href="../../../../../../java/com/wsl/modules/stripe/client/StripeTokenClient.html">StripeTokenClient</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#tokenClient">tokenClient</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+
+
+
+</table>
+
+
+
+
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<table id="pubctors" class="jd-sumtable"><tr><th colspan="12">Public Constructors</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            </nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/adapters/StripeConnectorCapabilitiesAdapter.html#StripeConnectorCapabilitiesAdapter()">StripeConnectorCapabilitiesAdapter</a></span>()</nobr>
+        
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="pubmethods" class="jd-sumtable"><tr><th colspan="12">Public Methods</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/adapters/StripeConnectorCapabilitiesAdapter.html#isCapableOf(org.mule.api.devkit.capability.ModuleCapability)">isCapableOf</a></span>(ModuleCapability capability)</nobr>
+        
+        <div class="jd-descrdiv">Returns true if this module implements such capability
+ 
+</div>
+  
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="inhmethods" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Methods</div></th></tr>
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-com.wsl.modules.stripe.StripeConnector" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-com.wsl.modules.stripe.StripeConnector-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  <a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html">com.wsl.modules.stripe.StripeConnector</a>
+
+<div id="inherited-methods-com.wsl.modules.stripe.StripeConnector">
+  <div id="inherited-methods-com.wsl.modules.stripe.StripeConnector-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-com.wsl.modules.stripe.StripeConnector-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Subscription</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#cancelSubscription(java.lang.String, java.lang.String)">cancelSubscription</a></span>(String customerId, String subscriptionId)</nobr>
+        
+        <div class="jd-descrdiv">Cancel a Subscription
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Charge</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#captureCharge(java.lang.String, int, int, java.lang.String, java.lang.String)">captureCharge</a></span>(String id, int amount, int applicationFee, String statementDescriptor, String receiptEmail)</nobr>
+        
+        <div class="jd-descrdiv">Capture a Charge</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Account</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#createAccount(boolean, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.BankAccount, boolean, java.lang.String, com.wsl.modules.stripe.complextypes.LegalEntity, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.Acceptance, com.wsl.modules.stripe.complextypes.TransferSchedule, java.util.Map<java.lang.String, java.lang.Object>)">createAccount</a></span>(boolean managed, String country, String email, String businessName, String businessUrl, String supportPhone, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/BankAccount.html">BankAccount</a> bankAccount, boolean debitNegativeBalances, String defaultCurrency, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/LegalEntity.html">LegalEntity</a> legalEntity, String productDescription, String statementDescriptor, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/Acceptance.html">Acceptance</a> tosAcceptance, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/TransferSchedule.html">TransferSchedule</a> transferSchedule, Map&lt;String,&nbsp;Object&gt; metadata)</nobr>
+        
+        <div class="jd-descrdiv">Create an Account
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            ApplicationFee</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#createApplicationFeeRefund(java.lang.String, int)">createApplicationFeeRefund</a></span>(String id, int amount)</nobr>
+        
+        <div class="jd-descrdiv">Create an Application Fee Refund
+ Refunds an application fee that has previously been collected but not yet refunded.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Token</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#createBankAccountToken(java.lang.String, com.wsl.modules.stripe.complextypes.BankAccount)">createBankAccountToken</a></span>(String bankAccountId, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/BankAccount.html">BankAccount</a> bankAccount)</nobr>
+        
+        <div class="jd-descrdiv">Create a Bank Account Token
+ Creates a single use token that wraps the details of a bank account.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            BitcoinReceiver</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#createBitcoinReceiver(int, java.lang.String, java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, boolean)">createBitcoinReceiver</a></span>(int amount, String currency, String email, String description, Map&lt;String,&nbsp;Object&gt; metadata, boolean refundMispayments)</nobr>
+        
+        <div class="jd-descrdiv">Create a BitCoin Receiver
+ Creates a Bitcoin receiver object that can be used to accept bitcoin payments from your customer.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Card</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#createCard(java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.Source)">createCard</a></span>(String ownerId, String sourceToken, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/Source.html">Source</a> source)</nobr>
+        
+        <div class="jd-descrdiv">Create a Card
+ Note that this is only available for Customers at this time, as Recipients (of Transfers) have been deprecated by Stripe.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Token</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#createCardToken(java.lang.String, com.wsl.modules.stripe.complextypes.Source, java.lang.String)">createCardToken</a></span>(String cardId, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/Source.html">Source</a> card, String customer)</nobr>
+        
+        <div class="jd-descrdiv">Create a Card Token
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Charge</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#createCharge(int, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.Source, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, boolean, java.lang.String, java.lang.String, java.lang.String, int, java.util.Map<java.lang.String, java.lang.Object>)">createCharge</a></span>(int amount, String currency, String customerId, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/Source.html">Source</a> source, String description, Map&lt;String,&nbsp;Object&gt; metadata, boolean capture, String statementDescriptor, String receiptEmail, String destination, int applicationFee, Map&lt;String,&nbsp;Object&gt; shipping)</nobr>
+        
+        <div class="jd-descrdiv">Create a Charge
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Coupon</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#createCoupon(java.lang.String, java.lang.String, int, java.lang.String, int, int, int, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">createCoupon</a></span>(String id, String duration, int amountOff, String currency, int durationInMonths, int maxRedemptions, int percentOff, String redeemBy, Map&lt;String,&nbsp;Object&gt; metadata)</nobr>
+        
+        <div class="jd-descrdiv">Create a Coupon
+
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Customer</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#createCustomer(int, java.lang.String, java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">createCustomer</a></span>(int accountBalance, String couponCode, String description, String email, Map&lt;String,&nbsp;Object&gt; metadata)</nobr>
+        
+        <div class="jd-descrdiv">Create a Customer
+
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            FileUpload</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#createFileUpload(java.lang.String, com.wsl.modules.stripe.complextypes.FilePurpose)">createFileUpload</a></span>(String file, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/FilePurpose.html">FilePurpose</a> purpose)</nobr>
+        
+        <div class="jd-descrdiv">Create a file upload
+ To upload a file to Stripe, you'll need to send a request of type multipart/form-data.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Invoice</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#createInvoice(java.lang.String, int, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String, java.lang.String, double)">createInvoice</a></span>(String customerId, int applicationFee, String description, Map&lt;String,&nbsp;Object&gt; metadata, String statementDescriptor, String subscription, double taxPercent)</nobr>
+        
+        <div class="jd-descrdiv">Create an invoice
+ Invoices are statements of what a customer owes for a particular billing period, including subscriptions, invoice items, and any automatic proration adjustments if necessary.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Plan</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#createPlan(java.lang.String, int, java.lang.String, java.lang.String, int, java.lang.String, int, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">createPlan</a></span>(String id, int amount, String currency, String interval, int intervalCount, String planName, int trialPeriodDays, String statementDescriptor, Map&lt;String,&nbsp;Object&gt; metadata)</nobr>
+        
+        <div class="jd-descrdiv">Create a Plan
+
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Refund</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#createRefund(java.lang.String, int, boolean, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">createRefund</a></span>(String id, int amount, boolean refundApplicationFee, String reason, Map&lt;String,&nbsp;Object&gt; metadata)</nobr>
+        
+        <div class="jd-descrdiv">Create a Refund
+ When you create a new refund, you must specify a charge to create it on.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Subscription</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#createSubscription(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.Source, int, double, double, java.util.Map<java.lang.String, java.lang.Object>)">createSubscription</a></span>(String customerId, String plan, String coupon, String trialEnd, String sourceToken, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/Source.html">Source</a> source, int quantity, double applicationFeePercent, double taxPercent, Map&lt;String,&nbsp;Object&gt; metadata)</nobr>
+        
+        <div class="jd-descrdiv">Create a Subscription
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            DeletedCard</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#deleteCard(java.lang.String, java.lang.String)">deleteCard</a></span>(String ownerId, String id)</nobr>
+        
+        <div class="jd-descrdiv">Delete a Card
+
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#deleteCoupon(java.lang.String)">deleteCoupon</a></span>(String id)</nobr>
+        
+        <div class="jd-descrdiv">Delete a Coupon
+
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#deleteCustomer(java.lang.String)">deleteCustomer</a></span>(String id)</nobr>
+        
+        <div class="jd-descrdiv">Delete a Customer
+
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#deletePlan(java.lang.String)">deletePlan</a></span>(String id)</nobr>
+        
+        <div class="jd-descrdiv">Delete a Plan
+
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/com/wsl/modules/stripe/strategy/ConnectorConnectionStrategy.html">ConnectorConnectionStrategy</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#getConnectionStrategy()">getConnectionStrategy</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            CustomerSubscriptionCollection</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#listActiveSubscriptions(java.lang.String, java.lang.String, int, java.lang.String)">listActiveSubscriptions</a></span>(String customerId, String endingBefore, int limit, String startingAfter)</nobr>
+        
+        <div class="jd-descrdiv">List Active Subscriptions
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            FeeRefundCollection</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#listAllApplicationFeeRefunds(java.lang.String, java.lang.String, int, java.lang.String)">listAllApplicationFeeRefunds</a></span>(String id, String endingBefore, int limit, String startingAfter)</nobr>
+        
+        <div class="jd-descrdiv">List All Application Fee Refunds
+ You can see a list of the refunds belonging to a specific application fee.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            ApplicationFeeCollection</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#listAllApplicationFees(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.lang.String, int, java.lang.String)">listAllApplicationFees</a></span>(String charge, String createdTimestamp, Map&lt;String,&nbsp;String&gt; created, String endingBefore, int limit, String startingAfter)</nobr>
+        
+        <div class="jd-descrdiv">List all Application Fees
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            BalanceTransactionCollection</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#listAllBalanceHistory(java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.lang.String, java.lang.String, int, java.lang.String, java.lang.String, java.lang.String, java.lang.String)">listAllBalanceHistory</a></span>(String availableOnTimestamp, Map&lt;String,&nbsp;String&gt; availableOn, String createdTimestamp, Map&lt;String,&nbsp;String&gt; created, String currency, String endingBefore, int limit, String sourceId, String startingAfter, String transfer, String type)</nobr>
+        
+        <div class="jd-descrdiv">List all Balance History
+
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            BitcoinReceiverCollection</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#listAllBitcoinReceivers(java.lang.String, java.lang.String, java.lang.String, int, java.lang.String, java.lang.String)">listAllBitcoinReceivers</a></span>(String active, String endingBefore, String filled, int limit, String startingAfter, String uncapturedFunds)</nobr>
+        
+        <div class="jd-descrdiv">List All Bitcoin Receivers
+ Returns a list of your receivers.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            ChargeCollection</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#listAllCharges(java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.lang.String, java.lang.String, int, java.lang.String)">listAllCharges</a></span>(String createdTimestamp, Map&lt;String,&nbsp;String&gt; created, String customer, String endingBefore, int limit, String startingAfter)</nobr>
+        
+        <div class="jd-descrdiv">List all Charges
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            CouponCollection</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#listAllCoupons(java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.lang.String, int, java.lang.String)">listAllCoupons</a></span>(String createdTimestamp, Map&lt;String,&nbsp;String&gt; created, String endingBefore, int limit, String startingAfter)</nobr>
+        
+        <div class="jd-descrdiv">List all Coupons
+
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            PaymentSourceCollection</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#listAllCustomerCards(java.lang.String, java.lang.String, int, java.lang.String)">listAllCustomerCards</a></span>(String ownerId, String endingBefore, int limit, String startingAfter)</nobr>
+        
+        <div class="jd-descrdiv">List all Customer Cards
+ Note that this is only available for Customers at this time, as Recipients (of Transfers) have been deprecated by Stripe.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            CustomerCollection</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#listAllCustomers(int, java.lang.String, java.lang.String)">listAllCustomers</a></span>(int limit, String startingAfter, String endingBefore)</nobr>
+        
+        <div class="jd-descrdiv">List all Customers
+
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            EventCollection</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#listAllEvents(java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.lang.String, int, java.lang.String, java.lang.String)">listAllEvents</a></span>(String createdTimestamp, Map&lt;String,&nbsp;String&gt; created, String endingBefore, int limit, String startingAfter, String type)</nobr>
+        
+        <div class="jd-descrdiv">List All Events
+ List events, going back up to 30 days.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            PlanCollection</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#listAllPlans(java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.lang.String, int, java.lang.String)">listAllPlans</a></span>(String createdTimestamp, Map&lt;String,&nbsp;String&gt; created, String endingBefore, int limit, String startingAfter)</nobr>
+        
+        <div class="jd-descrdiv">List All Plans
+
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            ChargeRefundCollection</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#listAllRefunds(java.lang.String, java.lang.String, int, java.lang.String)">listAllRefunds</a></span>(String chargeId, String endingBefore, int limit, String startingAfter)</nobr>
+        
+        <div class="jd-descrdiv">List All Refunds
+ You can see a list of the refunds belonging to a specific charge.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Invoice</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#payInvoice(java.lang.String)">payInvoice</a></span>(String id)</nobr>
+        
+        <div class="jd-descrdiv">Pay an invoice
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Account</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#retrieveAccount(java.lang.String)">retrieveAccount</a></span>(String id)</nobr>
+        
+        <div class="jd-descrdiv">Retrieve an Account's Details
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            InvoiceCollection</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#retrieveAllInvoices(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String, int, java.lang.String)">retrieveAllInvoices</a></span>(String customerId, String dateTimestamp, Map&lt;String,&nbsp;Object&gt; date, String endingBefore, int limit, String startingAfter)</nobr>
+        
+        <div class="jd-descrdiv">List all Invoices
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            ApplicationFee</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#retrieveApplicationFee(java.lang.String)">retrieveApplicationFee</a></span>(String id)</nobr>
+        
+        <div class="jd-descrdiv">Retrieve an Application Fee
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            FeeRefund</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#retrieveApplicationFeeRefund(java.lang.String, java.lang.String)">retrieveApplicationFeeRefund</a></span>(String id, String fee)</nobr>
+        
+        <div class="jd-descrdiv">Retrieve an Application Fee Refund
+ By default, you can see the 10 most recent refunds stored directly on the application fee object, but you can also retrieve details about a specific refund stored on the application fee.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Balance</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#retrieveBalance()">retrieveBalance</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Retrieve the balance
+
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            BalanceTransaction</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#retrieveBalanceTransaction(java.lang.String)">retrieveBalanceTransaction</a></span>(String id)</nobr>
+        
+        <div class="jd-descrdiv">Retrieve a Balance Transaction
+
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            BitcoinReceiver</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#retrieveBitcoinReceiver(java.lang.String)">retrieveBitcoinReceiver</a></span>(String id)</nobr>
+        
+        <div class="jd-descrdiv">Retrieve a Bitcoin Receiver
+ Retrieves the Bitcoin receiver with the given ID.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Card</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#retrieveCard(java.lang.String, java.lang.String)">retrieveCard</a></span>(String ownerId, String id)</nobr>
+        
+        <div class="jd-descrdiv">Retrieve a Card
+ Note that this is only available for Customers at this time, as Recipients (of Transfers) have been deprecated by Stripe.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Charge</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#retrieveCharge(java.lang.String)">retrieveCharge</a></span>(String id)</nobr>
+        
+        <div class="jd-descrdiv">Retrieve a Charge
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Coupon</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#retrieveCoupon(java.lang.String)">retrieveCoupon</a></span>(String id)</nobr>
+        
+        <div class="jd-descrdiv">Retrieve a Coupon
+
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Customer</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#retrieveCustomer(java.lang.String)">retrieveCustomer</a></span>(String id)</nobr>
+        
+        <div class="jd-descrdiv">Retrieve a Customer
+
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Event</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#retrieveEvent(java.lang.String)">retrieveEvent</a></span>(String id)</nobr>
+        
+        <div class="jd-descrdiv">Retrieve a Event
+ Retrieves the Event with the given ID
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Invoice</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#retrieveInvoice(java.lang.String)">retrieveInvoice</a></span>(String id)</nobr>
+        
+        <div class="jd-descrdiv">Retrieve an Invoice
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            InvoiceLineItemCollection</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#retrieveInvoiceLineItems(java.lang.String, java.lang.String, java.lang.String, int, java.lang.String, java.lang.String)">retrieveInvoiceLineItems</a></span>(String id, String customer, String endingBefore, int limit, String startingAfter, String subscription)</nobr>
+        
+        <div class="jd-descrdiv">Retrieve an invoice's line items
+ When retrieving an invoice, you'll get a lines property containing the total count of line items and the first handful of those items.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Plan</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#retrievePlan(java.lang.String)">retrievePlan</a></span>(String id)</nobr>
+        
+        <div class="jd-descrdiv">Retrieve a Plan
+
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Refund</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#retrieveRefund(java.lang.String, java.lang.String)">retrieveRefund</a></span>(String id, String chargeId)</nobr>
+        
+        <div class="jd-descrdiv">Retrieve a Refund
+ By default, you can see the 10 most recent refunds stored directly on the charge object, but you can also retrieve details about a specific refund stored on the charge.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Subscription</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#retrieveSubscription(java.lang.String, java.lang.String)">retrieveSubscription</a></span>(String customerId, String subscriptionId)</nobr>
+        
+        <div class="jd-descrdiv">Retrieve a Subscription
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Token</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#retrieveToken(java.lang.String)">retrieveToken</a></span>(String id)</nobr>
+        
+        <div class="jd-descrdiv">Retrieve a Token
+ Retrieves the token with the given ID
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Invoice</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#retrieveUpcomingInvoice(java.lang.String, java.lang.String)">retrieveUpcomingInvoice</a></span>(String customerId, String subscription)</nobr>
+        
+        <div class="jd-descrdiv">Retrieve an upcoming invoice
+ At any time, you can preview the upcoming invoice for a customer.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#setConnectionStrategy(com.wsl.modules.stripe.strategy.ConnectorConnectionStrategy)">setConnectionStrategy</a></span>(<a href="../../../../../../java/com/wsl/modules/stripe/strategy/ConnectorConnectionStrategy.html">ConnectorConnectionStrategy</a> connectionStrategy)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Account</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#updateAccount(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.BankAccount, boolean, java.lang.String, com.wsl.modules.stripe.complextypes.LegalEntity, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.Acceptance, com.wsl.modules.stripe.complextypes.TransferSchedule, java.util.Map<java.lang.String, java.lang.Object>)">updateAccount</a></span>(String id, String email, String businessName, String businessUrl, String supportPhone, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/BankAccount.html">BankAccount</a> bankAccount, boolean debitNegativeBalances, String defaultCurrency, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/LegalEntity.html">LegalEntity</a> legalEntity, String productDescription, String statementDescriptor, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/Acceptance.html">Acceptance</a> tosAcceptance, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/TransferSchedule.html">TransferSchedule</a> transferSchedule, Map&lt;String,&nbsp;Object&gt; metadata)</nobr>
+        
+        <div class="jd-descrdiv">Update an Account
+ You may only update accounts that you manage.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            FeeRefund</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#updateApplicationFeeRefund(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">updateApplicationFeeRefund</a></span>(String id, String fee, Map&lt;String,&nbsp;Object&gt; metadata)</nobr>
+        
+        <div class="jd-descrdiv">Update an Application Fee Refund
+ Updates the specified application fee refund by setting the values of the parameters passed.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Card</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#updateCard(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String)">updateCard</a></span>(String ownerId, String id, String addressCity, String addressCountry, String addressLine1, String addressLine2, String addressState, String addressZip, String expMonth, String expYear, Map&lt;String,&nbsp;Object&gt; metadata, String cardName)</nobr>
+        
+        <div class="jd-descrdiv">Update a Card
+ Note that this is only available for Customers at this time, as Recipients (of Transfers) have been deprecated by Stripe.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Charge</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#updateCharge(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">updateCharge</a></span>(String id, String description, Map&lt;String,&nbsp;Object&gt; metadata, String receiptEmail, Map&lt;String,&nbsp;Object&gt; fraudDetails)</nobr>
+        
+        <div class="jd-descrdiv">Update a Charge
+ Updates the specified charge by setting the values of the parameters passed.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Coupon</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#updateCoupon(java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">updateCoupon</a></span>(String id, Map&lt;String,&nbsp;Object&gt; metadata)</nobr>
+        
+        <div class="jd-descrdiv">Update a Coupon
+ Updates the metadata of a coupon.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Customer</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#updateCustomer(java.lang.String, int, java.lang.String, java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String)">updateCustomer</a></span>(String id, int accountBalance, String couponCode, String description, String email, Map&lt;String,&nbsp;Object&gt; metadata, String sourceToken)</nobr>
+        
+        <div class="jd-descrdiv">Update a Customer.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Invoice</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#updateInvoice(java.lang.String, int, boolean, java.lang.String, boolean, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String, double)">updateInvoice</a></span>(String invoiceId, int applicationFee, boolean closed, String description, boolean forgiven, Map&lt;String,&nbsp;Object&gt; metadata, String statementDescriptor, double taxPercent)</nobr>
+        
+        <div class="jd-descrdiv">Update an invoice
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Plan</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#updatePlan(java.lang.String, java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">updatePlan</a></span>(String id, String planName, String statementDescriptor, Map&lt;String,&nbsp;Object&gt; metadata)</nobr>
+        
+        <div class="jd-descrdiv">Update a Plan
+
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Refund</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#updateRefund(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">updateRefund</a></span>(String id, String chargeId, Map&lt;String,&nbsp;Object&gt; metadata)</nobr>
+        
+        <div class="jd-descrdiv">Update a Refund
+ Updates the specified refund by setting the values of the parameters passed.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Subscription</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#updateSubscription(java.lang.String, java.lang.String, java.lang.String, java.lang.String, boolean, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.Source, int, double, double, java.util.Map<java.lang.String, java.lang.Object>)">updateSubscription</a></span>(String customerId, String subscriptionId, String plan, String coupon, boolean prorate, String trialEnd, String sourceToken, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/Source.html">Source</a> source, int quantity, double applicationFeePercent, double taxPercent, Map&lt;String,&nbsp;Object&gt; metadata)</nobr>
+        
+        <div class="jd-descrdiv">Update a Subscription
+ Note that Stripe uses a specific policy around prorating changed subscriptions.</div>
+  
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-java.lang.Object" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-java.lang.Object-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  java.lang.Object
+
+<div id="inherited-methods-java.lang.Object">
+  <div id="inherited-methods-java.lang.Object-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-java.lang.Object-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">clone</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">equals</span>(Object arg0)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">finalize</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            Class&lt;?&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">getClass</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">hashCode</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">notify</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">notifyAll</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">toString</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">wait</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">wait</span>(long arg0)</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.devkit.capability.Capabilities" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.api.devkit.capability.Capabilities-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  org.mule.api.devkit.capability.Capabilities
+
+<div id="inherited-methods-org.mule.api.devkit.capability.Capabilities">
+  <div id="inherited-methods-org.mule.api.devkit.capability.Capabilities-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.api.devkit.capability.Capabilities-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">isCapableOf</span>(ModuleCapability arg0)</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+</table>
+
+
+</div><!-- jd-descr (summary) -->
+
+<!-- Details -->
+
+
+
+
+
+
+
+
+<!-- XML Attributes -->
+
+
+<!-- Enum Values -->
+
+
+<!-- Constants -->
+
+
+<!-- Fields -->
+
+
+<!-- Public ctors -->
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<h2>Public Constructors</h2>
+
+
+
+<A NAME="StripeConnectorCapabilitiesAdapter()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        
+      </span>
+      <span class="sympad">StripeConnectorCapabilitiesAdapter</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<!-- Protected ctors -->
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+<!-- Public methdos -->
+
+<h2>Public Methods</h2>
+
+
+
+<A NAME="isCapableOf(org.mule.api.devkit.capability.ModuleCapability)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">isCapableOf</span>
+      <span class="normal">(ModuleCapability capability)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Returns true if this module implements such capability
+ 
+</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>capability</td>
+          <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+
+
+
+<!-- ========= END OF CLASS DATA ========= -->
+<A NAME="navbar_top"></A>
+
+<div id="footer">
+Generated by <a href="http://www.mulesoft.com/devkit">Mule DevKit</a>. Document generation technology based on <a href="http://code.google.com/p/doclava/">Google's Doclava</a>.
+</div> <!-- end footer -->
+
+</div> <!-- jd-content -->
+
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+<script type="text/javascript">
+init(); /* initialize mule-developer-docs.js */
+</script>
+
+</body>
+</html>

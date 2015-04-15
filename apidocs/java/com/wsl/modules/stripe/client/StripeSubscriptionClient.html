@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <meta name="description" content="Documentation for Mule Stripe Anypoint Connector." />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico" />
+<title>
+
+  StripeSubscriptionClient
+
+
+| Mule Stripe Anypoint Connector
+
+</title>
+<link href="../../../../../../assets/mule-developer-docs.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../../assets/mule-developer-prettify.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../../assets/customizations.css" rel="stylesheet" type="text/css" />
+<link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet' type='text/css'>
+<script src="../../../../../../assets/search_autocomplete.js" type="text/javascript"></script>
+<script src="../../../../../../assets/jquery-resizable.min.js" type="text/javascript"></script>
+<script src="../../../../../../assets/jquery-toc.js" type="text/javascript"></script>
+<script src="../../../../../../assets/mule-developer-docs.js" type="text/javascript"></script>
+<script src="../../../../../../assets/prettify.js" type="text/javascript"></script>
+<script type="text/javascript">
+  setToRoot("../../../../../../", "../../../../../../assets/");
+</script>
+<script src="../../../../../../assets/mule-developer-reference.js" type="text/javascript"></script>
+<script src="../../../../../../assets/navtree_data.js" type="text/javascript"></script>
+<script src="../../../../../../assets/customizations.js" type="text/javascript"></script>
+<noscript>
+  <style type="text/css">
+    html,body{overflow:auto;}
+    #body-content{position:relative; top:0;}
+    #doc-content{overflow:visible;border-left:3px solid #666;}
+    #side-nav{padding:0;}
+    #side-nav .toggle-list ul {display:block;}
+    #resize-packages-nav{border-bottom:3px solid #666;}
+  </style>
+</noscript>
+<script type="text/javascript" charset="utf-8">
+  var is_ssl = ("https:" == document.location.protocol);
+  var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
+  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  var feedback_widget_options = {};
+
+  feedback_widget_options.display = "overlay";
+  feedback_widget_options.company = "mulesoft";
+  feedback_widget_options.placement = "right";
+  feedback_widget_options.color = "#2F74AE";
+  feedback_widget_options.style = "question";
+
+  feedback_widget_options.tag = "Mule Stripe Anypoint Connector";
+
+  feedback_widget_options.limit = "3";
+
+  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+</script>
+</head>
+
+<body class="">
+
+<div id="header">
+    <div id="headerLeft">
+    
+      <span id="masthead-title">Mule Stripe Anypoint Connector</span>
+    
+    <ul id="header-tabs" class="">
+    
+    	<li id="guide"><a href="../../../../../../guide/install.html">
+	    	<span class="en">Install Guide</span>
+    	</a></li>
+    
+    	<li id="java"><a href="../../../../../../java/packages.html">
+	    	<span class="en">Java API Reference</span>
+    	</a></li>
+    
+    	<li id="mule"><a href="../../../../../../mule/modules.html">
+	    	<span class="en">Mule API Reference</span>
+    	</a></li>
+    
+    </ul>
+    </div>
+    <div id="headerRight">
+      <a href="http://www.mulesoft.com" tabindex="-1">
+      <img src="../../../../../../assets//images/mulesoft-logo-final.gif" alt="MuleSoft" border="0" id="mulesoftlogo"></a><br/>
+      
+  <div id="searchContainer" >
+      <div id="searchForm">
+          <form accept-charset="utf-8" class="gsc-search-box" 
+                onsubmit="return submit_search()">
+            <table class="gsc-search-box" cellpadding="0" cellspacing="0"><tbody>
+                <tr>
+                  <td class="gsc-input">
+                    <input id="search_autocomplete" class="gsc-input" type="text" size="33" autocomplete="off"
+                      title="search developer docs" name="q"
+                      value="search developer docs"
+                      onFocus="search_focus_changed(this, true)"
+                      onBlur="search_focus_changed(this, false)"
+                      onkeydown="return search_changed(event, true, '../../../../../../')"
+                      onkeyup="return search_changed(event, false, '../../../../../../')" />
+                  <div id="search_filtered_div" class="no-display">
+                      <table id="search_filtered" cellspacing=0>
+                      </table>
+                  </div>
+                  </td>
+                  <td class="gsc-search-button">
+                    <input type="submit" value="Search" title="search" id="search-button" class="gsc-search-button" />
+                  </td>
+                  <td class="gsc-clear-button">
+                    <div title="clear results" class="gsc-clear-button">&nbsp;</div>
+                  </td>
+                </tr></tbody>
+              </table>
+          </form>
+      </div><!-- searchForm -->
+  </div><!-- search -->
+      
+    </div>
+</div><!-- header -->
+
+
+  <div class="g-section g-tpl-240" id="body-content">
+    <div class="g-unit g-first side-nav-resizable" id="side-nav">
+      <div id="swapper">
+        <div id="nav-panels">
+          <div id="resize-packages-nav">
+            <div id="packages-nav">
+              <div id="index-links">
+                <a href="../../../../../../java/packages.html"  >Package Index</a> |
+                <a href="../../../../../../java/classes.html" >Class Index</a>
+              </div>
+              <ul>
+                
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/package-summary.html">com.wsl.modules.stripe</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/adapter/package-summary.html">com.wsl.modules.stripe.adapter</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/adapters/package-summary.html">com.wsl.modules.stripe.adapters</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/agents/package-summary.html">com.wsl.modules.stripe.agents</a></li>
+    <li class="selected api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/client/package-summary.html">com.wsl.modules.stripe.client</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/package-summary.html">com.wsl.modules.stripe.complextypes</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/holders/package-summary.html">com.wsl.modules.stripe.complextypes.holders</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/transformers/package-summary.html">com.wsl.modules.stripe.complextypes.transformers</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/config/package-summary.html">com.wsl.modules.stripe.config</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/connectivity/package-summary.html">com.wsl.modules.stripe.connectivity</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/devkit/package-summary.html">com.wsl.modules.stripe.devkit</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/exceptions/package-summary.html">com.wsl.modules.stripe.exceptions</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/pooling/package-summary.html">com.wsl.modules.stripe.pooling</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/processors/package-summary.html">com.wsl.modules.stripe.processors</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/strategy/package-summary.html">com.wsl.modules.stripe.strategy</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/utils/package-summary.html">com.wsl.modules.stripe.utils</a></li>
+              </ul><br/>
+            </div> <!-- end packages -->
+          </div> <!-- end resize-packages -->
+          <div id="classes-nav">
+            <ul>
+              
+              
+    <li><h2>Classes</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/client/StripeAccountClient.html">StripeAccountClient</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/client/StripeApplicationFeeClient.html">StripeApplicationFeeClient</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/client/StripeBalanceClient.html">StripeBalanceClient</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/client/StripeBitcoinReceiverClient.html">StripeBitcoinReceiverClient</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/client/StripeCardClient.html">StripeCardClient</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/client/StripeChargeClient.html">StripeChargeClient</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/client/StripeCouponClient.html">StripeCouponClient</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/client/StripeCustomerClient.html">StripeCustomerClient</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/client/StripeEventClient.html">StripeEventClient</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/client/StripeFileUploadClient.html">StripeFileUploadClient</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/client/StripeInvoiceClient.html">StripeInvoiceClient</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/client/StripePlanClient.html">StripePlanClient</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/client/StripeRefundClient.html">StripeRefundClient</a></li>
+          <li class="selected api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/client/StripeSubscriptionClient.html">StripeSubscriptionClient</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/client/StripeTokenClient.html">StripeTokenClient</a></li>
+      </ul>
+    </li>
+              
+              
+              
+              
+            </ul><br/>
+          </div><!-- end classes -->
+        </div><!-- end nav-panels -->
+        <div id="nav-tree" style="display:none">
+          <div id="index-links">
+            <a href="../../../../../../packages.html"  >Package Index</a> | 
+            <a href="../../../../../../classes.html" >Class Index</a>
+          </div>
+        </div><!-- end nav-tree -->
+      </div><!-- end swapper -->
+    </div> <!-- end side-nav -->
+    <script>
+      if (!isMobile) {
+        $("<a href='#' id='nav-swap' onclick='swapNav();return false;' style='font-size:10px;line-height:9px;margin-left:1em;text-decoration:none;'><span id='tree-link'>Use Tree Navigation</span><span id='panel-link' style='display:none'>Use Panel Navigation</span></a>").appendTo("#side-nav");
+        chooseDefaultNav();
+        if ($("#nav-tree").is(':visible')) {
+          init_default_navtree("../../../../../../");
+        } else {
+          addLoadEvent(function() {
+            scrollIntoView("packages-nav");
+            scrollIntoView("classes-nav");
+          });
+        }
+        $("#swapper").css({borderBottom:"2px solid #aaa"});
+      } else {
+        swapNav(); // tree view should be used on mobile
+      }
+    </script>
+
+
+
+<div class="g-unit" id="doc-content">
+
+<div id="api-info-block">
+
+
+
+  
+   
+  
+  
+  
+  
+
+
+<div class="sum-details-links">
+
+
+Summary:
+
+
+
+
+
+
+
+
+
+  <a href="#pubctors">Ctors</a>
+  
+
+
+
+  &#124; <a href="#pubmethods">Methods</a>
+  
+
+
+
+  &#124; <a href="#inhmethods">Inherited Methods</a>
+
+&#124; <a href="#" onclick="return toggleAllClassInherited()" id="toggleAllClassInherited">[Expand All]</a>
+
+</div><!-- end sum-details-links -->
+<div class="api-level">
+  
+
+
+  
+  
+
+</div>
+</div><!-- end api-info-block -->
+
+
+<!-- ======== START OF CLASS DATA ======== -->
+
+<div id="jd-header">
+    public
+     
+     
+    
+    class
+<h1>StripeSubscriptionClient</h1>
+
+
+
+  
+    extends Object<br/>
+  
+  
+  
+
+  
+  
+  
+
+
+</div><!-- end header -->
+
+<div id="naMessage"></div>
+
+<div id="jd-content" class="api apilevel-">
+<table class="jd-inheritance-table">
+
+
+    <tr>
+        
+        <td colspan="2" class="jd-inheritance-class-cell">java.lang.Object</td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="1" class="jd-inheritance-class-cell">com.wsl.modules.stripe.client.StripeSubscriptionClient</td>
+    </tr>
+    
+
+</table>
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Class Overview</h2>
+<p>Encapsulates Subscription-related Stripe API calls.</p>
+
+
+
+
+
+</div><!-- jd-descr -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Summary</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<table id="pubctors" class="jd-sumtable"><tr><th colspan="12">Public Constructors</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            </nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/client/StripeSubscriptionClient.html#StripeSubscriptionClient()">StripeSubscriptionClient</a></span>()</nobr>
+        
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="pubmethods" class="jd-sumtable"><tr><th colspan="12">Public Methods</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Subscription</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/client/StripeSubscriptionClient.html#cancelSubscription(java.lang.String, java.lang.String)">cancelSubscription</a></span>(String customerId, String subscriptionId)</nobr>
+        
+        <div class="jd-descrdiv">Cancel a Subscription</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Subscription</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/client/StripeSubscriptionClient.html#createSubscription(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.Source, int, double, double, java.util.Map<java.lang.String, java.lang.Object>)">createSubscription</a></span>(String customerId, String plan, String coupon, String trialEnd, String sourceToken, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/Source.html">Source</a> source, int quantity, double applicationFeePercent, double taxPercent, Map&lt;String,&nbsp;Object&gt; metadata)</nobr>
+        
+        <div class="jd-descrdiv">Create a Subscription</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            CustomerSubscriptionCollection</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/client/StripeSubscriptionClient.html#listActiveSubscriptions(java.lang.String, java.lang.String, int, java.lang.String)">listActiveSubscriptions</a></span>(String customerId, String endingBefore, int limit, String startingAfter)</nobr>
+        
+        <div class="jd-descrdiv">List Active Subscriptions</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Subscription</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/client/StripeSubscriptionClient.html#retrieveSubscription(java.lang.String, java.lang.String)">retrieveSubscription</a></span>(String customerId, String subscriptionId)</nobr>
+        
+        <div class="jd-descrdiv">Retrieve a Subscription</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Subscription</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/client/StripeSubscriptionClient.html#updateSubscription(java.lang.String, java.lang.String, java.lang.String, java.lang.String, boolean, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.Source, int, double, double, java.util.Map<java.lang.String, java.lang.Object>)">updateSubscription</a></span>(String customerId, String subscriptionId, String plan, String coupon, boolean prorate, String trialEnd, String sourceToken, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/Source.html">Source</a> source, int quantity, double applicationFeePercent, double taxPercent, Map&lt;String,&nbsp;Object&gt; metadata)</nobr>
+        
+        <div class="jd-descrdiv">Update a Subscription
+ Note that Stripe uses a specific policy around prorating changed subscriptions.</div>
+  
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="inhmethods" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Methods</div></th></tr>
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-java.lang.Object" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-java.lang.Object-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  java.lang.Object
+
+<div id="inherited-methods-java.lang.Object">
+  <div id="inherited-methods-java.lang.Object-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-java.lang.Object-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">clone</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">equals</span>(Object arg0)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">finalize</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            Class&lt;?&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">getClass</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">hashCode</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">notify</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">notifyAll</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">toString</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">wait</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">wait</span>(long arg0)</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+</table>
+
+
+</div><!-- jd-descr (summary) -->
+
+<!-- Details -->
+
+
+
+
+
+
+
+
+<!-- XML Attributes -->
+
+
+<!-- Enum Values -->
+
+
+<!-- Constants -->
+
+
+<!-- Fields -->
+
+
+<!-- Public ctors -->
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<h2>Public Constructors</h2>
+
+
+
+<A NAME="StripeSubscriptionClient()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        
+      </span>
+      <span class="sympad">StripeSubscriptionClient</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<!-- Protected ctors -->
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+<!-- Public methdos -->
+
+<h2>Public Methods</h2>
+
+
+
+<A NAME="cancelSubscription(java.lang.String, java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        Subscription
+      </span>
+      <span class="sympad">cancelSubscription</span>
+      <span class="normal">(String customerId, String subscriptionId)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Cancel a Subscription</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>customerId</td>
+          <td>The ID of the customer to cancel the subscription of</td>
+        </tr>
+        <tr>
+          <th>subscriptionId</td>
+          <td>ID of subscription to cancel.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Returns the deleted subscription object.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../../java/com/wsl/modules/stripe/exceptions/StripeConnectorException.html">StripeConnectorException</a></td>
+            <td>when there is a problem with the Connector
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="createSubscription(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.Source, int, double, double, java.util.Map<java.lang.String, java.lang.Object>)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        Subscription
+      </span>
+      <span class="sympad">createSubscription</span>
+      <span class="normal">(String customerId, String plan, String coupon, String trialEnd, String sourceToken, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/Source.html">Source</a> source, int quantity, double applicationFeePercent, double taxPercent, Map&lt;String,&nbsp;Object&gt; metadata)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create a Subscription</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>customerId</td>
+          <td>The ID of the customer to create the subscription on</td>
+        </tr>
+        <tr>
+          <th>plan</td>
+          <td>The identifier of the plan to subscribe the customer to.</td>
+        </tr>
+        <tr>
+          <th>coupon</td>
+          <td>The code of the coupon to apply to this subscription. A coupon applied to a subscription will only affect invoices created for that particular subscription.</td>
+        </tr>
+        <tr>
+          <th>trialEnd</td>
+          <td>Unix timestamp representing the end of the trial period the customer will get before being charged for the first time. If set, trial_end will override the default trial period of the plan the customer is being subscribed to. The special value now can be provided to end the customer's trial immediately.</td>
+        </tr>
+        <tr>
+          <th>sourceToken</td>
+          <td>The source can either be a token, like the ones returned by our Stripe.js, ...</td>
+        </tr>
+        <tr>
+          <th>source</td>
+          <td>...or a Map containing a user's credit card details (with the options shown below). You must provide a source if the customer does not already have a valid source attached, and you are subscribing the customer for a plan that is not free. Passing source will create a new source object, make it the customer default source, and delete the old customer default if one exists. If you want to add an additional source to use with subscriptions, instead use the card creation API to add the card and then the customer update API to set it as the default. Whenever you attach a card to a customer, Stripe will automatically validate the card.</td>
+        </tr>
+        <tr>
+          <th>quantity</td>
+          <td>The quantity you'd like to apply to the subscription you're creating. For example, if your plan is $10/user/month, and your customer has 5 users, you could pass 5 as the quantity to have the customer charged $50 (5 x $10) monthly. If you update a subscription but don't change the plan ID (e.g. changing only the trial_end), the subscription will inherit the old subscription's quantity attribute unless you pass a new quantity parameter. If you update a subscription and change the plan ID, the new subscription will not inherit the quantity attribute and will default to 1 unless you pass a quantity parameter.</td>
+        </tr>
+        <tr>
+          <th>applicationFeePercent</td>
+          <td>A positive decimal (with at most two decimal places) between 1 and 100. This represents the percentage of the subscription invoice subtotal that will be transferred to the application owner’s Stripe account. The request must be made with an OAuth key in order to set an application fee percentage. For more information, see the application fees documentation.</td>
+        </tr>
+        <tr>
+          <th>taxPercent</td>
+          <td>A positive decimal (with at most two decimal places) between 1 and 100. This represents the percentage of the subscription invoice subtotal that will be calculated and added as tax to the final amount each billing period. For example, a plan which charges $10/month with a tax_percent of 20.0 will charge $12 per invoice.</td>
+        </tr>
+        <tr>
+          <th>metadata</td>
+          <td>A set of key/value pairs that you can attach to a subscription object. It can be useful for storing additional information about the subscription in a structured format.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Returns the newly created subscription object if the call succeeded. If the customer has no card or the attempted charge fails, this call throws an error (unless the specified plan is free or has a trial period).</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../../java/com/wsl/modules/stripe/exceptions/StripeConnectorException.html">StripeConnectorException</a></td>
+            <td>when there is a problem with the Connector
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="listActiveSubscriptions(java.lang.String, java.lang.String, int, java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        CustomerSubscriptionCollection
+      </span>
+      <span class="sympad">listActiveSubscriptions</span>
+      <span class="normal">(String customerId, String endingBefore, int limit, String startingAfter)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>List Active Subscriptions</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>customerId</td>
+          <td>The ID of the customer whose subscriptions will be retrieved</td>
+        </tr>
+        <tr>
+          <th>endingBefore</td>
+          <td>A cursor for use in pagination. ending_before is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with obj_bar, your subsequent call can include ending_before=obj_bar in order to fetch the previous page of the list.</td>
+        </tr>
+        <tr>
+          <th>limit</td>
+          <td>A limit on the number of objects to be returned. Limit can range between 1 and 100 items.</td>
+        </tr>
+        <tr>
+          <th>startingAfter</td>
+          <td>A cursor for use in pagination. starting_after is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with obj_foo, your subsequent call can include starting_after=obj_foo in order to fetch the next page of the list.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Returns a list of the customer's active subscriptions.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../../java/com/wsl/modules/stripe/exceptions/StripeConnectorException.html">StripeConnectorException</a></td>
+            <td>when there is a problem with the Connector
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="retrieveSubscription(java.lang.String, java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        Subscription
+      </span>
+      <span class="sympad">retrieveSubscription</span>
+      <span class="normal">(String customerId, String subscriptionId)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Retrieve a Subscription</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>customerId</td>
+          <td>The ID of the customer to create the subscription on</td>
+        </tr>
+        <tr>
+          <th>subscriptionId</td>
+          <td>ID of subscription to retrieve.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Returns the subscription object.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../../java/com/wsl/modules/stripe/exceptions/StripeConnectorException.html">StripeConnectorException</a></td>
+            <td>when there is a problem with the Connector
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="updateSubscription(java.lang.String, java.lang.String, java.lang.String, java.lang.String, boolean, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.Source, int, double, double, java.util.Map<java.lang.String, java.lang.Object>)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        Subscription
+      </span>
+      <span class="sympad">updateSubscription</span>
+      <span class="normal">(String customerId, String subscriptionId, String plan, String coupon, boolean prorate, String trialEnd, String sourceToken, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/Source.html">Source</a> source, int quantity, double applicationFeePercent, double taxPercent, Map&lt;String,&nbsp;Object&gt; metadata)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Update a Subscription
+ Note that Stripe uses a specific policy around prorating changed subscriptions. If you want to use this endpoint, consider the documentation at https://stripe.com/docs/api/java#update_subscription closely.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>customerId</td>
+          <td>The ID of the customer to create the subscription on</td>
+        </tr>
+        <tr>
+          <th>subscriptionId</td>
+          <td>The ID of the subscription to update</td>
+        </tr>
+        <tr>
+          <th>plan</td>
+          <td>The identifier of the plan to update the subscription to. If omitted, the subscription will not change plans.</td>
+        </tr>
+        <tr>
+          <th>coupon</td>
+          <td>The code of the coupon to apply to the customer if you would like to apply it at the same time as updating the subscription.</td>
+        </tr>
+        <tr>
+          <th>prorate</td>
+          <td>Flag telling us whether to prorate switching plans during a billing cycle.</td>
+        </tr>
+        <tr>
+          <th>trialEnd</td>
+          <td>Unix timestamp representing the end of the trial period the customer will get before being charged for the first time. If set, trial_end will override the default trial period of the plan the customer is being subscribed to. The special value now can be provided to end the customer's trial immediately.</td>
+        </tr>
+        <tr>
+          <th>sourceToken</td>
+          <td>The source can either be a token, like the ones returned by our Stripe.js, ...</td>
+        </tr>
+        <tr>
+          <th>source</td>
+          <td>...or a Map containing a user's credit card details (with the options shown below). You must provide a source if the customer does not already have a valid source attached, and you are subscribing the customer for a plan that is not free. Passing source will create a new source object, make it the customer default source, and delete the old customer default if one exists. If you want to add an additional source to use with subscriptions, instead use the card creation API to add the card and then the customer update API to set it as the default. Whenever you attach a card to a customer, Stripe will automatically validate the card.</td>
+        </tr>
+        <tr>
+          <th>quantity</td>
+          <td>The quantity you'd like to apply to the subscription you're creating. For example, if your plan is $10/user/month, and your customer has 5 users, you could pass 5 as the quantity to have the customer charged $50 (5 x $10) monthly. If you update a subscription but don't change the plan ID (e.g. changing only the trial_end), the subscription will inherit the old subscription's quantity attribute unless you pass a new quantity parameter. If you update a subscription and change the plan ID, the new subscription will not inherit the quantity attribute and will default to 1 unless you pass a quantity parameter.</td>
+        </tr>
+        <tr>
+          <th>applicationFeePercent</td>
+          <td>A positive decimal (with at most two decimal places) between 1 and 100. This represents the percentage of the subscription invoice subtotal that will be transferred to the application owner’s Stripe account. The request must be made with an OAuth key in order to set an application fee percentage. For more information, see the application fees documentation.</td>
+        </tr>
+        <tr>
+          <th>taxPercent</td>
+          <td>A positive decimal (with at most two decimal places) between 1 and 100. This represents the percentage of the subscription invoice subtotal that will be calculated and added as tax to the final amount each billing period. For example, a plan which charges $10/month with a tax_percent of 20.0 will charge $12 per invoice.</td>
+        </tr>
+        <tr>
+          <th>metadata</td>
+          <td>A set of key/value pairs that you can attach to a subscription object. It can be useful for storing additional information about the subscription in a structured format.</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Returns the updated Subscription</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../../java/com/wsl/modules/stripe/exceptions/StripeConnectorException.html">StripeConnectorException</a></td>
+            <td>when there is a problem with the Connector
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+
+
+
+<!-- ========= END OF CLASS DATA ========= -->
+<A NAME="navbar_top"></A>
+
+<div id="footer">
+Generated by <a href="http://www.mulesoft.com/devkit">Mule DevKit</a>. Document generation technology based on <a href="http://code.google.com/p/doclava/">Google's Doclava</a>.
+</div> <!-- end footer -->
+
+</div> <!-- jd-content -->
+
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+<script type="text/javascript">
+init(); /* initialize mule-developer-docs.js */
+</script>
+
+</body>
+</html>

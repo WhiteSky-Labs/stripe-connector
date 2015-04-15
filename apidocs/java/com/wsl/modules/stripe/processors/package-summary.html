@@ -1,0 +1,700 @@
+
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <meta name="description" content="Documentation for Mule Stripe Anypoint Connector." />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico" />
+<title>
+
+  com.wsl.modules.stripe.processors
+
+
+| Mule Stripe Anypoint Connector
+
+</title>
+<link href="../../../../../../assets/mule-developer-docs.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../../assets/mule-developer-prettify.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../../assets/customizations.css" rel="stylesheet" type="text/css" />
+<link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet' type='text/css'>
+<script src="../../../../../../assets/search_autocomplete.js" type="text/javascript"></script>
+<script src="../../../../../../assets/jquery-resizable.min.js" type="text/javascript"></script>
+<script src="../../../../../../assets/jquery-toc.js" type="text/javascript"></script>
+<script src="../../../../../../assets/mule-developer-docs.js" type="text/javascript"></script>
+<script src="../../../../../../assets/prettify.js" type="text/javascript"></script>
+<script type="text/javascript">
+  setToRoot("../../../../../../", "../../../../../../assets/");
+</script>
+<script src="../../../../../../assets/mule-developer-reference.js" type="text/javascript"></script>
+<script src="../../../../../../assets/navtree_data.js" type="text/javascript"></script>
+<script src="../../../../../../assets/customizations.js" type="text/javascript"></script>
+<noscript>
+  <style type="text/css">
+    html,body{overflow:auto;}
+    #body-content{position:relative; top:0;}
+    #doc-content{overflow:visible;border-left:3px solid #666;}
+    #side-nav{padding:0;}
+    #side-nav .toggle-list ul {display:block;}
+    #resize-packages-nav{border-bottom:3px solid #666;}
+  </style>
+</noscript>
+<script type="text/javascript" charset="utf-8">
+  var is_ssl = ("https:" == document.location.protocol);
+  var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
+  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  var feedback_widget_options = {};
+
+  feedback_widget_options.display = "overlay";
+  feedback_widget_options.company = "mulesoft";
+  feedback_widget_options.placement = "right";
+  feedback_widget_options.color = "#2F74AE";
+  feedback_widget_options.style = "question";
+
+  feedback_widget_options.tag = "Mule Stripe Anypoint Connector";
+
+  feedback_widget_options.limit = "3";
+
+  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+</script>
+</head>
+
+<body class="">
+
+<div id="header">
+    <div id="headerLeft">
+    
+      <span id="masthead-title">Mule Stripe Anypoint Connector</span>
+    
+    <ul id="header-tabs" class="java">
+    
+    	<li id="guide"><a href="../../../../../../guide/install.html">
+	    	<span class="en">Install Guide</span>
+    	</a></li>
+    
+    	<li id="java"><a href="../../../../../../java/packages.html">
+	    	<span class="en">Java API Reference</span>
+    	</a></li>
+    
+    	<li id="mule"><a href="../../../../../../mule/modules.html">
+	    	<span class="en">Mule API Reference</span>
+    	</a></li>
+    
+    </ul>
+    </div>
+    <div id="headerRight">
+      <a href="http://www.mulesoft.com" tabindex="-1">
+      <img src="../../../../../../assets//images/mulesoft-logo-final.gif" alt="MuleSoft" border="0" id="mulesoftlogo"></a><br/>
+      
+  <div id="searchContainer" >
+      <div id="searchForm">
+          <form accept-charset="utf-8" class="gsc-search-box" 
+                onsubmit="return submit_search()">
+            <table class="gsc-search-box" cellpadding="0" cellspacing="0"><tbody>
+                <tr>
+                  <td class="gsc-input">
+                    <input id="search_autocomplete" class="gsc-input" type="text" size="33" autocomplete="off"
+                      title="search developer docs" name="q"
+                      value="search developer docs"
+                      onFocus="search_focus_changed(this, true)"
+                      onBlur="search_focus_changed(this, false)"
+                      onkeydown="return search_changed(event, true, '../../../../../../')"
+                      onkeyup="return search_changed(event, false, '../../../../../../')" />
+                  <div id="search_filtered_div" class="no-display">
+                      <table id="search_filtered" cellspacing=0>
+                      </table>
+                  </div>
+                  </td>
+                  <td class="gsc-search-button">
+                    <input type="submit" value="Search" title="search" id="search-button" class="gsc-search-button" />
+                  </td>
+                  <td class="gsc-clear-button">
+                    <div title="clear results" class="gsc-clear-button">&nbsp;</div>
+                  </td>
+                </tr></tbody>
+              </table>
+          </form>
+      </div><!-- searchForm -->
+  </div><!-- search -->
+      
+    </div>
+</div><!-- header -->
+
+
+  <div class="g-section g-tpl-240" id="body-content">
+    <div class="g-unit g-first side-nav-resizable" id="side-nav">
+      <div id="swapper">
+        <div id="nav-panels">
+          <div id="resize-packages-nav">
+            <div id="packages-nav">
+              <div id="index-links">
+                <a href="../../../../../../java/packages.html"  >Package Index</a> |
+                <a href="../../../../../../java/classes.html" >Class Index</a>
+              </div>
+              <ul>
+                
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/package-summary.html">com.wsl.modules.stripe</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/adapter/package-summary.html">com.wsl.modules.stripe.adapter</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/adapters/package-summary.html">com.wsl.modules.stripe.adapters</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/agents/package-summary.html">com.wsl.modules.stripe.agents</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/client/package-summary.html">com.wsl.modules.stripe.client</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/package-summary.html">com.wsl.modules.stripe.complextypes</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/holders/package-summary.html">com.wsl.modules.stripe.complextypes.holders</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/transformers/package-summary.html">com.wsl.modules.stripe.complextypes.transformers</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/config/package-summary.html">com.wsl.modules.stripe.config</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/connectivity/package-summary.html">com.wsl.modules.stripe.connectivity</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/devkit/package-summary.html">com.wsl.modules.stripe.devkit</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/exceptions/package-summary.html">com.wsl.modules.stripe.exceptions</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/pooling/package-summary.html">com.wsl.modules.stripe.pooling</a></li>
+    <li class="selected api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/processors/package-summary.html">com.wsl.modules.stripe.processors</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/strategy/package-summary.html">com.wsl.modules.stripe.strategy</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/stripe/utils/package-summary.html">com.wsl.modules.stripe.utils</a></li>
+              </ul><br/>
+            </div> <!-- end packages -->
+          </div> <!-- end resize-packages -->
+          <div id="classes-nav">
+            <ul>
+              
+              
+    <li><h2>Classes</h2>
+      <ul>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/CancelSubscriptionMessageProcessor.html">CancelSubscriptionMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/CaptureChargeMessageProcessor.html">CaptureChargeMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/CreateAccountMessageProcessor.html">CreateAccountMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/CreateApplicationFeeRefundMessageProcessor.html">CreateApplicationFeeRefundMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/CreateBankAccountTokenMessageProcessor.html">CreateBankAccountTokenMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/CreateBitcoinReceiverMessageProcessor.html">CreateBitcoinReceiverMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/CreateCardMessageProcessor.html">CreateCardMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/CreateCardTokenMessageProcessor.html">CreateCardTokenMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/CreateChargeMessageProcessor.html">CreateChargeMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/CreateCouponMessageProcessor.html">CreateCouponMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/CreateCustomerMessageProcessor.html">CreateCustomerMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/CreateFileUploadMessageProcessor.html">CreateFileUploadMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/CreateInvoiceMessageProcessor.html">CreateInvoiceMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/CreatePlanMessageProcessor.html">CreatePlanMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/CreateRefundMessageProcessor.html">CreateRefundMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/CreateSubscriptionMessageProcessor.html">CreateSubscriptionMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/DeleteCardMessageProcessor.html">DeleteCardMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/DeleteCouponMessageProcessor.html">DeleteCouponMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/DeleteCustomerMessageProcessor.html">DeleteCustomerMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/DeletePlanMessageProcessor.html">DeletePlanMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/ListActiveSubscriptionsMessageProcessor.html">ListActiveSubscriptionsMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/ListAllApplicationFeeRefundsMessageProcessor.html">ListAllApplicationFeeRefundsMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/ListAllApplicationFeesMessageProcessor.html">ListAllApplicationFeesMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/ListAllBalanceHistoryMessageProcessor.html">ListAllBalanceHistoryMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/ListAllBitcoinReceiversMessageProcessor.html">ListAllBitcoinReceiversMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/ListAllChargesMessageProcessor.html">ListAllChargesMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/ListAllCouponsMessageProcessor.html">ListAllCouponsMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/ListAllCustomerCardsMessageProcessor.html">ListAllCustomerCardsMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/ListAllCustomersMessageProcessor.html">ListAllCustomersMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/ListAllEventsMessageProcessor.html">ListAllEventsMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/ListAllPlansMessageProcessor.html">ListAllPlansMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/ListAllRefundsMessageProcessor.html">ListAllRefundsMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/PayInvoiceMessageProcessor.html">PayInvoiceMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveAccountMessageProcessor.html">RetrieveAccountMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveAllInvoicesMessageProcessor.html">RetrieveAllInvoicesMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveApplicationFeeMessageProcessor.html">RetrieveApplicationFeeMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveApplicationFeeRefundMessageProcessor.html">RetrieveApplicationFeeRefundMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveBalanceMessageProcessor.html">RetrieveBalanceMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveBalanceTransactionMessageProcessor.html">RetrieveBalanceTransactionMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveBitcoinReceiverMessageProcessor.html">RetrieveBitcoinReceiverMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveCardMessageProcessor.html">RetrieveCardMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveChargeMessageProcessor.html">RetrieveChargeMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveCouponMessageProcessor.html">RetrieveCouponMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveCustomerMessageProcessor.html">RetrieveCustomerMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveEventMessageProcessor.html">RetrieveEventMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveInvoiceLineItemsMessageProcessor.html">RetrieveInvoiceLineItemsMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveInvoiceMessageProcessor.html">RetrieveInvoiceMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrievePlanMessageProcessor.html">RetrievePlanMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveRefundMessageProcessor.html">RetrieveRefundMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveSubscriptionMessageProcessor.html">RetrieveSubscriptionMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveTokenMessageProcessor.html">RetrieveTokenMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveUpcomingInvoiceMessageProcessor.html">RetrieveUpcomingInvoiceMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/UpdateAccountMessageProcessor.html">UpdateAccountMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/UpdateApplicationFeeRefundMessageProcessor.html">UpdateApplicationFeeRefundMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/UpdateCardMessageProcessor.html">UpdateCardMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/UpdateChargeMessageProcessor.html">UpdateChargeMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/UpdateCouponMessageProcessor.html">UpdateCouponMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/UpdateCustomerMessageProcessor.html">UpdateCustomerMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/UpdateInvoiceMessageProcessor.html">UpdateInvoiceMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/UpdatePlanMessageProcessor.html">UpdatePlanMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/UpdateRefundMessageProcessor.html">UpdateRefundMessageProcessor</a></li>
+        <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/stripe/processors/UpdateSubscriptionMessageProcessor.html">UpdateSubscriptionMessageProcessor</a></li>
+      </ul>
+    </li>
+              
+              
+              
+              
+            </ul><br/>
+          </div><!-- end classes -->
+        </div><!-- end nav-panels -->
+        <div id="nav-tree" style="display:none">
+          <div id="index-links">
+            <a href="../../../../../../packages.html"  >Package Index</a> | 
+            <a href="../../../../../../classes.html" >Class Index</a>
+          </div>
+        </div><!-- end nav-tree -->
+      </div><!-- end swapper -->
+    </div> <!-- end side-nav -->
+    <script>
+      if (!isMobile) {
+        $("<a href='#' id='nav-swap' onclick='swapNav();return false;' style='font-size:10px;line-height:9px;margin-left:1em;text-decoration:none;'><span id='tree-link'>Use Tree Navigation</span><span id='panel-link' style='display:none'>Use Panel Navigation</span></a>").appendTo("#side-nav");
+        chooseDefaultNav();
+        if ($("#nav-tree").is(':visible')) {
+          init_default_navtree("../../../../../../");
+        } else {
+          addLoadEvent(function() {
+            scrollIntoView("packages-nav");
+            scrollIntoView("classes-nav");
+          });
+        }
+        $("#swapper").css({borderBottom:"2px solid #aaa"});
+      } else {
+        swapNav(); // tree view should be used on mobile
+      }
+    </script>
+
+
+
+<div class="g-unit" id="doc-content">
+
+<div id="api-info-block">
+<div class="api-level">
+  
+
+
+  
+  
+
+</div>
+</div>
+
+<div id="jd-header">
+  package
+  <h1>com.wsl.modules.stripe.processors</h1>
+</div><!-- end header -->
+
+<div id="naMessage"></div>
+
+<div id="jd-content" class="api apilevel-">
+
+
+
+
+
+
+  
+
+
+  
+    <h2>Classes</h2>
+    <div class="jd-sumtable">
+    
+  <table class="jd-sumtable-expando">
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/CancelSubscriptionMessageProcessor.html">CancelSubscriptionMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">CancelSubscriptionMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#cancelSubscription(java.lang.String, java.lang.String)">cancelSubscription(java.lang.String, java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/CaptureChargeMessageProcessor.html">CaptureChargeMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">CaptureChargeMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#captureCharge(java.lang.String, int, int, java.lang.String, java.lang.String)">captureCharge(java.lang.String, int, int, java.lang.String, java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/CreateAccountMessageProcessor.html">CreateAccountMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">CreateAccountMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#createAccount(boolean, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.BankAccount, boolean, java.lang.String, com.wsl.modules.stripe.complextypes.LegalEntity, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.Acceptance, com.wsl.modules.stripe.complextypes.TransferSchedule, java.util.Map<java.lang.String, java.lang.Object>)">createAccount(boolean, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.BankAccount, boolean, java.lang.String, com.wsl.modules.stripe.complextypes.LegalEntity, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.Acceptance, com.wsl.modules.stripe.complextypes.TransferSchedule, java.util.Map)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/CreateApplicationFeeRefundMessageProcessor.html">CreateApplicationFeeRefundMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">CreateApplicationFeeRefundMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#createApplicationFeeRefund(java.lang.String, int)">createApplicationFeeRefund(java.lang.String, int)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/CreateBankAccountTokenMessageProcessor.html">CreateBankAccountTokenMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">CreateBankAccountTokenMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#createBankAccountToken(java.lang.String, com.wsl.modules.stripe.complextypes.BankAccount)">createBankAccountToken(java.lang.String, com.wsl.modules.stripe.complextypes.BankAccount)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/CreateBitcoinReceiverMessageProcessor.html">CreateBitcoinReceiverMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">CreateBitcoinReceiverMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#createBitcoinReceiver(int, java.lang.String, java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, boolean)">createBitcoinReceiver(int, java.lang.String, java.lang.String, java.lang.String, java.util.Map, boolean)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/CreateCardMessageProcessor.html">CreateCardMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">CreateCardMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#createCard(java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.Source)">createCard(java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.Source)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/CreateCardTokenMessageProcessor.html">CreateCardTokenMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">CreateCardTokenMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#createCardToken(java.lang.String, com.wsl.modules.stripe.complextypes.Source, java.lang.String)">createCardToken(java.lang.String, com.wsl.modules.stripe.complextypes.Source, java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/CreateChargeMessageProcessor.html">CreateChargeMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">CreateChargeMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#createCharge(int, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.Source, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, boolean, java.lang.String, java.lang.String, java.lang.String, int, java.util.Map<java.lang.String, java.lang.Object>)">createCharge(int, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.Source, java.lang.String, java.util.Map, boolean, java.lang.String, java.lang.String, java.lang.String, int, java.util.Map)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/CreateCouponMessageProcessor.html">CreateCouponMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">CreateCouponMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#createCoupon(java.lang.String, java.lang.String, int, java.lang.String, int, int, int, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">createCoupon(java.lang.String, java.lang.String, int, java.lang.String, int, int, int, java.lang.String, java.util.Map)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/CreateCustomerMessageProcessor.html">CreateCustomerMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">CreateCustomerMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#createCustomer(int, java.lang.String, java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">createCustomer(int, java.lang.String, java.lang.String, java.lang.String, java.util.Map)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/CreateFileUploadMessageProcessor.html">CreateFileUploadMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">CreateFileUploadMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#createFileUpload(java.lang.String, com.wsl.modules.stripe.complextypes.FilePurpose)">createFileUpload(java.lang.String, com.wsl.modules.stripe.complextypes.FilePurpose)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/CreateInvoiceMessageProcessor.html">CreateInvoiceMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">CreateInvoiceMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#createInvoice(java.lang.String, int, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String, java.lang.String, double)">createInvoice(java.lang.String, int, java.lang.String, java.util.Map, java.lang.String, java.lang.String, double)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/CreatePlanMessageProcessor.html">CreatePlanMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">CreatePlanMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#createPlan(java.lang.String, int, java.lang.String, java.lang.String, int, java.lang.String, int, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">createPlan(java.lang.String, int, java.lang.String, java.lang.String, int, java.lang.String, int, java.lang.String, java.util.Map)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/CreateRefundMessageProcessor.html">CreateRefundMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">CreateRefundMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#createRefund(java.lang.String, int, boolean, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">createRefund(java.lang.String, int, boolean, java.lang.String, java.util.Map)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/CreateSubscriptionMessageProcessor.html">CreateSubscriptionMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">CreateSubscriptionMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#createSubscription(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.Source, int, double, double, java.util.Map<java.lang.String, java.lang.Object>)">createSubscription(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.Source, int, double, double, java.util.Map)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/DeleteCardMessageProcessor.html">DeleteCardMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">DeleteCardMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#deleteCard(java.lang.String, java.lang.String)">deleteCard(java.lang.String, java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/DeleteCouponMessageProcessor.html">DeleteCouponMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">DeleteCouponMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#deleteCoupon(java.lang.String)">deleteCoupon(java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/DeleteCustomerMessageProcessor.html">DeleteCustomerMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">DeleteCustomerMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#deleteCustomer(java.lang.String)">deleteCustomer(java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/DeletePlanMessageProcessor.html">DeletePlanMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">DeletePlanMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#deletePlan(java.lang.String)">deletePlan(java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/ListActiveSubscriptionsMessageProcessor.html">ListActiveSubscriptionsMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">ListActiveSubscriptionsMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#listActiveSubscriptions(java.lang.String, java.lang.String, int, java.lang.String)">listActiveSubscriptions(java.lang.String, java.lang.String, int, java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/ListAllApplicationFeeRefundsMessageProcessor.html">ListAllApplicationFeeRefundsMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">ListAllApplicationFeeRefundsMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#listAllApplicationFeeRefunds(java.lang.String, java.lang.String, int, java.lang.String)">listAllApplicationFeeRefunds(java.lang.String, java.lang.String, int, java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/ListAllApplicationFeesMessageProcessor.html">ListAllApplicationFeesMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">ListAllApplicationFeesMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#listAllApplicationFees(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.lang.String, int, java.lang.String)">listAllApplicationFees(java.lang.String, java.lang.String, java.util.Map, java.lang.String, int, java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/ListAllBalanceHistoryMessageProcessor.html">ListAllBalanceHistoryMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">ListAllBalanceHistoryMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#listAllBalanceHistory(java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.lang.String, java.lang.String, int, java.lang.String, java.lang.String, java.lang.String, java.lang.String)">listAllBalanceHistory(java.lang.String, java.util.Map, java.lang.String, java.util.Map, java.lang.String, java.lang.String, int, java.lang.String, java.lang.String, java.lang.String, java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/ListAllBitcoinReceiversMessageProcessor.html">ListAllBitcoinReceiversMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">ListAllBitcoinReceiversMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#listAllBitcoinReceivers(java.lang.String, java.lang.String, java.lang.String, int, java.lang.String, java.lang.String)">listAllBitcoinReceivers(java.lang.String, java.lang.String, java.lang.String, int, java.lang.String, java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/ListAllChargesMessageProcessor.html">ListAllChargesMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">ListAllChargesMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#listAllCharges(java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.lang.String, java.lang.String, int, java.lang.String)">listAllCharges(java.lang.String, java.util.Map, java.lang.String, java.lang.String, int, java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/ListAllCouponsMessageProcessor.html">ListAllCouponsMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">ListAllCouponsMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#listAllCoupons(java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.lang.String, int, java.lang.String)">listAllCoupons(java.lang.String, java.util.Map, java.lang.String, int, java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/ListAllCustomerCardsMessageProcessor.html">ListAllCustomerCardsMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">ListAllCustomerCardsMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#listAllCustomerCards(java.lang.String, java.lang.String, int, java.lang.String)">listAllCustomerCards(java.lang.String, java.lang.String, int, java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/ListAllCustomersMessageProcessor.html">ListAllCustomersMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">ListAllCustomersMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#listAllCustomers(int, java.lang.String, java.lang.String)">listAllCustomers(int, java.lang.String, java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/ListAllEventsMessageProcessor.html">ListAllEventsMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">ListAllEventsMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#listAllEvents(java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.lang.String, int, java.lang.String, java.lang.String)">listAllEvents(java.lang.String, java.util.Map, java.lang.String, int, java.lang.String, java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/ListAllPlansMessageProcessor.html">ListAllPlansMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">ListAllPlansMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#listAllPlans(java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.lang.String, int, java.lang.String)">listAllPlans(java.lang.String, java.util.Map, java.lang.String, int, java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/ListAllRefundsMessageProcessor.html">ListAllRefundsMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">ListAllRefundsMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#listAllRefunds(java.lang.String, java.lang.String, int, java.lang.String)">listAllRefunds(java.lang.String, java.lang.String, int, java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/PayInvoiceMessageProcessor.html">PayInvoiceMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">PayInvoiceMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#payInvoice(java.lang.String)">payInvoice(java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveAccountMessageProcessor.html">RetrieveAccountMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">RetrieveAccountMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#retrieveAccount(java.lang.String)">retrieveAccount(java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveAllInvoicesMessageProcessor.html">RetrieveAllInvoicesMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">RetrieveAllInvoicesMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#retrieveAllInvoices(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String, int, java.lang.String)">retrieveAllInvoices(java.lang.String, java.lang.String, java.util.Map, java.lang.String, int, java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveApplicationFeeMessageProcessor.html">RetrieveApplicationFeeMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">RetrieveApplicationFeeMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#retrieveApplicationFee(java.lang.String)">retrieveApplicationFee(java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveApplicationFeeRefundMessageProcessor.html">RetrieveApplicationFeeRefundMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">RetrieveApplicationFeeRefundMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#retrieveApplicationFeeRefund(java.lang.String, java.lang.String)">retrieveApplicationFeeRefund(java.lang.String, java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveBalanceMessageProcessor.html">RetrieveBalanceMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">RetrieveBalanceMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#retrieveBalance()">retrieveBalance()</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveBalanceTransactionMessageProcessor.html">RetrieveBalanceTransactionMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">RetrieveBalanceTransactionMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#retrieveBalanceTransaction(java.lang.String)">retrieveBalanceTransaction(java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveBitcoinReceiverMessageProcessor.html">RetrieveBitcoinReceiverMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">RetrieveBitcoinReceiverMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#retrieveBitcoinReceiver(java.lang.String)">retrieveBitcoinReceiver(java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveCardMessageProcessor.html">RetrieveCardMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">RetrieveCardMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#retrieveCard(java.lang.String, java.lang.String)">retrieveCard(java.lang.String, java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveChargeMessageProcessor.html">RetrieveChargeMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">RetrieveChargeMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#retrieveCharge(java.lang.String)">retrieveCharge(java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveCouponMessageProcessor.html">RetrieveCouponMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">RetrieveCouponMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#retrieveCoupon(java.lang.String)">retrieveCoupon(java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveCustomerMessageProcessor.html">RetrieveCustomerMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">RetrieveCustomerMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#retrieveCustomer(java.lang.String)">retrieveCustomer(java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveEventMessageProcessor.html">RetrieveEventMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">RetrieveEventMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#retrieveEvent(java.lang.String)">retrieveEvent(java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveInvoiceLineItemsMessageProcessor.html">RetrieveInvoiceLineItemsMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">RetrieveInvoiceLineItemsMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#retrieveInvoiceLineItems(java.lang.String, java.lang.String, java.lang.String, int, java.lang.String, java.lang.String)">retrieveInvoiceLineItems(java.lang.String, java.lang.String, java.lang.String, int, java.lang.String, java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveInvoiceMessageProcessor.html">RetrieveInvoiceMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">RetrieveInvoiceMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#retrieveInvoice(java.lang.String)">retrieveInvoice(java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrievePlanMessageProcessor.html">RetrievePlanMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">RetrievePlanMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#retrievePlan(java.lang.String)">retrievePlan(java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveRefundMessageProcessor.html">RetrieveRefundMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">RetrieveRefundMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#retrieveRefund(java.lang.String, java.lang.String)">retrieveRefund(java.lang.String, java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveSubscriptionMessageProcessor.html">RetrieveSubscriptionMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">RetrieveSubscriptionMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#retrieveSubscription(java.lang.String, java.lang.String)">retrieveSubscription(java.lang.String, java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveTokenMessageProcessor.html">RetrieveTokenMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">RetrieveTokenMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#retrieveToken(java.lang.String)">retrieveToken(java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/RetrieveUpcomingInvoiceMessageProcessor.html">RetrieveUpcomingInvoiceMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">RetrieveUpcomingInvoiceMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#retrieveUpcomingInvoice(java.lang.String, java.lang.String)">retrieveUpcomingInvoice(java.lang.String, java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/UpdateAccountMessageProcessor.html">UpdateAccountMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">UpdateAccountMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#updateAccount(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.BankAccount, boolean, java.lang.String, com.wsl.modules.stripe.complextypes.LegalEntity, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.Acceptance, com.wsl.modules.stripe.complextypes.TransferSchedule, java.util.Map<java.lang.String, java.lang.Object>)">updateAccount(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.BankAccount, boolean, java.lang.String, com.wsl.modules.stripe.complextypes.LegalEntity, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.Acceptance, com.wsl.modules.stripe.complextypes.TransferSchedule, java.util.Map)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/UpdateApplicationFeeRefundMessageProcessor.html">UpdateApplicationFeeRefundMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">UpdateApplicationFeeRefundMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#updateApplicationFeeRefund(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">updateApplicationFeeRefund(java.lang.String, java.lang.String, java.util.Map)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/UpdateCardMessageProcessor.html">UpdateCardMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">UpdateCardMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#updateCard(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String)">updateCard(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.util.Map, java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/UpdateChargeMessageProcessor.html">UpdateChargeMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">UpdateChargeMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#updateCharge(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">updateCharge(java.lang.String, java.lang.String, java.util.Map, java.lang.String, java.util.Map)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/UpdateCouponMessageProcessor.html">UpdateCouponMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">UpdateCouponMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#updateCoupon(java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">updateCoupon(java.lang.String, java.util.Map)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/UpdateCustomerMessageProcessor.html">UpdateCustomerMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">UpdateCustomerMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#updateCustomer(java.lang.String, int, java.lang.String, java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String)">updateCustomer(java.lang.String, int, java.lang.String, java.lang.String, java.lang.String, java.util.Map, java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/UpdateInvoiceMessageProcessor.html">UpdateInvoiceMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">UpdateInvoiceMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#updateInvoice(java.lang.String, int, boolean, java.lang.String, boolean, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String, double)">updateInvoice(java.lang.String, int, boolean, java.lang.String, boolean, java.util.Map, java.lang.String, double)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/UpdatePlanMessageProcessor.html">UpdatePlanMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">UpdatePlanMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#updatePlan(java.lang.String, java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">updatePlan(java.lang.String, java.lang.String, java.lang.String, java.util.Map)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/UpdateRefundMessageProcessor.html">UpdateRefundMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">UpdateRefundMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#updateRefund(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">updateRefund(java.lang.String, java.lang.String, java.util.Map)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/stripe/processors/UpdateSubscriptionMessageProcessor.html">UpdateSubscriptionMessageProcessor</a></td>
+              <td class="jd-descrcol" width="100%">UpdateSubscriptionMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#updateSubscription(java.lang.String, java.lang.String, java.lang.String, java.lang.String, boolean, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.Source, int, double, double, java.util.Map<java.lang.String, java.lang.Object>)">updateSubscription(java.lang.String, java.lang.String, java.lang.String, java.lang.String, boolean, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.Source, int, double, double, java.util.Map)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>.&nbsp;</td>
+          </tr>
+  </table>
+    </div>
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+<div id="footer">
+Generated by <a href="http://www.mulesoft.com/devkit">Mule DevKit</a>. Document generation technology based on <a href="http://code.google.com/p/doclava/">Google's Doclava</a>.
+</div> <!-- end footer -->
+
+</div><!-- end jd-content -->
+</div><!-- doc-content -->
+
+</div> <!-- end body-content --> 
+
+<script type="text/javascript">
+init(); /* initialize mule-developer-docs.js */
+</script>
+
+</body>
+</html>
