@@ -1,0 +1,2837 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <meta name="description" content="Documentation for Mule Splunk Connector." />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../../../../favicon.ico" />
+<title>
+
+  SplunkConnectorLifecycleAdapter
+
+
+| Mule Splunk Connector
+
+</title>
+<link href="../../../../../../assets/mule-developer-docs.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../../assets/mule-developer-prettify.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../../assets/customizations.css" rel="stylesheet" type="text/css" />
+<link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet' type='text/css'>
+<script src="../../../../../../assets/search_autocomplete.js" type="text/javascript"></script>
+<script src="../../../../../../assets/jquery-resizable.min.js" type="text/javascript"></script>
+<script src="../../../../../../assets/jquery-toc.js" type="text/javascript"></script>
+<script src="../../../../../../assets/mule-developer-docs.js" type="text/javascript"></script>
+<script src="../../../../../../assets/prettify.js" type="text/javascript"></script>
+<script type="text/javascript">
+  setToRoot("../../../../../../", "../../../../../../assets/");
+</script>
+<script src="../../../../../../assets/mule-developer-reference.js" type="text/javascript"></script>
+<script src="../../../../../../assets/navtree_data.js" type="text/javascript"></script>
+<script src="../../../../../../assets/customizations.js" type="text/javascript"></script>
+<noscript>
+  <style type="text/css">
+    html,body{overflow:auto;}
+    #body-content{position:relative; top:0;}
+    #doc-content{overflow:visible;border-left:3px solid #666;}
+    #side-nav{padding:0;}
+    #side-nav .toggle-list ul {display:block;}
+    #resize-packages-nav{border-bottom:3px solid #666;}
+  </style>
+</noscript>
+<script type="text/javascript" charset="utf-8">
+  var is_ssl = ("https:" == document.location.protocol);
+  var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
+  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  var feedback_widget_options = {};
+
+  feedback_widget_options.display = "overlay";
+  feedback_widget_options.company = "mulesoft";
+  feedback_widget_options.placement = "right";
+  feedback_widget_options.color = "#2F74AE";
+  feedback_widget_options.style = "question";
+
+  feedback_widget_options.tag = "Mule Splunk Connector";
+
+  feedback_widget_options.limit = "3";
+
+  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+</script>
+</head>
+
+<body class="">
+
+<div id="header">
+    <div id="headerLeft">
+    
+      <span id="masthead-title">Mule Splunk Connector</span>
+    
+    <ul id="header-tabs" class="">
+    
+    	<li id="guide"><a href="../../../../../../guide/install.html">
+	    	<span class="en">Install Guide</span>
+    	</a></li>
+    
+    	<li id="java"><a href="../../../../../../java/packages.html">
+	    	<span class="en">Java API Reference</span>
+    	</a></li>
+    
+    	<li id="mule"><a href="../../../../../../mule/modules.html">
+	    	<span class="en">Mule API Reference</span>
+    	</a></li>
+    
+    </ul>
+    </div>
+    <div id="headerRight">
+      <a href="http://www.mulesoft.com" tabindex="-1">
+      <img src="../../../../../../assets//images/mulesoft-logo-final.gif" alt="MuleSoft" border="0" id="mulesoftlogo"></a><br/>
+      
+  <div id="searchContainer" >
+      <div id="searchForm">
+          <form accept-charset="utf-8" class="gsc-search-box" 
+                onsubmit="return submit_search()">
+            <table class="gsc-search-box" cellpadding="0" cellspacing="0"><tbody>
+                <tr>
+                  <td class="gsc-input">
+                    <input id="search_autocomplete" class="gsc-input" type="text" size="33" autocomplete="off"
+                      title="search developer docs" name="q"
+                      value="search developer docs"
+                      onFocus="search_focus_changed(this, true)"
+                      onBlur="search_focus_changed(this, false)"
+                      onkeydown="return search_changed(event, true, '../../../../../../')"
+                      onkeyup="return search_changed(event, false, '../../../../../../')" />
+                  <div id="search_filtered_div" class="no-display">
+                      <table id="search_filtered" cellspacing=0>
+                      </table>
+                  </div>
+                  </td>
+                  <td class="gsc-search-button">
+                    <input type="submit" value="Search" title="search" id="search-button" class="gsc-search-button" />
+                  </td>
+                  <td class="gsc-clear-button">
+                    <div title="clear results" class="gsc-clear-button">&nbsp;</div>
+                  </td>
+                </tr></tbody>
+              </table>
+          </form>
+      </div><!-- searchForm -->
+  </div><!-- search -->
+      
+    </div>
+</div><!-- header -->
+
+
+  <div class="g-section g-tpl-240" id="body-content">
+    <div class="g-unit g-first side-nav-resizable" id="side-nav">
+      <div id="swapper">
+        <div id="nav-panels">
+          <div id="resize-packages-nav">
+            <div id="packages-nav">
+              <div id="index-links">
+                <a href="../../../../../../java/packages.html"  >Package Index</a> |
+                <a href="../../../../../../java/classes.html" >Class Index</a>
+              </div>
+              <ul>
+                
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/splunk/transformers/package-summary.html">com.splunk.transformers</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/splunk/package-summary.html">com.wsl.modules.splunk</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/splunk/adapter/package-summary.html">com.wsl.modules.splunk.adapter</a></li>
+    <li class="selected api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/splunk/adapters/package-summary.html">com.wsl.modules.splunk.adapters</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/splunk/agents/package-summary.html">com.wsl.modules.splunk.agents</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/splunk/config/package-summary.html">com.wsl.modules.splunk.config</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/splunk/connection/package-summary.html">com.wsl.modules.splunk.connection</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/splunk/connectivity/package-summary.html">com.wsl.modules.splunk.connectivity</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/splunk/devkit/package-summary.html">com.wsl.modules.splunk.devkit</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/splunk/exception/package-summary.html">com.wsl.modules.splunk.exception</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/splunk/pooling/package-summary.html">com.wsl.modules.splunk.pooling</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/splunk/process/package-summary.html">com.wsl.modules.splunk.process</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/splunk/processors/package-summary.html">com.wsl.modules.splunk.processors</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../java/com/wsl/modules/splunk/sources/package-summary.html">com.wsl.modules.splunk.sources</a></li>
+              </ul><br/>
+            </div> <!-- end packages -->
+          </div> <!-- end resize-packages -->
+          <div id="classes-nav">
+            <ul>
+              
+              
+    <li><h2>Classes</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/splunk/adapters/SplunkConnectorCapabilitiesAdapter.html">SplunkConnectorCapabilitiesAdapter</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/splunk/adapters/SplunkConnectorConnectionIdentifierAdapter.html">SplunkConnectorConnectionIdentifierAdapter</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/splunk/adapters/SplunkConnectorLicenseChecker.html">SplunkConnectorLicenseChecker</a></li>
+          <li class="selected api apilevel-"><a href="../../../../../../java/com/wsl/modules/splunk/adapters/SplunkConnectorLifecycleAdapter.html">SplunkConnectorLifecycleAdapter</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/splunk/adapters/SplunkConnectorMetadataAdapater.html">SplunkConnectorMetadataAdapater</a></li>
+          <li class="api apilevel-"><a href="../../../../../../java/com/wsl/modules/splunk/adapters/SplunkConnectorProcessAdapter.html">SplunkConnectorProcessAdapter</a></li>
+      </ul>
+    </li>
+              
+              
+              
+              
+            </ul><br/>
+          </div><!-- end classes -->
+        </div><!-- end nav-panels -->
+        <div id="nav-tree" style="display:none">
+          <div id="index-links">
+            <a href="../../../../../../packages.html"  >Package Index</a> | 
+            <a href="../../../../../../classes.html" >Class Index</a>
+          </div>
+        </div><!-- end nav-tree -->
+      </div><!-- end swapper -->
+    </div> <!-- end side-nav -->
+    <script>
+      if (!isMobile) {
+        $("<a href='#' id='nav-swap' onclick='swapNav();return false;' style='font-size:10px;line-height:9px;margin-left:1em;text-decoration:none;'><span id='tree-link'>Use Tree Navigation</span><span id='panel-link' style='display:none'>Use Panel Navigation</span></a>").appendTo("#side-nav");
+        chooseDefaultNav();
+        if ($("#nav-tree").is(':visible')) {
+          init_default_navtree("../../../../../../");
+        } else {
+          addLoadEvent(function() {
+            scrollIntoView("packages-nav");
+            scrollIntoView("classes-nav");
+          });
+        }
+        $("#swapper").css({borderBottom:"2px solid #aaa"});
+      } else {
+        swapNav(); // tree view should be used on mobile
+      }
+    </script>
+
+
+
+<div class="g-unit" id="doc-content">
+
+<div id="api-info-block">
+
+
+
+  
+   
+  
+  
+   
+  
+  
+  
+
+  
+   
+  
+  
+  
+  
+
+  
+   
+  
+  
+  
+   
+  
+  
+
+  
+   
+  
+  
+  
+  
+
+  
+   
+  
+  
+  
+  
+
+  
+   
+  
+  
+  
+  
+
+  
+   
+  
+  
+   
+  
+  
+  
+
+  
+   
+  
+  
+   
+  
+  
+  
+
+  
+   
+  
+  
+   
+  
+  
+  
+
+  
+   
+  
+  
+   
+  
+  
+  
+
+
+<div class="sum-details-links">
+
+
+Summary:
+
+
+
+
+
+
+  <a href="#inhconstants">Inherited Constants</a>
+  
+
+
+
+  &#124; <a href="#inhfields">Inherited Fields</a>
+  
+
+
+  &#124; <a href="#pubctors">Ctors</a>
+  
+
+
+
+  &#124; <a href="#pubmethods">Methods</a>
+  
+
+
+
+  &#124; <a href="#inhmethods">Inherited Methods</a>
+
+&#124; <a href="#" onclick="return toggleAllClassInherited()" id="toggleAllClassInherited">[Expand All]</a>
+
+</div><!-- end sum-details-links -->
+<div class="api-level">
+  
+
+
+  
+  
+
+</div>
+</div><!-- end api-info-block -->
+
+
+<!-- ======== START OF CLASS DATA ======== -->
+
+<div id="jd-header">
+    public
+     
+     
+    
+    class
+<h1>SplunkConnectorLifecycleAdapter</h1>
+
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+    extends <a href="../../../../../../java/com/wsl/modules/splunk/adapters/SplunkConnectorMetadataAdapater.html">SplunkConnectorMetadataAdapater</a><br/>
+  
+  
+  
+
+  
+  
+      implements 
+      
+        Disposable 
+      
+        Initialisable 
+      
+        Startable 
+      
+        Stoppable 
+      
+  
+  
+
+
+</div><!-- end header -->
+
+<div id="naMessage"></div>
+
+<div id="jd-content" class="api apilevel-">
+<table class="jd-inheritance-table">
+
+
+    <tr>
+        
+        <td colspan="5" class="jd-inheritance-class-cell">java.lang.Object</td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="4" class="jd-inheritance-class-cell"><a href="../../../../../../java/com/wsl/modules/splunk/SplunkConnector.html">com.wsl.modules.splunk.SplunkConnector</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="3" class="jd-inheritance-class-cell"><a href="../../../../../../java/com/wsl/modules/splunk/adapters/SplunkConnectorCapabilitiesAdapter.html">com.wsl.modules.splunk.adapters.SplunkConnectorCapabilitiesAdapter</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="2" class="jd-inheritance-class-cell"><a href="../../../../../../java/com/wsl/modules/splunk/adapters/SplunkConnectorMetadataAdapater.html">com.wsl.modules.splunk.adapters.SplunkConnectorMetadataAdapater</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="1" class="jd-inheritance-class-cell">com.wsl.modules.splunk.adapters.SplunkConnectorLifecycleAdapter</td>
+    </tr>
+    
+
+</table>
+
+
+
+
+<table class="jd-sumtable jd-sumtable-subclasses"><tr><td colspan="12" style="border:none;margin:0;padding:0;">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="subclasses-direct" class="jd-expando-trigger closed"
+          ><img id="subclasses-direct-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>Known Direct Subclasses
+
+  <div id="subclasses-direct">
+      <div id="subclasses-direct-list"
+              class="jd-inheritedlinks"
+              
+              >
+          
+            
+              <a href="../../../../../../java/com/wsl/modules/splunk/adapters/SplunkConnectorProcessAdapter.html">SplunkConnectorProcessAdapter</a>
+            
+          
+      </div>
+      <div id="subclasses-direct-summary"
+              style="display: none;"
+              >
+  <table class="jd-sumtable-expando">
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/splunk/adapters/SplunkConnectorProcessAdapter.html">SplunkConnectorProcessAdapter</a></td>
+              <td class="jd-descrcol" width="100%">A <code>SplunkConnectorProcessAdapter</code> is a wrapper around <code><a href="../../../../../../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code> that enables custom processing strategies.&nbsp;</td>
+          </tr>
+  </table>
+      </div>
+  </div>
+</td></tr></table>
+
+
+
+<table class="jd-sumtable jd-sumtable-subclasses"><tr><td colspan="12" style="border:none;margin:0;padding:0;">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="subclasses-indirect" class="jd-expando-trigger closed"
+          ><img id="subclasses-indirect-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>Known Indirect Subclasses
+
+  <div id="subclasses-indirect">
+      <div id="subclasses-indirect-list"
+              class="jd-inheritedlinks"
+              
+              >
+          
+            
+              <a href="../../../../../../java/com/wsl/modules/splunk/adapters/SplunkConnectorConnectionIdentifierAdapter.html">SplunkConnectorConnectionIdentifierAdapter</a>,
+            
+              <a href="../../../../../../java/com/wsl/modules/splunk/adapters/SplunkConnectorLicenseChecker.html">SplunkConnectorLicenseChecker</a>
+            
+          
+      </div>
+      <div id="subclasses-indirect-summary"
+              style="display: none;"
+              >
+  <table class="jd-sumtable-expando">
+        <tr class="alt-color api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/splunk/adapters/SplunkConnectorConnectionIdentifierAdapter.html">SplunkConnectorConnectionIdentifierAdapter</a></td>
+              <td class="jd-descrcol" width="100%">A <code>SplunkConnectorConnectionIdentifierAdapter</code> is a wrapper around <code><a href="../../../../../../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code> that implements org.mule.devkit.dynamic.api.helper.Connection interface.&nbsp;</td>
+          </tr>
+        <tr class=" api apilevel-" >
+              <td class="jd-linkcol"><a href="../../../../../../java/com/wsl/modules/splunk/adapters/SplunkConnectorLicenseChecker.html">SplunkConnectorLicenseChecker</a></td>
+              <td class="jd-descrcol" width="100%">&nbsp;</td>
+          </tr>
+  </table>
+      </div>
+  </div>
+</td></tr></table>
+
+
+<div class="jd-descr">
+
+
+<h2>Class Overview</h2>
+<p>A <code>SplunkConnectorLifecycleAdapter</code> is a wrapper around <code><a href="../../../../../../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code> that adds lifecycle methods to the pojo.
+ 
+</p>
+
+
+
+
+
+</div><!-- jd-descr -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Summary</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =========== ENUM CONSTANT SUMMARY =========== -->
+<table id="inhconstants" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Constants</div></th></tr>
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-constants-com.wsl.modules.splunk.adapters.SplunkConnectorMetadataAdapater" class="jd-expando-trigger closed"
+          ><img id="inherited-constants-com.wsl.modules.splunk.adapters.SplunkConnectorMetadataAdapater-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From class
+<a href="../../../../../../com/wsl/modules/splunk/adapters/SplunkConnectorMetadataAdapater.html">com.wsl.modules.splunk.adapters.SplunkConnectorMetadataAdapater</a>
+<div id="inherited-constants-com.wsl.modules.splunk.adapters.SplunkConnectorMetadataAdapater">
+  <div id="inherited-constants-com.wsl.modules.splunk.adapters.SplunkConnectorMetadataAdapater-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-constants-com.wsl.modules.splunk.adapters.SplunkConnectorMetadataAdapater-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol">String</td>
+        <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/splunk/adapters/SplunkConnectorMetadataAdapater.html#DEVKIT_BUILD">DEVKIT_BUILD</a></td>
+        <td class="jd-descrcol" width="100%"></td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol">String</td>
+        <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/splunk/adapters/SplunkConnectorMetadataAdapater.html#DEVKIT_VERSION">DEVKIT_VERSION</a></td>
+        <td class="jd-descrcol" width="100%"></td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol">String</td>
+        <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/splunk/adapters/SplunkConnectorMetadataAdapater.html#MIN_MULE_VERSION">MIN_MULE_VERSION</a></td>
+        <td class="jd-descrcol" width="100%"></td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol">String</td>
+        <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/splunk/adapters/SplunkConnectorMetadataAdapater.html#MODULE_NAME">MODULE_NAME</a></td>
+        <td class="jd-descrcol" width="100%"></td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol">String</td>
+        <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/splunk/adapters/SplunkConnectorMetadataAdapater.html#MODULE_VERSION">MODULE_VERSION</a></td>
+        <td class="jd-descrcol" width="100%"></td>
+    </tr>
+    
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-constants-org.mule.api.lifecycle.Disposable" class="jd-expando-trigger closed"
+          ><img id="inherited-constants-org.mule.api.lifecycle.Disposable-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From interface
+org.mule.api.lifecycle.Disposable
+<div id="inherited-constants-org.mule.api.lifecycle.Disposable">
+  <div id="inherited-constants-org.mule.api.lifecycle.Disposable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-constants-org.mule.api.lifecycle.Disposable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol">String</td>
+        <td class="jd-linkcol">PHASE_NAME</td>
+        <td class="jd-descrcol" width="100%"></td>
+    </tr>
+    
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-constants-org.mule.api.lifecycle.Initialisable" class="jd-expando-trigger closed"
+          ><img id="inherited-constants-org.mule.api.lifecycle.Initialisable-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From interface
+org.mule.api.lifecycle.Initialisable
+<div id="inherited-constants-org.mule.api.lifecycle.Initialisable">
+  <div id="inherited-constants-org.mule.api.lifecycle.Initialisable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-constants-org.mule.api.lifecycle.Initialisable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol">String</td>
+        <td class="jd-linkcol">PHASE_NAME</td>
+        <td class="jd-descrcol" width="100%"></td>
+    </tr>
+    
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-constants-org.mule.api.lifecycle.Startable" class="jd-expando-trigger closed"
+          ><img id="inherited-constants-org.mule.api.lifecycle.Startable-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From interface
+org.mule.api.lifecycle.Startable
+<div id="inherited-constants-org.mule.api.lifecycle.Startable">
+  <div id="inherited-constants-org.mule.api.lifecycle.Startable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-constants-org.mule.api.lifecycle.Startable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol">String</td>
+        <td class="jd-linkcol">PHASE_NAME</td>
+        <td class="jd-descrcol" width="100%"></td>
+    </tr>
+    
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-constants-org.mule.api.lifecycle.Stoppable" class="jd-expando-trigger closed"
+          ><img id="inherited-constants-org.mule.api.lifecycle.Stoppable-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From interface
+org.mule.api.lifecycle.Stoppable
+<div id="inherited-constants-org.mule.api.lifecycle.Stoppable">
+  <div id="inherited-constants-org.mule.api.lifecycle.Stoppable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-constants-org.mule.api.lifecycle.Stoppable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol">String</td>
+        <td class="jd-linkcol">PHASE_NAME</td>
+        <td class="jd-descrcol" width="100%"></td>
+    </tr>
+    
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+</table>
+
+
+
+
+
+
+
+<!-- =========== FIELD SUMMARY =========== -->
+<table id="inhfields" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Fields</div></th></tr>
+
+
+
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-fields-com.wsl.modules.splunk.SplunkConnector" class="jd-expando-trigger closed"
+          ><img id="inherited-fields-com.wsl.modules.splunk.SplunkConnector-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From class
+<a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html">com.wsl.modules.splunk.SplunkConnector</a>
+<div id="inherited-fields-com.wsl.modules.splunk.SplunkConnector">
+  <div id="inherited-fields-com.wsl.modules.splunk.SplunkConnector-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-fields-com.wsl.modules.splunk.SplunkConnector-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#host">host</a></td>
+          <td class="jd-descrcol" width="100%">The Splunk Host
+</td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#port">port</a></td>
+          <td class="jd-descrcol" width="100%">The Splunk Port
+</td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          <a href="../../../../../../java/com/wsl/modules/splunk/SplunkClient.html">SplunkClient</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#splunkClient">splunkClient</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</table>
+
+
+
+
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<table id="pubctors" class="jd-sumtable"><tr><th colspan="12">Public Constructors</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            </nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/adapters/SplunkConnectorLifecycleAdapter.html#SplunkConnectorLifecycleAdapter()">SplunkConnectorLifecycleAdapter</a></span>()</nobr>
+        
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="pubmethods" class="jd-sumtable"><tr><th colspan="12">Public Methods</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/adapters/SplunkConnectorLifecycleAdapter.html#dispose()">dispose</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/adapters/SplunkConnectorLifecycleAdapter.html#initialise()">initialise</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/adapters/SplunkConnectorLifecycleAdapter.html#start()">start</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/adapters/SplunkConnectorLifecycleAdapter.html#stop()">stop</a></span>()</nobr>
+        
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="inhmethods" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Methods</div></th></tr>
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-com.wsl.modules.splunk.adapters.SplunkConnectorMetadataAdapater" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-com.wsl.modules.splunk.adapters.SplunkConnectorMetadataAdapater-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  <a href="../../../../../../com/wsl/modules/splunk/adapters/SplunkConnectorMetadataAdapater.html">com.wsl.modules.splunk.adapters.SplunkConnectorMetadataAdapater</a>
+
+<div id="inherited-methods-com.wsl.modules.splunk.adapters.SplunkConnectorMetadataAdapater">
+  <div id="inherited-methods-com.wsl.modules.splunk.adapters.SplunkConnectorMetadataAdapater-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-com.wsl.modules.splunk.adapters.SplunkConnectorMetadataAdapater-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/adapters/SplunkConnectorMetadataAdapater.html#getDevkitBuild()">getDevkitBuild</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/adapters/SplunkConnectorMetadataAdapater.html#getDevkitVersion()">getDevkitVersion</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/adapters/SplunkConnectorMetadataAdapater.html#getMinMuleVersion()">getMinMuleVersion</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/adapters/SplunkConnectorMetadataAdapater.html#getModuleName()">getModuleName</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/adapters/SplunkConnectorMetadataAdapater.html#getModuleVersion()">getModuleVersion</a></span>()</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-com.wsl.modules.splunk.adapters.SplunkConnectorCapabilitiesAdapter" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-com.wsl.modules.splunk.adapters.SplunkConnectorCapabilitiesAdapter-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  <a href="../../../../../../com/wsl/modules/splunk/adapters/SplunkConnectorCapabilitiesAdapter.html">com.wsl.modules.splunk.adapters.SplunkConnectorCapabilitiesAdapter</a>
+
+<div id="inherited-methods-com.wsl.modules.splunk.adapters.SplunkConnectorCapabilitiesAdapter">
+  <div id="inherited-methods-com.wsl.modules.splunk.adapters.SplunkConnectorCapabilitiesAdapter-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-com.wsl.modules.splunk.adapters.SplunkConnectorCapabilitiesAdapter-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/adapters/SplunkConnectorCapabilitiesAdapter.html#isCapableOf(org.mule.api.devkit.capability.ModuleCapability)">isCapableOf</a></span>(ModuleCapability capability)</nobr>
+        
+        <div class="jd-descrdiv">Returns true if this module implements such capability
+ 
+</div>
+  
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-com.wsl.modules.splunk.SplunkConnector" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-com.wsl.modules.splunk.SplunkConnector-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  <a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html">com.wsl.modules.splunk.SplunkConnector</a>
+
+<div id="inherited-methods-com.wsl.modules.splunk.SplunkConnector">
+  <div id="inherited-methods-com.wsl.modules.splunk.SplunkConnector-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-com.wsl.modules.splunk.SplunkConnector-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Map&lt;String,&nbsp;Object&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#addDataToIndex(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">addDataToIndex</a></span>(String indexName, String stringData, Map&lt;String,&nbsp;Object&gt; indexArgs)</nobr>
+        
+        <div class="jd-descrdiv">Add data to an index without an input, using HTTP to submit a string
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#addDataToTcpInput(java.lang.String, java.lang.String)">addDataToTcpInput</a></span>(String portNumber, String stringData)</nobr>
+        
+        <div class="jd-descrdiv">Add data to a Tcp Input
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#addDataToUdpInput(java.lang.String, java.lang.String)">addDataToUdpInput</a></span>(String portNumber, String stringData)</nobr>
+        
+        <div class="jd-descrdiv">Add data to a Udp Input
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Map&lt;String,&nbsp;Object&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#cleanIndex(java.lang.String, int)">cleanIndex</a></span>(String indexName, int maxSeconds)</nobr>
+        
+        <div class="jd-descrdiv">Clean the index, which removes all events from it
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#connect(java.lang.String, java.lang.String)">connect</a></span>(String username, String password)</nobr>
+        
+        <div class="jd-descrdiv">Connect to a splunk instance</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Map&lt;String,&nbsp;Object&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#createIndex(java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">createIndex</a></span>(String indexName, Map&lt;String,&nbsp;Object&gt; args)</nobr>
+        
+        <div class="jd-descrdiv">Creates an Index with optional arguments
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Map&lt;String,&nbsp;Object&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#createInput(java.lang.String, com.splunk.InputKind, java.util.Map<java.lang.String, java.lang.Object>)">createInput</a></span>(String inputIdentifier, InputKind kind, Map&lt;String,&nbsp;Object&gt; args)</nobr>
+        
+        <div class="jd-descrdiv">Creates an Input with a given identifier and kind
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Map&lt;String,&nbsp;Object&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#createSavedSearch(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">createSavedSearch</a></span>(String searchName, String searchQuery, Map&lt;String,&nbsp;Object&gt; searchArgs)</nobr>
+        
+        <div class="jd-descrdiv">Create a saved search.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#deleteSavedSearch(java.lang.String)">deleteSavedSearch</a></span>(String searchName)</nobr>
+        
+        <div class="jd-descrdiv">Delete the Specified saved Search
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#disconnect()">disconnect</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Disconnect the connector
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;Map&lt;String,&nbsp;Object&gt;&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#getApplications()">getApplications</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">List Applications
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#getConnectionIdentifier()">getConnectionIdentifier</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Get the Connection Identifier (the token)</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Map&lt;String,&nbsp;Object&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#getDataModel(java.lang.String)">getDataModel</a></span>(String dataModelName)</nobr>
+        
+        <div class="jd-descrdiv">Get an individual data model
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;Map&lt;String,&nbsp;Object&gt;&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#getDataModels()">getDataModels</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Get all data models
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#getHost()">getHost</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Get the Hostname</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Map&lt;String,&nbsp;Object&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#getIndex(java.lang.String)">getIndex</a></span>(String indexIdentifier)</nobr>
+        
+        <div class="jd-descrdiv">Retrieves an Index with the given identifier
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;Map&lt;String,&nbsp;Object&gt;&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#getIndexes(java.lang.String, com.splunk.CollectionArgs.SortDirection, java.util.Map<java.lang.String, java.lang.Object>)">getIndexes</a></span>(String sortKey, CollectionArgs.SortDirection sortDirection, Map&lt;String,&nbsp;Object&gt; collectionParameters)</nobr>
+        
+        <div class="jd-descrdiv">Retrieves a collection of indexes based on the criteria provided
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Map&lt;String,&nbsp;Object&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#getInput(java.lang.String)">getInput</a></span>(String inputIdentifier)</nobr>
+        
+        <div class="jd-descrdiv">Retrieves an Input with the given identifier
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;Map&lt;String,&nbsp;Object&gt;&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#getInputs()">getInputs</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Get Inputs returns an InputCollection of possible inputs to use with Splunk
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;Map&lt;String,&nbsp;Object&gt;&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#getJobs()">getJobs</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Get Jobs
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#getPort()">getPort</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Get the splunk Port</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;Map&lt;String,&nbsp;Object&gt;&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#getSavedSearchHistory(java.lang.String, java.lang.String, java.lang.String)">getSavedSearchHistory</a></span>(String searchName, String app, String owner)</nobr>
+        
+        <div class="jd-descrdiv">Modify the Saved Search Properties
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;Map&lt;String,&nbsp;Object&gt;&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#getSavedSearches(java.lang.String, java.lang.String)">getSavedSearches</a></span>(String app, String owner)</nobr>
+        
+        <div class="jd-descrdiv">Retrieve and list the saved searches in the saved search collection.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../java/com/wsl/modules/splunk/SplunkClient.html">SplunkClient</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#getSplunkClient()">getSplunkClient</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Get the SplunkClient instance being used to connect</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#isConnected()">isConnected</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Validate the connection</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Map&lt;String,&nbsp;Object&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#modifyIndex(java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">modifyIndex</a></span>(String indexName, Map&lt;String,&nbsp;Object&gt; indexArgs)</nobr>
+        
+        <div class="jd-descrdiv">Modifies an index with the properties supplied.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Map&lt;String,&nbsp;Object&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#modifyInput(java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">modifyInput</a></span>(String inputIdentifier, Map&lt;String,&nbsp;Object&gt; inputArgs)</nobr>
+        
+        <div class="jd-descrdiv">Modifies an input with the properties supplied.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Map&lt;String,&nbsp;Object&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#modifySavedSearchProperties(java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">modifySavedSearchProperties</a></span>(String searchName, Map&lt;String,&nbsp;Object&gt; searchProperties)</nobr>
+        
+        <div class="jd-descrdiv">Modify the properties of the  saved search
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#removeIndex(java.lang.String)">removeIndex</a></span>(String indexName)</nobr>
+        
+        <div class="jd-descrdiv">Remove an index
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#removeInput(java.lang.String)">removeInput</a></span>(String inputIdentifier)</nobr>
+        
+        <div class="jd-descrdiv">Remove an input
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Map&lt;String,&nbsp;Object&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#runBlockingSearch(java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">runBlockingSearch</a></span>(String searchQuery, Map&lt;String,&nbsp;Object&gt; searchArgs)</nobr>
+        
+        <div class="jd-descrdiv">Runs a blocking search, which will wait for completion on the splunk server and return synchronously.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#runExportSearch(java.lang.String, java.lang.String, java.lang.String, org.mule.api.callback.SourceCallback)">runExportSearch</a></span>(String searchQuery, String earliestTime, String latestTime, SourceCallback callback)</nobr>
+        
+        <div class="jd-descrdiv">Run an export search, which streams results
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#runNormalSearch(java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, org.mule.api.callback.SourceCallback)">runNormalSearch</a></span>(String searchQuery, Map&lt;String,&nbsp;Object&gt; searchArgs, SourceCallback searchCallback)</nobr>
+        
+        <div class="jd-descrdiv">Run a normal search, which polls for completion.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;Map&lt;String,&nbsp;Object&gt;&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#runOneShotSearch(java.lang.String, java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.String>)">runOneShotSearch</a></span>(String searchQuery, String earliestTime, String latestTime, Map&lt;String,&nbsp;String&gt; args)</nobr>
+        
+        <div class="jd-descrdiv">Run a basic oneshot search and display results
+ NOTE: XML output appears to be the only supported type right now.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#runRealTimeSearch(java.lang.String, java.lang.String, java.lang.String, int, int, org.mule.api.callback.SourceCallback)">runRealTimeSearch</a></span>(String searchQuery, String earliestTime, String latestTime, int statusBuckets, int previewCount, SourceCallback callback)</nobr>
+        
+        <div class="jd-descrdiv">Run a realtime search and process the response
+ returns via a sourcecallback
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;Map&lt;String,&nbsp;Object&gt;&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#runSavedSearch(java.lang.String)">runSavedSearch</a></span>(String searchName)</nobr>
+        
+        <div class="jd-descrdiv">Run the saved Search
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;Map&lt;String,&nbsp;Object&gt;&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#runSavedSearchWithArguments(java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, com.splunk.SavedSearchDispatchArgs)">runSavedSearchWithArguments</a></span>(String searchName, Map&lt;String,&nbsp;Object&gt; customArgs, SavedSearchDispatchArgs searchDispatchArgs)</nobr>
+        
+        <div class="jd-descrdiv">Run a saved search with run-time arguments
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#setHost(java.lang.String)">setHost</a></span>(String host)</nobr>
+        
+        <div class="jd-descrdiv">Set splunk hostname</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#setPort(java.lang.String)">setPort</a></span>(String port)</nobr>
+        
+        <div class="jd-descrdiv">Set the Splunk Port</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#setSplunkClient(com.wsl.modules.splunk.SplunkClient)">setSplunkClient</a></span>(<a href="../../../../../../java/com/wsl/modules/splunk/SplunkClient.html">SplunkClient</a> splunkClient)</nobr>
+        
+        <div class="jd-descrdiv">Set the SplunkClient instance to the one provided</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Set&lt;Entry&lt;String,&nbsp;Object&gt;&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/splunk/SplunkConnector.html#viewSavedSearchProperties(java.lang.String, java.lang.String, java.lang.String)">viewSavedSearchProperties</a></span>(String searchName, String app, String owner)</nobr>
+        
+        <div class="jd-descrdiv">View the properties of the  saved search
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-java.lang.Object" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-java.lang.Object-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  java.lang.Object
+
+<div id="inherited-methods-java.lang.Object">
+  <div id="inherited-methods-java.lang.Object-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-java.lang.Object-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">clone</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">equals</span>(Object arg0)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">finalize</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            Class&lt;?&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">getClass</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">hashCode</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">notify</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">notifyAll</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">toString</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">wait</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">wait</span>(long arg0)</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.MetadataAware" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.api.MetadataAware-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  org.mule.api.MetadataAware
+
+<div id="inherited-methods-org.mule.api.MetadataAware">
+  <div id="inherited-methods-org.mule.api.MetadataAware-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.api.MetadataAware-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">getDevkitBuild</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">getDevkitVersion</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">getMinMuleVersion</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">getModuleName</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">getModuleVersion</span>()</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.devkit.capability.Capabilities" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.api.devkit.capability.Capabilities-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  org.mule.api.devkit.capability.Capabilities
+
+<div id="inherited-methods-org.mule.api.devkit.capability.Capabilities">
+  <div id="inherited-methods-org.mule.api.devkit.capability.Capabilities-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.api.devkit.capability.Capabilities-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">isCapableOf</span>(ModuleCapability arg0)</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.lifecycle.Disposable" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.api.lifecycle.Disposable-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  org.mule.api.lifecycle.Disposable
+
+<div id="inherited-methods-org.mule.api.lifecycle.Disposable">
+  <div id="inherited-methods-org.mule.api.lifecycle.Disposable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.api.lifecycle.Disposable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">dispose</span>()</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.lifecycle.Initialisable" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.api.lifecycle.Initialisable-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  org.mule.api.lifecycle.Initialisable
+
+<div id="inherited-methods-org.mule.api.lifecycle.Initialisable">
+  <div id="inherited-methods-org.mule.api.lifecycle.Initialisable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.api.lifecycle.Initialisable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">initialise</span>()</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.lifecycle.Startable" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.api.lifecycle.Startable-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  org.mule.api.lifecycle.Startable
+
+<div id="inherited-methods-org.mule.api.lifecycle.Startable">
+  <div id="inherited-methods-org.mule.api.lifecycle.Startable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.api.lifecycle.Startable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">start</span>()</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.lifecycle.Stoppable" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.api.lifecycle.Stoppable-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  org.mule.api.lifecycle.Stoppable
+
+<div id="inherited-methods-org.mule.api.lifecycle.Stoppable">
+  <div id="inherited-methods-org.mule.api.lifecycle.Stoppable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.api.lifecycle.Stoppable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">stop</span>()</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+</table>
+
+
+</div><!-- jd-descr (summary) -->
+
+<!-- Details -->
+
+
+
+
+
+
+
+
+<!-- XML Attributes -->
+
+
+<!-- Enum Values -->
+
+
+<!-- Constants -->
+
+
+<!-- Fields -->
+
+
+<!-- Public ctors -->
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<h2>Public Constructors</h2>
+
+
+
+<A NAME="SplunkConnectorLifecycleAdapter()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        
+      </span>
+      <span class="sympad">SplunkConnectorLifecycleAdapter</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<!-- Protected ctors -->
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+<!-- Public methdos -->
+
+<h2>Public Methods</h2>
+
+
+
+<A NAME="dispose()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">dispose</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="initialise()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">initialise</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>InitialisationException</td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="start()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">start</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>MuleException</td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="stop()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">stop</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>MuleException</td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+
+
+
+<!-- ========= END OF CLASS DATA ========= -->
+<A NAME="navbar_top"></A>
+
+<div id="footer">
+Generated by <a href="http://www.mulesoft.com/devkit">Mule DevKit</a>. Document generation technology based on <a href="http://code.google.com/p/doclava/">Google's Doclava</a>.
+</div> <!-- end footer -->
+
+</div> <!-- jd-content -->
+
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+<script type="text/javascript">
+init(); /* initialize mule-developer-docs.js */
+</script>
+
+</body>
+</html>

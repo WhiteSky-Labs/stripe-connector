@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Splunk Connector</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="MuleSoft Connector for Splunk">
+    <meta name="author" content="WhiteSky Labs">
+    
+    <link rel="canonical" href="http://whitesky-labs.github.io/splunk-connector/page2/">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/splunk-connector/css/pixyll.css" type="text/css">
+
+    <!-- Fonts -->
+    <link href='//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Lato:900,300' rel='stylesheet' type='text/css'>
+    
+
+    <!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Splunk Connector">
+    <meta property="og:description" content="MuleSoft Connector for Splunk">
+    <meta property="og:url" content="http://whitesky-labs.github.io/page2/">
+    <meta property="og:site_name" content="Splunk Connector">
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+</head>
+
+<body class="">
+  <div class="site-wrap">
+    <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="http://whitesky-labs.github.io//splunk-connector" class="site-title">Splunk Connector</a>
+      <nav class="site-nav right">
+        <a href="/splunk-connector/about/">About</a>
+<a href="mailto:support@whiteskylabs.com">Contact</a>
+
+      </nav>
+      <div class="clearfix"></div>
+      
+    </div>
+  </div>
+</header>
+
+
+    <div class="post p2 p-responsive wrap" role="main">
+      <div class="measure">
+        <div class="home">
+<div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="http://whitesky-labs.github.io//splunk-connector//2015/01/22/release-notes/">
+        Splunk Connector 1.0.0 Release Notes
+      </a>
+    </h1>
+
+    <span class="post-date">22 Jan 2015</span>
+
+    <p><strong>Premium Partner Connector</strong></p>
+
+<p>The Splunk Enterprise Server Connector provides the ability to perform most common tasks against the Splunk API in an easy, consistent way. It allows you to not only directly send data from the AnyPoint Platform into the Splunk Index but also to perform a wide variety of searches and indexing operations.</p>
+
+<p>This is the first release version of the Splunk Connector, with comprehensive support for most APIs out of the box.</p>
+
+<h2 id="compatibility">Compatibility</h2>
+
+<table>
+    <tr>
+        <th>Application/Service</th>
+        <th>Version</th>
+    </tr>
+    <tr>
+        <td>Mule Runtime</td>
+        <td>Mule 3.5.2 and above</td>
+    </tr>
+    <tr>
+        <td>Splunk Enterprise Server</td>
+        <td>v6.2</td>
+    </tr>
+    <tr>
+        <td>Splunk SDK for Java</td>
+        <td>v1.3.0</td>
+    </tr>
+</table>
+
+<h2 id="supported-splunk-operations">Supported Splunk Operations</h2>
+
+<ul>
+<li>Connect to Splunk:</li>
+<li>Work with Saved Searches
+
+<ul>
+<li>List Saved Searches</li>
+<li>View the History of a Saved Search</li>
+<li>Create a Saved Search</li>
+<li>View and Modify the Properties of a Saved Search</li>
+<li>Run a Saved Search</li>
+<li>Run a Saved Search with Runtime Arguments</li>
+<li>Delete a Saved Search</li>
+</ul></li>
+<li>Work with Searches and Jobs
+
+<ul>
+<li>List search jobs for current user</li>
+<li>Run a normal search and stream output</li>
+<li>Run a blocking search and display the properties of the Job</li>
+<li>Run a Oneshot search and display results</li>
+<li>Run a Real-Time Search (see issues)</li>
+<li>Run an Export Search</li>
+</ul></li>
+<li>Work With Data Models
+
+<ul>
+<li>Retrieve Data Model</li>
+<li>Retrieve all Data Models</li>
+</ul></li>
+<li>Get Data into Splunk
+
+<ul>
+<li>List Data Inputs</li>
+<li>Create a new Data Input</li>
+<li>View and Modify the Properties of a Data Input</li>
+<li>Create an Index</li>
+<li>View and Modify the Properties of a Data Input</li>
+<li>Clean Events from an Index</li>
+<li>Add data directly into an Index</li>
+<li>Add data directly into a Tcp Input</li>
+<li>Add data directly into a Udp Input</li>
+</ul></li>
+<li>List a user&rsquo;s applications</li>
+</ul>
+
+<p>Unsupported APIs are most effectively managed through the Splunk Administration Interface. If you have a specific need for an API that is currently unsupported, please contact the MuleSoft for more information.</p>
+
+<ul>
+<li>Modular Inputs are not supported.</li>
+<li>User and Role Management operations are not supported.</li>
+<li>Data Models and Pivots have limited support.</li>
+</ul>
+
+<h2 id="fixed-issues">Fixed Issues</h2>
+
+<p>None identified.</p>
+
+<h2 id="new-features-in-this-release">New Features in this Release</h2>
+
+<p>First Release</p>
+
+<h2 id="support-resources">Support Resources</h2>
+
+<ul>
+<li><a href="http://whitesky-labs.github.io/splunk-connector/2015/01/22/splunk-connector/">Overview Documentation</a></li>
+<li><a href="http://dev.splunk.com/view/java-sdk/SP-CAAAEFH">Splunk SDK for Java Documentation</a></li>
+<li>API Documentation is available at <a href="http://whitesky-labs.github.io/splunk-connector/apidocs">http://whitesky-labs.github.io/splunk-connector/apidocs</a></li>
+<li>You can report new issues by emailing <a href="mailto:support@whiteskylabs.com">support@whiteskylabs.com</a>.</li>
+</ul>
+
+  </div>
+  
+</div>
+
+  <div class="pagination clearfix mb1 mt4">
+  <div class="left">
+    
+      
+        <a class="pagination-item" href="/splunk-connector/">Newer</a>
+      
+    
+  </div>
+  <div class="right">
+    
+      <span class="pagination-item disabled">Older</span>
+    
+  </div>
+</div>
+
+
+</div>
+
+<!--<div class="home">
+
+  <div class="posts">
+    
+      <div class="post">
+        <a href="/splunk-connector/2015/01/22/release-notes/" class="post-link">
+          <p class="post-meta">Jan 22, 2015</p>
+          <h3 class="h2 post-title">Splunk Connector 1.0.0 Release Notes</h3>
+          <p class="post-summary"></p>
+        </a>
+      </div>
+    
+  </div>
+
+  <div class="pagination clearfix mb1 mt4">
+  <div class="left">
+    
+      
+        <a class="pagination-item" href="/splunk-connector/">Newer</a>
+      
+    
+  </div>
+  <div class="right">
+    
+      <span class="pagination-item disabled">Older</span>
+    
+  </div>
+</div>
+
+</div>--
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+  <div class="p2 wrap">
+    <div class="measure mt1 center">
+      <small>
+        Copyright &copy; WhiteSky Labs 2015. All Rights Reserved.
+      </small>
+    </div>
+  </div>
+</footer>
+
+
+
+</body>
+</html>

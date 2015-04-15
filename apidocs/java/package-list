@@ -1,0 +1,15 @@
+com.splunk.transformers
+com.wsl.modules.splunk
+com.wsl.modules.splunk.adapter
+com.wsl.modules.splunk.adapters
+com.wsl.modules.splunk.agents
+com.wsl.modules.splunk.config
+com.wsl.modules.splunk.connection
+com.wsl.modules.splunk.connectivity
+com.wsl.modules.splunk.devkit
+com.wsl.modules.splunk.exception
+com.wsl.modules.splunk.pooling
+com.wsl.modules.splunk.process
+com.wsl.modules.splunk.processors
+com.wsl.modules.splunk.sources
+

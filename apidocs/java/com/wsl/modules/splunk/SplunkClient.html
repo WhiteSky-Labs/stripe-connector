@@ -1,0 +1,3645 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <meta name="description" content="Documentation for Mule Splunk Connector." />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../../../favicon.ico" />
+<title>
+
+  SplunkClient
+
+
+| Mule Splunk Connector
+
+</title>
+<link href="../../../../../assets/mule-developer-docs.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../assets/mule-developer-prettify.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../assets/customizations.css" rel="stylesheet" type="text/css" />
+<link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet' type='text/css'>
+<script src="../../../../../assets/search_autocomplete.js" type="text/javascript"></script>
+<script src="../../../../../assets/jquery-resizable.min.js" type="text/javascript"></script>
+<script src="../../../../../assets/jquery-toc.js" type="text/javascript"></script>
+<script src="../../../../../assets/mule-developer-docs.js" type="text/javascript"></script>
+<script src="../../../../../assets/prettify.js" type="text/javascript"></script>
+<script type="text/javascript">
+  setToRoot("../../../../../", "../../../../../assets/");
+</script>
+<script src="../../../../../assets/mule-developer-reference.js" type="text/javascript"></script>
+<script src="../../../../../assets/navtree_data.js" type="text/javascript"></script>
+<script src="../../../../../assets/customizations.js" type="text/javascript"></script>
+<noscript>
+  <style type="text/css">
+    html,body{overflow:auto;}
+    #body-content{position:relative; top:0;}
+    #doc-content{overflow:visible;border-left:3px solid #666;}
+    #side-nav{padding:0;}
+    #side-nav .toggle-list ul {display:block;}
+    #resize-packages-nav{border-bottom:3px solid #666;}
+  </style>
+</noscript>
+<script type="text/javascript" charset="utf-8">
+  var is_ssl = ("https:" == document.location.protocol);
+  var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
+  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  var feedback_widget_options = {};
+
+  feedback_widget_options.display = "overlay";
+  feedback_widget_options.company = "mulesoft";
+  feedback_widget_options.placement = "right";
+  feedback_widget_options.color = "#2F74AE";
+  feedback_widget_options.style = "question";
+
+  feedback_widget_options.tag = "Mule Splunk Connector";
+
+  feedback_widget_options.limit = "3";
+
+  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+</script>
+</head>
+
+<body class="">
+
+<div id="header">
+    <div id="headerLeft">
+    
+      <span id="masthead-title">Mule Splunk Connector</span>
+    
+    <ul id="header-tabs" class="">
+    
+    	<li id="guide"><a href="../../../../../guide/install.html">
+	    	<span class="en">Install Guide</span>
+    	</a></li>
+    
+    	<li id="java"><a href="../../../../../java/packages.html">
+	    	<span class="en">Java API Reference</span>
+    	</a></li>
+    
+    	<li id="mule"><a href="../../../../../mule/modules.html">
+	    	<span class="en">Mule API Reference</span>
+    	</a></li>
+    
+    </ul>
+    </div>
+    <div id="headerRight">
+      <a href="http://www.mulesoft.com" tabindex="-1">
+      <img src="../../../../../assets//images/mulesoft-logo-final.gif" alt="MuleSoft" border="0" id="mulesoftlogo"></a><br/>
+      
+  <div id="searchContainer" >
+      <div id="searchForm">
+          <form accept-charset="utf-8" class="gsc-search-box" 
+                onsubmit="return submit_search()">
+            <table class="gsc-search-box" cellpadding="0" cellspacing="0"><tbody>
+                <tr>
+                  <td class="gsc-input">
+                    <input id="search_autocomplete" class="gsc-input" type="text" size="33" autocomplete="off"
+                      title="search developer docs" name="q"
+                      value="search developer docs"
+                      onFocus="search_focus_changed(this, true)"
+                      onBlur="search_focus_changed(this, false)"
+                      onkeydown="return search_changed(event, true, '../../../../../')"
+                      onkeyup="return search_changed(event, false, '../../../../../')" />
+                  <div id="search_filtered_div" class="no-display">
+                      <table id="search_filtered" cellspacing=0>
+                      </table>
+                  </div>
+                  </td>
+                  <td class="gsc-search-button">
+                    <input type="submit" value="Search" title="search" id="search-button" class="gsc-search-button" />
+                  </td>
+                  <td class="gsc-clear-button">
+                    <div title="clear results" class="gsc-clear-button">&nbsp;</div>
+                  </td>
+                </tr></tbody>
+              </table>
+          </form>
+      </div><!-- searchForm -->
+  </div><!-- search -->
+      
+    </div>
+</div><!-- header -->
+
+
+  <div class="g-section g-tpl-240" id="body-content">
+    <div class="g-unit g-first side-nav-resizable" id="side-nav">
+      <div id="swapper">
+        <div id="nav-panels">
+          <div id="resize-packages-nav">
+            <div id="packages-nav">
+              <div id="index-links">
+                <a href="../../../../../java/packages.html"  >Package Index</a> |
+                <a href="../../../../../java/classes.html" >Class Index</a>
+              </div>
+              <ul>
+                
+    <li class="api apilevel-">
+  <a href="../../../../../java/com/splunk/transformers/package-summary.html">com.splunk.transformers</a></li>
+    <li class="selected api apilevel-">
+  <a href="../../../../../java/com/wsl/modules/splunk/package-summary.html">com.wsl.modules.splunk</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/com/wsl/modules/splunk/adapter/package-summary.html">com.wsl.modules.splunk.adapter</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/com/wsl/modules/splunk/adapters/package-summary.html">com.wsl.modules.splunk.adapters</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/com/wsl/modules/splunk/agents/package-summary.html">com.wsl.modules.splunk.agents</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/com/wsl/modules/splunk/config/package-summary.html">com.wsl.modules.splunk.config</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/com/wsl/modules/splunk/connection/package-summary.html">com.wsl.modules.splunk.connection</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/com/wsl/modules/splunk/connectivity/package-summary.html">com.wsl.modules.splunk.connectivity</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/com/wsl/modules/splunk/devkit/package-summary.html">com.wsl.modules.splunk.devkit</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/com/wsl/modules/splunk/exception/package-summary.html">com.wsl.modules.splunk.exception</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/com/wsl/modules/splunk/pooling/package-summary.html">com.wsl.modules.splunk.pooling</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/com/wsl/modules/splunk/process/package-summary.html">com.wsl.modules.splunk.process</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/com/wsl/modules/splunk/processors/package-summary.html">com.wsl.modules.splunk.processors</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../java/com/wsl/modules/splunk/sources/package-summary.html">com.wsl.modules.splunk.sources</a></li>
+              </ul><br/>
+            </div> <!-- end packages -->
+          </div> <!-- end resize-packages -->
+          <div id="classes-nav">
+            <ul>
+              
+              
+    <li><h2>Classes</h2>
+      <ul>
+          <li class="selected api apilevel-"><a href="../../../../../java/com/wsl/modules/splunk/SplunkClient.html">SplunkClient</a></li>
+          <li class="api apilevel-"><a href="../../../../../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></li>
+      </ul>
+    </li>
+              
+              
+    <li><h2>Enums</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../../java/com/wsl/modules/splunk/OutputMode.html">OutputMode</a></li>
+          <li class="api apilevel-"><a href="../../../../../java/com/wsl/modules/splunk/SearchMode.html">SearchMode</a></li>
+      </ul>
+    </li>
+              
+              
+            </ul><br/>
+          </div><!-- end classes -->
+        </div><!-- end nav-panels -->
+        <div id="nav-tree" style="display:none">
+          <div id="index-links">
+            <a href="../../../../../packages.html"  >Package Index</a> | 
+            <a href="../../../../../classes.html" >Class Index</a>
+          </div>
+        </div><!-- end nav-tree -->
+      </div><!-- end swapper -->
+    </div> <!-- end side-nav -->
+    <script>
+      if (!isMobile) {
+        $("<a href='#' id='nav-swap' onclick='swapNav();return false;' style='font-size:10px;line-height:9px;margin-left:1em;text-decoration:none;'><span id='tree-link'>Use Tree Navigation</span><span id='panel-link' style='display:none'>Use Panel Navigation</span></a>").appendTo("#side-nav");
+        chooseDefaultNav();
+        if ($("#nav-tree").is(':visible')) {
+          init_default_navtree("../../../../../");
+        } else {
+          addLoadEvent(function() {
+            scrollIntoView("packages-nav");
+            scrollIntoView("classes-nav");
+          });
+        }
+        $("#swapper").css({borderBottom:"2px solid #aaa"});
+      } else {
+        swapNav(); // tree view should be used on mobile
+      }
+    </script>
+
+
+
+<div class="g-unit" id="doc-content">
+
+<div id="api-info-block">
+
+
+
+  
+   
+  
+  
+  
+  
+
+
+<div class="sum-details-links">
+
+
+Summary:
+
+
+
+
+
+
+
+  <a href="#lfields">Fields</a>
+  
+
+
+
+  &#124; <a href="#pubctors">Ctors</a>
+  
+
+
+
+  &#124; <a href="#pubmethods">Methods</a>
+  
+
+
+  &#124; <a href="#promethods">Protected Methods</a>
+  
+
+
+  &#124; <a href="#inhmethods">Inherited Methods</a>
+
+&#124; <a href="#" onclick="return toggleAllClassInherited()" id="toggleAllClassInherited">[Expand All]</a>
+
+</div><!-- end sum-details-links -->
+<div class="api-level">
+  
+
+
+  
+  
+
+</div>
+</div><!-- end api-info-block -->
+
+
+<!-- ======== START OF CLASS DATA ======== -->
+
+<div id="jd-header">
+    public
+     
+     
+    
+    class
+<h1>SplunkClient</h1>
+
+
+
+  
+    extends Object<br/>
+  
+  
+  
+
+  
+  
+  
+
+
+</div><!-- end header -->
+
+<div id="naMessage"></div>
+
+<div id="jd-content" class="api apilevel-">
+<table class="jd-inheritance-table">
+
+
+    <tr>
+        
+        <td colspan="2" class="jd-inheritance-class-cell">java.lang.Object</td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="1" class="jd-inheritance-class-cell">com.wsl.modules.splunk.SplunkClient</td>
+    </tr>
+    
+
+</table>
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Class Overview</h2>
+<p>Class SplunkClient, implements the Splunk Connector
+</p>
+
+
+
+
+
+</div><!-- jd-descr -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Summary</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =========== FIELD SUMMARY =========== -->
+<table id="lfields" class="jd-sumtable"><tr><th colspan="12">Fields</th></tr>
+
+
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          static
+          final
+          Logger</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#LOGGER">LOGGER</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          Service</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#service">service</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          <a href="../../../../../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#splunkConnector">splunkConnector</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+
+</table>
+
+
+
+
+
+
+
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<table id="pubctors" class="jd-sumtable"><tr><th colspan="12">Public Constructors</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            </nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#SplunkClient(com.wsl.modules.splunk.SplunkConnector)">SplunkClient</a></span>(<a href="../../../../../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a> splunkConnector)</nobr>
+        
+        <div class="jd-descrdiv">Instantiate a SplunkClient, with a SplunkConnector object containing the configurable host and port.</div>
+  
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="pubmethods" class="jd-sumtable"><tr><th colspan="12">Public Methods</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Map&lt;String,&nbsp;Object&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#addDataToIndex(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">addDataToIndex</a></span>(String indexName, String stringData, Map&lt;String,&nbsp;Object&gt; indexArgs)</nobr>
+        
+        <div class="jd-descrdiv">Add data to an index without an input, using HTTP to submit a string</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#addDataToTcpInput(java.lang.String, java.lang.String)">addDataToTcpInput</a></span>(String portNumber, String stringData)</nobr>
+        
+        <div class="jd-descrdiv">Add data to a tcp input on a given port</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#addDataToUdpInput(java.lang.String, java.lang.String)">addDataToUdpInput</a></span>(String portNumber, String data)</nobr>
+        
+        <div class="jd-descrdiv">Add data to a udp input on a given port</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Map&lt;String,&nbsp;Object&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#cleanIndex(java.lang.String, int)">cleanIndex</a></span>(String indexName, int maxSeconds)</nobr>
+        
+        <div class="jd-descrdiv">Clean the index, which removes all events from it</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#connect(java.lang.String, java.lang.String, java.lang.String, java.lang.String)">connect</a></span>(String username, String password, String host, String port)</nobr>
+        
+        <div class="jd-descrdiv">Connect to splunk instance</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Map&lt;String,&nbsp;Object&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#createIndex(java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">createIndex</a></span>(String indexName, Map&lt;String,&nbsp;Object&gt; args)</nobr>
+        
+        <div class="jd-descrdiv">Creates an Index with optional arguments</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Map&lt;String,&nbsp;Object&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#createInput(java.lang.String, com.splunk.InputKind, java.util.Map<java.lang.String, java.lang.Object>)">createInput</a></span>(String inputIdentifier, InputKind kind, Map&lt;String,&nbsp;Object&gt; args)</nobr>
+        
+        <div class="jd-descrdiv">Creates an Input with a given identifier and kind</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Map&lt;String,&nbsp;Object&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#createSavedSearch(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">createSavedSearch</a></span>(String searchName, String searchQuery, Map&lt;String,&nbsp;Object&gt; searchArgs)</nobr>
+        
+        <div class="jd-descrdiv">Create a saved search</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#deleteSavedSearch(java.lang.String)">deleteSavedSearch</a></span>(String searchName)</nobr>
+        
+        <div class="jd-descrdiv">Delete Saved Search</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;Map&lt;String,&nbsp;Object&gt;&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#getApplications()">getApplications</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Get All the Applications</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Map&lt;String,&nbsp;Object&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#getDataModel(java.lang.String)">getDataModel</a></span>(String dataModelName)</nobr>
+        
+        <div class="jd-descrdiv">Retrieve an individual data model</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;Map&lt;String,&nbsp;Object&gt;&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#getDataModels()">getDataModels</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Retrieve all data models available to the user</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Map&lt;String,&nbsp;Object&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#getIndex(java.lang.String)">getIndex</a></span>(String indexIdentifier)</nobr>
+        
+        <div class="jd-descrdiv">Retrieves an Index with the given identifier</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;Map&lt;String,&nbsp;Object&gt;&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#getIndexes(java.lang.String, com.splunk.CollectionArgs.SortDirection, java.util.Map<java.lang.String, java.lang.Object>)">getIndexes</a></span>(String sortKey, CollectionArgs.SortDirection sortDirection, Map&lt;String,&nbsp;Object&gt; collectionParameters)</nobr>
+        
+        <div class="jd-descrdiv">Retrieves a collection of indexes based on the criteria provided</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Map&lt;String,&nbsp;Object&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#getInput(java.lang.String)">getInput</a></span>(String inputIdentifier)</nobr>
+        
+        <div class="jd-descrdiv">Retrieves an Input with the given identifier</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;Map&lt;String,&nbsp;Object&gt;&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#getInputs()">getInputs</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Get the Collection of Inputs</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;Map&lt;String,&nbsp;Object&gt;&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#getJobs()">getJobs</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Get the current users Jobs</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            SavedSearch</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#getSavedSearch(java.lang.String, java.lang.String, java.lang.String)">getSavedSearch</a></span>(String searchName, String app, String owner)</nobr>
+        
+        <div class="jd-descrdiv">Get Saved Search</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;Map&lt;String,&nbsp;Object&gt;&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#getSavedSearchHistory(java.lang.String, java.lang.String, java.lang.String)">getSavedSearchHistory</a></span>(String searchName, String app, String owner)</nobr>
+        
+        <div class="jd-descrdiv">List the past and current instances (jobs) of the search.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;Map&lt;String,&nbsp;Object&gt;&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#getSavedSearches(java.lang.String, java.lang.String)">getSavedSearches</a></span>(String app, String owner)</nobr>
+        
+        <div class="jd-descrdiv">Get all the saved searches, optionally within a restricted namespace</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Service</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#getService()">getService</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Get the Service</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Map&lt;String,&nbsp;Object&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#modifyIndex(java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">modifyIndex</a></span>(String indexName, Map&lt;String,&nbsp;Object&gt; indexArgs)</nobr>
+        
+        <div class="jd-descrdiv">Modifies an index with the properties supplied.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Map&lt;String,&nbsp;Object&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#modifyInput(java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">modifyInput</a></span>(String inputIdentifier, Map&lt;String,&nbsp;Object&gt; inputArgs)</nobr>
+        
+        <div class="jd-descrdiv">Modifies an input with the properties supplied.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Map&lt;String,&nbsp;Object&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#modifySavedSearchProperties(java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">modifySavedSearchProperties</a></span>(String searchName, Map&lt;String,&nbsp;Object&gt; searchProperties)</nobr>
+        
+        <div class="jd-descrdiv">Modify Saved Search Properties</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#removeIndex(java.lang.String)">removeIndex</a></span>(String indexName)</nobr>
+        
+        <div class="jd-descrdiv">Remove an index
+ <p/>
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#removeInput(java.lang.String)">removeInput</a></span>(String inputIdentifier)</nobr>
+        
+        <div class="jd-descrdiv">Remove an Input</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Map&lt;String,&nbsp;Object&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#runBlockingSearch(java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">runBlockingSearch</a></span>(String searchQuery, Map&lt;String,&nbsp;Object&gt; searchArgs)</nobr>
+        
+        <div class="jd-descrdiv">Run a blocking search, which returns synchronously after waiting for the search to complete (blocking the Splunk Server)</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#runExportSearch(java.lang.String, java.lang.String, java.lang.String, com.wsl.modules.splunk.SearchMode, com.wsl.modules.splunk.OutputMode, org.mule.api.callback.SourceCallback)">runExportSearch</a></span>(String searchQuery, String earliestTime, String latestTime, <a href="../../../../../java/com/wsl/modules/splunk/SearchMode.html">SearchMode</a> searchMode, <a href="../../../../../java/com/wsl/modules/splunk/OutputMode.html">OutputMode</a> outputMode, SourceCallback callback)</nobr>
+        
+        <div class="jd-descrdiv">Run an export search</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#runNormalSearch(java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, org.mule.api.callback.SourceCallback)">runNormalSearch</a></span>(String searchQuery, Map&lt;String,&nbsp;Object&gt; searchArgs, SourceCallback searchCallback)</nobr>
+        
+        <div class="jd-descrdiv">Run a  search and wait for response</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;Map&lt;String,&nbsp;Object&gt;&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#runOneShotSearch(java.lang.String, java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.String>)">runOneShotSearch</a></span>(String searchQuery, String earliestTime, String latestTime, Map&lt;String,&nbsp;String&gt; args)</nobr>
+        
+        <div class="jd-descrdiv">Run a basic oneshot search and display results</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#runRealTimeSearch(java.lang.String, java.lang.String, java.lang.String, int, int, org.mule.api.callback.SourceCallback)">runRealTimeSearch</a></span>(String searchQuery, String earliestTime, String latestTime, int statusBuckets, int previewCount, SourceCallback callback)</nobr>
+        
+        <div class="jd-descrdiv">Run a realtime search and process the response
+ returns via a sourcecallback@
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;Map&lt;String,&nbsp;Object&gt;&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#runSavedSearch(java.lang.String)">runSavedSearch</a></span>(String searchName)</nobr>
+        
+        <div class="jd-descrdiv">Run a Saved Search</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;Map&lt;String,&nbsp;Object&gt;&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#runSavedSearchWithArguments(java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, com.splunk.SavedSearchDispatchArgs)">runSavedSearchWithArguments</a></span>(String searchName, Map&lt;String,&nbsp;Object&gt; customArgs, SavedSearchDispatchArgs searchDispatchArgs)</nobr>
+        
+        <div class="jd-descrdiv">Run a Saved Search with arguments</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#setService(com.splunk.Service)">setService</a></span>(Service service)</nobr>
+        
+        <div class="jd-descrdiv">Set the service
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Set&lt;Entry&lt;String,&nbsp;Object&gt;&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#viewSavedSearchProperties(java.lang.String, java.lang.String, java.lang.String)">viewSavedSearchProperties</a></span>(String searchName, String app, String owner)</nobr>
+        
+        <div class="jd-descrdiv">View Saved Search Properties</div>
+  
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="promethods" class="jd-sumtable"><tr><th colspan="12">Protected Methods</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#convertToJavaConvention(java.lang.String)">convertToJavaConvention</a></span>(String key)</nobr>
+        
+        <div class="jd-descrdiv">Convert the java key</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;Map&lt;String,&nbsp;Object&gt;&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#parseEvents(com.splunk.ResultsReader)">parseEvents</a></span>(ResultsReader resultsReader)</nobr>
+        
+        <div class="jd-descrdiv">Parse the events</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;Map&lt;String,&nbsp;Object&gt;&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../com/wsl/modules/splunk/SplunkClient.html#populateEventResponse(com.splunk.Job)">populateEventResponse</a></span>(Job job)</nobr>
+        
+        <div class="jd-descrdiv">Catch the result of the job response</div>
+  
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="inhmethods" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Methods</div></th></tr>
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-java.lang.Object" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-java.lang.Object-trigger"
+          src="../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  java.lang.Object
+
+<div id="inherited-methods-java.lang.Object">
+  <div id="inherited-methods-java.lang.Object-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-java.lang.Object-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">clone</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">equals</span>(Object arg0)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">finalize</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            Class&lt;?&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">getClass</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">hashCode</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">notify</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">notifyAll</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">toString</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">wait</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">wait</span>(long arg0)</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+</table>
+
+
+</div><!-- jd-descr (summary) -->
+
+<!-- Details -->
+
+
+
+
+
+
+
+
+<!-- XML Attributes -->
+
+
+<!-- Enum Values -->
+
+
+<!-- Constants -->
+
+
+<!-- Fields -->
+
+
+<!-- ========= FIELD DETAIL ======== -->
+<h2>Fields</h2>
+
+
+
+
+<A NAME="LOGGER"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+        static 
+        final 
+        Logger
+      </span>
+        LOGGER
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="service"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        Service
+      </span>
+        service
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="splunkConnector"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        <a href="../../../../../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a>
+      </span>
+        splunkConnector
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+
+<!-- Public ctors -->
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<h2>Public Constructors</h2>
+
+
+
+<A NAME="SplunkClient(com.wsl.modules.splunk.SplunkConnector)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        
+      </span>
+      <span class="sympad">SplunkClient</span>
+      <span class="normal">(<a href="../../../../../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a> splunkConnector)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Instantiate a SplunkClient, with a SplunkConnector object containing the configurable host and port.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>splunkConnector</td>
+          <td>The instantiated SplunkConnector with hostname and port
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<!-- Protected ctors -->
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+<!-- Public methdos -->
+
+<h2>Public Methods</h2>
+
+
+
+<A NAME="addDataToIndex(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        Map&lt;String,&nbsp;Object&gt;
+      </span>
+      <span class="sympad">addDataToIndex</span>
+      <span class="normal">(String indexName, String stringData, Map&lt;String,&nbsp;Object&gt; indexArgs)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Add data to an index without an input, using HTTP to submit a string</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>indexName</td>
+          <td>The name of the index to update</td>
+        </tr>
+        <tr>
+          <th>stringData</td>
+          <td>The data string to send</td>
+        </tr>
+        <tr>
+          <th>indexArgs</td>
+          <td>Optional map of arguments to apply to the update</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The index that has been updated
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="addDataToTcpInput(java.lang.String, java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        Boolean
+      </span>
+      <span class="sympad">addDataToTcpInput</span>
+      <span class="normal">(String portNumber, String stringData)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Add data to a tcp input on a given port</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>portNumber</td>
+          <td>The TCP Port Number to use</td>
+        </tr>
+        <tr>
+          <th>stringData</td>
+          <td>The data string to add</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Success or Failure
+</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../java/com/wsl/modules/splunk/exception/SplunkConnectorException.html">SplunkConnectorException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="addDataToUdpInput(java.lang.String, java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        Boolean
+      </span>
+      <span class="sympad">addDataToUdpInput</span>
+      <span class="normal">(String portNumber, String data)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Add data to a udp input on a given port</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>portNumber</td>
+          <td>The UDP Port Number to use</td>
+        </tr>
+        <tr>
+          <th>data</td>
+          <td>The data string to add</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Success or Failure
+</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../java/com/wsl/modules/splunk/exception/SplunkConnectorException.html">SplunkConnectorException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="cleanIndex(java.lang.String, int)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        Map&lt;String,&nbsp;Object&gt;
+      </span>
+      <span class="sympad">cleanIndex</span>
+      <span class="normal">(String indexName, int maxSeconds)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Clean the index, which removes all events from it</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>indexName</td>
+          <td>The name of the index to clean</td>
+        </tr>
+        <tr>
+          <th>maxSeconds</td>
+          <td>Optional how long to wait, -1 is forever (not recommended on a Connector). Default is 180s</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>the cleaned index
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="connect(java.lang.String, java.lang.String, java.lang.String, java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">connect</span>
+      <span class="normal">(String username, String password, String host, String port)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Connect to splunk instance</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>username</td>
+          <td>The username to connect to</td>
+        </tr>
+        <tr>
+          <th>password</td>
+          <td>The password to use for connection</td>
+        </tr>
+        <tr>
+          <th>host</td>
+          <td>The host of the splunk server</td>
+        </tr>
+        <tr>
+          <th>port</td>
+          <td>The port of the splunk server
+</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>ConnectionException</td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="createIndex(java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        Map&lt;String,&nbsp;Object&gt;
+      </span>
+      <span class="sympad">createIndex</span>
+      <span class="normal">(String indexName, Map&lt;String,&nbsp;Object&gt; args)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Creates an Index with optional arguments</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>indexName</td>
+          <td>The name of the index to create</td>
+        </tr>
+        <tr>
+          <th>args</td>
+          <td>Optional key-value pairs of arguments to apply on creation</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>the new Index
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="createInput(java.lang.String, com.splunk.InputKind, java.util.Map<java.lang.String, java.lang.Object>)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        Map&lt;String,&nbsp;Object&gt;
+      </span>
+      <span class="sympad">createInput</span>
+      <span class="normal">(String inputIdentifier, InputKind kind, Map&lt;String,&nbsp;Object&gt; args)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Creates an Input with a given identifier and kind</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>inputIdentifier</td>
+          <td>The name of the domain controller</td>
+        </tr>
+        <tr>
+          <th>kind</td>
+          <td>The InputKind</td>
+        </tr>
+        <tr>
+          <th>args</td>
+          <td>An Optional Key-Value Map of Properties to set</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The input
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="createSavedSearch(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        Map&lt;String,&nbsp;Object&gt;
+      </span>
+      <span class="sympad">createSavedSearch</span>
+      <span class="normal">(String searchName, String searchQuery, Map&lt;String,&nbsp;Object&gt; searchArgs)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Create a saved search</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>searchName</td>
+          <td>The name of query</td>
+        </tr>
+        <tr>
+          <th>searchQuery</td>
+          <td>The query</td>
+        </tr>
+        <tr>
+          <th>searchArgs</td>
+          <td>Optional Map of Key-Value Pairs of Saved Search Arguments</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>A map of the SavedSearch object
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="deleteSavedSearch(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">deleteSavedSearch</span>
+      <span class="normal">(String searchName)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Delete Saved Search</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>searchName</td>
+          <td>The name of query</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Success/failure
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getApplications()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        List&lt;Map&lt;String,&nbsp;Object&gt;&gt;
+      </span>
+      <span class="sympad">getApplications</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Get All the Applications</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>A List of the Applications installed on the splunk instance
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getDataModel(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        Map&lt;String,&nbsp;Object&gt;
+      </span>
+      <span class="sympad">getDataModel</span>
+      <span class="normal">(String dataModelName)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Retrieve an individual data model</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>dataModelName</td>
+          <td>The data model name to get</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The Data Model requested
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getDataModels()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        List&lt;Map&lt;String,&nbsp;Object&gt;&gt;
+      </span>
+      <span class="sympad">getDataModels</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Retrieve all data models available to the user</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>All Data Models available
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getIndex(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        Map&lt;String,&nbsp;Object&gt;
+      </span>
+      <span class="sympad">getIndex</span>
+      <span class="normal">(String indexIdentifier)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Retrieves an Index with the given identifier</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>indexIdentifier</td>
+          <td>The identifier</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The Index specified.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getIndexes(java.lang.String, com.splunk.CollectionArgs.SortDirection, java.util.Map<java.lang.String, java.lang.Object>)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        List&lt;Map&lt;String,&nbsp;Object&gt;&gt;
+      </span>
+      <span class="sympad">getIndexes</span>
+      <span class="normal">(String sortKey, CollectionArgs.SortDirection sortDirection, Map&lt;String,&nbsp;Object&gt; collectionParameters)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Retrieves a collection of indexes based on the criteria provided</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>sortKey</td>
+          <td>The Key to sort by</td>
+        </tr>
+        <tr>
+          <th>sortDirection</td>
+          <td>The SortDirection to sort by</td>
+        </tr>
+        <tr>
+          <th>collectionParameters</td>
+          <td>Optional Map of additional arguments to pass to the call</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>IndexCollection of indexes
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getInput(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        Map&lt;String,&nbsp;Object&gt;
+      </span>
+      <span class="sympad">getInput</span>
+      <span class="normal">(String inputIdentifier)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Retrieves an Input with the given identifier</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>inputIdentifier</td>
+          <td>The identifier, for example a file path if it is a Monitor Input</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The Input specified.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getInputs()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        List&lt;Map&lt;String,&nbsp;Object&gt;&gt;
+      </span>
+      <span class="sympad">getInputs</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Get the Collection of Inputs</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>InputCollection of all inputs available to the user
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getJobs()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        List&lt;Map&lt;String,&nbsp;Object&gt;&gt;
+      </span>
+      <span class="sympad">getJobs</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Get the current users Jobs</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>A List of the current user's Job objects retrieved from the Splunk Server
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getSavedSearch(java.lang.String, java.lang.String, java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        SavedSearch
+      </span>
+      <span class="sympad">getSavedSearch</span>
+      <span class="normal">(String searchName, String app, String owner)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Get Saved Search</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>searchName</td>
+          <td>The name of query</td>
+        </tr>
+        <tr>
+          <th>app</td>
+          <td>The Optional app Namespace to restrict to</td>
+        </tr>
+        <tr>
+          <th>owner</td>
+          <td>The Optional owner namespace to restrict to</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The Saved Search
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getSavedSearchHistory(java.lang.String, java.lang.String, java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        List&lt;Map&lt;String,&nbsp;Object&gt;&gt;
+      </span>
+      <span class="sympad">getSavedSearchHistory</span>
+      <span class="normal">(String searchName, String app, String owner)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>List the past and current instances (jobs) of the search.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>searchName</td>
+          <td>The (Optional) name of query</td>
+        </tr>
+        <tr>
+          <th>app</td>
+          <td>The (Optional) application of the namespace</td>
+        </tr>
+        <tr>
+          <th>owner</td>
+          <td>The (Optional) owner of the namespace</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>List of Jobs as maps
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getSavedSearches(java.lang.String, java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        List&lt;Map&lt;String,&nbsp;Object&gt;&gt;
+      </span>
+      <span class="sympad">getSavedSearches</span>
+      <span class="normal">(String app, String owner)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Get all the saved searches, optionally within a restricted namespace</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>app</td>
+          <td>The Application namespace to restrict the list of searches to</td>
+        </tr>
+        <tr>
+          <th>owner</td>
+          <td>The user namespace to restrict the namespace to</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>List of Saved Searches
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getService()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        Service
+      </span>
+      <span class="sympad">getService</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Get the Service</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The Service object
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="modifyIndex(java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        Map&lt;String,&nbsp;Object&gt;
+      </span>
+      <span class="sympad">modifyIndex</span>
+      <span class="normal">(String indexName, Map&lt;String,&nbsp;Object&gt; indexArgs)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Modifies an index with the properties supplied.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>indexName</td>
+          <td>A Splunk Index to modify.</td>
+        </tr>
+        <tr>
+          <th>indexArgs</td>
+          <td>The map of arguments to update</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Returns the modified index.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="modifyInput(java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        Map&lt;String,&nbsp;Object&gt;
+      </span>
+      <span class="sympad">modifyInput</span>
+      <span class="normal">(String inputIdentifier, Map&lt;String,&nbsp;Object&gt; inputArgs)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Modifies an input with the properties supplied.</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>inputIdentifier</td>
+          <td>The identifier of the Input to modify</td>
+        </tr>
+        <tr>
+          <th>inputArgs</td>
+          <td>The map of properties to update</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Returns the modified input.
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="modifySavedSearchProperties(java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        Map&lt;String,&nbsp;Object&gt;
+      </span>
+      <span class="sympad">modifySavedSearchProperties</span>
+      <span class="normal">(String searchName, Map&lt;String,&nbsp;Object&gt; searchProperties)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Modify Saved Search Properties</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>searchName</td>
+          <td>The name of query</td>
+        </tr>
+        <tr>
+          <th>searchProperties</td>
+          <td>The map of search properties to modify</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The Modified Saved Search</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../java/com/wsl/modules/splunk/exception/SplunkConnectorException.html">SplunkConnectorException</a></td>
+            <td>when the properties aren't valid
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="removeIndex(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        Boolean
+      </span>
+      <span class="sympad">removeIndex</span>
+      <span class="normal">(String indexName)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Remove an index
+ <p/>
+ </p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>indexName</td>
+          <td>The name of the index to remove</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Success or Failure
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="removeInput(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        Boolean
+      </span>
+      <span class="sympad">removeInput</span>
+      <span class="normal">(String inputIdentifier)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Remove an Input</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>inputIdentifier</td>
+          <td>The identifier of the input to remove, for example a port number or filename</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Success or Failure
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="runBlockingSearch(java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        Map&lt;String,&nbsp;Object&gt;
+      </span>
+      <span class="sympad">runBlockingSearch</span>
+      <span class="normal">(String searchQuery, Map&lt;String,&nbsp;Object&gt; searchArgs)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Run a blocking search, which returns synchronously after waiting for the search to complete (blocking the Splunk Server)</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>searchQuery</td>
+          <td>The query string</td>
+        </tr>
+        <tr>
+          <th>searchArgs</td>
+          <td>An optional map of search arguments</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The results as a HashMap</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../java/com/wsl/modules/splunk/exception/SplunkConnectorException.html">SplunkConnectorException</a></td>
+            <td>when the search cannot execute
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="runExportSearch(java.lang.String, java.lang.String, java.lang.String, com.wsl.modules.splunk.SearchMode, com.wsl.modules.splunk.OutputMode, org.mule.api.callback.SourceCallback)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">runExportSearch</span>
+      <span class="normal">(String searchQuery, String earliestTime, String latestTime, <a href="../../../../../java/com/wsl/modules/splunk/SearchMode.html">SearchMode</a> searchMode, <a href="../../../../../java/com/wsl/modules/splunk/OutputMode.html">OutputMode</a> outputMode, SourceCallback callback)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Run an export search</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>searchQuery</td>
+          <td>The search query to run</td>
+        </tr>
+        <tr>
+          <th>earliestTime</td>
+          <td>The earliest time for the search, defaults for an hour before now</td>
+        </tr>
+        <tr>
+          <th>latestTime</td>
+          <td>The latest time, defaults to now</td>
+        </tr>
+        <tr>
+          <th>searchMode</td>
+          <td>The searchmode, realtime or normal</td>
+        </tr>
+        <tr>
+          <th>outputMode</td>
+          <td>The output mode, XML or JSON</td>
+        </tr>
+        <tr>
+          <th>callback</td>
+          <td>The sourcecallback to return results to</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>A list of the Search Results found from the export search.</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../java/com/wsl/modules/splunk/exception/SplunkConnectorException.html">SplunkConnectorException</a></td>
+            <td>when there is an issue running the search
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="runNormalSearch(java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, org.mule.api.callback.SourceCallback)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">runNormalSearch</span>
+      <span class="normal">(String searchQuery, Map&lt;String,&nbsp;Object&gt; searchArgs, SourceCallback searchCallback)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Run a  search and wait for response</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>searchQuery</td>
+          <td>The search query</td>
+        </tr>
+        <tr>
+          <th>searchArgs</td>
+          <td>The optional search arguments</td>
+        </tr>
+        <tr>
+          <th>searchCallback</td>
+          <td>The SourceCallback to return results to</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../java/com/wsl/modules/splunk/exception/SplunkConnectorException.html">SplunkConnectorException</a></td>
+            <td>when there is an error connecting to splunk
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="runOneShotSearch(java.lang.String, java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.String>)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        List&lt;Map&lt;String,&nbsp;Object&gt;&gt;
+      </span>
+      <span class="sympad">runOneShotSearch</span>
+      <span class="normal">(String searchQuery, String earliestTime, String latestTime, Map&lt;String,&nbsp;String&gt; args)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Run a basic oneshot search and display results</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>searchQuery</td>
+          <td>The search query</td>
+        </tr>
+        <tr>
+          <th>earliestTime</td>
+          <td>The earliest time</td>
+        </tr>
+        <tr>
+          <th>latestTime</td>
+          <td>The latest time</td>
+        </tr>
+        <tr>
+          <th>args</td>
+          <td>Optional map of arguments</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>A List of HashMaps (The results of the oneshot search)</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../java/com/wsl/modules/splunk/exception/SplunkConnectorException.html">SplunkConnectorException</a></td>
+            <td>when there is an error running the search on Splunk
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="runRealTimeSearch(java.lang.String, java.lang.String, java.lang.String, int, int, org.mule.api.callback.SourceCallback)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">runRealTimeSearch</span>
+      <span class="normal">(String searchQuery, String earliestTime, String latestTime, int statusBuckets, int previewCount, SourceCallback callback)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Run a realtime search and process the response
+ returns via a sourcecallback@
+</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>searchQuery</td>
+          <td>The query to run in realtime</td>
+        </tr>
+        <tr>
+          <th>earliestTime</td>
+          <td>The earliest time to search for, defaults to "rt"</td>
+        </tr>
+        <tr>
+          <th>latestTime</td>
+          <td>The latest time to search for, defaults to "rt"</td>
+        </tr>
+        <tr>
+          <th>statusBuckets</td>
+          <td>The status buckets to use - defaults to 300</td>
+        </tr>
+        <tr>
+          <th>previewCount</td>
+          <td>The number of previews to retrieve - defaults to 100</td>
+        </tr>
+        <tr>
+          <th>callback</td>
+          <td>The callback object to stream results</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../java/com/wsl/modules/splunk/exception/SplunkConnectorException.html">SplunkConnectorException</a></td>
+            <td>when there is a problem setting up the runtime search</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="runSavedSearch(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        List&lt;Map&lt;String,&nbsp;Object&gt;&gt;
+      </span>
+      <span class="sympad">runSavedSearch</span>
+      <span class="normal">(String searchName)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Run a Saved Search</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>searchName</td>
+          <td>The name of query</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>List of Hashmaps</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../java/com/wsl/modules/splunk/exception/SplunkConnectorException.html">SplunkConnectorException</a></td>
+            <td>when there is an issue executing
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="runSavedSearchWithArguments(java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, com.splunk.SavedSearchDispatchArgs)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        List&lt;Map&lt;String,&nbsp;Object&gt;&gt;
+      </span>
+      <span class="sympad">runSavedSearchWithArguments</span>
+      <span class="normal">(String searchName, Map&lt;String,&nbsp;Object&gt; customArgs, SavedSearchDispatchArgs searchDispatchArgs)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Run a Saved Search with arguments</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>searchName</td>
+          <td>The name of the searh</td>
+        </tr>
+        <tr>
+          <th>customArgs</td>
+          <td>Custom Arguments, Optional list of custom arguments to supply</td>
+        </tr>
+        <tr>
+          <th>searchDispatchArgs</td>
+          <td>Optional list of search dispatch arguments</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The results as a List of Hashmaps</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../java/com/wsl/modules/splunk/exception/SplunkConnectorException.html">SplunkConnectorException</a></td>
+            <td>when there is an issue running the saved search
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setService(com.splunk.Service)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setService</span>
+      <span class="normal">(Service service)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Set the service
+</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>service</td>
+          <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="viewSavedSearchProperties(java.lang.String, java.lang.String, java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        Set&lt;Entry&lt;String,&nbsp;Object&gt;&gt;
+      </span>
+      <span class="sympad">viewSavedSearchProperties</span>
+      <span class="normal">(String searchName, String app, String owner)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>View Saved Search Properties</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>searchName</td>
+          <td>The Saved Search's name</td>
+        </tr>
+        <tr>
+          <th>app</td>
+          <td>The Optional app Namespace to restrict to</td>
+        </tr>
+        <tr>
+          <th>owner</td>
+          <td>The Optional owner namespace to restrict to</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>Map of the properties (the saved search's EntrySet)
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+
+<h2>Protected Methods</h2>
+
+
+
+<A NAME="convertToJavaConvention(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+         
+         
+        String
+      </span>
+      <span class="sympad">convertToJavaConvention</span>
+      <span class="normal">(String key)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Convert the java key</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>key</td>
+          <td>- the String key to convert to the java convention (camelCase)</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>A string converted from javascript (naming_conventions) to Java namingConventions
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="parseEvents(com.splunk.ResultsReader)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+         
+         
+        List&lt;Map&lt;String,&nbsp;Object&gt;&gt;
+      </span>
+      <span class="sympad">parseEvents</span>
+      <span class="normal">(ResultsReader resultsReader)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Parse the events</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>resultsReader</td>
+          <td>A results reader (can be XML or JSON)</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>A List of HashMaps (the results)</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../java/com/wsl/modules/splunk/exception/SplunkConnectorException.html">SplunkConnectorException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="populateEventResponse(com.splunk.Job)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+         
+         
+        List&lt;Map&lt;String,&nbsp;Object&gt;&gt;
+      </span>
+      <span class="sympad">populateEventResponse</span>
+      <span class="normal">(Job job)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Catch the result of the job response</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>job</td>
+          <td>The job response to parse</td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>A List of Hashmaps (the results)</li></ul>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../java/com/wsl/modules/splunk/exception/SplunkConnectorException.html">SplunkConnectorException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= END OF CLASS DATA ========= -->
+<A NAME="navbar_top"></A>
+
+<div id="footer">
+Generated by <a href="http://www.mulesoft.com/devkit">Mule DevKit</a>. Document generation technology based on <a href="http://code.google.com/p/doclava/">Google's Doclava</a>.
+</div> <!-- end footer -->
+
+</div> <!-- jd-content -->
+
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+<script type="text/javascript">
+init(); /* initialize mule-developer-docs.js */
+</script>
+
+</body>
+</html>

@@ -1,0 +1,991 @@
+
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <meta name="description" content="Documentation for Mule Splunk Connector." />
+
+<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
+<title>
+
+  Class Index
+
+
+| Mule Splunk Connector
+
+</title>
+<link href="../assets/mule-developer-docs.css" rel="stylesheet" type="text/css" />
+<link href="../assets/mule-developer-prettify.css" rel="stylesheet" type="text/css" />
+<link href="../assets/customizations.css" rel="stylesheet" type="text/css" />
+<link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet' type='text/css'>
+<script src="../assets/search_autocomplete.js" type="text/javascript"></script>
+<script src="../assets/jquery-resizable.min.js" type="text/javascript"></script>
+<script src="../assets/jquery-toc.js" type="text/javascript"></script>
+<script src="../assets/mule-developer-docs.js" type="text/javascript"></script>
+<script src="../assets/prettify.js" type="text/javascript"></script>
+<script type="text/javascript">
+  setToRoot("../", "../assets/");
+</script>
+<script src="../assets/mule-developer-reference.js" type="text/javascript"></script>
+<script src="../assets/navtree_data.js" type="text/javascript"></script>
+<script src="../assets/customizations.js" type="text/javascript"></script>
+<noscript>
+  <style type="text/css">
+    html,body{overflow:auto;}
+    #body-content{position:relative; top:0;}
+    #doc-content{overflow:visible;border-left:3px solid #666;}
+    #side-nav{padding:0;}
+    #side-nav .toggle-list ul {display:block;}
+    #resize-packages-nav{border-bottom:3px solid #666;}
+  </style>
+</noscript>
+<script type="text/javascript" charset="utf-8">
+  var is_ssl = ("https:" == document.location.protocol);
+  var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
+  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  var feedback_widget_options = {};
+
+  feedback_widget_options.display = "overlay";
+  feedback_widget_options.company = "mulesoft";
+  feedback_widget_options.placement = "right";
+  feedback_widget_options.color = "#2F74AE";
+  feedback_widget_options.style = "question";
+
+  feedback_widget_options.tag = "Mule Splunk Connector";
+
+  feedback_widget_options.limit = "3";
+
+  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+</script>
+</head>
+
+
+<div id="header">
+    <div id="headerLeft">
+    
+      <span id="masthead-title">Mule Splunk Connector</span>
+    
+    <ul id="header-tabs" class="java">
+    
+    	<li id="guide"><a href="../guide/install.html">
+	    	<span class="en">Install Guide</span>
+    	</a></li>
+    
+    	<li id="java"><a href="../java/packages.html">
+	    	<span class="en">Java API Reference</span>
+    	</a></li>
+    
+    	<li id="mule"><a href="../mule/modules.html">
+	    	<span class="en">Mule API Reference</span>
+    	</a></li>
+    
+    </ul>
+    </div>
+    <div id="headerRight">
+      <a href="http://www.mulesoft.com" tabindex="-1">
+      <img src="../assets//images/mulesoft-logo-final.gif" alt="MuleSoft" border="0" id="mulesoftlogo"></a><br/>
+      
+  <div id="searchContainer" >
+      <div id="searchForm">
+          <form accept-charset="utf-8" class="gsc-search-box" 
+                onsubmit="return submit_search()">
+            <table class="gsc-search-box" cellpadding="0" cellspacing="0"><tbody>
+                <tr>
+                  <td class="gsc-input">
+                    <input id="search_autocomplete" class="gsc-input" type="text" size="33" autocomplete="off"
+                      title="search developer docs" name="q"
+                      value="search developer docs"
+                      onFocus="search_focus_changed(this, true)"
+                      onBlur="search_focus_changed(this, false)"
+                      onkeydown="return search_changed(event, true, '../')"
+                      onkeyup="return search_changed(event, false, '../')" />
+                  <div id="search_filtered_div" class="no-display">
+                      <table id="search_filtered" cellspacing=0>
+                      </table>
+                  </div>
+                  </td>
+                  <td class="gsc-search-button">
+                    <input type="submit" value="Search" title="search" id="search-button" class="gsc-search-button" />
+                  </td>
+                  <td class="gsc-clear-button">
+                    <div title="clear results" class="gsc-clear-button">&nbsp;</div>
+                  </td>
+                </tr></tbody>
+              </table>
+          </form>
+      </div><!-- searchForm -->
+  </div><!-- search -->
+      
+    </div>
+</div><!-- header -->
+
+
+  <div class="g-section g-tpl-240" id="body-content">
+    <div class="g-unit g-first side-nav-resizable" id="side-nav">
+      <div id="swapper">
+        <div id="nav-panels">
+          <div id="resize-packages-nav">
+            <div id="packages-nav">
+              <div id="index-links">
+                <a href="../java/packages.html"  >Package Index</a> |
+                <a href="../java/classes.html" class="selected">Class Index</a>
+              </div>
+              <ul>
+                
+    <li class="api apilevel-">
+  <a href="../java/com/splunk/transformers/package-summary.html">com.splunk.transformers</a></li>
+    <li class="api apilevel-">
+  <a href="../java/com/wsl/modules/splunk/package-summary.html">com.wsl.modules.splunk</a></li>
+    <li class="api apilevel-">
+  <a href="../java/com/wsl/modules/splunk/adapter/package-summary.html">com.wsl.modules.splunk.adapter</a></li>
+    <li class="api apilevel-">
+  <a href="../java/com/wsl/modules/splunk/adapters/package-summary.html">com.wsl.modules.splunk.adapters</a></li>
+    <li class="api apilevel-">
+  <a href="../java/com/wsl/modules/splunk/agents/package-summary.html">com.wsl.modules.splunk.agents</a></li>
+    <li class="api apilevel-">
+  <a href="../java/com/wsl/modules/splunk/config/package-summary.html">com.wsl.modules.splunk.config</a></li>
+    <li class="api apilevel-">
+  <a href="../java/com/wsl/modules/splunk/connection/package-summary.html">com.wsl.modules.splunk.connection</a></li>
+    <li class="api apilevel-">
+  <a href="../java/com/wsl/modules/splunk/connectivity/package-summary.html">com.wsl.modules.splunk.connectivity</a></li>
+    <li class="api apilevel-">
+  <a href="../java/com/wsl/modules/splunk/devkit/package-summary.html">com.wsl.modules.splunk.devkit</a></li>
+    <li class="api apilevel-">
+  <a href="../java/com/wsl/modules/splunk/exception/package-summary.html">com.wsl.modules.splunk.exception</a></li>
+    <li class="api apilevel-">
+  <a href="../java/com/wsl/modules/splunk/pooling/package-summary.html">com.wsl.modules.splunk.pooling</a></li>
+    <li class="api apilevel-">
+  <a href="../java/com/wsl/modules/splunk/process/package-summary.html">com.wsl.modules.splunk.process</a></li>
+    <li class="api apilevel-">
+  <a href="../java/com/wsl/modules/splunk/processors/package-summary.html">com.wsl.modules.splunk.processors</a></li>
+    <li class="api apilevel-">
+  <a href="../java/com/wsl/modules/splunk/sources/package-summary.html">com.wsl.modules.splunk.sources</a></li>
+              </ul><br/>
+            </div> <!-- end packages -->
+          </div> <!-- end resize-packages -->
+          <div id="classes-nav">
+              <script>
+                /*addLoadEvent(maxPackageHeight);*/
+              </script>
+              <p style="padding:10px">Select a package to view its members</p><br/>
+          </div><!-- end classes -->
+        </div><!-- end nav-panels -->
+        <div id="nav-tree" style="display:none">
+          <div id="index-links">
+            <a href="../packages.html"  >Package Index</a> | 
+            <a href="../classes.html" class="selected">Class Index</a>
+          </div>
+        </div><!-- end nav-tree -->
+      </div><!-- end swapper -->
+    </div> <!-- end side-nav -->
+    <script>
+      if (!isMobile) {
+        $("<a href='#' id='nav-swap' onclick='swapNav();return false;' style='font-size:10px;line-height:9px;margin-left:1em;text-decoration:none;'><span id='tree-link'>Use Tree Navigation</span><span id='panel-link' style='display:none'>Use Panel Navigation</span></a>").appendTo("#side-nav");
+        chooseDefaultNav();
+        if ($("#nav-tree").is(':visible')) {
+          init_default_navtree("../");
+        } else {
+          addLoadEvent(function() {
+            scrollIntoView("packages-nav");
+            scrollIntoView("classes-nav");
+          });
+        }
+        $("#swapper").css({borderBottom:"2px solid #aaa"});
+      } else {
+        swapNav(); // tree view should be used on mobile
+      }
+    </script>
+
+
+
+<div class="g-unit" id="doc-content">
+
+<div id="jd-header">
+<h1>Class Index</h1>
+</div>
+
+<div id="jd-content">
+
+<div class="jd-letterlist">
+    <a href="#letter_A">A</a>
+    <a href="#letter_C">C</a>
+    <a href="#letter_D">D</a>
+    <a href="#letter_G">G</a>
+    <a href="#letter_M">M</a>
+    <a href="#letter_O">O</a>
+    <a href="#letter_P">P</a>
+    <a href="#letter_R">R</a>
+    <a href="#letter_S">S</a>
+    <a href="#letter_U">U</a>
+    <a href="#letter_V">V</a>
+</div>
+
+
+
+<h2 id="letter_A">A</h2>
+<table class="jd-sumtable">
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/processors/AbstractConnectedProcessor.html">AbstractConnectedProcessor</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/processors/AbstractPagedConnectedProcessor.html">AbstractPagedConnectedProcessor</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/config/AddDataToIndexDefinitionParser.html">AddDataToIndexDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/processors/AddDataToIndexMessageProcessor.html">AddDataToIndexMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">AddDataToIndexMessageProcessor invokes the <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html#addDataToIndex(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">addDataToIndex(java.lang.String, java.lang.String, java.util.Map)</a></code> method in <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/config/AddDataToTcpInputDefinitionParser.html">AddDataToTcpInputDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/processors/AddDataToTcpInputMessageProcessor.html">AddDataToTcpInputMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">AddDataToTcpInputMessageProcessor invokes the <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html#addDataToTcpInput(java.lang.String, java.lang.String)">addDataToTcpInput(java.lang.String, java.lang.String)</a></code> method in <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/config/AddDataToUdpInputDefinitionParser.html">AddDataToUdpInputDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/processors/AddDataToUdpInputMessageProcessor.html">AddDataToUdpInputMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">AddDataToUdpInputMessageProcessor invokes the <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html#addDataToUdpInput(java.lang.String, java.lang.String)">addDataToUdpInput(java.lang.String, java.lang.String)</a></code> method in <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+</table>
+
+
+<h2 id="letter_C">C</h2>
+<table class="jd-sumtable">
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/config/CleanIndexDefinitionParser.html">CleanIndexDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/processors/CleanIndexMessageProcessor.html">CleanIndexMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">CleanIndexMessageProcessor invokes the <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html#cleanIndex(java.lang.String, int)">cleanIndex(java.lang.String, int)</a></code> method in <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/splunk/transformers/CollectionArgsSortDirectionEnumTransformer.html">CollectionArgsSortDirectionEnumTransformer</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/connection/Connection.html">Connection</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/connection/ConnectionManager.html">ConnectionManager</a>&lt;K,&nbsp;C&nbsp;extends&nbsp;<a href="../java/com/wsl/modules/splunk/connection/Connection.html">Connection</a>&gt;</td>
+            <td class="jd-descrcol" width="100%">Wrapper around org.mule.api.annotations.Connector annotated class that will infuse it with connection management capabilities.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/processors/ConnectivityProcessor.html">ConnectivityProcessor</a></td>
+            <td class="jd-descrcol" width="100%">Interface used to unify all message processors (those which use (or not) pagination) from the ManagedConnectionProcessInterceptor
+ 
+&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/config/CreateIndexDefinitionParser.html">CreateIndexDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/processors/CreateIndexMessageProcessor.html">CreateIndexMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">CreateIndexMessageProcessor invokes the <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html#createIndex(java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">createIndex(java.lang.String, java.util.Map)</a></code> method in <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/config/CreateInputDefinitionParser.html">CreateInputDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/processors/CreateInputMessageProcessor.html">CreateInputMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">CreateInputMessageProcessor invokes the <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html#createInput(java.lang.String, com.splunk.InputKind, java.util.Map<java.lang.String, java.lang.Object>)">createInput(java.lang.String, com.splunk.InputKind, java.util.Map)</a></code> method in <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/config/CreateSavedSearchDefinitionParser.html">CreateSavedSearchDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/processors/CreateSavedSearchMessageProcessor.html">CreateSavedSearchMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">CreateSavedSearchMessageProcessor invokes the <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html#createSavedSearch(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">createSavedSearch(java.lang.String, java.lang.String, java.util.Map)</a></code> method in <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+</table>
+
+
+<h2 id="letter_D">D</h2>
+<table class="jd-sumtable">
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/agents/DefaultSplashScreenAgent.html">DefaultSplashScreenAgent</a></td>
+            <td class="jd-descrcol" width="100%">Agent implementation to add splash screen information for DevKit extensions at application startup
+ 
+&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/config/DeleteSavedSearchDefinitionParser.html">DeleteSavedSearchDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/processors/DeleteSavedSearchMessageProcessor.html">DeleteSavedSearchMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">DeleteSavedSearchMessageProcessor invokes the <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html#deleteSavedSearch(java.lang.String)">deleteSavedSearch(java.lang.String)</a></code> method in <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/pooling/DevkitGenericKeyedObjectPool.html">DevkitGenericKeyedObjectPool</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+</table>
+
+
+<h2 id="letter_G">G</h2>
+<table class="jd-sumtable">
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/config/GetApplicationsDefinitionParser.html">GetApplicationsDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/processors/GetApplicationsMessageProcessor.html">GetApplicationsMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetApplicationsMessageProcessor invokes the <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html#getApplications()">getApplications()</a></code> method in <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/config/GetDataModelDefinitionParser.html">GetDataModelDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/processors/GetDataModelMessageProcessor.html">GetDataModelMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetDataModelMessageProcessor invokes the <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html#getDataModel(java.lang.String)">getDataModel(java.lang.String)</a></code> method in <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/config/GetDataModelsDefinitionParser.html">GetDataModelsDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/processors/GetDataModelsMessageProcessor.html">GetDataModelsMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetDataModelsMessageProcessor invokes the <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html#getDataModels()">getDataModels()</a></code> method in <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/config/GetIndexDefinitionParser.html">GetIndexDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/config/GetIndexesDefinitionParser.html">GetIndexesDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/processors/GetIndexesMessageProcessor.html">GetIndexesMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetIndexesMessageProcessor invokes the <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html#getIndexes(java.lang.String, com.splunk.CollectionArgs.SortDirection, java.util.Map<java.lang.String, java.lang.Object>)">getIndexes(java.lang.String, com.splunk.CollectionArgs.SortDirection, java.util.Map)</a></code> method in <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/processors/GetIndexMessageProcessor.html">GetIndexMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetIndexMessageProcessor invokes the <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html#getIndex(java.lang.String)">getIndex(java.lang.String)</a></code> method in <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/config/GetInputDefinitionParser.html">GetInputDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/processors/GetInputMessageProcessor.html">GetInputMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetInputMessageProcessor invokes the <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html#getInput(java.lang.String)">getInput(java.lang.String)</a></code> method in <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/config/GetInputsDefinitionParser.html">GetInputsDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/processors/GetInputsMessageProcessor.html">GetInputsMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetInputsMessageProcessor invokes the <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html#getInputs()">getInputs()</a></code> method in <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/config/GetJobsDefinitionParser.html">GetJobsDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/processors/GetJobsMessageProcessor.html">GetJobsMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetJobsMessageProcessor invokes the <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html#getJobs()">getJobs()</a></code> method in <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/config/GetSavedSearchesDefinitionParser.html">GetSavedSearchesDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/processors/GetSavedSearchesMessageProcessor.html">GetSavedSearchesMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetSavedSearchesMessageProcessor invokes the <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html#getSavedSearches(java.lang.String, java.lang.String)">getSavedSearches(java.lang.String, java.lang.String)</a></code> method in <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/config/GetSavedSearchHistoryDefinitionParser.html">GetSavedSearchHistoryDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/processors/GetSavedSearchHistoryMessageProcessor.html">GetSavedSearchHistoryMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">GetSavedSearchHistoryMessageProcessor invokes the <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html#getSavedSearchHistory(java.lang.String, java.lang.String, java.lang.String)">getSavedSearchHistory(java.lang.String, java.lang.String, java.lang.String)</a></code> method in <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+</table>
+
+
+<h2 id="letter_M">M</h2>
+<table class="jd-sumtable">
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/config/ModifyIndexDefinitionParser.html">ModifyIndexDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/processors/ModifyIndexMessageProcessor.html">ModifyIndexMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">ModifyIndexMessageProcessor invokes the <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html#modifyIndex(java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">modifyIndex(java.lang.String, java.util.Map)</a></code> method in <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/config/ModifyInputDefinitionParser.html">ModifyInputDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/processors/ModifyInputMessageProcessor.html">ModifyInputMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">ModifyInputMessageProcessor invokes the <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html#modifyInput(java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">modifyInput(java.lang.String, java.util.Map)</a></code> method in <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/config/ModifySavedSearchPropertiesDefinitionParser.html">ModifySavedSearchPropertiesDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/processors/ModifySavedSearchPropertiesMessageProcessor.html">ModifySavedSearchPropertiesMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">ModifySavedSearchPropertiesMessageProcessor invokes the <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html#modifySavedSearchProperties(java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">modifySavedSearchProperties(java.lang.String, java.util.Map)</a></code> method in <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+</table>
+
+
+<h2 id="letter_O">O</h2>
+<table class="jd-sumtable">
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/OutputMode.html">OutputMode</a></td>
+            <td class="jd-descrcol" width="100%">Enum that defines the supported output modes for the Connector.&nbsp;</td>
+        </tr>
+    
+    
+</table>
+
+
+<h2 id="letter_P">P</h2>
+<table class="jd-sumtable">
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/adapter/PoolManager.html">PoolManager</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+</table>
+
+
+<h2 id="letter_R">R</h2>
+<table class="jd-sumtable">
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/config/RemoveIndexDefinitionParser.html">RemoveIndexDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/processors/RemoveIndexMessageProcessor.html">RemoveIndexMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">RemoveIndexMessageProcessor invokes the <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html#removeIndex(java.lang.String)">removeIndex(java.lang.String)</a></code> method in <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/config/RemoveInputDefinitionParser.html">RemoveInputDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/processors/RemoveInputMessageProcessor.html">RemoveInputMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">RemoveInputMessageProcessor invokes the <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html#removeInput(java.lang.String)">removeInput(java.lang.String)</a></code> method in <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/config/RunBlockingSearchDefinitionParser.html">RunBlockingSearchDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/processors/RunBlockingSearchMessageProcessor.html">RunBlockingSearchMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">RunBlockingSearchMessageProcessor invokes the <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html#runBlockingSearch(java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">runBlockingSearch(java.lang.String, java.util.Map)</a></code> method in <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/config/RunExportSearchDefinitionParser.html">RunExportSearchDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/sources/RunExportSearchMessageSource.html">RunExportSearchMessageSource</a></td>
+            <td class="jd-descrcol" width="100%">RunExportSearchMessageSource wraps <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html#runExportSearch(java.lang.String, java.lang.String, java.lang.String, org.mule.api.callback.SourceCallback)">runExportSearch(java.lang.String, java.lang.String, java.lang.String, org.mule.api.callback.SourceCallback)</a></code> method in <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code> as a message source capable of generating Mule events.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/config/RunNormalSearchDefinitionParser.html">RunNormalSearchDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/sources/RunNormalSearchMessageSource.html">RunNormalSearchMessageSource</a></td>
+            <td class="jd-descrcol" width="100%">RunNormalSearchMessageSource wraps <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html#runNormalSearch(java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, org.mule.api.callback.SourceCallback)">runNormalSearch(java.lang.String, java.util.Map, org.mule.api.callback.SourceCallback)</a></code> method in <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code> as a message source capable of generating Mule events.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/config/RunOneShotSearchDefinitionParser.html">RunOneShotSearchDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/processors/RunOneShotSearchMessageProcessor.html">RunOneShotSearchMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">RunOneShotSearchMessageProcessor invokes the <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html#runOneShotSearch(java.lang.String, java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.String>)">runOneShotSearch(java.lang.String, java.lang.String, java.lang.String, java.util.Map)</a></code> method in <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/config/RunRealTimeSearchDefinitionParser.html">RunRealTimeSearchDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/sources/RunRealTimeSearchMessageSource.html">RunRealTimeSearchMessageSource</a></td>
+            <td class="jd-descrcol" width="100%">RunRealTimeSearchMessageSource wraps <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html#runRealTimeSearch(java.lang.String, java.lang.String, java.lang.String, int, int, org.mule.api.callback.SourceCallback)">runRealTimeSearch(java.lang.String, java.lang.String, java.lang.String, int, int, org.mule.api.callback.SourceCallback)</a></code> method in <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code> as a message source capable of generating Mule events.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/config/RunSavedSearchDefinitionParser.html">RunSavedSearchDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/processors/RunSavedSearchMessageProcessor.html">RunSavedSearchMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">RunSavedSearchMessageProcessor invokes the <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html#runSavedSearch(java.lang.String)">runSavedSearch(java.lang.String)</a></code> method in <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/config/RunSavedSearchWithArgumentsDefinitionParser.html">RunSavedSearchWithArgumentsDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/processors/RunSavedSearchWithArgumentsMessageProcessor.html">RunSavedSearchWithArgumentsMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">RunSavedSearchWithArgumentsMessageProcessor invokes the <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html#runSavedSearchWithArguments(java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, com.splunk.SavedSearchDispatchArgs)">runSavedSearchWithArguments(java.lang.String, java.util.Map, com.splunk.SavedSearchDispatchArgs)</a></code> method in <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+</table>
+
+
+<h2 id="letter_S">S</h2>
+<table class="jd-sumtable">
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/SearchMode.html">SearchMode</a></td>
+            <td class="jd-descrcol" width="100%">Enum defines the possible search modes the connector supports (where relevant), currently limited to realtime and normal.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/devkit/SplashScreenAgent.html">SplashScreenAgent</a></td>
+            <td class="jd-descrcol" width="100%">Marks DevKit org.mule.api.agent.Agent implementations to take care of logging information at Mule app level mainly for troubleshooting purposes.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/SplunkClient.html">SplunkClient</a></td>
+            <td class="jd-descrcol" width="100%">Class SplunkClient, implements the Splunk Connector
+&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></td>
+            <td class="jd-descrcol" width="100%">Splunk Mule Connector&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/adapters/SplunkConnectorCapabilitiesAdapter.html">SplunkConnectorCapabilitiesAdapter</a></td>
+            <td class="jd-descrcol" width="100%">A <code>SplunkConnectorCapabilitiesAdapter</code> is a wrapper around <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code> that implements org.mule.api.Capabilities interface.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/config/SplunkConnectorConfigDefinitionParser.html">SplunkConnectorConfigDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/connectivity/SplunkConnectorConnectionFactory.html">SplunkConnectorConnectionFactory</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/adapters/SplunkConnectorConnectionIdentifierAdapter.html">SplunkConnectorConnectionIdentifierAdapter</a></td>
+            <td class="jd-descrcol" width="100%">A <code>SplunkConnectorConnectionIdentifierAdapter</code> is a wrapper around <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code> that implements org.mule.devkit.dynamic.api.helper.Connection interface.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/connectivity/SplunkConnectorConnectionKey.html">SplunkConnectorConnectionKey</a></td>
+            <td class="jd-descrcol" width="100%">A tuple of connection parameters
+ 
+&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/connectivity/SplunkConnectorConnectionManager.html">SplunkConnectorConnectionManager</a></td>
+            <td class="jd-descrcol" width="100%">A <code>SplunkConnectorConnectionManager</code> is a wrapper around <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code> that adds connection management capabilities to the pojo.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/exception/SplunkConnectorException.html">SplunkConnectorException</a></td>
+            <td class="jd-descrcol" width="100%">Exception thrown by the connector when we cannot resolve it to <code><a href="../java/com/wsl/modules/splunk/exception/SplunkConnectorException.html">SplunkConnectorException</a></code>
+&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/adapters/SplunkConnectorLicenseChecker.html">SplunkConnectorLicenseChecker</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/adapters/SplunkConnectorLifecycleAdapter.html">SplunkConnectorLifecycleAdapter</a></td>
+            <td class="jd-descrcol" width="100%">A <code>SplunkConnectorLifecycleAdapter</code> is a wrapper around <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code> that adds lifecycle methods to the pojo.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/process/SplunkConnectorManagedConnectionProcessInterceptor.html">SplunkConnectorManagedConnectionProcessInterceptor</a>&lt;T&gt;</td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/connectivity/SplunkConnectorManagedConnectionProcessTemplate.html">SplunkConnectorManagedConnectionProcessTemplate</a>&lt;P&gt;</td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/adapters/SplunkConnectorMetadataAdapater.html">SplunkConnectorMetadataAdapater</a></td>
+            <td class="jd-descrcol" width="100%">A <code>SplunkConnectorMetadataAdapater</code> is a wrapper around <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code> that adds support for querying metadata about the extension.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/adapters/SplunkConnectorProcessAdapter.html">SplunkConnectorProcessAdapter</a></td>
+            <td class="jd-descrcol" width="100%">A <code>SplunkConnectorProcessAdapter</code> is a wrapper around <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code> that enables custom processing strategies.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/config/SplunkNamespaceHandler.html">SplunkNamespaceHandler</a></td>
+            <td class="jd-descrcol" width="100%">Registers bean definitions parsers for handling elements in <code>http://www.mulesoft.org/schema/mule/splunk</code>.&nbsp;</td>
+        </tr>
+    
+    
+</table>
+
+
+<h2 id="letter_U">U</h2>
+<table class="jd-sumtable">
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/connection/UnableToAcquireConnectionException.html">UnableToAcquireConnectionException</a></td>
+            <td class="jd-descrcol" width="100%">Exception thrown when the connection needed for executing an
+  operation is null.&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/connection/UnableToReleaseConnectionException.html">UnableToReleaseConnectionException</a></td>
+            <td class="jd-descrcol" width="100%">Exception thrown when the release connection operation of the
+  connection manager fails.&nbsp;</td>
+        </tr>
+    
+    
+</table>
+
+
+<h2 id="letter_V">V</h2>
+<table class="jd-sumtable">
+    
+    
+        <tr class="alt-color api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/config/ViewSavedSearchPropertiesDefinitionParser.html">ViewSavedSearchPropertiesDefinitionParser</a></td>
+            <td class="jd-descrcol" width="100%">&nbsp;</td>
+        </tr>
+    
+    
+        <tr class=" api apilevel-" >
+            <td class="jd-linkcol"><a href="../java/com/wsl/modules/splunk/processors/ViewSavedSearchPropertiesMessageProcessor.html">ViewSavedSearchPropertiesMessageProcessor</a></td>
+            <td class="jd-descrcol" width="100%">ViewSavedSearchPropertiesMessageProcessor invokes the <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html#viewSavedSearchProperties(java.lang.String, java.lang.String, java.lang.String)">viewSavedSearchProperties(java.lang.String, java.lang.String, java.lang.String)</a></code> method in <code><a href="../java/com/wsl/modules/splunk/SplunkConnector.html">SplunkConnector</a></code>.&nbsp;</td>
+        </tr>
+    
+    
+</table>
+
+
+<div id="footer">
+Generated by <a href="http://www.mulesoft.com/devkit">Mule DevKit</a>. Document generation technology based on <a href="http://code.google.com/p/doclava/">Google's Doclava</a>.
+</div> <!-- end footer -->
+
+</div><!-- end jd-content -->
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+<script type="text/javascript">
+init(); /* initialize mule-developer-docs.js */
+</script>
+
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Splunk Connector Release Notes &#8211; Splunk Connector</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="MuleSoft Connector for Splunk">
+    <meta name="author" content="WhiteSky Labs">
+    
+    <link rel="canonical" href="http://whitesky-labs.github.io/splunk-connector/RELEASE_NOTES/">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/splunk-connector/css/pixyll.css" type="text/css">
+
+    <!-- Fonts -->
+    <link href='//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Lato:900,300' rel='stylesheet' type='text/css'>
+    
+
+    <!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Splunk Connector Release Notes">
+    <meta property="og:description" content="MuleSoft Connector for Splunk">
+    <meta property="og:url" content="http://whitesky-labs.github.io/RELEASE_NOTES/">
+    <meta property="og:site_name" content="Splunk Connector">
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="favicon-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+</head>
+
+<body class="">
+  <div class="site-wrap">
+    <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="http://whitesky-labs.github.io//splunk-connector" class="site-title">Splunk Connector</a>
+      <nav class="site-nav right">
+        <a href="/splunk-connector/about/">About</a>
+<a href="mailto:support@whiteskylabs.com">Contact</a>
+
+      </nav>
+      <div class="clearfix"></div>
+      
+    </div>
+  </div>
+</header>
+
+
+    <div class="post p2 p-responsive wrap" role="main">
+      <div class="measure">
+        
+
+
+<div class="post-header mb2">
+  <h1>Splunk Connector Release Notes</h1>
+  <span class="post-meta"></span><br>
+  
+  <span class="post-meta small">1 minute read</span>
+</div>
+
+<article class="post-content">
+  <h1 id="splunk-connector-release-notes">Splunk Connector Release Notes</h1>
+
+<p>Date: 21-January-2015</p>
+
+<p>Version: 1.0.0</p>
+
+<p>Supported Mule Runtime Versions: 3.5.x</p>
+
+<h2 id="supported-api-versions">Supported API versions</h2>
+
+<p><a href="http://dev.splunk.com/view/java-sdk/SP-CAAAECN">Splunk SDK for Java v 1.3.0</a></p>
+
+<h2 id="new-features-and-functionality">New Features and Functionality</h2>
+
+<p>Supported Operations:</p>
+
+<ul>
+<li>Connect to Splunk:</li>
+<li>Work with Saved Searches
+
+<ul>
+<li>List Saved Searches</li>
+<li>View the History of a Saved Search</li>
+<li>Create a Saved Search</li>
+<li>View and Modify the Properties of a Saved Search</li>
+<li>Run a Saved Search</li>
+<li>Run a Saved Search with Runtime Arguments</li>
+<li>Delete a Saved Search</li>
+</ul></li>
+<li>Work with Searches and Jobs
+
+<ul>
+<li>List search jobs for current user</li>
+<li>Run a normal search and stream output</li>
+<li>Run a blocking search and display the properties of the Job</li>
+<li>Run a Oneshot search and display results</li>
+<li>Run a Real-Time Search (see issues)</li>
+<li>Run an Export Search</li>
+</ul></li>
+<li>Work With Data Models
+
+<ul>
+<li>Retrieve Data Model</li>
+<li>Retrieve all Data Models</li>
+</ul></li>
+<li>Get Data into Splunk
+
+<ul>
+<li>List Data Inputs</li>
+<li>Create a new Data Input</li>
+<li>View and Modify the Properties of a Data Input</li>
+<li>Create an Index</li>
+<li>View and Modify the Properties of a Data Input</li>
+<li>Clean Events from an Index</li>
+<li>Add data directly into an Index</li>
+<li>Add data directly into a Tcp Input</li>
+<li>Add data directly into a Udp Input</li>
+</ul></li>
+<li>List a user&rsquo;s applications</li>
+</ul>
+
+<p>Unsupported APIs are most effectively managed through the Splunk Administration Interface. If you have a specific need for an API that is currently unsupported, please contact the MuleSoft for more information.
+* Modular Inputs are not supported.
+* User and Role Management operations are not supported.
+* Data Models and Pivots have limited support.</p>
+
+<h2 id="closed-issues-in-this-release">Closed Issues in this release</h2>
+
+<ul>
+<li>First Release</li>
+</ul>
+
+<h2 id="known-issues-in-this-release">Known Issues in this release</h2>
+
+<ul>
+<li>User Management APIs are not currently supported</li>
+<li>Realtime searches never terminate, so will run until the connector is terminated.</li>
+</ul>
+
+</article>
+
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+  <div class="p2 wrap">
+    <div class="measure mt1 center">
+      <small>
+        Copyright &copy; WhiteSky Labs 2015. All Rights Reserved.
+      </small>
+    </div>
+  </div>
+</footer>
+
+
+
+</body>
+</html>
