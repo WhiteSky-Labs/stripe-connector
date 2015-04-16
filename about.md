@@ -18,7 +18,7 @@ Installation and Usage
 
 * For information about usage and installation you can review the documentation at [http://whitesky-labs.github.io/stripe-connector/](http://whitesky-labs.github.io/stripe-connector/).
 * API Documentation is available at [http://whitesky-labs.github.io/stripe-connector/apidocs](http://whitesky-labs.github.io/stripe-connector/apidocs)
-* Release notes are available at [http://whitesky-labs.github.io/stripe-connector/2015/04/15/release-notes/](http://whitesky-labs.github.io/splunk-connector/2015/04/15/release-notes/)
+* Release notes are available at [http://whitesky-labs.github.io/stripe-connector/2015/04/15/release-notes/](http://whitesky-labs.github.io/stripe-connector/2015/04/15/release-notes/)
 
 Compatibility
 ----------------------
