@@ -19,6 +19,7 @@ import com.stripe.exception.CardException;
 import com.stripe.exception.InvalidRequestException;
 import com.stripe.model.Event;
 import com.stripe.model.EventCollection;
+import com.wsl.modules.stripe.complextypes.TimeRange;
 import com.wsl.modules.stripe.exceptions.StripeConnectorException;
 import com.wsl.modules.stripe.utils.StripeClientUtils;
 
@@ -59,13 +60,13 @@ public class StripeEventClient {
      * @return A Map with a data property that contains an array of up to limit events, starting after event starting_after, sorted in reverse chronological order. Each entry in the array is a separate event object. If no more events are available, the resulting array will be empty. This request should never throw an error.
      * @throws StripeConnectorException when there is a problem with the Connector
      */
-    public EventCollection listAllEvents(String createdTimestamp, Map<String, String> created, String endingBefore, int limit, String startingAfter, String type)
+    public EventCollection listAllEvents(String createdTimestamp, TimeRange created, String endingBefore, int limit, String startingAfter, String type)
     		throws StripeConnectorException {
     	Map<String, Object> params = new HashMap<String, Object>();
     	if (createdTimestamp != null && !createdTimestamp.isEmpty()){
     		params.put("created", createdTimestamp);    		
     	} else {
-    		params.put("created", created);    	
+    		params.put("created", created.toDict());    	
     	}
     	params.put("ending_before", endingBefore);
     	params.put("limit", limit);

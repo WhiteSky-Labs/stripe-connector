@@ -20,6 +20,7 @@ import com.stripe.exception.InvalidRequestException;
 import com.stripe.model.Balance;
 import com.stripe.model.BalanceTransaction;
 import com.stripe.model.BalanceTransactionCollection;
+import com.wsl.modules.stripe.complextypes.TimeRange;
 import com.wsl.modules.stripe.exceptions.StripeConnectorException;
 import com.wsl.modules.stripe.utils.StripeClientUtils;
 
@@ -79,19 +80,19 @@ public class StripeBalanceClient {
      * @return Returns a balance object for the API key used.
      * @throws StripeConnectorException when there is a problem with the Connector
      */
-    public BalanceTransactionCollection listAllBalanceHistory(String availableOnTimestamp, Map<String, String> availableOn, String createdTimestamp, Map<String, String> created, String currency, String endingBefore, int limit, String sourceId, String startingAfter, String transfer, String type)    
+    public BalanceTransactionCollection listAllBalanceHistory(String availableOnTimestamp, TimeRange availableOn, String createdTimestamp, TimeRange created, String currency, String endingBefore, int limit, String sourceId, String startingAfter, String transfer, String type)    
     		throws StripeConnectorException {
     	Map<String, Object> params = new HashMap<String, Object>();
     	params.put("limit", limit);
     	if (availableOnTimestamp != null && !availableOnTimestamp.isEmpty()){
     		params.put("available_on", availableOnTimestamp);
     	} else {
-    		params.put("available_on", availableOn);    		
+    		params.put("available_on", availableOn.toDict());    		
     	}
     	if (createdTimestamp != null && !createdTimestamp.isEmpty()){
     		params.put("created", createdTimestamp);
     	} else {
-    		params.put("created", created);    		
+    		params.put("created", created.toDict());    		
     	}
     	params.put("currency", currency);
     	params.put("ending_before", endingBefore);

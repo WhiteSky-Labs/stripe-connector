@@ -24,7 +24,7 @@ import com.wsl.modules.stripe.utils.StripeClientUtils;
  * @author WhiteSky Labs
  *
  */
-public class DateOfBirth {
+public class DateOfBirth implements java.io.Serializable {
 	private int day;
 	private int month;
 	private int year;

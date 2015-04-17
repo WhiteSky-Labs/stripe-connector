@@ -21,6 +21,7 @@ import com.stripe.model.ApplicationFee;
 import com.stripe.model.ApplicationFeeCollection;
 import com.stripe.model.FeeRefund;
 import com.stripe.model.FeeRefundCollection;
+import com.wsl.modules.stripe.complextypes.TimeRange;
 import com.wsl.modules.stripe.exceptions.StripeConnectorException;
 import com.wsl.modules.stripe.utils.StripeClientUtils;
 
@@ -59,14 +60,14 @@ public class StripeApplicationFeeClient {
      * @return Returns Application Fee
      * @throws StripeConnectorException when there is a problem with the Connector
      */
-    public ApplicationFeeCollection listAllApplicationFees(String charge, String createdTimestamp, Map<String, String> created, String endingBefore, int limit, String startingAfter)
+    public ApplicationFeeCollection listAllApplicationFees(String charge, String createdTimestamp, TimeRange created, String endingBefore, int limit, String startingAfter)
     		throws StripeConnectorException {
     	Map<String, Object> params = new HashMap<String, Object>();
     	params.put("charge", charge);
     	if (createdTimestamp != null && !createdTimestamp.isEmpty()){
     		params.put("created", createdTimestamp);
     	} else {
-    		params.put("created", created);
+    		params.put("created", created.toDict());
     	}
     	params.put("endingBefore", endingBefore);
     	params.put("limit", limit);

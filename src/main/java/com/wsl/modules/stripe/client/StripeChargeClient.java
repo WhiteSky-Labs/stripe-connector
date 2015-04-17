@@ -20,6 +20,7 @@ import com.stripe.exception.InvalidRequestException;
 import com.stripe.model.Charge;
 import com.stripe.model.ChargeCollection;
 import com.wsl.modules.stripe.complextypes.Source;
+import com.wsl.modules.stripe.complextypes.TimeRange;
 import com.wsl.modules.stripe.exceptions.StripeConnectorException;
 import com.wsl.modules.stripe.utils.StripeClientUtils;
 
@@ -48,7 +49,7 @@ public class StripeChargeClient {
      * @return Returns the created Charge.
      * @throws StripeConnectorException when there is a problem with the Connector
      */
-    public Charge createCharge(int amount, String currency, String customerId, Source source, String description, Map<String, Object> metadata, boolean capture, String statementDescriptor, String receiptEmail, String destination, int applicationFee, Map<String, Object> shipping)    
+    public Charge createCharge(int amount, String currency, String customerId, Source source, String description, Map<String, Object> metadata, boolean capture, String statementDescriptor, String receiptEmail, String destination, int applicationFee, Map<String, String> shipping)    
     		throws StripeConnectorException {
     	Map<String, Object> params = new HashMap<String, Object>();
     	
@@ -108,7 +109,7 @@ public class StripeChargeClient {
      * @return Returns the created Charge.
      * @throws StripeConnectorException when there is a problem with the Connector
      */
-    public Charge updateCharge(String id, String description, Map<String, Object> metadata, String receiptEmail, Map<String, Object> fraudDetails)    
+    public Charge updateCharge(String id, String description, Map<String, Object> metadata, String receiptEmail, Map<String, String> fraudDetails)    
     		throws StripeConnectorException {
     	Map<String, Object> params = new HashMap<String, Object>();
     	params.put("description", description);
@@ -168,7 +169,7 @@ public class StripeChargeClient {
      * @return A Map with a data property that contains an array of up to limit charges, starting after charge starting_after. Each entry in the array is a separate charge object. If no more charges are available, the resulting array will be empty. If you provide a non-existent customer ID, this call throws an error.
      * @throws StripeConnectorException when there is a problem with the Connector
      */
-    public ChargeCollection listAllCharges(String createdTimestamp, Map<String, String> created, String customer, String endingBefore, int limit, String startingAfter)    
+    public ChargeCollection listAllCharges(String createdTimestamp, TimeRange created, String customer, String endingBefore, int limit, String startingAfter)    
     		throws StripeConnectorException {
     	Map<String, Object> params = new HashMap<String, Object>();
     	params.put("limit", limit);
@@ -178,7 +179,7 @@ public class StripeChargeClient {
     	if (createdTimestamp != null && !createdTimestamp.isEmpty()){
     		params.put("created", createdTimestamp);
     	} else {
-    		params.put("created", created);
+    		params.put("created", created.toDict());
     	}
     	
     	params = StripeClientUtils.removeOptionalsAndZeroes(params);

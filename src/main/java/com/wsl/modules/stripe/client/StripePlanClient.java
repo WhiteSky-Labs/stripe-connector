@@ -22,6 +22,7 @@ import com.stripe.exception.CardException;
 import com.stripe.exception.InvalidRequestException;
 import com.stripe.model.Plan;
 import com.stripe.model.PlanCollection;
+import com.wsl.modules.stripe.complextypes.TimeRange;
 import com.wsl.modules.stripe.exceptions.StripeConnectorException;
 import com.wsl.modules.stripe.utils.StripeClientUtils;
 
@@ -141,7 +142,7 @@ public class StripePlanClient {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public PlanCollection listAllPlans(String createdTimestamp, Map<String, String> created, String endingBefore, int limit, String startingAfter) throws StripeConnectorException{
+    public PlanCollection listAllPlans(String createdTimestamp, TimeRange created, String endingBefore, int limit, String startingAfter) throws StripeConnectorException{
     	Map<String, Object> params = new HashMap<String, Object>();
     	if (limit > 0){
     		params.put("limit", limit);
@@ -149,7 +150,7 @@ public class StripePlanClient {
     	if (createdTimestamp != null){
     		params.put("created", createdTimestamp);
     	} else {
-    		params.put("created", created);
+    		params.put("created", created.toDict());
     	}
     	params.put("ending_before", endingBefore);
     	params.put("starting_after", startingAfter);

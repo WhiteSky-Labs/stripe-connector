@@ -23,7 +23,7 @@ import com.wsl.modules.stripe.utils.StripeClientUtils;
  * @author WhiteSky Labs
  *
  */
-public class Owner {
+public class Owner implements java.io.Serializable{
 	private Address address;
 	private DateOfBirth dob;
 	private String firstName;

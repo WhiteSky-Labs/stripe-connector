@@ -24,7 +24,7 @@ import com.wsl.modules.stripe.utils.StripeClientUtils;
  * @author WhiteSky Labs
  *
  */
-public class TransferSchedule {
+public class TransferSchedule implements java.io.Serializable{
 	private String delayDays;
 	private String interval;
 	private String monthlyAnchor;

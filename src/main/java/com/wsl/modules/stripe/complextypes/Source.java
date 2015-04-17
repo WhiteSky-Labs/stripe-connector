@@ -26,7 +26,7 @@ import com.wsl.modules.stripe.utils.StripeClientUtils;
  * @author WhiteSky Labs
  *
  */
-public class Source {
+public class Source implements java.io.Serializable{
 	private String number;
 	private String expMonth;
 	private String expYear;

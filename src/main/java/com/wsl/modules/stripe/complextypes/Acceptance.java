@@ -24,7 +24,7 @@ import com.wsl.modules.stripe.utils.StripeClientUtils;
  * @author WhiteSky Labs
  *
  */
-public class Acceptance {
+public class Acceptance implements java.io.Serializable{
 	private String date;
 	private String ip;
 	private String userAgent;

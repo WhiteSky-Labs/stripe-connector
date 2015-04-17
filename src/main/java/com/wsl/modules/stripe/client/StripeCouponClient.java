@@ -22,6 +22,7 @@ import com.stripe.exception.CardException;
 import com.stripe.exception.InvalidRequestException;
 import com.stripe.model.Coupon;
 import com.stripe.model.CouponCollection;
+import com.wsl.modules.stripe.complextypes.TimeRange;
 import com.wsl.modules.stripe.exceptions.StripeConnectorException;
 import com.wsl.modules.stripe.utils.StripeClientUtils;
 
@@ -137,7 +138,7 @@ public class StripeCouponClient {
      * @return A Map with a data property that contains an array of up to limit coupons, starting after coupon starting_after. Each entry in the array is a separate coupon object. If no more coupons are available, the resulting array will be empty. This request should never throw an error.
      * @throws StripeConnectorException when there is a problem with the Connector
      */
-    public CouponCollection listAllCoupons(String createdTimestamp, Map<String, String> created, String endingBefore, int limit, String startingAfter) 
+    public CouponCollection listAllCoupons(String createdTimestamp, TimeRange created, String endingBefore, int limit, String startingAfter) 
     		throws StripeConnectorException {
     	Map<String, Object> params = new HashMap<String, Object>();
     	if (limit != 0){
@@ -146,7 +147,7 @@ public class StripeCouponClient {
     	if (createdTimestamp != null && !createdTimestamp.isEmpty()){
     		params.put("created", createdTimestamp);
     	} else {
-    		params.put("created", created);
+    		params.put("created", created.toDict());
     	}
     	params.put("ending_before", endingBefore);
     	params.put("starting_after", startingAfter);

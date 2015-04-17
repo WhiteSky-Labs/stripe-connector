@@ -20,6 +20,7 @@ import com.stripe.exception.InvalidRequestException;
 import com.stripe.model.Invoice;
 import com.stripe.model.InvoiceCollection;
 import com.stripe.model.InvoiceLineItemCollection;
+import com.wsl.modules.stripe.complextypes.TimeRange;
 import com.wsl.modules.stripe.exceptions.StripeConnectorException;
 import com.wsl.modules.stripe.utils.StripeClientUtils;
 
@@ -200,14 +201,14 @@ public class StripeInvoiceClient {
      * @return Returns the collection of invoices
      * @throws StripeConnectorException when there is a problem with the Connector
      */
-    public InvoiceCollection retrieveAllInvoices(String customerId, String dateTimestamp, Map<String, Object> date, String endingBefore, int limit, String startingAfter)
+    public InvoiceCollection retrieveAllInvoices(String customerId, String dateTimestamp, TimeRange date, String endingBefore, int limit, String startingAfter)
     		throws StripeConnectorException {
     	Map<String, Object> params = new HashMap<String, Object>();
     	params.put("customer", customerId);
     	if (dateTimestamp != null && !dateTimestamp.isEmpty()){
     		params.put("date", dateTimestamp);
     	} else {
-    		params.put("date", date);
+    		params.put("date", date.toDict());
     	}
     	params.put("endingBefore", endingBefore);
     	params.put("limit", limit);

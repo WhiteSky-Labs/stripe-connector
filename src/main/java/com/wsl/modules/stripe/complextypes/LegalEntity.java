@@ -23,7 +23,7 @@ import com.wsl.modules.stripe.utils.StripeClientUtils;
  * @author WhiteSky Labs
  *
  */
-public class LegalEntity {
+public class LegalEntity implements java.io.Serializable{
 	private String type;
 	private Address address;
 	private String businessName;

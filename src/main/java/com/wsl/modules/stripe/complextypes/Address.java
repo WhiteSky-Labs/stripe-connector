@@ -24,7 +24,7 @@ import com.wsl.modules.stripe.utils.StripeClientUtils;
  * @author WhiteSky Labs
  *
  */
-public class Address {
+public class Address implements java.io.Serializable{
 	private String line1;
 	private String line2;
 	private String city;

@@ -75,6 +75,7 @@ import com.wsl.modules.stripe.complextypes.BankAccount;
 import com.wsl.modules.stripe.complextypes.FilePurpose;
 import com.wsl.modules.stripe.complextypes.LegalEntity;
 import com.wsl.modules.stripe.complextypes.Source;
+import com.wsl.modules.stripe.complextypes.TimeRange;
 import com.wsl.modules.stripe.complextypes.TransferSchedule;
 import com.wsl.modules.stripe.exceptions.StripeConnectorException;
 import com.wsl.modules.stripe.strategy.ConnectorConnectionStrategy;
@@ -121,7 +122,7 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public Customer createCustomer(@Default("0") int accountBalance, @Optional String couponCode, @Optional String description, @Optional String email, @Optional Map<String, Object> metadata) 
+    public Customer createCustomer(@Default("0") int accountBalance, @Optional String couponCode, @Optional String description, @Optional String email, @Default("#[payload]") Map<String, Object> metadata) 
     		throws StripeConnectorException {
     	return customerClient.createCustomer(accountBalance, couponCode, description, email, metadata);    	
     }
@@ -159,7 +160,7 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public Customer updateCustomer(String id, @Default("0") final int accountBalance, @Optional final String couponCode, @Optional final String description, @Optional final String email, @Optional final Map<String, Object> metadata, @Optional final String sourceToken)  
+    public Customer updateCustomer(String id, @Default("0") int accountBalance, @Optional String couponCode, @Optional String description, @Optional String email, @Default("#[payload]") Map<String, Object> metadata, @Optional String sourceToken)  
     		throws StripeConnectorException {
     	return customerClient.updateCustomer(id, accountBalance, couponCode, description, email, metadata, sourceToken);
     }
@@ -217,7 +218,7 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public Plan createPlan(String id, int amount, String currency, String interval, @Default("1") int intervalCount, String planName, @Default("0") int trialPeriodDays, @Optional String statementDescriptor, @Optional Map<String, Object> metadata) throws StripeConnectorException{
+    public Plan createPlan(String id, int amount, String currency, String interval, @Default("1") int intervalCount, String planName, @Default("0") int trialPeriodDays, @Optional String statementDescriptor, @Default("#[payload]") Map<String, Object> metadata) throws StripeConnectorException{
     	return planClient.createPlan(id, amount, currency, interval, intervalCount, planName, trialPeriodDays, statementDescriptor, metadata);
     }
     
@@ -250,7 +251,7 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public Plan updatePlan(String id, @Optional String planName, @Optional String statementDescriptor, @Optional Map<String, Object> metadata) throws StripeConnectorException{
+    public Plan updatePlan(String id, @Optional String planName, @Optional String statementDescriptor, @Default("#[payload]") Map<String, Object> metadata) throws StripeConnectorException{
     	return planClient.updatePlan(id, planName, statementDescriptor, metadata);
     }
     
@@ -284,7 +285,7 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public PlanCollection listAllPlans(@Optional String createdTimestamp, @Optional Map<String, String> created, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter) throws StripeConnectorException{
+    public PlanCollection listAllPlans(@Optional String createdTimestamp, @Optional TimeRange created, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter) throws StripeConnectorException{
     	return planClient.listAllPlans(createdTimestamp, created, endingBefore, limit, startingAfter);
     }
     
@@ -307,7 +308,7 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public Coupon createCoupon(@Optional String id, String duration, @Default("0") int amountOff, @Optional String currency, @Default("0") int durationInMonths, @Default("0") int maxRedemptions, @Default("0") int percentOff, @Optional String redeemBy, @Optional Map<String, Object> metadata) 
+    public Coupon createCoupon(@Optional String id, String duration, @Default("0") int amountOff, @Optional String currency, @Default("0") int durationInMonths, @Default("0") int maxRedemptions, @Default("0") int percentOff, @Optional String redeemBy, @Default("#[payload]") Map<String, Object> metadata) 
     		throws StripeConnectorException {
     	return couponClient.createCoupon(id, duration, amountOff, currency, durationInMonths, maxRedemptions, percentOff, redeemBy, metadata);
     }
@@ -341,7 +342,7 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public Coupon updateCoupon(String id, @Optional Map<String, Object> metadata) 
+    public Coupon updateCoupon(String id, @Default("#[payload]") Map<String, Object> metadata) 
     		throws StripeConnectorException {
     	return couponClient.updateCoupon(id, metadata);
     }
@@ -377,7 +378,7 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public CouponCollection listAllCoupons(@Optional String createdTimestamp, @Optional Map<String, String> created, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter) 
+    public CouponCollection listAllCoupons(@Optional String createdTimestamp, @Optional TimeRange created, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter) 
     		throws StripeConnectorException {
     	return couponClient.listAllCoupons(createdTimestamp, created, endingBefore, limit, startingAfter);
     }
@@ -434,7 +435,7 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public BalanceTransactionCollection listAllBalanceHistory(@Optional String availableOnTimestamp, @Optional Map<String, String> availableOn, @Optional String createdTimestamp, @Optional Map<String, String> created, @Optional String currency, @Optional String endingBefore, @Default("0") int limit, @Optional String sourceId, @Optional String startingAfter, @Optional String transfer, @Optional String type)    
+    public BalanceTransactionCollection listAllBalanceHistory(@Optional String availableOnTimestamp, @Optional TimeRange availableOn, @Optional String createdTimestamp, @Optional TimeRange created, @Optional String currency, @Optional String endingBefore, @Default("0") int limit, @Optional String sourceId, @Optional String startingAfter, @Optional String transfer, @Optional String type)    
     		throws StripeConnectorException {
     	return balanceClient.listAllBalanceHistory(availableOnTimestamp, availableOn, createdTimestamp, created, currency, endingBefore, limit, sourceId, startingAfter, transfer, type);
     }
@@ -503,7 +504,7 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public Card updateCard(String ownerId, String id, @Optional String addressCity, @Optional String addressCountry, @Optional String addressLine1, @Optional String addressLine2, @Optional String addressState, @Optional String addressZip, @Optional String expMonth, @Optional String expYear, @Optional Map<String, Object> metadata, @Optional String cardName)    
+    public Card updateCard(String ownerId, String id, @Optional String addressCity, @Optional String addressCountry, @Optional String addressLine1, @Optional String addressLine2, @Optional String addressState, @Optional String addressZip, @Optional String expMonth, @Optional String expYear, @Default("#[payload]") Map<String, Object> metadata, @Optional String cardName)    
     		throws StripeConnectorException {
     	return cardClient.updateCard(ownerId, id, addressCity, addressCountry, addressLine1, addressLine2, addressState, addressZip, expMonth, expYear, metadata, cardName);
     }
@@ -569,7 +570,7 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public Charge createCharge(int amount, String currency, @Optional String customerId, @Optional Source source, @Optional String description, @Optional Map<String, Object> metadata, @Default("true") boolean capture, @Optional String statementDescriptor, @Optional String receiptEmail, @Optional String destination, @Default("0") int applicationFee, @Optional Map<String, Object> shipping)    
+    public Charge createCharge(int amount, String currency, @Optional String customerId, @Optional Source source, @Optional String description, @Default("#[payload]") Map<String, Object> metadata, @Default("true") boolean capture, @Optional String statementDescriptor, @Optional String receiptEmail, @Optional String destination, @Default("0") int applicationFee, @Default("{}") Map<String, String> shipping)    
     		throws StripeConnectorException {
     	return chargeClient.createCharge(amount, currency, customerId, source, description, metadata, capture, statementDescriptor, receiptEmail, destination, applicationFee, shipping);
     }
@@ -607,13 +608,15 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public Charge updateCharge(String id, @Optional String description, @Optional Map<String, Object> metadata, @Optional String receiptEmail, @Optional Map<String, Object> fraudDetails)    
+    public Charge updateCharge(String id, @Optional String description, @Default("#[payload]") Map<String, Object> metadata, @Optional String receiptEmail, @Default("{}") Map<String, String> fraudDetails)    
     		throws StripeConnectorException {
     	return chargeClient.updateCharge(id, description, metadata, receiptEmail, fraudDetails);
     }
     
     /**
      * Capture a Charge
+     * 
+     * {@sample.xml ../../../doc/stripe-connector.xml.sample stripe:capture-charge}
      * 
      * @param id The id of the charge to capture
      * @param amount The amount to capture, which must be less than or equal to the original amount. Any additional amount will be automatically refunded.
@@ -646,7 +649,7 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public ChargeCollection listAllCharges(@Optional String createdTimestamp, @Optional Map<String, String> created, @Optional String customer, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter)    
+    public ChargeCollection listAllCharges(@Optional String createdTimestamp, @Optional TimeRange created, @Optional String customer, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter)    
     		throws StripeConnectorException {
     	return chargeClient.listAllCharges(createdTimestamp, created, customer, endingBefore, limit, startingAfter);
     }
@@ -671,7 +674,7 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public Subscription createSubscription(String customerId, String plan, @Optional String coupon, @Optional String trialEnd, @Optional String sourceToken, @Optional Source source, @Default("1") int quantity, @Default("0") double applicationFeePercent, @Default("0") double taxPercent, @Optional Map<String, Object> metadata)    
+    public Subscription createSubscription(String customerId, String plan, @Optional String coupon, @Optional String trialEnd, @Optional String sourceToken, @Optional Source source, @Default("1") int quantity, @Default("0") double applicationFeePercent, @Default("0") double taxPercent, @Default("#[payload]") Map<String, Object> metadata)    
     		throws StripeConnectorException {
     	return subClient.createSubscription(customerId, plan, coupon, trialEnd, sourceToken, source, quantity, applicationFeePercent, taxPercent, metadata);
     }
@@ -716,7 +719,7 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public Subscription updateSubscription(String customerId, String subscriptionId, String plan, @Optional String coupon, @Default("true") boolean prorate, @Optional String trialEnd, @Optional String sourceToken, @Optional Source source, @Default("1") int quantity, @Default("0") double applicationFeePercent, @Default("0") double taxPercent, @Optional Map<String, Object> metadata)    
+    public Subscription updateSubscription(String customerId, String subscriptionId, String plan, @Optional String coupon, @Default("true") boolean prorate, @Optional String trialEnd, @Optional String sourceToken, @Optional Source source, @Default("1") int quantity, @Default("0") double applicationFeePercent, @Default("0") double taxPercent, @Default("#[payload]") Map<String, Object> metadata)    
     		throws StripeConnectorException {
     	return subClient.updateSubscription(customerId, subscriptionId, plan, coupon, prorate, trialEnd, sourceToken, source, quantity, applicationFeePercent, taxPercent, metadata);
     }
@@ -776,7 +779,7 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public Refund createRefund(String id, @Default("0") int amount, @Default("false") boolean refundApplicationFee, @Optional String reason, @Optional Map<String, Object> metadata)    
+    public Refund createRefund(String id, @Default("0") int amount, @Default("false") boolean refundApplicationFee, @Optional String reason, @Default("#[payload]") Map<String, Object> metadata)    
     		throws StripeConnectorException {
     	return refundClient.createRefund(id, amount, refundApplicationFee, reason, metadata);
     }
@@ -814,7 +817,7 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public Refund updateRefund(String id, String chargeId, Map<String, Object> metadata)    
+    public Refund updateRefund(String id, String chargeId, @Default("#[payload]") Map<String, Object> metadata)    
     		throws StripeConnectorException {
     	return refundClient.updateRefund(id, chargeId, metadata);
     }
@@ -859,7 +862,7 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public Invoice createInvoice(String customerId, @Default("0") int applicationFee, @Optional String description, @Optional Map<String, Object> metadata, @Optional String statementDescriptor, @Optional String subscription, @Default("0.0") double taxPercent)    
+    public Invoice createInvoice(String customerId, @Default("0") int applicationFee, @Optional String description, @Default("#[payload]") Map<String, Object> metadata, @Optional String statementDescriptor, @Optional String subscription, @Default("0.0") double taxPercent)    
     		throws StripeConnectorException {
     	return invoiceClient.createInvoice(customerId, applicationFee, description, metadata, statementDescriptor, subscription, taxPercent);
     }
@@ -939,7 +942,7 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public Invoice updateInvoice(String invoiceId, @Default("0") int applicationFee, @Default("false") boolean closed, @Optional String description, @Default("false") boolean forgiven, @Optional Map<String, Object> metadata, @Optional String statementDescriptor, @Default("0.0") double taxPercent)    
+    public Invoice updateInvoice(String invoiceId, @Default("0") int applicationFee, @Default("false") boolean closed, @Optional String description, @Default("false") boolean forgiven, @Default("#[payload]") Map<String, Object> metadata, @Optional String statementDescriptor, @Default("0.0") double taxPercent)    
     		throws StripeConnectorException {
     	return invoiceClient.updateInvoice(invoiceId, applicationFee, closed, description, forgiven, metadata, statementDescriptor, taxPercent);
     }
@@ -976,7 +979,7 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public InvoiceCollection retrieveAllInvoices(@Optional String customerId, @Optional String dateTimestamp, @Optional Map<String, Object> date, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter)
+    public InvoiceCollection retrieveAllInvoices(@Optional String customerId, @Optional String dateTimestamp, @Optional TimeRange date, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter)
     		throws StripeConnectorException {
     	return invoiceClient.retrieveAllInvoices(customerId, dateTimestamp, date, endingBefore, limit, startingAfter);
     }
@@ -1013,7 +1016,7 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public ApplicationFeeCollection listAllApplicationFees(@Optional String charge, @Optional String createdTimestamp, @Optional Map<String, String> created, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter)
+    public ApplicationFeeCollection listAllApplicationFees(@Optional String charge, @Optional String createdTimestamp, @Optional TimeRange created, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter)
     		throws StripeConnectorException {
     	return feeClient.listAllApplicationFees(charge, createdTimestamp, created, endingBefore, limit, startingAfter);
     }
@@ -1043,7 +1046,7 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public Account createAccount(@Default("false") boolean managed, @Optional String country, @Optional String email, @Optional String businessName, @Optional String businessUrl, @Optional String supportPhone, @Optional BankAccount bankAccount, @Default("false") boolean debitNegativeBalances, @Optional String defaultCurrency, @Optional LegalEntity legalEntity, @Optional String productDescription, @Optional String statementDescriptor, @Optional Acceptance tosAcceptance, @Optional TransferSchedule transferSchedule, @Optional Map<String, Object> metadata)
+    public Account createAccount(@Default("false") boolean managed, @Optional String country, @Optional String email, @Optional String businessName, @Optional String businessUrl, @Optional String supportPhone, @Optional BankAccount bankAccount, @Default("false") boolean debitNegativeBalances, @Optional String defaultCurrency, @Optional LegalEntity legalEntity, @Optional String productDescription, @Optional String statementDescriptor, @Optional Acceptance tosAcceptance, @Optional TransferSchedule transferSchedule, @Default("#[payload]") Map<String, Object> metadata)
     		throws StripeConnectorException {
     	return accountClient.createAccount(managed, country, email, businessName, businessUrl, supportPhone, bankAccount, debitNegativeBalances, defaultCurrency, legalEntity, productDescription, statementDescriptor, tosAcceptance, transferSchedule, metadata);
     }
@@ -1089,7 +1092,7 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public Account updateAccount(String id, @Optional String email, @Optional String businessName, @Optional String businessUrl, @Optional String supportPhone, @Optional BankAccount bankAccount, @Default("false") boolean debitNegativeBalances, @Optional String defaultCurrency, @Optional LegalEntity legalEntity, @Optional String productDescription, @Optional String statementDescriptor, @Optional Acceptance tosAcceptance, @Optional TransferSchedule transferSchedule, @Optional Map<String, Object> metadata)
+    public Account updateAccount(String id, @Optional String email, @Optional String businessName, @Optional String businessUrl, @Optional String supportPhone, @Optional BankAccount bankAccount, @Default("false") boolean debitNegativeBalances, @Optional String defaultCurrency, @Optional LegalEntity legalEntity, @Optional String productDescription, @Optional String statementDescriptor, @Optional Acceptance tosAcceptance, @Optional TransferSchedule transferSchedule, @Default("#[payload]") Map<String, Object> metadata)
     		throws StripeConnectorException {
     	return accountClient.updateAccount(id, email, businessName, businessUrl, supportPhone, bankAccount, debitNegativeBalances, defaultCurrency, legalEntity, productDescription, statementDescriptor, tosAcceptance, transferSchedule, metadata);
     }
@@ -1181,7 +1184,7 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public EventCollection listAllEvents(@Optional String createdTimestamp, @Optional Map<String, String> created, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter, @Optional String type)
+    public EventCollection listAllEvents(@Optional String createdTimestamp, @Optional TimeRange created, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter, @Optional String type)
     		throws StripeConnectorException {
     	return eventClient.listAllEvents(createdTimestamp, created, endingBefore, limit, startingAfter, type);
     }
@@ -1240,7 +1243,7 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public FeeRefund updateApplicationFeeRefund(String id, String fee, @Optional Map<String, Object> metadata)
+    public FeeRefund updateApplicationFeeRefund(String id, String fee, @Default("#[payload]") Map<String, Object> metadata)
     		throws StripeConnectorException {
     	return feeClient.updateApplicationFeeRefund(id, fee, metadata);
     }
@@ -1282,7 +1285,7 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public BitcoinReceiver createBitcoinReceiver(int amount, @Default("USD") String currency, String email, @Optional String description, @Optional Map<String, Object> metadata, @Default("false") boolean refundMispayments)
+    public BitcoinReceiver createBitcoinReceiver(int amount, @Default("USD") String currency, String email, @Optional String description, @Default("#[payload]") Map<String, Object> metadata, @Default("false") boolean refundMispayments)
     		throws StripeConnectorException {
     	return bitcoinClient.createBitcoinReceiver(amount, currency, email, description, metadata, refundMispayments);
     }

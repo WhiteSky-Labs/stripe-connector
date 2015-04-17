@@ -141,8 +141,27 @@
                 <attribute name="endingBefore" use="optional" caption="Ending Before" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
                 <attribute name="limit" use="optional" caption="Limit" group="General" type="integer" javaType="int" default="0" category="General"></attribute>
                 <attribute name="startingAfter" use="optional" caption="Starting After" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="created" use="optional" caption="Created" group="General" type="element-controller-map" javaType="java.util.Map&lt;java.lang.String,java.lang.String&gt;" category="General"></attribute>
             </attributes>
+            <childElements>
+                <childElement name="created" use="optional" group="General" category="General">
+                    <attributes>
+                        <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+                            <attributes>
+<attribute name="greaterThan" use="optional" caption="Greater Than" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+<attribute name="lessThan" use="optional" caption="Less Than" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+<attribute name="lessThanOrEqualTo" use="optional" caption="Less Than Or Equal To" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+<attribute name="greaterThanOrEqualTo" use="optional" caption="Greater Than Or Equal To" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+                            </attributes>
+                        </controller>
+                        <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+                            <attributes>
+<attribute name="ref" use="optional" caption="Created Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+                            </attributes>
+                        </controller>
+                    </attributes>
+                    <childElements/>
+                </childElement>
+            </childElements>
         </processor>
         <processor name="createCoupon" xmlName="create-coupon" caption="Create coupon">
             <properties>
@@ -204,8 +223,27 @@
                 <attribute name="endingBefore" use="optional" caption="Ending Before" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
                 <attribute name="limit" use="optional" caption="Limit" group="General" type="integer" javaType="int" default="0" category="General"></attribute>
                 <attribute name="startingAfter" use="optional" caption="Starting After" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="created" use="optional" caption="Created" group="General" type="element-controller-map" javaType="java.util.Map&lt;java.lang.String,java.lang.String&gt;" category="General"></attribute>
             </attributes>
+            <childElements>
+                <childElement name="created" use="optional" group="General" category="General">
+                    <attributes>
+                        <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+                            <attributes>
+<attribute name="greaterThan" use="optional" caption="Greater Than" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+<attribute name="lessThan" use="optional" caption="Less Than" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+<attribute name="lessThanOrEqualTo" use="optional" caption="Less Than Or Equal To" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+<attribute name="greaterThanOrEqualTo" use="optional" caption="Greater Than Or Equal To" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+                            </attributes>
+                        </controller>
+                        <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+                            <attributes>
+<attribute name="ref" use="optional" caption="Created Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+                            </attributes>
+                        </controller>
+                    </attributes>
+                    <childElements/>
+                </childElement>
+            </childElements>
         </processor>
         <processor name="retrieveBalance" xmlName="retrieve-balance" caption="Retrieve balance">
             <properties>
@@ -240,9 +278,45 @@
                 <attribute name="startingAfter" use="optional" caption="Starting After" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
                 <attribute name="transfer" use="optional" caption="Transfer" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
                 <attribute name="type" use="optional" caption="Type" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="available-on" use="optional" caption="Available On" group="General" type="element-controller-map" javaType="java.util.Map&lt;java.lang.String,java.lang.String&gt;" category="General"></attribute>
-                <attribute name="created" use="optional" caption="Created" group="General" type="element-controller-map" javaType="java.util.Map&lt;java.lang.String,java.lang.String&gt;" category="General"></attribute>
             </attributes>
+            <childElements>
+                <childElement name="available-on" use="optional" group="General" category="General">
+                    <attributes>
+                        <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+                            <attributes>
+<attribute name="greaterThan" use="optional" caption="Greater Than" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+<attribute name="lessThan" use="optional" caption="Less Than" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+<attribute name="lessThanOrEqualTo" use="optional" caption="Less Than Or Equal To" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+<attribute name="greaterThanOrEqualTo" use="optional" caption="Greater Than Or Equal To" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+                            </attributes>
+                        </controller>
+                        <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+                            <attributes>
+<attribute name="ref" use="optional" caption="Available On Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+                            </attributes>
+                        </controller>
+                    </attributes>
+                    <childElements/>
+                </childElement>
+                <childElement name="created" use="optional" group="General" category="General">
+                    <attributes>
+                        <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+                            <attributes>
+<attribute name="greaterThan" use="optional" caption="Greater Than" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+<attribute name="lessThan" use="optional" caption="Less Than" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+<attribute name="lessThanOrEqualTo" use="optional" caption="Less Than Or Equal To" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+<attribute name="greaterThanOrEqualTo" use="optional" caption="Greater Than Or Equal To" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+                            </attributes>
+                        </controller>
+                        <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+                            <attributes>
+<attribute name="ref" use="optional" caption="Created Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+                            </attributes>
+                        </controller>
+                    </attributes>
+                    <childElements/>
+                </childElement>
+            </childElements>
         </processor>
         <processor name="createCard" xmlName="create-card" caption="Create card">
             <properties>
@@ -354,7 +428,7 @@
                 <attribute name="destination" use="optional" caption="Destination" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
                 <attribute name="applicationFee" use="optional" caption="Application Fee" group="General" type="integer" javaType="int" default="0" category="General"></attribute>
                 <attribute name="metadata" use="optional" caption="Metadata" group="General" type="element-controller-map" javaType="java.util.Map&lt;java.lang.String,java.lang.Object&gt;" category="General"></attribute>
-                <attribute name="shipping" use="optional" caption="Shipping" group="General" type="element-controller-map" javaType="java.util.Map&lt;java.lang.String,java.lang.Object&gt;" category="General"></attribute>
+                <attribute name="shipping" use="optional" caption="Shipping" group="General" type="element-controller-map" javaType="java.util.Map&lt;java.lang.String,java.lang.String&gt;" category="General"></attribute>
             </attributes>
             <childElements>
                 <childElement name="source" use="optional" group="General" category="General">
@@ -404,7 +478,7 @@
                 <attribute name="description" use="optional" caption="Description" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
                 <attribute name="receiptEmail" use="optional" caption="Receipt Email" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
                 <attribute name="metadata" use="optional" caption="Metadata" group="General" type="element-controller-map" javaType="java.util.Map&lt;java.lang.String,java.lang.Object&gt;" category="General"></attribute>
-                <attribute name="fraud-details" use="optional" caption="Fraud Details" group="General" type="element-controller-map" javaType="java.util.Map&lt;java.lang.String,java.lang.Object&gt;" category="General"></attribute>
+                <attribute name="fraud-details" use="optional" caption="Fraud Details" group="General" type="element-controller-map" javaType="java.util.Map&lt;java.lang.String,java.lang.String&gt;" category="General"></attribute>
             </attributes>
         </processor>
         <processor name="captureCharge" xmlName="capture-charge" caption="Capture charge">
@@ -433,8 +507,27 @@
                 <attribute name="endingBefore" use="optional" caption="Ending Before" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
                 <attribute name="limit" use="optional" caption="Limit" group="General" type="integer" javaType="int" default="0" category="General"></attribute>
                 <attribute name="startingAfter" use="optional" caption="Starting After" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="created" use="optional" caption="Created" group="General" type="element-controller-map" javaType="java.util.Map&lt;java.lang.String,java.lang.String&gt;" category="General"></attribute>
             </attributes>
+            <childElements>
+                <childElement name="created" use="optional" group="General" category="General">
+                    <attributes>
+                        <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+                            <attributes>
+<attribute name="greaterThan" use="optional" caption="Greater Than" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+<attribute name="lessThan" use="optional" caption="Less Than" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+<attribute name="lessThanOrEqualTo" use="optional" caption="Less Than Or Equal To" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+<attribute name="greaterThanOrEqualTo" use="optional" caption="Greater Than Or Equal To" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+                            </attributes>
+                        </controller>
+                        <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+                            <attributes>
+<attribute name="ref" use="optional" caption="Created Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+                            </attributes>
+                        </controller>
+                    </attributes>
+                    <childElements/>
+                </childElement>
+            </childElements>
         </processor>
         <processor name="createSubscription" xmlName="create-subscription" caption="Create subscription">
             <properties>
@@ -595,7 +688,7 @@
             <attributes>
                 <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
                 <attribute name="chargeId" use="required" caption="Charge Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="metadata" use="required" caption="Metadata" group="General" type="element-controller-map" javaType="java.util.Map&lt;java.lang.String,java.lang.Object&gt;" category="General"></attribute>
+                <attribute name="metadata" use="optional" caption="Metadata" group="General" type="element-controller-map" javaType="java.util.Map&lt;java.lang.String,java.lang.Object&gt;" category="General"></attribute>
             </attributes>
         </processor>
         <processor name="listAllRefunds" xmlName="list-all-refunds" caption="List all refunds">
@@ -702,8 +795,27 @@
                 <attribute name="endingBefore" use="optional" caption="Ending Before" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
                 <attribute name="limit" use="optional" caption="Limit" group="General" type="integer" javaType="int" default="0" category="General"></attribute>
                 <attribute name="startingAfter" use="optional" caption="Starting After" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="date" use="optional" caption="Date" group="General" type="element-controller-map" javaType="java.util.Map&lt;java.lang.String,java.lang.Object&gt;" category="General"></attribute>
             </attributes>
+            <childElements>
+                <childElement name="date" use="optional" group="General" category="General">
+                    <attributes>
+                        <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+                            <attributes>
+<attribute name="greaterThan" use="optional" caption="Greater Than" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+<attribute name="lessThan" use="optional" caption="Less Than" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+<attribute name="lessThanOrEqualTo" use="optional" caption="Less Than Or Equal To" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+<attribute name="greaterThanOrEqualTo" use="optional" caption="Greater Than Or Equal To" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+                            </attributes>
+                        </controller>
+                        <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+                            <attributes>
+<attribute name="ref" use="optional" caption="Date Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+                            </attributes>
+                        </controller>
+                    </attributes>
+                    <childElements/>
+                </childElement>
+            </childElements>
         </processor>
         <processor name="retrieveApplicationFee" xmlName="retrieve-application-fee" caption="Retrieve application fee">
             <properties>
@@ -727,8 +839,27 @@
                 <attribute name="endingBefore" use="optional" caption="Ending Before" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
                 <attribute name="limit" use="optional" caption="Limit" group="General" type="integer" javaType="int" default="0" category="General"></attribute>
                 <attribute name="startingAfter" use="optional" caption="Starting After" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="created" use="optional" caption="Created" group="General" type="element-controller-map" javaType="java.util.Map&lt;java.lang.String,java.lang.String&gt;" category="General"></attribute>
             </attributes>
+            <childElements>
+                <childElement name="created" use="optional" group="General" category="General">
+                    <attributes>
+                        <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+                            <attributes>
+<attribute name="greaterThan" use="optional" caption="Greater Than" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+<attribute name="lessThan" use="optional" caption="Less Than" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+<attribute name="lessThanOrEqualTo" use="optional" caption="Less Than Or Equal To" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+<attribute name="greaterThanOrEqualTo" use="optional" caption="Greater Than Or Equal To" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+                            </attributes>
+                        </controller>
+                        <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+                            <attributes>
+<attribute name="ref" use="optional" caption="Created Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+                            </attributes>
+                        </controller>
+                    </attributes>
+                    <childElements/>
+                </childElement>
+            </childElements>
         </processor>
         <processor name="createAccount" xmlName="create-account" caption="Create account">
             <properties>
@@ -1292,8 +1423,27 @@
                 <attribute name="limit" use="optional" caption="Limit" group="General" type="integer" javaType="int" default="0" category="General"></attribute>
                 <attribute name="startingAfter" use="optional" caption="Starting After" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
                 <attribute name="type" use="optional" caption="Type" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="created" use="optional" caption="Created" group="General" type="element-controller-map" javaType="java.util.Map&lt;java.lang.String,java.lang.String&gt;" category="General"></attribute>
             </attributes>
+            <childElements>
+                <childElement name="created" use="optional" group="General" category="General">
+                    <attributes>
+                        <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+                            <attributes>
+<attribute name="greaterThan" use="optional" caption="Greater Than" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+<attribute name="lessThan" use="optional" caption="Less Than" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+<attribute name="lessThanOrEqualTo" use="optional" caption="Less Than Or Equal To" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+<attribute name="greaterThanOrEqualTo" use="optional" caption="Greater Than Or Equal To" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+                            </attributes>
+                        </controller>
+                        <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+                            <attributes>
+<attribute name="ref" use="optional" caption="Created Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+                            </attributes>
+                        </controller>
+                    </attributes>
+                    <childElements/>
+                </childElement>
+            </childElements>
         </processor>
         <processor name="createApplicationFeeRefund" xmlName="create-application-fee-refund" caption="Create application fee refund">
             <properties>

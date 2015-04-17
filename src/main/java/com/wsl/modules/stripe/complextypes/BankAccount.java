@@ -24,7 +24,7 @@ import com.wsl.modules.stripe.utils.StripeClientUtils;
  * @author WhiteSky Labs
  *
  */
-public class BankAccount {
+public class BankAccount implements java.io.Serializable{
 	private String country;
 	private String currency;
 	private String routingNumber;

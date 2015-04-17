@@ -106,7 +106,7 @@
         </processor>
         <processor name="listAllPlans" xmlName="list-all-plans" caption="List all plans">
             <properties>
-                <datamapper input="PlanCollection" output="Map&lt;String,String&gt;"/>
+                <datamapper input="PlanCollection" output="TimeRange"/>
                 <auto-paging>false</auto-paging>
                 <query-support>false</query-support>
             </properties>
@@ -153,7 +153,7 @@
         </processor>
         <processor name="listAllCoupons" xmlName="list-all-coupons" caption="List all coupons">
             <properties>
-                <datamapper input="CouponCollection" output="Map&lt;String,String&gt;"/>
+                <datamapper input="CouponCollection" output="TimeRange"/>
                 <auto-paging>false</auto-paging>
                 <query-support>false</query-support>
             </properties>
@@ -177,7 +177,7 @@
         </processor>
         <processor name="listAllBalanceHistory" xmlName="list-all-balance-history" caption="List all balance history">
             <properties>
-                <datamapper input="BalanceTransactionCollection" output="Map&lt;String,String&gt;"/>
+                <datamapper input="BalanceTransactionCollection" output="TimeRange"/>
                 <auto-paging>false</auto-paging>
                 <query-support>false</query-support>
             </properties>
@@ -278,7 +278,7 @@
         </processor>
         <processor name="listAllCharges" xmlName="list-all-charges" caption="List all charges">
             <properties>
-                <datamapper input="ChargeCollection" output="Map&lt;String,String&gt;"/>
+                <datamapper input="ChargeCollection" output="TimeRange"/>
                 <auto-paging>false</auto-paging>
                 <query-support>false</query-support>
             </properties>
@@ -361,14 +361,13 @@
         </processor>
         <processor name="updateRefund" xmlName="update-refund" caption="Update refund">
             <properties>
-                <datamapper input="Refund" output=""/>
+                <datamapper input="Refund" output="Map"/>
                 <auto-paging>false</auto-paging>
                 <query-support>false</query-support>
             </properties>
             <attributes>
                 <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
                 <attribute name="chargeId" use="required" caption="Charge Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="metadata" use="required" caption="Metadata" group="General" type="element-controller-map" javaType="java.util.Map&lt;java.lang.String,java.lang.Object&gt;" category="General"></attribute>
             </attributes>
         </processor>
         <processor name="listAllRefunds" xmlName="list-all-refunds" caption="List all refunds">
@@ -443,7 +442,7 @@
         </processor>
         <processor name="retrieveAllInvoices" xmlName="retrieve-all-invoices" caption="Retrieve all invoices">
             <properties>
-                <datamapper input="InvoiceCollection" output="Map"/>
+                <datamapper input="InvoiceCollection" output="TimeRange"/>
                 <auto-paging>false</auto-paging>
                 <query-support>false</query-support>
             </properties>
@@ -460,7 +459,7 @@
         </processor>
         <processor name="listAllApplicationFees" xmlName="list-all-application-fees" caption="List all application fees">
             <properties>
-                <datamapper input="ApplicationFeeCollection" output="Map&lt;String,String&gt;"/>
+                <datamapper input="ApplicationFeeCollection" output="TimeRange"/>
                 <auto-paging>false</auto-paging>
                 <query-support>false</query-support>
             </properties>
@@ -528,7 +527,7 @@
         </processor>
         <processor name="listAllEvents" xmlName="list-all-events" caption="List all events">
             <properties>
-                <datamapper input="EventCollection" output="Map&lt;String,String&gt;"/>
+                <datamapper input="EventCollection" output="TimeRange"/>
                 <auto-paging>false</auto-paging>
                 <query-support>false</query-support>
             </properties>
