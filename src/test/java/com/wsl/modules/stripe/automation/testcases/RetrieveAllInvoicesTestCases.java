@@ -21,6 +21,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Iterator;
 
+import com.stripe.model.CouponCollection;
 import com.stripe.model.Customer;
 import com.stripe.model.CustomerSubscriptionCollection;
 import com.stripe.model.Invoice;
@@ -113,4 +114,21 @@ public class RetrieveAllInvoicesTestCases
 	    assertEquals(1, coll.getData().size());        
 	}
 
+	@Category({
+        RegressionTests.class,
+        SmokeTests.class
+    })
+    @Test
+    public void testRetrieveAllInvoicesWithDate()
+        throws Exception
+    {
+    	initializeTestRunMessage("retrieveAllInvoicesWithDateTestData");
+    	upsertOnTestRunMessage("limit", "1");
+    	Object result = runFlowAndGetPayload("retrieve-all-invoices");
+        assertNotNull(result);
+        InvoiceCollection coll = (InvoiceCollection)result;
+        
+        assertEquals(1, coll.getData().size());
+    }
+	
 }

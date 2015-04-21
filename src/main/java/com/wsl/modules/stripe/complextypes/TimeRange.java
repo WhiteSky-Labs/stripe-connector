@@ -1,3 +1,12 @@
+/**
+ *
+ * (c) 2015 WhiteSky Labs, Pty Ltd. This software is protected under international
+ * copyright law. All use of this software is subject to WhiteSky Labs' Master
+ * Subscription Agreement (or other Terms of Service) separately entered
+ * into between you and WhiteSky Labs. If such an agreement is not in
+ * place, you may not use the software.
+ */
+
 package com.wsl.modules.stripe.complextypes;
 
 import java.util.HashMap;
@@ -64,6 +73,10 @@ public class TimeRange implements java.io.Serializable{
 		this.greaterThanOrEqualTo = greaterThanOrEqualTo;
 	}
 	
+	/**
+	 * Turns the object into a dictionary for Stripe
+	 * @return A dictionary in Stripe format
+	 */
 	public Map<String, Object> toDict(){
 		Map<String, Object> dict = new HashMap<String, Object>();
 		dict.put("gt", getGreaterThan());

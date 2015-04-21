@@ -98,4 +98,21 @@ public class ListAllCouponsTestCases
         
         assertEquals(1, coll.getData().size());        
     }
+    
+    @Category({
+        RegressionTests.class,
+        SmokeTests.class
+    })
+    @Test
+    public void testListCouponsWithCreated()
+        throws Exception
+    {
+    	initializeTestRunMessage("listAllCouponsCreatedTestData");
+    	upsertOnTestRunMessage("limit", "1");
+    	Object result = runFlowAndGetPayload("list-all-coupons");
+        assertNotNull(result);
+        CouponCollection coll = (CouponCollection)result;
+        
+        assertEquals(1, coll.getData().size());        
+    }
 }

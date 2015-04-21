@@ -43,7 +43,7 @@
 </flow>
     <flow doc:name="ListAllPlans" name="list-all-plans">
 	<stripe:list-all-plans config-ref="Stripe">
-		<stripe:created ref="#[flowVars.CreatedRef]"/>
+		<stripe:created ref="#[flowVars.created]"/>
 	</stripe:list-all-plans>
 </flow>
 <flow doc:name="CreateCoupon" name="create-coupon">
@@ -64,7 +64,7 @@
 </flow>
     <flow doc:name="ListAllCoupons" name="list-all-coupons">
 	<stripe:list-all-coupons config-ref="Stripe" createdTimestamp="#[flowVars.createdTimestamp]" endingBefore="#[flowVars.endingBefore]" limit="#[flowVars.limit]" startingAfter="#[flowVars.startingAfter]">
-		<stripe:created ref="#[flowVars.CreatedRef]"/>
+		<stripe:created ref="#[flowVars.created]"/>
 	</stripe:list-all-coupons>
 </flow>
 <flow doc:name="RetrieveBalance" name="retrieve-balance">
@@ -75,8 +75,8 @@
 </flow>
     <flow doc:name="ListAllBalanceHistory" name="list-all-balance-history">
 	<stripe:list-all-balance-history availableOnTimestamp="#[flowVars.availableOnTimestamp]" config-ref="Stripe" createdTimestamp="#[flowVars.createdTimestamp]" currency="#[flowVars.currency]" endingBefore="#[flowVars.endingBefore]" limit="#[flowVars.limit]" sourceId="#[flowVars.sourceId]" startingAfter="#[flowVars.startingAfter]" transfer="#[flowVars.transfer]" type="#[flowVars.startingAfter]">
-		<stripe:available-on ref="#[flowVars.AvailableOnRef]"/>
-		<stripe:created ref="#[flowVars.CreatedRef]"/>
+		<stripe:available-on ref="#[flowVars.availableOn]"/>
+		<stripe:created ref="#[flowVars.created]"/>
 	</stripe:list-all-balance-history>
 </flow>
 <flow doc:name="CreateCard" name="create-card">
@@ -101,7 +101,8 @@
 <flow doc:name="CreateCharge" name="create-charge">
 	<stripe:create-charge amount="#[flowVars.amount]" applicationFee="#[flowVars.applicationFee]" capture="#[flowVars.capture]" config-ref="Stripe" currency="#[flowVars.currency]" customerId="#[flowVars.customerId]" description="#[flowVars.description]" destination="#[flowVars.destination]" receiptEmail="#[flowVars.receiptEmail]" statementDescriptor="#[flowVars.statementDescriptor]">
 		<stripe:source ref="#[flowVars.source]"/>
-		<stripe:metadata ref="#[flowVars.metadata]"/>		
+		<stripe:metadata ref="#[flowVars.metadata]"/>
+		<stripe:shipping ref="#[flowVars.shipping]"/>	
 	</stripe:create-charge>
 </flow>
     <flow doc:name="RetrieveCharge" name="retrieve-charge">
@@ -116,7 +117,9 @@
 	<stripe:capture-charge amount="#[flowVars.amount]" applicationFee="#[flowVars.applicationFee]" config-ref="Stripe" id="#[flowVars.id]" receiptEmail="#[flowVars.receiptEmail]" statementDescriptor="#[flowVars.statementDescriptor]"/>	  
 </flow>
     <flow doc:name="ListAllCharges" name="list-all-charges">
-	<stripe:list-all-charges config-ref="Stripe" createdTimestamp="#[flowVars.createdTimestamp]" customer="#[flowVars.customer]" endingBefore="#[flowVars.endingBefore]" limit="#[limit]" startingAfter="#[flowVars.startingAfter]"/>
+	<stripe:list-all-charges config-ref="Stripe" createdTimestamp="#[flowVars.createdTimestamp]" customer="#[flowVars.customer]" endingBefore="#[flowVars.endingBefore]" limit="#[limit]" startingAfter="#[flowVars.startingAfter]">
+		<stripe:created ref="#[flowVars.created]"/>
+	</stripe:list-all-charges>
 </flow>
 <flow doc:name="CreateSubscription" name="create-subscription">
 	<stripe:create-subscription applicationFeePercent="#[flowVars.applicationFeePercent]" config-ref="Stripe" coupon="#[flowVars.coupon]" customerId="#[flowVars.customerId]" plan="#[flowVars.plan]" quantity="#[flowVars.quantity]" sourceToken="#[flowVars.sourceToken]" taxPercent="#[flowVars.taxPercent]" trialEnd="#[flowVars.trialEnd]">
@@ -176,7 +179,10 @@
 	<stripe:pay-invoice config-ref="Stripe" id="#[flowVars.id]"/>
 </flow>
     <flow doc:name="RetrieveAllInvoices" name="retrieve-all-invoices">
-	<stripe:retrieve-all-invoices config-ref="Stripe" dateTimestamp="#[flowVars.dateTimestamp]" endingBefore="#[flowVars.endingBefore]" limit="#[flowVars.limit]" startingAfter="#[flowVars.startingAfter]"/>		
+	<stripe:retrieve-all-invoices config-ref="Stripe" dateTimestamp="#[flowVars.dateTimestamp]" endingBefore="#[flowVars.endingBefore]" limit="#[flowVars.limit]" startingAfter="#[flowVars.startingAfter]">
+		<stripe:date ref="#[flowVars.date]"/>
+	</stripe:retrieve-all-invoices>
+		
 </flow>
 <flow doc:name="RetrieveUpcomingInvoice" name="retrieve-upcoming-invoice">
 	<stripe:retrieve-upcoming-invoice config-ref="Stripe" customerId="#[flowVars.customerId]" subscription="#[flowVars.subscription]"/>
@@ -185,7 +191,9 @@
 	<stripe:retrieve-application-fee config-ref="Stripe" id="#[flowVars.id]"/>
 </flow>
     <flow doc:name="ListAllApplicationFees" name="list-all-application-fees">
-	<stripe:list-all-application-fees charge="#[flowVars.charge]" config-ref="Stripe" createdTimestamp="#[flowVars.createdTimestamp]" endingBefore="#[flowVars.endingBefore]" limit="#[flowVars.limit]" startingAfter="#[flowVars.startingAfter]"/>	
+	<stripe:list-all-application-fees charge="#[flowVars.charge]" config-ref="Stripe" createdTimestamp="#[flowVars.createdTimestamp]" endingBefore="#[flowVars.endingBefore]" limit="#[flowVars.limit]" startingAfter="#[flowVars.startingAfter]">
+		<stripe:created ref="#[flowVars.created]"/>
+	</stripe:list-all-application-fees>	
 </flow>
 <flow doc:name="CreateAccount" name="create-account">
 	<stripe:create-account businessName="#[flowVars.businessName]" businessUrl="#[flowVars.businessUrl]" config-ref="Stripe" country="#[flowVars.country]" debitNegativeBalances="#[flowVars.debitNegativeBalances]" defaultCurrency="#[flowVars.defaultCurrency]" email="#[flowVars.email]" managed="#[flowVars.managed]" productDescription="#[flowVars.productDescription]" statementDescriptor="#[flowVars.statementDescriptor]" supportPhone="#[flowVars.supportPhone]">

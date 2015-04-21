@@ -119,4 +119,21 @@ public class ListAllApplicationFeesTestCases
         assertEquals(0, coll.getData().size());
     	 
     }
+    
+    @Category({
+        RegressionTests.class,
+        SmokeTests.class
+    })
+    @Test
+    public void testListApplicationFeesWithCreated()
+        throws Exception
+    {
+    	initializeTestRunMessage("listAllApplicationFeesWithCreatedTestData");
+    	upsertOnTestRunMessage("limit", "1");
+    	Object result = runFlowAndGetPayload("list-all-application-fees");
+        assertNotNull(result);
+        ApplicationFeeCollection coll = (ApplicationFeeCollection)result;
+        
+        assertEquals(1, coll.getData().size());
+    }
 }

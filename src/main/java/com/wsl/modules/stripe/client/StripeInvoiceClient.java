@@ -207,7 +207,7 @@ public class StripeInvoiceClient {
     	params.put("customer", customerId);
     	if (dateTimestamp != null && !dateTimestamp.isEmpty()){
     		params.put("date", dateTimestamp);
-    	} else {
+    	} else if (date != null){
     		params.put("date", date.toDict());
     	}
     	params.put("endingBefore", endingBefore);

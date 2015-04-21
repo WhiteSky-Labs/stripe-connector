@@ -105,8 +105,16 @@
  		<entry key="createdTimestamp" value=""/>
         <entry key="endingBefore" value=""/>
         <entry key="limit" value="0"/>
-        <entry key="startingAfter" value=""/>
+        <entry key="startingAfter" value=""/>        
     </util:map>
+    <util:map id="listAllPlansCreatedTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ 		<entry key="createdTimestamp" value=""/>
+        <entry key="endingBefore" value=""/>
+        <entry key="limit" value="0"/>
+        <entry key="startingAfter" value=""/>
+        <entry key="created" value-ref="testTimeRange"/>
+    </util:map>
+    
     <!--createCoupon-->
     <util:map id="createCouponTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  		<entry key="id" value="testCoupon"/>
@@ -159,8 +167,14 @@
  		<entry key="createdTimestamp" value=""/>
         <entry key="endingBefore" value=""/>
         <entry key="limit" value="0"/>
+        <entry key="startingAfter" value=""/>        
+    </util:map>
+    <util:map id="listAllCouponsCreatedTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ 		<entry key="createdTimestamp" value=""/>
+        <entry key="endingBefore" value=""/>
+        <entry key="limit" value="0"/>
         <entry key="startingAfter" value=""/>
-        <entry key="created" value=""/>
+        <entry key="created" value-ref="testTimeRange"/>
     </util:map>
     <!--retrieveBalance-->
     <util:map id="retrieveBalanceTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
@@ -180,14 +194,41 @@
         <entry key="startingAfter" value=""/>
         <entry key="transfer" value=""/>
         <entry key="type" value=""/>    		
-        <entry key="available-on" value=""/>
-        <entry key="created" value=""/>
     </util:map>
+    <util:map id="listAllBalanceHistoryWithAvailableOnTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="availableOnTimestamp" value=""/>
+        <entry key="createdTimestamp" value=""/>
+        <entry key="currency" value=""/>
+        <entry key="endingBefore" value=""/>
+        <entry key="limit" value="0"/>
+        <entry key="sourceId" value=""/>
+        <entry key="startingAfter" value=""/>
+        <entry key="transfer" value=""/>
+        <entry key="type" value=""/>    		
+        <entry key="availableOn" value-ref="testTimeRange"/>        
+    </util:map>
+    <util:map id="listAllBalanceHistoryWithCreatedTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="availableOnTimestamp" value=""/>
+        <entry key="createdTimestamp" value=""/>
+        <entry key="currency" value=""/>
+        <entry key="endingBefore" value=""/>
+        <entry key="limit" value="0"/>
+        <entry key="sourceId" value=""/>
+        <entry key="startingAfter" value=""/>
+        <entry key="transfer" value=""/>
+        <entry key="type" value=""/>    		
+        <entry key="created" value-ref="testTimeRange"/>
+    </util:map>
+    
     <!--createCard-->
     <util:map id="createCardTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  	<entry key="ownerId" value=""/>
     <entry key="sourceToken" value=""/>
     <entry key="source" value-ref="createCard_Source"/>
+    </util:map>
+    <util:map id="createCardWithoutSourceTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ 	<entry key="ownerId" value=""/>
+    <entry key="sourceToken" value=""/>    
     </util:map>
     <bean class="com.wsl.modules.stripe.complextypes.Source" id="createCard_Source">
         <property name="number" value="4242424242424242"/>
@@ -255,8 +296,7 @@
         <entry key="receiptEmail" value=""/>
         <entry key="destination" value=""/>
         <entry key="applicationFee" value="0"/>
-        <entry key="metadata" value-ref="testMetadata"/>
-        <entry key="shipping" value=""/>
+        <entry key="metadata" value-ref="testMetadata"/>        
     </util:map>
     <!--retrieveCharge-->
     <util:map id="retrieveChargeTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
@@ -283,8 +323,15 @@
         <entry key="customer" value=""/>
         <entry key="endingBefore" value=""/>
         <entry key="limit" value="0"/>
+        <entry key="startingAfter" value=""/>        
+    </util:map>
+    <util:map id="listAllChargesWithCreatedTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ 		<entry key="createdTimestamp" value=""/>
+        <entry key="customer" value=""/>
+        <entry key="endingBefore" value=""/>
+        <entry key="limit" value="0"/>
         <entry key="startingAfter" value=""/>
-        <entry key="created" value=""/>
+        <entry key="created" value-ref="testTimeRange"/>
     </util:map>
     <!--createSubscription-->
     <util:map id="createSubscriptionTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
@@ -299,6 +346,17 @@
         <entry key="taxPercent" value="0"/>
         <entry key="metadata" value-ref="testMetadata"/>
     </util:map>
+    <util:map id="createSubscriptionWithoutSourceTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="customerId" value=""/>
+        <entry key="plan" value=""/>
+        <entry key="coupon" value=""/>
+        <entry key="trialEnd" value=""/>
+        <entry key="sourceToken" value=""/>
+        <entry key="quantity" value="1"/>
+        <entry key="applicationFeePercent" value="0"/>
+        <entry key="taxPercent" value="0"/>
+        <entry key="metadata" value-ref="testMetadata"/>
+    </util:map>
     <!--retrieveSubscription-->
     <util:map id="retrieveSubscriptionTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  <entry key="customerId" value=""/>
@@ -306,6 +364,20 @@
     </util:map>
     <!--updateSubscription-->
     <util:map id="updateSubscriptionTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ 		<entry key="customerId" value=""/>
+        <entry key="subscriptionId" value=""/>
+        <entry key="plan" value=""/>
+        <entry key="coupon" value=""/>
+        <entry key="prorate" value="true"/>
+        <entry key="trialEnd" value=""/>
+        <entry key="sourceToken" value=""/>
+        <entry key="source" value-ref="createCard_Source"/>
+        <entry key="quantity" value="1"/>
+        <entry key="applicationFeePercent" value="0"/>
+        <entry key="taxPercent" value="0"/>
+        <entry key="metadata" value-ref="testMetadata"/>
+    </util:map>
+    <util:map id="updateSubscriptionWithoutSourceTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  		<entry key="customerId" value=""/>
         <entry key="subscriptionId" value=""/>
         <entry key="plan" value=""/>
@@ -401,9 +473,17 @@
         <entry key="dateTimestamp" value=""/>
         <entry key="endingBefore" value=""/>
         <entry key="limit" value="0"/>
-        <entry key="startingAfter" value=""/>
-        <entry key="date" value=""/>
+        <entry key="startingAfter" value=""/>        
     </util:map>
+    <util:map id="retrieveAllInvoicesWithDateTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="customerId" value=""/>
+        <entry key="dateTimestamp" value=""/>
+        <entry key="endingBefore" value=""/>
+        <entry key="limit" value="0"/>
+        <entry key="startingAfter" value=""/>
+    	<entry key="date" value-ref="testTimeRange"/>    
+    </util:map>
+    
     <!--retrieveUpcomingInvoice-->
     <util:map id="retrieveUpcomingInvoiceTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  <entry key="customerId" value=""/>
@@ -420,7 +500,14 @@
         <entry key="endingBefore" value=""/>
         <entry key="limit" value="0"/>
         <entry key="startingAfter" value=""/>
-        <entry key="created" value=""/>
+    </util:map>
+    <util:map id="listAllApplicationFeesWithCreatedTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="charge" value=""/>
+        <entry key="createdTimestamp" value=""/>
+        <entry key="endingBefore" value=""/>
+        <entry key="limit" value="0"/>
+        <entry key="startingAfter" value=""/>
+        <entry key="created" value-ref="testTimeRange"/>
     </util:map>
     <!--createAccount-->
     <util:map id="createAccountTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
@@ -452,6 +539,19 @@
         <entry key="metadata" value-ref="testMetadata"/>
         <entry key="bankAccount" value-ref="testBankAccount"/>
 		<entry key="legalEntity" value-ref="testComplexLegalEntity"/>		
+    </util:map>
+    <util:map id="createAccountWithPartialParamsTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ 		<entry key="managed" value="false"/>
+        <entry key="country" value="US"/>
+        <entry key="email" value=""/>
+        <entry key="businessName" value="Test Business Name"/>
+        <entry key="businessUrl" value="www.testbusiness.com"/>
+        <entry key="supportPhone" value=""/>
+        <entry key="debitNegativeBalances" value="false"/>
+        <entry key="defaultCurrency" value="usd"/>
+        <entry key="productDescription" value="A testing product"/>
+        <entry key="statementDescriptor" value="Testing Descriptor"/>
+        <entry key="bankAccount" value-ref="testBankAccount"/>				
     </util:map>
     <!--retrieveAccount-->
     <util:map id="retrieveAccountTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
@@ -497,6 +597,10 @@
         <property name="routingNumber" value="110000000"/>
         <property name="accountNumber" value="000123456789"/>		
     </bean>
+    <bean class="com.wsl.modules.stripe.complextypes.TimeRange" id="testTimeRange">
+        <property name="greaterThan" value="1428010653"/>        
+    </bean>
+    
     <bean class="com.wsl.modules.stripe.complextypes.BankAccount" id="invalidBankAccount">
         <property name="country" value="us"/>
         <property name="currency" value="usd"/>
@@ -548,6 +652,12 @@
         <entry key="customer" value=""/>
         <entry key="card" value-ref="invalidCard"/>
     </util:map>
+    <util:map id="createCardTokenWithoutSourceTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="cardId" value=""/>
+        <entry key="customer" value=""/>
+        
+    </util:map>
+    
     <!--createBankAccountToken-->
     <util:map id="createBankAccountTokenTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  <entry key="bankAccountId" value=""/>
@@ -556,6 +666,10 @@
     <util:map id="createBankAccountTokenInvalidTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  <entry key="bankAccountId" value=""/>
  <entry key="bankAccount" value-ref="invalidBankAccount"/>
+    </util:map>
+    <util:map id="createBankAccountTokenEmptyTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="bankAccountId" value=""/>
+ 
     </util:map>
     <!--retrieveToken-->
     <util:map id="retrieveTokenTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
@@ -567,12 +681,12 @@
     </util:map>
     <!--listAllEvents-->
     <util:map id="listAllEventsTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
- <entry key="createdTimestamp" value=""/>
+ 		<entry key="createdTimestamp" value=""/>
         <entry key="endingBefore" value=""/>
         <entry key="limit" value="0"/>
         <entry key="startingAfter" value=""/>
         <entry key="type" value=""/>
-        <entry key="created" value=""/>
+        <entry key="created" value-ref="testTimeRange"/>
     </util:map>
     <!--createApplicationFeeRefund-->
     <util:map id="createApplicationFeeRefundTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">

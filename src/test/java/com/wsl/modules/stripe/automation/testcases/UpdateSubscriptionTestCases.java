@@ -16,6 +16,7 @@
 package com.wsl.modules.stripe.automation.testcases;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -131,5 +132,21 @@ public class UpdateSubscriptionTestCases
     	}
         
     }
-
+    
+    @Category({
+        RegressionTests.class,
+        SmokeTests.class
+    })
+    @Test
+    public void testUpdateSubscriptionWithoutSource()
+        throws Exception
+    {
+		initializeTestRunMessage("updateSubscriptionWithoutSourceTestData");
+		upsertOnTestRunMessage("customerId", this.customerId);
+		upsertOnTestRunMessage("subscriptionId", this.subscriptionId);
+		upsertOnTestRunMessage("plan", this.updatedPlanId);
+		Object result = runFlowAndGetPayload("update-subscription");
+        Subscription sub = (Subscription)result;
+        assertNotNull(sub.getId());        
+    }
 }

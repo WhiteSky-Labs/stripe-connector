@@ -65,7 +65,7 @@ public class StripeEventClient {
     	Map<String, Object> params = new HashMap<String, Object>();
     	if (createdTimestamp != null && !createdTimestamp.isEmpty()){
     		params.put("created", createdTimestamp);    		
-    	} else {
+    	} else if (created != null){
     		params.put("created", created.toDict());    	
     	}
     	params.put("ending_before", endingBefore);

@@ -111,4 +111,22 @@ public class CreateCardTestCases
     		fail(ConnectorTestUtils.getStackTrace(e));
     	}    	
     }
+    
+    @Category({
+        RegressionTests.class,
+        SmokeTests.class
+    })
+    @Test
+    public void testCreateCardWithoutSource()
+        throws Exception
+    {
+    	try{
+    		runFlowAndGetPayload("create-card", "createCardWithoutSourceTestData");
+    		fail("Error should be thrown");
+    	} catch (MessagingException e) {
+       		assertTrue(e.getCause().getMessage().contains("Could not create the Card"));
+    	} catch (Exception e) {
+    		fail(ConnectorTestUtils.getStackTrace(e));
+    	}    	
+    }
 }

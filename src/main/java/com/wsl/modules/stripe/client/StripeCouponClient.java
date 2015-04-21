@@ -146,7 +146,7 @@ public class StripeCouponClient {
     	}
     	if (createdTimestamp != null && !createdTimestamp.isEmpty()){
     		params.put("created", createdTimestamp);
-    	} else {
+    	} else if (created != null){
     		params.put("created", created.toDict());
     	}
     	params.put("ending_before", endingBefore);

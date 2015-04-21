@@ -95,4 +95,37 @@ public class ListAllBalanceHistoryTestCases
         assertEquals(1, coll.getData().size());        
     }
 
+    @Category({
+        RegressionTests.class,
+        SmokeTests.class
+    })
+    @Test
+    public void testListBalanceHistoryWithAvailableOn()
+        throws Exception
+    {
+    	initializeTestRunMessage("listAllBalanceHistoryWithAvailableOnTestData");
+    	upsertOnTestRunMessage("limit", "1");
+    	Object result = runFlowAndGetPayload("list-all-balance-history");
+        assertNotNull(result);
+        BalanceTransactionCollection coll = (BalanceTransactionCollection)result;
+        
+        assertEquals(1, coll.getData().size());        
+    }
+    
+    @Category({
+        RegressionTests.class,
+        SmokeTests.class
+    })
+    @Test
+    public void testListBalanceHistoryWithCreated()
+        throws Exception
+    {
+    	initializeTestRunMessage("listAllBalanceHistoryWithCreatedTestData");
+    	upsertOnTestRunMessage("limit", "1");
+    	Object result = runFlowAndGetPayload("list-all-balance-history");
+        assertNotNull(result);
+        BalanceTransactionCollection coll = (BalanceTransactionCollection)result;
+        
+        assertEquals(1, coll.getData().size());        
+    }
 }

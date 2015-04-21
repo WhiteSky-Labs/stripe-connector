@@ -86,12 +86,12 @@ public class StripeBalanceClient {
     	params.put("limit", limit);
     	if (availableOnTimestamp != null && !availableOnTimestamp.isEmpty()){
     		params.put("available_on", availableOnTimestamp);
-    	} else {
+    	} else if (availableOn != null){
     		params.put("available_on", availableOn.toDict());    		
     	}
     	if (createdTimestamp != null && !createdTimestamp.isEmpty()){
     		params.put("created", createdTimestamp);
-    	} else {
+    	} else if (created != null){
     		params.put("created", created.toDict());    		
     	}
     	params.put("currency", currency);

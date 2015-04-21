@@ -105,4 +105,23 @@ public class CreateAccountTestCases
         assertEquals(this.email, account.getEmail());
         // Note: The API does not return the Legal Entity at this time, even when it is created correctly. As such, the assertations for this test are minimalistic, but the full creation of Legal Entity has occurred.      
     }
+    
+    @Category({
+        RegressionTests.class,
+        SmokeTests.class
+    })
+    @Test
+    public void testCreateAccountWithPartialParams()
+        throws Exception
+    {
+    	initializeTestRunMessage("createAccountWithPartialParamsTestData");
+    	Map<String, Object> expectedBean = getBeanFromContext("createAccountWithPartialParamsTestData");
+    	upsertOnTestRunMessage("email", email);
+    	Object result = runFlowAndGetPayload("create-account");
+        assertNotNull(result);
+        Account account = (Account) result;
+        assertNotNull(account.getId());
+        assertEquals(this.email, account.getEmail());
+        // Note: The API does not return the Legal Entity at this time, even when it is created correctly. As such, the assertations for this test are minimalistic, but the full creation of Legal Entity has occurred.      
+    }
 }

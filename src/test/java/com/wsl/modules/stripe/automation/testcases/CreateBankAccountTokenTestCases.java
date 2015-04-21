@@ -76,5 +76,25 @@ public class CreateBankAccountTokenTestCases
     	}
         
     }
+    
+    @Category({
+        RegressionTests.class,
+        SmokeTests.class
+    })
+    @Test
+    public void testCreateBankAccountTokenWithoutBankAccount()
+        throws Exception
+    {
+        initializeTestRunMessage("createBankAccountTokenEmptyTestData");
+    	try {
+    		runFlowAndGetPayload("create-bank-account-token");
+    		fail("Creating a token without an account should fail.");
+    	} catch (MessagingException e){
+    		assertTrue(e.getCause().getMessage().contains("Could not create a Bank Account Token"));
+    	} catch (Exception e){
+    		fail(ConnectorTestUtils.getStackTrace(e));
+    	}
+        
+    }
 
 }

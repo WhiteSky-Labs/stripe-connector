@@ -111,5 +111,20 @@ public class ListAllChargesTestCases
     	}    
     }
     
-    
+    @Category({
+        RegressionTests.class,
+        SmokeTests.class
+    })
+    @Test
+    public void testListChargesWithCreated()
+        throws Exception
+    {
+    	initializeTestRunMessage("listAllChargesWithCreatedTestData");
+    	upsertOnTestRunMessage("limit", "1");
+    	Object result = runFlowAndGetPayload("list-all-charges");
+        assertNotNull(result);
+        ChargeCollection coll = (ChargeCollection)result;
+        
+        assertEquals(1, coll.getData().size());
+    }
 }

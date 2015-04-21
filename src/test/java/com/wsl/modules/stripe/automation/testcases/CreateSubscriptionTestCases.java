@@ -120,4 +120,23 @@ public class CreateSubscriptionTestCases
     		fail(ConnectorTestUtils.getStackTrace(e));
     	}    	
     }
+    
+    @Category({
+        RegressionTests.class,
+        SmokeTests.class
+    })
+    @Test
+    public void testCreateSubscriptionWithoutSource()
+        throws Exception
+    {
+    	try{
+    		initializeTestRunMessage("createSubscriptionWithoutSourceTestData");
+    		Object result = runFlowAndGetPayload("create-subscription");
+    		fail("Error should be thrown");
+    	} catch (MessagingException e) {
+    		assertTrue(e.getCause().getMessage().contains("Could not create the Subscription"));
+    	} catch (Exception e) {
+    		fail(ConnectorTestUtils.getStackTrace(e));
+    	}    	
+    }
 }

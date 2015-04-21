@@ -570,7 +570,7 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public Charge createCharge(int amount, String currency, @Optional String customerId, @Optional Source source, @Optional String description, @Default("#[payload]") Map<String, Object> metadata, @Default("true") boolean capture, @Optional String statementDescriptor, @Optional String receiptEmail, @Optional String destination, @Default("0") int applicationFee, @Default("{}") Map<String, String> shipping)    
+    public Charge createCharge(int amount, String currency, @Optional String customerId, @Optional Source source, @Optional String description, @Default("#[payload]") Map<String, Object> metadata, @Default("true") boolean capture, @Optional String statementDescriptor, @Optional String receiptEmail, @Optional String destination, @Default("0") int applicationFee, @Optional Map<String, String> shipping)    
     		throws StripeConnectorException {
     	return chargeClient.createCharge(amount, currency, customerId, source, description, metadata, capture, statementDescriptor, receiptEmail, destination, applicationFee, shipping);
     }
@@ -608,7 +608,7 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public Charge updateCharge(String id, @Optional String description, @Default("#[payload]") Map<String, Object> metadata, @Optional String receiptEmail, @Default("{}") Map<String, String> fraudDetails)    
+    public Charge updateCharge(String id, @Optional String description, @Default("#[payload]") Map<String, Object> metadata, @Optional String receiptEmail, @Optional Map<String, String> fraudDetails)    
     		throws StripeConnectorException {
     	return chargeClient.updateCharge(id, description, metadata, receiptEmail, fraudDetails);
     }

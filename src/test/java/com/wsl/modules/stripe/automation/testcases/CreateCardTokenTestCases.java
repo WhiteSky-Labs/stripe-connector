@@ -77,4 +77,24 @@ public class CreateCardTokenTestCases
     		fail(ConnectorTestUtils.getStackTrace(e));
     	}    	
     }
+    
+    @Category({
+        RegressionTests.class,
+        SmokeTests.class
+    })
+    @Test
+    public void testCreateCardTokenWithoutSource()
+        throws Exception
+    {
+        initializeTestRunMessage("createCardTokenWithoutSourceTestData");
+    	try {
+    		runFlowAndGetPayload("create-card-token");
+    		fail("Creating a token without a card should fail.");
+    	} catch (MessagingException e){
+    		assertTrue(e.getCause().getMessage().contains("Could not create a Card Token"));
+    	} catch (Exception e){
+    		fail(ConnectorTestUtils.getStackTrace(e));
+    	}
+        
+    }
 }

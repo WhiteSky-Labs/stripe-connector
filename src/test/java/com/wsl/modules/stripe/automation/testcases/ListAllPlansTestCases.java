@@ -46,7 +46,7 @@ public class ListAllPlansTestCases
     {
     	initializeTestRunMessage("createPlanTestData");
     	upsertOnTestRunMessage("id", planId);
-        Object result = runFlowAndGetPayload("create-plan");
+        runFlowAndGetPayload("create-plan");
         initializeTestRunMessage("listAllPlansTestData");
     }
 
@@ -97,4 +97,20 @@ public class ListAllPlansTestCases
         assertEquals(1, coll.getData().size());        
     }
 
+    @Category({
+        RegressionTests.class,
+        SmokeTests.class
+    })
+    @Test
+    public void testListPlansWithCreated()
+        throws Exception
+    {
+    	initializeTestRunMessage("listAllPlansCreatedTestData");
+    	upsertOnTestRunMessage("limit", "1");
+    	Object result = runFlowAndGetPayload("list-all-plans");
+        assertNotNull(result);
+        PlanCollection coll = (PlanCollection)result;
+        
+        assertEquals(1, coll.getData().size());        
+    }
 }
