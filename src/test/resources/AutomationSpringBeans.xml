@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
     <import resource="ConnectorTestCaseSpringBeans.xml"/>
+    
     <!--listAllCustomers-->
     <util:map id="listAllCustomersTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  		<entry key="limit" value="0"/>
@@ -53,7 +54,7 @@
     </util:map>
     <!--createPlan-->
     <util:map id="createPlanTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
- 		<entry key="id" value="testplan"/>
+ 		<entry key="id" value="test#{ T(java.util.UUID).randomUUID() }plan"/>
         <entry key="amount" value="123"/>
         <entry key="currency" value="USD"/>
         <entry key="interval" value="week"/>
@@ -64,7 +65,7 @@
         <entry key="metadata" value-ref="testMetadata"/>
     </util:map>
     <util:map id="createPlanWithValidParamsTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
- 		<entry key="id" value="testplan"/>
+ 		<entry key="id" value="test#{ T(java.util.UUID).randomUUID() }plan"/>
         <entry key="amount" value="123"/>
         <entry key="currency" value="USD"/>
         <entry key="interval" value="week"/>
@@ -75,7 +76,7 @@
         <entry key="metadata" value-ref="testMetadata"/>
     </util:map>
     <util:map id="createPlanWithInvalidParamsTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
- 		<entry key="id" value="testplan"/>
+ 		<entry key="id" value="test#{ T(java.util.UUID).randomUUID() }plan"/>
         <entry key="amount" value="123"/>
         <entry key="currency" value="invalid"/>
         <entry key="interval" value="aeon"/>
@@ -102,17 +103,23 @@
     </util:map>
     <!--listAllPlans-->
     <util:map id="listAllPlansTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
- 		<entry key="createdTimestamp" value=""/>
-        <entry key="endingBefore" value=""/>
-        <entry key="limit" value="0"/>
-        <entry key="startingAfter" value=""/>        
+ 		<entry key="listAllPlansParameters" value-ref="listAllPlansParams"/> 
     </util:map>
+    <bean id="listAllPlansParams" class="com.wsl.modules.stripe.complextypes.ListAllPlansParameters">
+				<property name="createdTimestamp" value="" />
+				<property name="endingBefore" value="" />
+				<property name="limit" value="0" />
+				<property name="startingAfter" value=""/>
+			</bean>
+	<bean id="listAllPlansCreatedParams" class="com.wsl.modules.stripe.complextypes.ListAllPlansParameters">
+		<property name="createdTimestamp" value="" />
+		<property name="endingBefore" value="" />
+		<property name="limit" value="0" />
+		<property name="startingAfter" value=""/>
+		<property name="created" ref="testTimeRange"/>
+	</bean>
     <util:map id="listAllPlansCreatedTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
- 		<entry key="createdTimestamp" value=""/>
-        <entry key="endingBefore" value=""/>
-        <entry key="limit" value="0"/>
-        <entry key="startingAfter" value=""/>
-        <entry key="created" value-ref="testTimeRange"/>
+ 		<entry key="listAllPlansParameters" value-ref="listAllPlansCreatedParams"/>
     </util:map>
     
     <!--createCoupon-->
@@ -164,17 +171,23 @@
     </util:map>
     <!--listAllCoupons-->
     <util:map id="listAllCouponsTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
- 		<entry key="createdTimestamp" value=""/>
-        <entry key="endingBefore" value=""/>
-        <entry key="limit" value="0"/>
-        <entry key="startingAfter" value=""/>        
+        <entry key="listAllCouponsParameters" value-ref="listAllCouponsParams"/>        
     </util:map>
+    <bean id="listAllCouponsParams" class="com.wsl.modules.stripe.complextypes.ListAllCouponsParameters">
+				<property name="createdTimestamp" value="" />
+				<property name="endingBefore" value="" />
+				<property name="limit" value="0" />
+				<property name="startingAfter" value=""/>
+			</bean>
+	<bean id="listAllCouponsCreatedParams" class="com.wsl.modules.stripe.complextypes.ListAllCouponsParameters">
+		<property name="createdTimestamp" value="" />
+		<property name="endingBefore" value="" />
+		<property name="limit" value="0" />
+		<property name="startingAfter" value=""/>
+		<property name="created" ref="testTimeRange"/>
+	</bean>
     <util:map id="listAllCouponsCreatedTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
- 		<entry key="createdTimestamp" value=""/>
-        <entry key="endingBefore" value=""/>
-        <entry key="limit" value="0"/>
-        <entry key="startingAfter" value=""/>
-        <entry key="created" value-ref="testTimeRange"/>
+ 		<entry key="listAllCouponsParameters" value-ref="listAllCouponsCreatedParams"/>
     </util:map>
     <!--retrieveBalance-->
     <util:map id="retrieveBalanceTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
@@ -185,39 +198,48 @@
     </util:map>
     <!--listAllBalanceHistory-->
     <util:map id="listAllBalanceHistoryTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
- <entry key="availableOnTimestamp" value=""/>
-        <entry key="createdTimestamp" value=""/>
-        <entry key="currency" value=""/>
-        <entry key="endingBefore" value=""/>
-        <entry key="limit" value="0"/>
-        <entry key="sourceId" value=""/>
-        <entry key="startingAfter" value=""/>
-        <entry key="transfer" value=""/>
-        <entry key="type" value=""/>    		
+ 		<entry key="listAllBalanceHistoryParameters" value-ref="listAllBalanceHistoryParams"/>  	
     </util:map>
+    <bean id="listAllBalanceHistoryParams" class="com.wsl.modules.stripe.complextypes.ListAllBalanceHistoryParameters">
+		<property name="availableOnTimestamp" value=""/>
+        <property name="createdTimestamp" value=""/>
+        <property name="currency" value=""/>
+        <property name="endingBefore" value=""/>
+        <property name="limit" value="0"/>
+        <property name="sourceId" value=""/>
+        <property name="startingAfter" value=""/>
+        <property name="transfer" value=""/>
+        <property name="type" value=""/>    		
+ 	</bean>
+ 	<bean id="listAllBalanceHistoryWithAvailableOnParams" class="com.wsl.modules.stripe.complextypes.ListAllBalanceHistoryParameters">
+		<property name="availableOnTimestamp" value=""/>
+        <property name="createdTimestamp" value=""/>
+        <property name="currency" value=""/>
+        <property name="endingBefore" value=""/>
+        <property name="limit" value="0"/>
+        <property name="sourceId" value=""/>
+        <property name="startingAfter" value=""/>
+        <property name="transfer" value=""/>
+        <property name="type" value=""/>
+        <property name="availableOn" ref="testTimeRange"/>    		
+ 	</bean>
     <util:map id="listAllBalanceHistoryWithAvailableOnTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
- <entry key="availableOnTimestamp" value=""/>
-        <entry key="createdTimestamp" value=""/>
-        <entry key="currency" value=""/>
-        <entry key="endingBefore" value=""/>
-        <entry key="limit" value="0"/>
-        <entry key="sourceId" value=""/>
-        <entry key="startingAfter" value=""/>
-        <entry key="transfer" value=""/>
-        <entry key="type" value=""/>    		
-        <entry key="availableOn" value-ref="testTimeRange"/>        
+ 		<entry key="listAllBalanceHistoryParameters" value-ref="listAllBalanceHistoryWithAvailableOnParams"/>            
     </util:map>
+    <bean id="listAllBalanceHistoryWithCreatedParams" class="com.wsl.modules.stripe.complextypes.ListAllBalanceHistoryParameters">
+		<property name="availableOnTimestamp" value=""/>
+        <property name="createdTimestamp" value=""/>
+        <property name="currency" value=""/>
+        <property name="endingBefore" value=""/>
+        <property name="limit" value="0"/>
+        <property name="sourceId" value=""/>
+        <property name="startingAfter" value=""/>
+        <property name="transfer" value=""/>
+        <property name="type" value=""/>
+        <property name="created" ref="testTimeRange"/>   		
+ 	</bean>
     <util:map id="listAllBalanceHistoryWithCreatedTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
- <entry key="availableOnTimestamp" value=""/>
-        <entry key="createdTimestamp" value=""/>
-        <entry key="currency" value=""/>
-        <entry key="endingBefore" value=""/>
-        <entry key="limit" value="0"/>
-        <entry key="sourceId" value=""/>
-        <entry key="startingAfter" value=""/>
-        <entry key="transfer" value=""/>
-        <entry key="type" value=""/>    		
-        <entry key="created" value-ref="testTimeRange"/>
+    	<entry key="listAllBalanceHistoryParameters" value-ref="listAllBalanceHistoryWithCreatedParams"/>
     </util:map>
     
     <!--createCard-->
@@ -286,18 +308,37 @@
     </util:map>
     <!--createCharge-->
     <util:map id="createChargeTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
- 		<entry key="amount" value="1000"/>
-        <entry key="currency" value="usd"/>
-        <entry key="customerId" value=""/>
-        <entry key="source" value-ref="createCard_Source"/>
-        <entry key="description" value=""/>
-        <entry key="capture" value="true"/>
-        <entry key="statementDescriptor" value=""/>
-        <entry key="receiptEmail" value=""/>
-        <entry key="destination" value=""/>
-        <entry key="applicationFee" value="0"/>
-        <entry key="metadata" value-ref="testMetadata"/>        
+ 		<entry key="createChargeParameters" value-ref="createChargeParameters"/>
     </util:map>
+    <bean class="com.wsl.modules.stripe.complextypes.CreateChargeParameters" id="createChargeParameters">
+        <property name="amount" value="1000"/>
+        <property name="currency" value="usd"/>
+        <property name="customerId" value=""/>
+        <property name="source" ref="createCard_Source"/>
+        <property name="description" value=""/>
+        <property name="capture" value="true"/>
+        <property name="statementDescriptor" value=""/>
+        <property name="receiptEmail" value=""/>
+        <property name="destination" value=""/>
+        <property name="applicationFee" value="0"/>
+        <property name="metadata" ref="testMetadata"/>		
+    </bean>
+    <util:map id="createChargeInvalidTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ 		<entry key="createChargeParameters" value-ref="createChargeInvalidParameters"/>
+    </util:map>
+    <bean class="com.wsl.modules.stripe.complextypes.CreateChargeParameters" id="createChargeInvalidParameters">
+        <property name="amount" value="1000"/>
+        <property name="currency" value="usd"/>
+        <property name="customerId" value=""/>
+        <property name="source" ref="createCard_Source"/>
+        <property name="description" value=""/>
+        <property name="capture" value="true"/>
+        <property name="statementDescriptor" value=""/>
+        <property name="receiptEmail" value=""/>
+        <property name="destination" value="InvalidDestination"/>
+        <property name="applicationFee" value="0"/>
+        <property name="metadata" ref="testMetadata"/>		
+    </bean>
     <!--retrieveCharge-->
     <util:map id="retrieveChargeTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  	<entry key="id" value=""/>
@@ -335,27 +376,49 @@
     </util:map>
     <!--createSubscription-->
     <util:map id="createSubscriptionTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
- <entry key="customerId" value=""/>
-        <entry key="plan" value=""/>
-        <entry key="coupon" value=""/>
-        <entry key="trialEnd" value=""/>
-        <entry key="sourceToken" value=""/>
-        <entry key="source" value-ref="createCard_Source"/>
-        <entry key="quantity" value="1"/>
-        <entry key="applicationFeePercent" value="0"/>
-        <entry key="taxPercent" value="0"/>
-        <entry key="metadata" value-ref="testMetadata"/>
+ <entry key="createSubscriptionParameters" value-ref="createSubscriptionParameters"/>
     </util:map>
+    <bean class="com.wsl.modules.stripe.complextypes.CreateSubscriptionParameters" id="createSubscriptionParameters">
+         <property name="customerId" value=""/>
+        <property name="plan" value=""/>
+        <property name="coupon" value=""/>
+        <property name="trialEnd" value=""/>
+        <property name="sourceToken" value=""/>
+        <property name="source" ref="createCard_Source"/>
+        <property name="quantity" value="1"/>
+        <property name="applicationFeePercent" value="0"/>
+        <property name="taxPercent" value="0"/>
+        <property name="metadata" ref="testMetadata"/>	
+    </bean>
+    <bean class="com.wsl.modules.stripe.complextypes.CreateSubscriptionParameters" id="createSubscriptionWithoutSourceParameters">
+         <property name="customerId" value=""/>
+        <property name="plan" value=""/>
+        <property name="coupon" value=""/>
+        <property name="trialEnd" value=""/>
+        <property name="sourceToken" value=""/>
+        <property name="quantity" value="1"/>
+        <property name="applicationFeePercent" value="0"/>
+        <property name="taxPercent" value="0"/>
+        <property name="metadata" ref="testMetadata"/>	
+    </bean>
+    		
     <util:map id="createSubscriptionWithoutSourceTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
- <entry key="customerId" value=""/>
-        <entry key="plan" value=""/>
-        <entry key="coupon" value=""/>
-        <entry key="trialEnd" value=""/>
-        <entry key="sourceToken" value=""/>
-        <entry key="quantity" value="1"/>
-        <entry key="applicationFeePercent" value="0"/>
-        <entry key="taxPercent" value="0"/>
-        <entry key="metadata" value-ref="testMetadata"/>
+ <entry key="createSubscriptionParameters" value-ref="createSubscriptionWithoutSourceParameters"/>
+    </util:map>
+    <bean class="com.wsl.modules.stripe.complextypes.CreateSubscriptionParameters" id="createSubscriptionInvalidParameters">
+         <property name="customerId" value=""/>
+        <property name="plan" value=""/>
+        <property name="coupon" value=""/>
+        <property name="trialEnd" value=""/>
+        <property name="sourceToken" value=""/>
+        <property name="quantity" value="1"/>
+        <property name="applicationFeePercent" value="1000"/>
+        <property name="taxPercent" value="0"/>
+        <property name="metadata" ref="testMetadata"/>	
+    </bean>
+    		
+    <util:map id="createSubscriptionInvalidTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ <entry key="createSubscriptionParameters" value-ref="createSubscriptionInvalidParameters"/>
     </util:map>
     <!--retrieveSubscription-->
     <util:map id="retrieveSubscriptionTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
@@ -364,33 +427,40 @@
     </util:map>
     <!--updateSubscription-->
     <util:map id="updateSubscriptionTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
- 		<entry key="customerId" value=""/>
-        <entry key="subscriptionId" value=""/>
-        <entry key="plan" value=""/>
-        <entry key="coupon" value=""/>
-        <entry key="prorate" value="true"/>
-        <entry key="trialEnd" value=""/>
-        <entry key="sourceToken" value=""/>
-        <entry key="source" value-ref="createCard_Source"/>
-        <entry key="quantity" value="1"/>
-        <entry key="applicationFeePercent" value="0"/>
-        <entry key="taxPercent" value="0"/>
-        <entry key="metadata" value-ref="testMetadata"/>
+ 		<entry key="updateSubscriptionParameters" value-ref="updateSubscriptionParameters"/>
     </util:map>
+    <bean class="com.wsl.modules.stripe.complextypes.UpdateSubscriptionParameters" id="updateSubscriptionParameters">
+         <property name="customerId" value=""/>
+        <property name="subscriptionId" value=""/>
+        <property name="plan" value=""/>
+        <property name="coupon" value=""/>
+        <property name="prorate" value="true"/>
+        <property name="trialEnd" value=""/>
+        <property name="sourceToken" value=""/>
+        <property name="source" ref="createCard_Source"/>
+        <property name="quantity" value="1"/>
+        <property name="applicationFeePercent" value="0"/>
+        <property name="taxPercent" value="0"/>
+        <property name="metadata" ref="testMetadata"/>
+    </bean>
     <util:map id="updateSubscriptionWithoutSourceTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
- 		<entry key="customerId" value=""/>
-        <entry key="subscriptionId" value=""/>
-        <entry key="plan" value=""/>
-        <entry key="coupon" value=""/>
-        <entry key="prorate" value="true"/>
-        <entry key="trialEnd" value=""/>
-        <entry key="sourceToken" value=""/>
-        <entry key="source" value-ref="createCard_Source"/>
-        <entry key="quantity" value="1"/>
-        <entry key="applicationFeePercent" value="0"/>
-        <entry key="taxPercent" value="0"/>
-        <entry key="metadata" value-ref="testMetadata"/>
+ 		<entry key="updateSubscriptionParameters" value-ref="updateSubscriptionWithoutSourceParameters"/>
     </util:map>
+    <bean class="com.wsl.modules.stripe.complextypes.UpdateSubscriptionParameters" id="updateSubscriptionWithoutSourceParameters">
+         <property name="customerId" value=""/>
+        <property name="subscriptionId" value=""/>
+        <property name="plan" value=""/>
+        <property name="coupon" value=""/>
+        <property name="prorate" value="true"/>
+        <property name="trialEnd" value=""/>
+        <property name="sourceToken" value=""/>
+        <property name="source" ref="createCard_Source"/>
+        <property name="quantity" value="1"/>
+        <property name="applicationFeePercent" value="0"/>
+        <property name="taxPercent" value="0"/>
+        <property name="metadata" ref="testMetadata"/>
+    </bean>
+    
     <!--cancelSubscription-->
     <util:map id="cancelSubscriptionTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  <entry key="customerId" value=""/>
@@ -511,86 +581,118 @@
     </util:map>
     <!--createAccount-->
     <util:map id="createAccountTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
- <entry key="managed" value="false"/>
-        <entry key="country" value=""/>
-        <entry key="email" value=""/>
-        <entry key="businessName" value=""/>
-        <entry key="businessUrl" value=""/>
-        <entry key="supportPhone" value=""/>
-        <entry key="debitNegativeBalances" value="false"/>
-        <entry key="defaultCurrency" value=""/>
-        <entry key="productDescription" value=""/>
-        <entry key="statementDescriptor" value=""/>
-        <entry key="metadata" value-ref="testMetadata"/>
-        <entry key="bankAccount" value-ref="testBankAccount"/>
-		<entry key="legalEntity" value-ref="testLegalEntity"/>
+ 		<entry key="createAccountParameters" value-ref="createAccountParameters"/>
     </util:map>
+    <bean class="com.wsl.modules.stripe.complextypes.CreateAccountParameters" id="createAccountParameters">
+        <property name="managed" value="false"/>
+        <property name="country" value=""/>
+        <property name="email" value="test#{ T(java.util.UUID).randomUUID() }@test.com"/>
+        <property name="businessName" value=""/>
+        <property name="businessUrl" value=""/>
+        <property name="supportPhone" value=""/>
+        <property name="debitNegativeBalances" value="false"/>
+        <property name="defaultCurrency" value=""/>
+        <property name="productDescription" value=""/>
+        <property name="statementDescriptor" value=""/>
+        <property name="metadata" ref="testMetadata"/>
+        <property name="bankAccount" ref="testBankAccount"/>
+		<property name="legalEntity" ref="testLegalEntity"/>		
+    </bean>
     <util:map id="createAccountWithParamsTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
- 		<entry key="managed" value="false"/>
-        <entry key="country" value="US"/>
-        <entry key="email" value=""/>
-        <entry key="businessName" value="Test Business Name"/>
-        <entry key="businessUrl" value="www.testbusiness.com"/>
-        <entry key="supportPhone" value=""/>
-        <entry key="debitNegativeBalances" value="false"/>
-        <entry key="defaultCurrency" value="usd"/>
-        <entry key="productDescription" value="A testing product"/>
-        <entry key="statementDescriptor" value="Testing Descriptor"/>
-        <entry key="metadata" value-ref="testMetadata"/>
-        <entry key="bankAccount" value-ref="testBankAccount"/>
-		<entry key="legalEntity" value-ref="testComplexLegalEntity"/>		
+ 		<entry key="createAccountParameters" value-ref="createAccountCompleteParameters"/>		
     </util:map>
+    <bean class="com.wsl.modules.stripe.complextypes.CreateAccountParameters" id="createAccountCompleteParameters">
+        <property name="managed" value="false"/>
+        <property name="country" value="US"/>
+        <property name="email" value="test#{ T(java.util.UUID).randomUUID() }@test.com"/>
+        <property name="businessName" value="Test Business Name"/>
+        <property name="businessUrl" value="www.testbusiness.com"/>
+        <property name="supportPhone" value=""/>
+        <property name="debitNegativeBalances" value="false"/>
+        <property name="defaultCurrency" value="usd"/>
+        <property name="productDescription" value="A testing product"/>
+        <property name="statementDescriptor" value="Testing Descriptor"/>
+        <property name="metadata" ref="testMetadata"/>
+        <property name="bankAccount" ref="testBankAccount"/>
+		<property name="legalEntity" ref="testComplexLegalEntity"/>		
+    </bean>
     <util:map id="createAccountWithPartialParamsTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
- 		<entry key="managed" value="false"/>
-        <entry key="country" value="US"/>
-        <entry key="email" value=""/>
-        <entry key="businessName" value="Test Business Name"/>
-        <entry key="businessUrl" value="www.testbusiness.com"/>
-        <entry key="supportPhone" value=""/>
-        <entry key="debitNegativeBalances" value="false"/>
-        <entry key="defaultCurrency" value="usd"/>
-        <entry key="productDescription" value="A testing product"/>
-        <entry key="statementDescriptor" value="Testing Descriptor"/>
-        <entry key="bankAccount" value-ref="testBankAccount"/>				
+ 		<entry key="createAccountParameters" value-ref="createAccountPartialParameters"/>		
     </util:map>
+    <bean class="com.wsl.modules.stripe.complextypes.CreateAccountParameters" id="createAccountPartialParameters">
+        <property name="managed" value="false"/>
+        <property name="country" value="US"/>
+        <property name="email" value="test#{ T(java.util.UUID).randomUUID() }@test.com"/>
+        <property name="businessName" value="Test Business Name"/>
+        <property name="businessUrl" value="www.testbusiness.com"/>
+        <property name="supportPhone" value=""/>
+        <property name="debitNegativeBalances" value="false"/>
+        <property name="defaultCurrency" value="usd"/>
+        <property name="productDescription" value="A testing product"/>
+        <property name="statementDescriptor" value="Testing Descriptor"/>
+        <property name="bankAccount" ref="testBankAccount"/>			
+    </bean>
+    <util:map id="createAccountWithInvalidParamsTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
+ 		<entry key="createAccountParameters" value-ref="createAccountInvalidParameters"/>		
+    </util:map>
+    <bean class="com.wsl.modules.stripe.complextypes.CreateAccountParameters" id="createAccountInvalidParameters">
+        <property name="managed" value="false"/>
+        <property name="country" value="Invalid Country"/>
+        <property name="email" value="test#{ T(java.util.UUID).randomUUID() }@test.com"/>
+        <property name="businessName" value="Test Business Name"/>
+        <property name="businessUrl" value="www.testbusiness.com"/>
+        <property name="supportPhone" value=""/>
+        <property name="debitNegativeBalances" value="false"/>
+        <property name="defaultCurrency" value="usd"/>
+        <property name="productDescription" value="A testing product"/>
+        <property name="statementDescriptor" value="Testing Descriptor"/>
+        <property name="bankAccount" ref="testBankAccount"/>			
+    </bean>
     <!--retrieveAccount-->
     <util:map id="retrieveAccountTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
  <entry key="id" value=""/>
     </util:map>
     <!--updateAccount-->
     <util:map id="createManagedAccountTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
- <entry key="managed" value="true"/>
-        <entry key="country" value=""/>
-        <entry key="email" value=""/>
-        <entry key="businessName" value="TestBusiness"/>
-        <entry key="businessUrl" value="www.test.com"/>
-        <entry key="supportPhone" value=""/>
-        <entry key="debitNegativeBalances" value="false"/>
-        <entry key="defaultCurrency" value="usd"/>
-        <entry key="productDescription" value=""/>
-        <entry key="statementDescriptor" value=""/>
-        <entry key="metadata" value-ref="testMetadata"/>
-        <entry key="bankAccount" value-ref="testBankAccount"/>
-		<entry key="legalEntity" value-ref="testLegalEntity"/>
-		<entry key="tosAcceptance" value-ref="testAcceptance"/>
-		<entry key="transferSchedule" value-ref="testTransferSchedule"/>
+ 		<entry key="createAccountParameters" value-ref="createManagedAccountParameters"/>
     </util:map>
+    <bean class="com.wsl.modules.stripe.complextypes.CreateAccountParameters" id="createManagedAccountParameters">
+        <property name="managed" value="true"/>
+        <property name="country" value=""/>
+        <property name="email" value="test#{ T(java.util.UUID).randomUUID() }@test.com"/>
+        <property name="businessName" value="TestBusiness"/>
+        <property name="businessUrl" value="www.test.com"/>
+        <property name="supportPhone" value=""/>
+        <property name="debitNegativeBalances" value="false"/>
+        <property name="defaultCurrency" value="usd"/>
+        <property name="productDescription" value=""/>
+        <property name="statementDescriptor" value=""/>
+        <property name="metadata" ref="testMetadata"/>
+        <property name="bankAccount" ref="testBankAccount"/>
+		<property name="legalEntity" ref="testLegalEntity"/>
+		<property name="tosAcceptance" ref="testAcceptance"/>
+		<property name="transferSchedule" ref="testTransferSchedule"/>		
+    </bean>
     <util:map id="updateAccountTestData" key-type="java.lang.String" map-class="java.util.HashMap" scope="prototype" value-type="java.lang.Object">
- <entry key="id" value=""/>
-        <entry key="email" value=""/>
-        <entry key="businessName" value="UpdatedBusinessName"/>
-        <entry key="businessUrl" value=""/>
-        <entry key="supportPhone" value=""/>
-        <entry key="debitNegativeBalances" value="false"/>
-        <entry key="defaultCurrency" value=""/>
-        <entry key="productDescription" value=""/>
-        <entry key="statementDescriptor" value=""/>
-        <entry key="metadata" value-ref="testMetadata"/>
-        <entry key="bankAccount" value-ref="testBankAccount"/>
-		<entry key="legalEntity" value-ref="testLegalEntity"/>
-		<entry key="tosAcceptance" value-ref="testAcceptance"/>
-		<entry key="transferSchedule" value-ref="testTransferSchedule"/>
+ 		<entry key="updateAccountParameters" value-ref="updateAccountParameters"/>
+        
     </util:map>
+    <bean class="com.wsl.modules.stripe.complextypes.UpdateAccountParameters" id="updateAccountParameters">
+        <property name="id" value=""/>
+        <property name="email" value="test#{ T(java.util.UUID).randomUUID() }@test.com"/>
+        <property name="businessName" value="UpdatedBusinessName"/>
+        <property name="businessUrl" value=""/>
+        <property name="supportPhone" value=""/>
+        <property name="debitNegativeBalances" value="false"/>
+        <property name="defaultCurrency" value="usd"/>
+        <property name="productDescription" value=""/>
+        <property name="statementDescriptor" value=""/>
+        <property name="metadata" ref="testMetadata"/>
+        <property name="bankAccount" ref="testBankAccount"/>
+		<property name="legalEntity" ref="testLegalEntity"/>
+		<property name="tosAcceptance" ref="testAcceptance"/>
+		<property name="transferSchedule" ref="testTransferSchedule"/>		
+    </bean>
     <bean class="com.wsl.modules.stripe.complextypes.BankAccount" id="testBankAccount">
         <property name="country" value="us"/>
         <property name="currency" value="usd"/>
@@ -598,7 +700,10 @@
         <property name="accountNumber" value="000123456789"/>		
     </bean>
     <bean class="com.wsl.modules.stripe.complextypes.TimeRange" id="testTimeRange">
-        <property name="greaterThan" value="1428010653"/>        
+        <property name="greaterThan" value="1428010653"/>
+        <property name="lessThan" value=""/>
+        <property name="lessThanOrEqualTo" value=""/>
+        <property name="greaterThanOrEqualTo" value=""/>        
     </bean>
     
     <bean class="com.wsl.modules.stripe.complextypes.BankAccount" id="invalidBankAccount">

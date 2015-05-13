@@ -21,23 +21,18 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.util.Map;
-import java.util.UUID;
 
-import com.stripe.model.Account;
-import com.stripe.model.Card;
-import com.stripe.model.Customer;
-import com.wsl.modules.stripe.automation.RegressionTests;
-import com.wsl.modules.stripe.automation.SmokeTests;
-import com.wsl.modules.stripe.automation.StripeTestParent;
-import com.wsl.modules.stripe.complextypes.LegalEntity;
-import com.wsl.modules.stripe.complextypes.Source;
-
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.mule.api.MessagingException;
 import org.mule.modules.tests.ConnectorTestUtils;
+
+import com.stripe.model.Account;
+import com.wsl.modules.stripe.automation.RegressionTests;
+import com.wsl.modules.stripe.automation.SmokeTests;
+import com.wsl.modules.stripe.automation.StripeTestParent;
+import com.wsl.modules.stripe.complextypes.CreateAccountParameters;
 
 public class CreateAccountTestCases
     extends StripeTestParent
@@ -48,9 +43,7 @@ public class CreateAccountTestCases
     public void setup()
         throws Exception
     {    	
-    	initializeTestRunMessage("createAccountTestData");
-    	email = "test" + UUID.randomUUID() + "@gmail.com";
-    	upsertOnTestRunMessage("email", email);
+    	initializeTestRunMessage("createAccountTestData");    	
     }
 
     @Category({
@@ -65,7 +58,9 @@ public class CreateAccountTestCases
         assertNotNull(result);
         Account account = (Account) result;
         assertNotNull(account.getId());
-        assertEquals(this.email, account.getEmail());
+        Map<String, Object> expectedBean = getBeanFromContext("createAccountTestData");
+        CreateAccountParameters params = (CreateAccountParameters) expectedBean.get("createAccountParameters");
+        assertEquals(params.getEmail(), account.getEmail());
     }
     
     @Category({
@@ -76,7 +71,7 @@ public class CreateAccountTestCases
     public void testCreateAccountWithInvalidParams()
         throws Exception
     {
-    	upsertOnTestRunMessage("country", "InvalidCountry");
+    	initializeTestRunMessage("createAccountWithInvalidParamsTestData");
         try{
         	runFlowAndGetPayload("create-account");
     		fail("Error should be thrown");
@@ -101,8 +96,9 @@ public class CreateAccountTestCases
     	Object result = runFlowAndGetPayload("create-account");
         assertNotNull(result);
         Account account = (Account) result;
-        assertNotNull(account.getId());
-        assertEquals(this.email, account.getEmail());
+        assertNotNull(account.getId());        
+        CreateAccountParameters params = (CreateAccountParameters) expectedBean.get("createAccountParameters");
+        assertEquals(params.getEmail(), account.getEmail());        
         // Note: The API does not return the Legal Entity at this time, even when it is created correctly. As such, the assertations for this test are minimalistic, but the full creation of Legal Entity has occurred.      
     }
     
@@ -121,7 +117,8 @@ public class CreateAccountTestCases
         assertNotNull(result);
         Account account = (Account) result;
         assertNotNull(account.getId());
-        assertEquals(this.email, account.getEmail());
+        CreateAccountParameters params = (CreateAccountParameters) expectedBean.get("createAccountParameters");
+        assertEquals(params.getEmail(), account.getEmail());
         // Note: The API does not return the Legal Entity at this time, even when it is created correctly. As such, the assertations for this test are minimalistic, but the full creation of Legal Entity has occurred.      
     }
 }

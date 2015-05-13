@@ -20,6 +20,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Iterator;
+import java.util.Map;
 
 import com.stripe.model.CouponCollection;
 import com.stripe.model.Customer;
@@ -31,6 +32,7 @@ import com.stripe.model.Subscription;
 import com.wsl.modules.stripe.automation.RegressionTests;
 import com.wsl.modules.stripe.automation.SmokeTests;
 import com.wsl.modules.stripe.automation.StripeTestParent;
+import com.wsl.modules.stripe.complextypes.CreateSubscriptionParameters;
 
 import org.junit.After;
 import org.junit.Before;
@@ -59,8 +61,12 @@ public class RetrieveAllInvoicesTestCases
         Plan plan = (Plan)result;
         this.planId = plan.getId();
         initializeTestRunMessage("createSubscriptionTestData");
-        upsertOnTestRunMessage("customerId", customerId);
-        upsertOnTestRunMessage("plan", planId);
+        Map<String, Object> tempData = getBeanFromContext("createSubscriptionTestData");
+    	CreateSubscriptionParameters params = (CreateSubscriptionParameters) tempData.get("createSubscriptionParameters");
+    	params.setCustomerId(customerId);
+    	params.setPlan(this.planId);
+    	
+    	upsertOnTestRunMessage("createSubscriptionParameters", params);
         result = runFlowAndGetPayload("create-subscription");
         Subscription sub = (Subscription) result;
 		this.subscriptionId = sub.getId();

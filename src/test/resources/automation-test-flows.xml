@@ -43,7 +43,7 @@
 </flow>
     <flow doc:name="ListAllPlans" name="list-all-plans">
 	<stripe:list-all-plans config-ref="Stripe">
-		<stripe:created ref="#[flowVars.created]"/>
+		<stripe:list-all-plans-parameters ref="#[flowVars.listAllPlansParameters]"/>
 	</stripe:list-all-plans>
 </flow>
 <flow doc:name="CreateCoupon" name="create-coupon">
@@ -63,8 +63,8 @@
 	<stripe:delete-coupon config-ref="Stripe" id="#[flowVars.id]"/>
 </flow>
     <flow doc:name="ListAllCoupons" name="list-all-coupons">
-	<stripe:list-all-coupons config-ref="Stripe" createdTimestamp="#[flowVars.createdTimestamp]" endingBefore="#[flowVars.endingBefore]" limit="#[flowVars.limit]" startingAfter="#[flowVars.startingAfter]">
-		<stripe:created ref="#[flowVars.created]"/>
+	<stripe:list-all-coupons config-ref="Stripe">
+		<stripe:list-all-coupons-parameters ref="#[flowVars.listAllCouponsParameters]"/>
 	</stripe:list-all-coupons>
 </flow>
 <flow doc:name="RetrieveBalance" name="retrieve-balance">
@@ -74,9 +74,8 @@
 	<stripe:retrieve-balance-transaction config-ref="Stripe" id="#[flowVars.id]"/>
 </flow>
     <flow doc:name="ListAllBalanceHistory" name="list-all-balance-history">
-	<stripe:list-all-balance-history availableOnTimestamp="#[flowVars.availableOnTimestamp]" config-ref="Stripe" createdTimestamp="#[flowVars.createdTimestamp]" currency="#[flowVars.currency]" endingBefore="#[flowVars.endingBefore]" limit="#[flowVars.limit]" sourceId="#[flowVars.sourceId]" startingAfter="#[flowVars.startingAfter]" transfer="#[flowVars.transfer]" type="#[flowVars.startingAfter]">
-		<stripe:available-on ref="#[flowVars.availableOn]"/>
-		<stripe:created ref="#[flowVars.created]"/>
+	<stripe:list-all-balance-history config-ref="Stripe">
+		<stripe:list-all-balance-history-parameters ref="#[flowVars.listAllBalanceHistoryParameters]"/>
 	</stripe:list-all-balance-history>
 </flow>
 <flow doc:name="CreateCard" name="create-card">
@@ -99,10 +98,8 @@
 	<stripe:list-all-customer-cards config-ref="Stripe" endingBefore="#[flowVars.endingBefore]" limit="#[flowVars.limit]" ownerId="#[flowVars.ownerId]" startingAfter="#[flowVars.startingAfter]"/>
 </flow>
 <flow doc:name="CreateCharge" name="create-charge">
-	<stripe:create-charge amount="#[flowVars.amount]" applicationFee="#[flowVars.applicationFee]" capture="#[flowVars.capture]" config-ref="Stripe" currency="#[flowVars.currency]" customerId="#[flowVars.customerId]" description="#[flowVars.description]" destination="#[flowVars.destination]" receiptEmail="#[flowVars.receiptEmail]" statementDescriptor="#[flowVars.statementDescriptor]">
-		<stripe:source ref="#[flowVars.source]"/>
-		<stripe:metadata ref="#[flowVars.metadata]"/>
-		<stripe:shipping ref="#[flowVars.shipping]"/>	
+	<stripe:create-charge config-ref="Stripe">
+		<stripe:create-charge-parameters ref="#[flowVars.createChargeParameters]"/>		
 	</stripe:create-charge>
 </flow>
     <flow doc:name="RetrieveCharge" name="retrieve-charge">
@@ -122,18 +119,16 @@
 	</stripe:list-all-charges>
 </flow>
 <flow doc:name="CreateSubscription" name="create-subscription">
-	<stripe:create-subscription applicationFeePercent="#[flowVars.applicationFeePercent]" config-ref="Stripe" coupon="#[flowVars.coupon]" customerId="#[flowVars.customerId]" plan="#[flowVars.plan]" quantity="#[flowVars.quantity]" sourceToken="#[flowVars.sourceToken]" taxPercent="#[flowVars.taxPercent]" trialEnd="#[flowVars.trialEnd]">
-		<stripe:source ref="#[flowVars.source]"/>
-		<stripe:metadata ref="#[flowVars.metadata]"/>
+	<stripe:create-subscription config-ref="Stripe">
+		<stripe:create-subscription-parameters ref="#[flowVars.createSubscriptionParameters]"/>
 	</stripe:create-subscription>
 </flow>
     <flow doc:name="RetrieveSubscription" name="retrieve-subscription">
 	<stripe:retrieve-subscription config-ref="Stripe" customerId="#[flowVars.customerId]" subscriptionId="#[flowVars.subscriptionId]"/>
 </flow>
     <flow doc:name="UpdateSubscription" name="update-subscription">
-	<stripe:update-subscription applicationFeePercent="#[flowVars.applicationFeePercent]" config-ref="Stripe" coupon="#[flowVars.coupon]" customerId="#[flowVars.customerId]" plan="#[flowVars.plan]" prorate="#[flowVars.prorate]" quantity="#[flowVars.quantity]" sourceToken="#[flowVars.sourceToken]" subscriptionId="#[flowVars.subscriptionId]" taxPercent="#[flowVars.taxPercent]" trialEnd="#[flowVars.trialEnd]">
-		<stripe:source ref="#[flowVars.source]"/>
-		<stripe:metadata ref="#[flowVars.metadata]"/>
+	<stripe:update-subscription config-ref="Stripe" >
+		<stripe:update-subscription-parameters ref="#[flowVars.updateSubscriptionParameters]"/>		
 	</stripe:update-subscription>
 </flow>
     <flow doc:name="CancelSubscription" name="cancel-subscription">
@@ -196,24 +191,16 @@
 	</stripe:list-all-application-fees>	
 </flow>
 <flow doc:name="CreateAccount" name="create-account">
-	<stripe:create-account businessName="#[flowVars.businessName]" businessUrl="#[flowVars.businessUrl]" config-ref="Stripe" country="#[flowVars.country]" debitNegativeBalances="#[flowVars.debitNegativeBalances]" defaultCurrency="#[flowVars.defaultCurrency]" email="#[flowVars.email]" managed="#[flowVars.managed]" productDescription="#[flowVars.productDescription]" statementDescriptor="#[flowVars.statementDescriptor]" supportPhone="#[flowVars.supportPhone]">
-		<stripe:bank-account ref="#[flowVars.bankAccount]"/>
-		<stripe:legal-entity ref="#[flowVars.legalEntity]"/>
-		<stripe:tos-acceptance ref="#[flowVars.tosAcceptance]"/>
-		<stripe:transfer-schedule ref="#[flowVars.transferSchedule]"/>
-		<stripe:metadata ref="#[flowVars.testMetadata]"/>		
+	<stripe:create-account config-ref="Stripe" >
+		<stripe:create-account-parameters ref="#[flowVars.createAccountParameters]"/>
 	</stripe:create-account>
 </flow>
     <flow doc:name="RetrieveAccount" name="retrieve-account">
 	<stripe:retrieve-account config-ref="Stripe" id="#[flowVars.id]"/>
 </flow>
     <flow doc:name="UpdateAccount" name="update-account">
-	<stripe:update-account businessName="#[flowVars.businessName]" businessUrl="#[flowVars.businessUrl]" config-ref="Stripe" debitNegativeBalances="#[flowVars.debitNegativeBalances]" defaultCurrency="#[flowVars.defaultCurrency]" email="#[flowVars.email]" id="#[flowVars.id]" productDescription="#[flowVars.productDescription]" statementDescriptor="#[flowVars.statementDescriptor]" supportPhone="#[flowVars.supportPhone]">
-		<stripe:bank-account ref="#[flowVars.bankAccount]"/>
-		<stripe:legal-entity ref="#[flowVars.legalEntity]"/>
-		<stripe:tos-acceptance ref="#[flowVars.tosAcceptance]"/>
-		<stripe:transfer-schedule ref="#[flowVars.transferSchedule]"/>
-		<stripe:metadata ref="#[flowVars.testMetadata]"/>
+	<stripe:update-account config-ref="Stripe" >
+		<stripe:update-account-parameters ref="#[flowVars.updateAccountParameters]"/>		
 	</stripe:update-account>
 </flow>
 <flow doc:name="CreateCardToken" name="create-card-token">
@@ -233,7 +220,9 @@
 	<stripe:retrieve-event config-ref="Stripe" id="#[flowVars.id]"/>
 </flow>
    <flow doc:name="ListAllEvents" name="list-all-events">
-	<stripe:list-all-events config-ref="Stripe" createdTimestamp="#[flowVars.createdTimestamp]" endingBefore="#[flowVars.endingBefore]" limit="#[limit]" startingAfter="#[startingAfter]" type="#[type]"/>		
+	<stripe:list-all-events config-ref="Stripe" createdTimestamp="#[flowVars.createdTimestamp]" endingBefore="#[flowVars.endingBefore]" limit="#[limit]" startingAfter="#[startingAfter]" type="#[type]">
+		<stripe:created ref="#[flowVars.created]"/>
+	</stripe:list-all-events>		
 </flow>
 <flow doc:name="CreateApplicationFeeRefund" name="create-application-fee-refund">
 	<stripe:create-application-fee-refund amount="#[flowVars.amount]" config-ref="Stripe" id="#[flowVars.id]"/>

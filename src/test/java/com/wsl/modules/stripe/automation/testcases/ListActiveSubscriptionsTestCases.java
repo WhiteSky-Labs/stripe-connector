@@ -22,6 +22,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.util.Iterator;
+import java.util.Map;
 
 import com.stripe.model.BalanceTransaction;
 import com.stripe.model.BalanceTransactionCollection;
@@ -32,6 +33,7 @@ import com.stripe.model.Subscription;
 import com.wsl.modules.stripe.automation.RegressionTests;
 import com.wsl.modules.stripe.automation.SmokeTests;
 import com.wsl.modules.stripe.automation.StripeTestParent;
+import com.wsl.modules.stripe.complextypes.CreateSubscriptionParameters;
 
 import org.junit.After;
 import org.junit.Before;
@@ -61,8 +63,11 @@ public class ListActiveSubscriptionsTestCases
         Plan plan = (Plan)result;
         this.planId = plan.getId();
         initializeTestRunMessage("createSubscriptionTestData");
-        upsertOnTestRunMessage("customerId", customerId);
-        upsertOnTestRunMessage("plan", planId);
+        Map<String, Object> subData = getBeanFromContext("createSubscriptionTestData");
+        CreateSubscriptionParameters params = (CreateSubscriptionParameters) subData.get("createSubscriptionParameters");
+        params.setCustomerId(customerId);
+        params.setPlan(planId);
+        upsertOnTestRunMessage("createSubscriptionParameters", params);
         result = runFlowAndGetPayload("create-subscription");
         Subscription sub = (Subscription) result;
 		this.subscriptionId = sub.getId();

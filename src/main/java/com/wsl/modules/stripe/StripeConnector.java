@@ -18,9 +18,11 @@ import java.util.Map;
 
 import org.mule.api.annotations.ConnectionStrategy;
 import org.mule.api.annotations.Connector;
+import org.mule.api.annotations.MetaDataScope;
 import org.mule.api.annotations.Processor;
 import org.mule.api.annotations.ReconnectOn;
 import org.mule.api.annotations.param.Default;
+import org.mule.api.annotations.param.MetaDataKeyParamAffectsType;
 import org.mule.api.annotations.param.Optional;
 
 import com.stripe.model.Account;
@@ -72,11 +74,19 @@ import com.wsl.modules.stripe.client.StripeSubscriptionClient;
 import com.wsl.modules.stripe.client.StripeTokenClient;
 import com.wsl.modules.stripe.complextypes.Acceptance;
 import com.wsl.modules.stripe.complextypes.BankAccount;
+import com.wsl.modules.stripe.complextypes.CreateAccountParameters;
+import com.wsl.modules.stripe.complextypes.CreateChargeParameters;
+import com.wsl.modules.stripe.complextypes.CreateSubscriptionParameters;
 import com.wsl.modules.stripe.complextypes.FilePurpose;
 import com.wsl.modules.stripe.complextypes.LegalEntity;
+import com.wsl.modules.stripe.complextypes.ListAllBalanceHistoryParameters;
+import com.wsl.modules.stripe.complextypes.ListAllCouponsParameters;
+import com.wsl.modules.stripe.complextypes.ListAllPlansParameters;
 import com.wsl.modules.stripe.complextypes.Source;
 import com.wsl.modules.stripe.complextypes.TimeRange;
 import com.wsl.modules.stripe.complextypes.TransferSchedule;
+import com.wsl.modules.stripe.complextypes.UpdateAccountParameters;
+import com.wsl.modules.stripe.complextypes.UpdateSubscriptionParameters;
 import com.wsl.modules.stripe.exceptions.StripeConnectorException;
 import com.wsl.modules.stripe.strategy.ConnectorConnectionStrategy;
 
@@ -275,18 +285,14 @@ public class StripeConnector {
      *
      * {@sample.xml ../../../doc/stripe-connector.xml.sample stripe:list-all-plans}
      *
-     * @param createdTimestamp A filter on the list based on the object created field. The value can be a string with an integer Unix timestamp.
-     * @param created A filter on the list based on the object created field. The value can be a dictionary containing gt, gte, lt and/or lte values. You cannot supply a created value and this dictionary at the same time.
-     * @param endingBefore A cursor for use in pagination. ending_before is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with obj_bar, your subsequent call can include ending_before=obj_bar in order to fetch the previous page of the list.
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items.
-     * @param startingAfter A cursor for use in pagination. starting_after is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with obj_foo, your subsequent call can include starting_after=obj_foo in order to fetch the next page of the list.
+     * @param listAllPlansParameters An object that wraps the parameters for List All Plans
      * @return PlanCollection the plans that matched the criteria
      * @throws StripeConnectorException when there is an issue listing plans
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public PlanCollection listAllPlans(@Optional String createdTimestamp, @Optional TimeRange created, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter) throws StripeConnectorException{
-    	return planClient.listAllPlans(createdTimestamp, created, endingBefore, limit, startingAfter);
+    public PlanCollection listAllPlans(@Default("#[payload]") ListAllPlansParameters listAllPlansParameters) throws StripeConnectorException{
+    	return planClient.listAllPlans(listAllPlansParameters.getCreatedTimestamp(), listAllPlansParameters.getCreated(), listAllPlansParameters.getEndingBefore(), listAllPlansParameters.getLimit(), listAllPlansParameters.getStartingAfter());
     }
     
     /**
@@ -368,19 +374,15 @@ public class StripeConnector {
      *
      * {@sample.xml ../../../doc/stripe-connector.xml.sample stripe:list-all-coupons}
      *
-     * @param createdTimestamp A filter on the list based on the object created field. The value can be a string with an integer Unix timestamp,...
-     * @param created ... or it can be a dictionary with the following options: gt, gte, lt, lte
-     * @param endingBefore A cursor for use in pagination. ending_before is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with obj_bar, your subsequent call can include ending_before=obj_bar in order to fetch the previous page of the list.
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items.
-     * @param startingAfter A cursor for use in pagination. starting_after is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with obj_foo, your subsequent call can include starting_after=obj_foo in order to fetch the next page of the list.     
+     * @param listAllCouponsParameters A wrapper class for the parameters
      * @return A Map with a data property that contains an array of up to limit coupons, starting after coupon starting_after. Each entry in the array is a separate coupon object. If no more coupons are available, the resulting array will be empty. This request should never throw an error.
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public CouponCollection listAllCoupons(@Optional String createdTimestamp, @Optional TimeRange created, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter) 
+    public CouponCollection listAllCoupons(@Default("#[payload]") ListAllCouponsParameters listAllCouponsParameters) 
     		throws StripeConnectorException {
-    	return couponClient.listAllCoupons(createdTimestamp, created, endingBefore, limit, startingAfter);
+    	return couponClient.listAllCoupons(listAllCouponsParameters.getCreatedTimestamp(), listAllCouponsParameters.getCreated(), listAllCouponsParameters.getEndingBefore(), listAllCouponsParameters.getLimit(), listAllCouponsParameters.getStartingAfter());
     }
     
     /**
@@ -419,25 +421,15 @@ public class StripeConnector {
      *
      * {@sample.xml ../../../doc/stripe-connector.xml.sample stripe:list-all-balance-history}
      * 
-     * @param availableOnTimestamp A filter on the list based on the object available_on field. The value can be a string with an integer Unix timestamp,
-     * @param availableOn ... or it can be a dictionary with the following options: gt, gte, lt, lte
-     * @param createdTimestamp A filter on the list based on the object created field. The value can be a string with an integer Unix timestamp,
-     * @param created ... or it can be a dictionary with the following options: gt, gte, lt, lte
-     * @param currency The Currency Code
-     * @param endingBefore A cursor for use in pagination. ending_before is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, starting with obj_bar, your subsequent call can include ending_before=obj_bar in order to fetch the previous page of the list.
-     * @param limit A limit on the number of objects to be returned. Limit can range between 1 and 100 items.
-     * @param sourceId Only returns transactions that are related to the specified Stripe object ID (e.g. filtering by a charge ID will return all charge and refund transactions).
-     * @param startingAfter A cursor for use in pagination. starting_after is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with obj_foo, your subsequent call can include starting_after=obj_foo in order to fetch the next page of the list.
-     * @param transfer For automatic Stripe transfers only, only returns transactions that were transferred out on the specified transfer ID.
-     * @param type Only returns transactions of the given type. One of: charge, refund, adjustment, application_fee, application_fee_refund, transfer, or transfer_failure 
+     * @param listAllBalanceHistoryParameters Wrapper object for list all balance history parameters
      * @return Returns a balance object for the API key used.
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public BalanceTransactionCollection listAllBalanceHistory(@Optional String availableOnTimestamp, @Optional TimeRange availableOn, @Optional String createdTimestamp, @Optional TimeRange created, @Optional String currency, @Optional String endingBefore, @Default("0") int limit, @Optional String sourceId, @Optional String startingAfter, @Optional String transfer, @Optional String type)    
+    public BalanceTransactionCollection listAllBalanceHistory(@Default("#[payload]") ListAllBalanceHistoryParameters listAllBalanceHistoryParameters)    
     		throws StripeConnectorException {
-    	return balanceClient.listAllBalanceHistory(availableOnTimestamp, availableOn, createdTimestamp, created, currency, endingBefore, limit, sourceId, startingAfter, transfer, type);
+    	return balanceClient.listAllBalanceHistory(listAllBalanceHistoryParameters.getAvailableOnTimestamp(), listAllBalanceHistoryParameters.getAvailableOn(), listAllBalanceHistoryParameters.getCreatedTimestamp(), listAllBalanceHistoryParameters.getCreated(), listAllBalanceHistoryParameters.getCurrency(), listAllBalanceHistoryParameters.getEndingBefore(), listAllBalanceHistoryParameters.getLimit(), listAllBalanceHistoryParameters.getSourceId(), listAllBalanceHistoryParameters.getStartingAfter(), listAllBalanceHistoryParameters.getTransfer(), listAllBalanceHistoryParameters.getType());
     }
     
     /**
@@ -455,7 +447,7 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public Card createCard(String ownerId, @Optional String sourceToken, @Optional Source source)    
+    public Card createCard(String ownerId, @Optional String sourceToken, @Default("#[payload]") Source source)    
     		throws StripeConnectorException {
     	return cardClient.createCard(ownerId, sourceToken, source);
     }
@@ -552,27 +544,15 @@ public class StripeConnector {
      * 
      * {@sample.xml ../../../doc/stripe-connector.xml.sample stripe:create-charge}
      * 
-     * @param amount A positive integer in the smallest currency unit (e.g 100 cents to charge $1.00, or 1 to charge ¥1, a 0-decimal currency) representing how much to charge the card. The minimum amount is $0.50 (or equivalent in charge currency).
-     * @param currency 3-letter ISO code for currency 
-     * @param customerId The ID of an existing customer that will be charged in this request.
-     * 					either source or customer is required
-     * @param source A payment source to be charged, such as a credit card. If you also pass a customer ID, the source must be the ID of a source belonging to the customer. Otherwise, if you do not pass a customer ID, the source you provide must be a Map containing a user's credit card details. Although not all information is required, the extra info helps prevent fraud.
-     * @param description An arbitrary string which you can attach to a charge object. It is displayed when in the web interface alongside the charge. Note that if you use Stripe to send automatic email receipts to your customers, your receipt emails will include the description of the charge(s) that they are describing.
-     * @param metadata A set of key/value pairs that you can attach to a charge object. It can be useful for storing additional information about the customer in a structured format. It's often a good idea to store an email address in metadata for tracking later.
-     * @param capture Whether or not to immediately capture the charge. When false, the charge issues an authorization (or pre-authorization), and will need to be captured later. Uncaptured charges expire in 7 days. For more information, see authorizing charges and settling later.
-     * @param statementDescriptor An arbitrary string to be displayed on your customer's credit card statement. This may be up to 22 characters. As an example, if your website is RunClub and the item you're charging for is a race ticket, you may want to specify a statement_descriptor of RunClub 5K race ticket. The statement description may not include <>"' characters, and will appear on your customer's statement in capital letters. Non-ASCII characters are automatically stripped. While most banks display this information consistently, some may display it incorrectly or not at all.
-     * @param receiptEmail The email address to send this charge's receipt to. The receipt will not be sent until the charge is paid. If this charge is for a customer, the email address specified here will override the customer's email address. Receipts will not be sent for test mode charges. If receipt_email is specified for a charge in live mode, a receipt will be sent regardless of your email settings.
-     * @param destination An account to make the charge on behalf of. If specified, the charge will be attributed to the destination account for tax reporting, and the funds from the charge will be transferred to the destination account. The ID of the resulting transfer will be returned in the transfer field of the response. See the documentation for details.
-     * @param applicationFee A fee in cents that will be applied to the charge and transferred to the application owner's Stripe account. To use an application fee, the request must be made on behalf of another account, using the Stripe-Account header, an OAuth key, or the destination parameter. For more information, see the application fees documentation.
-     * @param shipping Shipping information for the charge. Helps prevent fraud on charges for physical goods.
+     * @param createChargeParameters Wrapper object for Create Charge Parameters
      * @return Returns the created Charge.
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public Charge createCharge(int amount, String currency, @Optional String customerId, @Optional Source source, @Optional String description, @Default("#[payload]") Map<String, Object> metadata, @Default("true") boolean capture, @Optional String statementDescriptor, @Optional String receiptEmail, @Optional String destination, @Default("0") int applicationFee, @Optional Map<String, String> shipping)    
+    public Charge createCharge(@Default("#[payload]") CreateChargeParameters createChargeParameters)    
     		throws StripeConnectorException {
-    	return chargeClient.createCharge(amount, currency, customerId, source, description, metadata, capture, statementDescriptor, receiptEmail, destination, applicationFee, shipping);
+    	return chargeClient.createCharge(createChargeParameters.getAmount(), createChargeParameters.getCurrency(), createChargeParameters.getCustomerId(), createChargeParameters.getSource(), createChargeParameters.getDescription(), createChargeParameters.getMetadata(), createChargeParameters.isCapture(), createChargeParameters.getStatementDescriptor(), createChargeParameters.getReceiptEmail(), createChargeParameters.getDestination(), createChargeParameters.getApplicationFee(), createChargeParameters.getShipping());
     }
     
     /**
@@ -649,7 +629,7 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public ChargeCollection listAllCharges(@Optional String createdTimestamp, @Optional TimeRange created, @Optional String customer, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter)    
+    public ChargeCollection listAllCharges(@Optional String createdTimestamp, @Default("#[payload]") TimeRange created, @Optional String customer, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter)    
     		throws StripeConnectorException {
     	return chargeClient.listAllCharges(createdTimestamp, created, customer, endingBefore, limit, startingAfter);
     }
@@ -659,24 +639,15 @@ public class StripeConnector {
      * 
      * {@sample.xml ../../../doc/stripe-connector.xml.sample stripe:create-subscription}
      * 
-     * @param customerId The ID of the customer to create the subscription on
-     * @param plan The identifier of the plan to subscribe the customer to.
-     * @param coupon The code of the coupon to apply to this subscription. A coupon applied to a subscription will only affect invoices created for that particular subscription.
-     * @param trialEnd Unix timestamp representing the end of the trial period the customer will get before being charged for the first time. If set, trial_end will override the default trial period of the plan the customer is being subscribed to. The special value now can be provided to end the customer's trial immediately.
-     * @param sourceToken The source can either be a token, like the ones returned by our Stripe.js, ...
-     * @param source ...or a Map containing a user's credit card details (with the options shown below). You must provide a source if the customer does not already have a valid source attached, and you are subscribing the customer for a plan that is not free. Passing source will create a new source object, make it the customer default source, and delete the old customer default if one exists. If you want to add an additional source to use with subscriptions, instead use the card creation API to add the card and then the customer update API to set it as the default. Whenever you attach a card to a customer, Stripe will automatically validate the card.
-     * @param quantity The quantity you'd like to apply to the subscription you're creating. For example, if your plan is $10/user/month, and your customer has 5 users, you could pass 5 as the quantity to have the customer charged $50 (5 x $10) monthly. If you update a subscription but don't change the plan ID (e.g. changing only the trial_end), the subscription will inherit the old subscription's quantity attribute unless you pass a new quantity parameter. If you update a subscription and change the plan ID, the new subscription will not inherit the quantity attribute and will default to 1 unless you pass a quantity parameter.
-     * @param applicationFeePercent A positive decimal (with at most two decimal places) between 1 and 100. This represents the percentage of the subscription invoice subtotal that will be transferred to the application owner’s Stripe account. The request must be made with an OAuth key in order to set an application fee percentage. For more information, see the application fees documentation.
-     * @param taxPercent A positive decimal (with at most two decimal places) between 1 and 100. This represents the percentage of the subscription invoice subtotal that will be calculated and added as tax to the final amount each billing period. For example, a plan which charges $10/month with a tax_percent of 20.0 will charge $12 per invoice.
-     * @param metadata A set of key/value pairs that you can attach to a subscription object. It can be useful for storing additional information about the subscription in a structured format.
+     * @param createSubscriptionParameters The Wrapped Subscription Parameters
      * @return Returns the newly created subscription object if the call succeeded. If the customer has no card or the attempted charge fails, this call throws an error (unless the specified plan is free or has a trial period).
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public Subscription createSubscription(String customerId, String plan, @Optional String coupon, @Optional String trialEnd, @Optional String sourceToken, @Optional Source source, @Default("1") int quantity, @Default("0") double applicationFeePercent, @Default("0") double taxPercent, @Default("#[payload]") Map<String, Object> metadata)    
+    public Subscription createSubscription(@Default("#[payload]") CreateSubscriptionParameters createSubscriptionParameters)    
     		throws StripeConnectorException {
-    	return subClient.createSubscription(customerId, plan, coupon, trialEnd, sourceToken, source, quantity, applicationFeePercent, taxPercent, metadata);
+    	return subClient.createSubscription(createSubscriptionParameters.getCustomerId(), createSubscriptionParameters.getPlan(), createSubscriptionParameters.getCoupon(), createSubscriptionParameters.getTrialEnd(), createSubscriptionParameters.getSourceToken(), createSubscriptionParameters.getSource(), createSubscriptionParameters.getQuantity(), createSubscriptionParameters.getApplicationFeePercent(), createSubscriptionParameters.getTaxPercent(), createSubscriptionParameters.getMetadata());
     }
     
     /**
@@ -702,26 +673,15 @@ public class StripeConnector {
      * 
      * {@sample.xml ../../../doc/stripe-connector.xml.sample stripe:update-subscription}
      * 
-     * @param customerId The ID of the customer to create the subscription on
-     * @param subscriptionId The ID of the subscription to update
-     * @param plan The identifier of the plan to update the subscription to. If omitted, the subscription will not change plans.
-     * @param coupon The code of the coupon to apply to the customer if you would like to apply it at the same time as updating the subscription.
-     * @param prorate Flag telling us whether to prorate switching plans during a billing cycle.
-     * @param trialEnd Unix timestamp representing the end of the trial period the customer will get before being charged for the first time. If set, trial_end will override the default trial period of the plan the customer is being subscribed to. The special value now can be provided to end the customer's trial immediately.
-     * @param sourceToken The source can either be a token, like the ones returned by our Stripe.js, ...
-     * @param source ...or a Map containing a user's credit card details (with the options shown below). You must provide a source if the customer does not already have a valid source attached, and you are subscribing the customer for a plan that is not free. Passing source will create a new source object, make it the customer default source, and delete the old customer default if one exists. If you want to add an additional source to use with subscriptions, instead use the card creation API to add the card and then the customer update API to set it as the default. Whenever you attach a card to a customer, Stripe will automatically validate the card.
-     * @param quantity The quantity you'd like to apply to the subscription you're creating. For example, if your plan is $10/user/month, and your customer has 5 users, you could pass 5 as the quantity to have the customer charged $50 (5 x $10) monthly. If you update a subscription but don't change the plan ID (e.g. changing only the trial_end), the subscription will inherit the old subscription's quantity attribute unless you pass a new quantity parameter. If you update a subscription and change the plan ID, the new subscription will not inherit the quantity attribute and will default to 1 unless you pass a quantity parameter.
-     * @param applicationFeePercent A positive decimal (with at most two decimal places) between 1 and 100. This represents the percentage of the subscription invoice subtotal that will be transferred to the application owner’s Stripe account. The request must be made with an OAuth key in order to set an application fee percentage. For more information, see the application fees documentation.
-     * @param taxPercent A positive decimal (with at most two decimal places) between 1 and 100. This represents the percentage of the subscription invoice subtotal that will be calculated and added as tax to the final amount each billing period. For example, a plan which charges $10/month with a tax_percent of 20.0 will charge $12 per invoice.
-     * @param metadata A set of key/value pairs that you can attach to a subscription object. It can be useful for storing additional information about the subscription in a structured format.
+     * @param updateSubscriptionParameters Wrapper for the complex Update Subscription Parameters
      * @return Returns the updated Subscription
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public Subscription updateSubscription(String customerId, String subscriptionId, String plan, @Optional String coupon, @Default("true") boolean prorate, @Optional String trialEnd, @Optional String sourceToken, @Optional Source source, @Default("1") int quantity, @Default("0") double applicationFeePercent, @Default("0") double taxPercent, @Default("#[payload]") Map<String, Object> metadata)    
+    public Subscription updateSubscription(@Default("#[payload]") UpdateSubscriptionParameters updateSubscriptionParameters)    
     		throws StripeConnectorException {
-    	return subClient.updateSubscription(customerId, subscriptionId, plan, coupon, prorate, trialEnd, sourceToken, source, quantity, applicationFeePercent, taxPercent, metadata);
+    	return subClient.updateSubscription(updateSubscriptionParameters.getCustomerId(), updateSubscriptionParameters.getSubscriptionId(), updateSubscriptionParameters.getPlan(), updateSubscriptionParameters.getCoupon(), updateSubscriptionParameters.isProrate(), updateSubscriptionParameters.getTrialEnd(), updateSubscriptionParameters.getSourceToken(), updateSubscriptionParameters.getSource(), updateSubscriptionParameters.getQuantity(), updateSubscriptionParameters.getApplicationFeePercent(), updateSubscriptionParameters.getTaxPercent(), updateSubscriptionParameters.getMetadata());
     }
     
     /**
@@ -979,7 +939,7 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public InvoiceCollection retrieveAllInvoices(@Optional String customerId, @Optional String dateTimestamp, @Optional TimeRange date, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter)
+    public InvoiceCollection retrieveAllInvoices(@Optional String customerId, @Optional String dateTimestamp, @Default("#[payload]") TimeRange date, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter)
     		throws StripeConnectorException {
     	return invoiceClient.retrieveAllInvoices(customerId, dateTimestamp, date, endingBefore, limit, startingAfter);
     }
@@ -1016,7 +976,7 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public ApplicationFeeCollection listAllApplicationFees(@Optional String charge, @Optional String createdTimestamp, @Optional TimeRange created, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter)
+    public ApplicationFeeCollection listAllApplicationFees(@Optional String charge, @Optional String createdTimestamp, @Default("#[payload]") TimeRange created, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter)
     		throws StripeConnectorException {
     	return feeClient.listAllApplicationFees(charge, createdTimestamp, created, endingBefore, limit, startingAfter);
     }
@@ -1026,29 +986,15 @@ public class StripeConnector {
 	 * 
      * {@sample.xml ../../../doc/stripe-connector.xml.sample stripe:create-account}
      * 
-     * @param managed Whether you'd like to create a managed or standalone account. Managed accounts have extra parameters available to them, and require that you, the platform, handle all communication with the account holder. Standalone accounts are normal Stripe accounts: Stripe will email the account holder to setup a username and password, and handle all account management directly with them.
-     * @param country The country the account holder resides in or that the business is legally established in. For example, if you are in the United States and the business you’re creating an account for is legally represented in Canada, you would use “CA” as the country for the account being created.
-     * @param email The email address of the account holder. For standalone accounts, Stripe will email your user with instructions for how to set up their account. For managed accounts, this is only to make the account easier to identify to you: Stripe will never directly reach out to your users.
-     * @param businessName The publicly sharable name for this account
-     * @param businessUrl The URL that best shows the service or product provided for this account
-     * @param supportPhone A publicly shareable phone number that can be reached for support for this account
-     * @param bankAccount A bank account to attach to the account. 
-     * @param debitNegativeBalances A boolean for whether or not Stripe should try to reclaim negative balances from the account holder’s bank account. 
-     * @param defaultCurrency Three-letter ISO currency code representing the default currency for the account.
-     * @param legalEntity Information about the holder of this account, i.e. the user receiving funds from this account
-     * @param productDescription Internal-only description of the product being sold or service being provided by this account. It’s used by Stripe for risk and underwriting purposes.
-     * @param statementDescriptor The text that will appear on credit card statements by default if a charge is being made directly on the account.
-     * @param tosAcceptance Details on who accepted the Stripe terms of service, and when they accepted it.
-     * @param transferSchedule Details on when this account will make funds from charges available, and when they will be paid out to the account holder’s bank account. 
-	 * @param metadata A set of key/value pairs that you can attach to an account object. It can be useful for storing additional information about the account in a structured format. This will be unset if you POST an empty value.  
+     * @param createAccountParameters Wrapper for the complex parameter set
      * @return Returns an account object if the call succeeded.
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public Account createAccount(@Default("false") boolean managed, @Optional String country, @Optional String email, @Optional String businessName, @Optional String businessUrl, @Optional String supportPhone, @Optional BankAccount bankAccount, @Default("false") boolean debitNegativeBalances, @Optional String defaultCurrency, @Optional LegalEntity legalEntity, @Optional String productDescription, @Optional String statementDescriptor, @Optional Acceptance tosAcceptance, @Optional TransferSchedule transferSchedule, @Default("#[payload]") Map<String, Object> metadata)
+    public Account createAccount(@Default("#[payload]") CreateAccountParameters createAccountParameters)
     		throws StripeConnectorException {
-    	return accountClient.createAccount(managed, country, email, businessName, businessUrl, supportPhone, bankAccount, debitNegativeBalances, defaultCurrency, legalEntity, productDescription, statementDescriptor, tosAcceptance, transferSchedule, metadata);
+    	return accountClient.createAccount(createAccountParameters.isManaged(), createAccountParameters.getCountry(), createAccountParameters.getEmail(), createAccountParameters.getBusinessName(), createAccountParameters.getBusinessUrl(), createAccountParameters.getSupportPhone(), createAccountParameters.getBankAccount(), createAccountParameters.isDebitNegativeBalances(), createAccountParameters.getDefaultCurrency(), createAccountParameters.getLegalEntity(), createAccountParameters.getProductDescription(), createAccountParameters.getStatementDescriptor(), createAccountParameters.getTosAcceptance(), createAccountParameters.getTransferSchedule(), createAccountParameters.getMetadata());
     }
     
     /**
@@ -1073,28 +1019,15 @@ public class StripeConnector {
 	 * 
      * {@sample.xml ../../../doc/stripe-connector.xml.sample stripe:update-account}
      * 
-     * @param id The account to update
-     * @param email The email address of the account holder. For standalone accounts, Stripe will email your user with instructions for how to set up their account. For managed accounts, this is only to make the account easier to identify to you: Stripe will never directly reach out to your users.
-     * @param businessName The publicly sharable name for this account
-     * @param businessUrl The URL that best shows the service or product provided for this account
-     * @param supportPhone A publicly shareable phone number that can be reached for support for this account
-     * @param bankAccount The bank account to associate with the account
-     * @param debitNegativeBalances A boolean for whether or not Stripe should try to reclaim negative balances from the account holder’s bank account. 
-     * @param defaultCurrency Three-letter ISO currency code representing the default currency for the account.
-     * @param legalEntity Information about the holder of this account, i.e. the user receiving funds from this account
-     * @param productDescription Internal-only description of the product being sold or service being provided by this account. It’s used by Stripe for risk and underwriting purposes.
-     * @param statementDescriptor The text that will appear on credit card statements by default if a charge is being made directly on the account.
-     * @param tosAcceptance Details on who accepted the Stripe terms of service, and when they accepted it.
-     * @param transferSchedule Details on when this account will make funds from charges available, and when they will be paid out to the account holder’s bank account. 
-	 * @param metadata A set of key/value pairs that you can attach to an account object. It can be useful for storing additional information about the account in a structured format. This will be unset if you POST an empty value.  
+     * @param updateAccountParameters Wrapper for the Update Account Parameters
      * @return Returns an account object if the call succeeded.
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public Account updateAccount(String id, @Optional String email, @Optional String businessName, @Optional String businessUrl, @Optional String supportPhone, @Optional BankAccount bankAccount, @Default("false") boolean debitNegativeBalances, @Optional String defaultCurrency, @Optional LegalEntity legalEntity, @Optional String productDescription, @Optional String statementDescriptor, @Optional Acceptance tosAcceptance, @Optional TransferSchedule transferSchedule, @Default("#[payload]") Map<String, Object> metadata)
+    public Account updateAccount(@Default("#[payload]") UpdateAccountParameters updateAccountParameters)
     		throws StripeConnectorException {
-    	return accountClient.updateAccount(id, email, businessName, businessUrl, supportPhone, bankAccount, debitNegativeBalances, defaultCurrency, legalEntity, productDescription, statementDescriptor, tosAcceptance, transferSchedule, metadata);
+    	return accountClient.updateAccount(updateAccountParameters.getId(), updateAccountParameters.getEmail(), updateAccountParameters.getBusinessName(), updateAccountParameters.getBusinessUrl(), updateAccountParameters.getSupportPhone(), updateAccountParameters.getBankAccount(), updateAccountParameters.isDebitNegativeBalances(), updateAccountParameters.getDefaultCurrency(), updateAccountParameters.getLegalEntity(), updateAccountParameters.getProductDescription(), updateAccountParameters.getStatementDescriptor(), updateAccountParameters.getTosAcceptance(), updateAccountParameters.getTransferSchedule(), updateAccountParameters.getMetadata());
     }
     
     /**
@@ -1110,7 +1043,7 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public Token createCardToken(@Optional String cardId, @Optional Source card, @Optional String customer)
+    public Token createCardToken(@Optional String cardId, @Default("#[payload]") Source card, @Optional String customer)
     		throws StripeConnectorException {
     	return tokenClient.createCardToken(cardId, card, customer);
     }
@@ -1128,7 +1061,7 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public Token createBankAccountToken(@Optional String bankAccountId, @Optional BankAccount bankAccount)
+    public Token createBankAccountToken(@Optional String bankAccountId, @Default("#[payload]") BankAccount bankAccount)
     		throws StripeConnectorException {
     	return tokenClient.createBankAccountToken(bankAccountId, bankAccount);
     }
@@ -1184,7 +1117,7 @@ public class StripeConnector {
      */
     @Processor
     @ReconnectOn(exceptions = { Exception.class })
-    public EventCollection listAllEvents(@Optional String createdTimestamp, @Optional TimeRange created, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter, @Optional String type)
+    public EventCollection listAllEvents(@Optional String createdTimestamp, @Default("#[payload]") TimeRange created, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter, @Optional String type)
     		throws StripeConnectorException {
     	return eventClient.listAllEvents(createdTimestamp, created, endingBefore, limit, startingAfter, type);
     }

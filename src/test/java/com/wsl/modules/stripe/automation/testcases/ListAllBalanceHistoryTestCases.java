@@ -19,7 +19,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 import com.stripe.model.BalanceTransaction;
 import com.stripe.model.BalanceTransactionCollection;
@@ -29,6 +31,7 @@ import com.stripe.model.CouponCollection;
 import com.wsl.modules.stripe.automation.RegressionTests;
 import com.wsl.modules.stripe.automation.SmokeTests;
 import com.wsl.modules.stripe.automation.StripeTestParent;
+import com.wsl.modules.stripe.complextypes.ListAllBalanceHistoryParameters;
 
 import org.junit.After;
 import org.junit.Before;
@@ -87,7 +90,10 @@ public class ListAllBalanceHistoryTestCases
     public void testListBalanceHistoryWithLimit()
         throws Exception
     {
-    	upsertOnTestRunMessage("limit", "1");
+    	Map<String, Object> tempData = getBeanFromContext("listAllBalanceHistoryTestData");
+    	ListAllBalanceHistoryParameters params = (ListAllBalanceHistoryParameters) tempData.get("listAllBalanceHistoryParameters");
+    	params.setLimit(1);
+    	upsertOnTestRunMessage("listAllBalanceHistoryParameters", params);
     	Object result = runFlowAndGetPayload("list-all-balance-history");
         assertNotNull(result);
         BalanceTransactionCollection coll = (BalanceTransactionCollection)result;
@@ -104,7 +110,10 @@ public class ListAllBalanceHistoryTestCases
         throws Exception
     {
     	initializeTestRunMessage("listAllBalanceHistoryWithAvailableOnTestData");
-    	upsertOnTestRunMessage("limit", "1");
+    	Map<String, Object> tempData = getBeanFromContext("listAllBalanceHistoryWithAvailableOnTestData");
+    	ListAllBalanceHistoryParameters params = (ListAllBalanceHistoryParameters) tempData.get("listAllBalanceHistoryParameters");
+    	params.setLimit(1);
+    	upsertOnTestRunMessage("listAllBalanceHistoryParameters", params);
     	Object result = runFlowAndGetPayload("list-all-balance-history");
         assertNotNull(result);
         BalanceTransactionCollection coll = (BalanceTransactionCollection)result;
@@ -121,7 +130,10 @@ public class ListAllBalanceHistoryTestCases
         throws Exception
     {
     	initializeTestRunMessage("listAllBalanceHistoryWithCreatedTestData");
-    	upsertOnTestRunMessage("limit", "1");
+    	Map<String, Object> tempData = getBeanFromContext("listAllBalanceHistoryWithCreatedTestData");
+    	ListAllBalanceHistoryParameters params = (ListAllBalanceHistoryParameters) tempData.get("listAllBalanceHistoryParameters");
+    	params.setLimit(1);
+    	upsertOnTestRunMessage("listAllBalanceHistoryParameters", params);
     	Object result = runFlowAndGetPayload("list-all-balance-history");
         assertNotNull(result);
         BalanceTransactionCollection coll = (BalanceTransactionCollection)result;

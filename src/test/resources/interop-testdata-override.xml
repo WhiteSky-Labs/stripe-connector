@@ -106,7 +106,7 @@
         </processor>
         <processor name="listAllPlans" xmlName="list-all-plans" caption="List all plans">
             <properties>
-                <datamapper input="PlanCollection" output="TimeRange"/>
+                <datamapper input="PlanCollection" output="ListAllPlansParameters"/>
                 <auto-paging>false</auto-paging>
                 <query-support>false</query-support>
             </properties>
@@ -153,7 +153,7 @@
         </processor>
         <processor name="listAllCoupons" xmlName="list-all-coupons" caption="List all coupons">
             <properties>
-                <datamapper input="CouponCollection" output="TimeRange"/>
+                <datamapper input="CouponCollection" output="ListAllCouponsParameters"/>
                 <auto-paging>false</auto-paging>
                 <query-support>false</query-support>
             </properties>
@@ -177,7 +177,7 @@
         </processor>
         <processor name="listAllBalanceHistory" xmlName="list-all-balance-history" caption="List all balance history">
             <properties>
-                <datamapper input="BalanceTransactionCollection" output="TimeRange"/>
+                <datamapper input="BalanceTransactionCollection" output="ListAllBalanceHistoryParameters"/>
                 <auto-paging>false</auto-paging>
                 <query-support>false</query-support>
             </properties>
@@ -237,14 +237,10 @@
         </processor>
         <processor name="createCharge" xmlName="create-charge" caption="Create charge">
             <properties>
-                <datamapper input="Charge" output="Source"/>
+                <datamapper input="Charge" output="CreateChargeParameters"/>
                 <auto-paging>false</auto-paging>
                 <query-support>false</query-support>
             </properties>
-            <attributes>
-                <attribute name="amount" use="required" caption="Amount" group="General" type="integer" javaType="int" category="General"></attribute>
-                <attribute name="currency" use="required" caption="Currency" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-            </attributes>
         </processor>
         <processor name="retrieveCharge" xmlName="retrieve-charge" caption="Retrieve charge">
             <properties>
@@ -285,14 +281,10 @@
         </processor>
         <processor name="createSubscription" xmlName="create-subscription" caption="Create subscription">
             <properties>
-                <datamapper input="Subscription" output="Source"/>
+                <datamapper input="Subscription" output="CreateSubscriptionParameters"/>
                 <auto-paging>false</auto-paging>
                 <query-support>false</query-support>
             </properties>
-            <attributes>
-                <attribute name="customerId" use="required" caption="Customer Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="plan" use="required" caption="Plan" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-            </attributes>
         </processor>
         <processor name="retrieveSubscription" xmlName="retrieve-subscription" caption="Retrieve subscription">
             <properties>
@@ -307,15 +299,10 @@
         </processor>
         <processor name="updateSubscription" xmlName="update-subscription" caption="Update subscription">
             <properties>
-                <datamapper input="Subscription" output="Source"/>
+                <datamapper input="Subscription" output="UpdateSubscriptionParameters"/>
                 <auto-paging>false</auto-paging>
                 <query-support>false</query-support>
             </properties>
-            <attributes>
-                <attribute name="customerId" use="required" caption="Customer Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="subscriptionId" use="required" caption="Subscription Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="plan" use="required" caption="Plan" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-            </attributes>
         </processor>
         <processor name="cancelSubscription" xmlName="cancel-subscription" caption="Cancel subscription">
             <properties>
@@ -466,7 +453,7 @@
         </processor>
         <processor name="createAccount" xmlName="create-account" caption="Create account">
             <properties>
-                <datamapper input="Account" output="BankAccount"/>
+                <datamapper input="Account" output="CreateAccountParameters"/>
                 <auto-paging>false</auto-paging>
                 <query-support>false</query-support>
             </properties>
@@ -483,13 +470,10 @@
         </processor>
         <processor name="updateAccount" xmlName="update-account" caption="Update account">
             <properties>
-                <datamapper input="Account" output="BankAccount"/>
+                <datamapper input="Account" output="UpdateAccountParameters"/>
                 <auto-paging>false</auto-paging>
                 <query-support>false</query-support>
             </properties>
-            <attributes>
-                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-            </attributes>
         </processor>
         <processor name="createCardToken" xmlName="create-card-token" caption="Create card token">
             <properties>

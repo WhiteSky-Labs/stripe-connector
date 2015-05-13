@@ -21,6 +21,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.util.Iterator;
+import java.util.Map;
 import java.util.UUID;
 
 import com.stripe.model.Account;
@@ -31,6 +32,7 @@ import com.stripe.model.ChargeCollection;
 import com.wsl.modules.stripe.automation.RegressionTests;
 import com.wsl.modules.stripe.automation.SmokeTests;
 import com.wsl.modules.stripe.automation.StripeTestParent;
+import com.wsl.modules.stripe.complextypes.CreateAccountParameters;
 
 import org.junit.After;
 import org.junit.Before;
@@ -50,9 +52,17 @@ public class ListAllApplicationFeesTestCases
     public void setup()
         throws Exception
     {
+    	
     	initializeTestRunMessage("createAccountTestData");
     	String email = "test" + UUID.randomUUID() + "@gmail.com";
-    	upsertOnTestRunMessage("email", email);
+    	
+    	Map<String, Object> accountData = getBeanFromContext("createAccountTestData");
+    	CreateAccountParameters accountParams = (CreateAccountParameters) accountData.get("createAccountParameters");
+    	accountParams.setEmail(email);
+    	upsertOnTestRunMessage("createAccountParameters", accountParams);	
+    	
+    	
+    	
     	Account account = (Account) runFlowAndGetPayload("create-account");
     	initializeTestRunMessage("createChargeTestData");
     	 

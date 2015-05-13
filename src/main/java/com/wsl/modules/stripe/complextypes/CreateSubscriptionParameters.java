@@ -1,0 +1,151 @@
+/**
+ *
+ * (c) 2015 WhiteSky Labs, Pty Ltd. This software is protected under international
+ * copyright law. All use of this software is subject to WhiteSky Labs' Master
+ * Subscription Agreement (or other Terms of Service) separately entered
+ * into between you and WhiteSky Labs. If such an agreement is not in
+ * place, you may not use the software.
+ */
+
+package com.wsl.modules.stripe.complextypes;
+
+import java.util.Map;
+
+/**
+ * Wrapper for Create Subscription Parameters
+ * @author WhiteSky Labs
+ *
+ */
+public class CreateSubscriptionParameters {
+	private String customerId;
+	private String plan;
+	private String coupon;
+	private String trialEnd;
+	private String sourceToken;
+	private Source source;
+	private int quantity;
+	private double applicationFeePercent;
+	private double taxPercent;
+	private Map<String, Object> metadata;
+	/**
+	 * @return the customerId
+	 */
+	public String getCustomerId() {
+		return customerId;
+	}
+	/**
+	 * @param customerId the customerId to set
+	 */
+	public void setCustomerId(String customerId) {
+		this.customerId = customerId;
+	}
+	/**
+	 * @return the plan
+	 */
+	public String getPlan() {
+		return plan;
+	}
+	/**
+	 * @param plan the plan to set
+	 */
+	public void setPlan(String plan) {
+		this.plan = plan;
+	}
+	/**
+	 * @return the coupon
+	 */
+	public String getCoupon() {
+		return coupon;
+	}
+	/**
+	 * @param coupon the coupon to set
+	 */
+	public void setCoupon(String coupon) {
+		this.coupon = coupon;
+	}
+	/**
+	 * @return the trialEnd
+	 */
+	public String getTrialEnd() {
+		return trialEnd;
+	}
+	/**
+	 * @param trialEnd the trialEnd to set
+	 */
+	public void setTrialEnd(String trialEnd) {
+		this.trialEnd = trialEnd;
+	}
+	/**
+	 * @return the sourceToken
+	 */
+	public String getSourceToken() {
+		return sourceToken;
+	}
+	/**
+	 * @param sourceToken the sourceToken to set
+	 */
+	public void setSourceToken(String sourceToken) {
+		this.sourceToken = sourceToken;
+	}
+	/**
+	 * @return the source
+	 */
+	public Source getSource() {
+		return source;
+	}
+	/**
+	 * @param source the source to set
+	 */
+	public void setSource(Source source) {
+		this.source = source;
+	}
+	/**
+	 * @return the quantity
+	 */
+	public int getQuantity() {
+		return quantity;
+	}
+	/**
+	 * @param quantity the quantity to set
+	 */
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+	/**
+	 * @return the applicationFeePercent
+	 */
+	public double getApplicationFeePercent() {
+		return applicationFeePercent;
+	}
+	/**
+	 * @param applicationFeePercent the applicationFeePercent to set
+	 */
+	public void setApplicationFeePercent(double applicationFeePercent) {
+		this.applicationFeePercent = applicationFeePercent;
+	}
+	/**
+	 * @return the taxPercent
+	 */
+	public double getTaxPercent() {
+		return taxPercent;
+	}
+	/**
+	 * @param taxPercent the taxPercent to set
+	 */
+	public void setTaxPercent(double taxPercent) {
+		this.taxPercent = taxPercent;
+	}
+	/**
+	 * @return the metadata
+	 */
+	public Map<String, Object> getMetadata() {
+		return metadata;
+	}
+	/**
+	 * @param metadata the metadata to set
+	 */
+	public void setMetadata(Map<String, Object> metadata) {
+		this.metadata = metadata;
+	}
+	
+}

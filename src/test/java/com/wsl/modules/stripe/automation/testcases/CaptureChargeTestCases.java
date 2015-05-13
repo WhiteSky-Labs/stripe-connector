@@ -20,11 +20,14 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.util.Map;
+import java.util.UUID;
 
 import com.stripe.model.Charge;
 import com.wsl.modules.stripe.automation.RegressionTests;
 import com.wsl.modules.stripe.automation.SmokeTests;
 import com.wsl.modules.stripe.automation.StripeTestParent;
+import com.wsl.modules.stripe.complextypes.CreateAccountParameters;
+import com.wsl.modules.stripe.complextypes.CreateChargeParameters;
 
 import org.junit.After;
 import org.junit.Before;
@@ -44,7 +47,14 @@ public class CaptureChargeTestCases
         throws Exception
     {
         initializeTestRunMessage("createChargeTestData");
-        upsertOnTestRunMessage("capture", false);
+        
+        Map<String, Object> chargeData = getBeanFromContext("createChargeTestData");
+    	CreateChargeParameters chargeParams = (CreateChargeParameters) chargeData.get("createChargeParameters");
+    	chargeParams.setCapture(false);
+    	upsertOnTestRunMessage("createChargeParameters", chargeParams);	
+    	
+        
+        
         Object result = runFlowAndGetPayload("create-charge");
         Charge charge = (Charge) result;
         this.chargeId = charge.getId();
@@ -62,9 +72,10 @@ public class CaptureChargeTestCases
     {
         Object result = runFlowAndGetPayload("capture-charge");
         Charge charge = (Charge)result;
-        Map<String, String> expectedBean = getBeanFromContext("createChargeTestData");
-        assertEquals(expectedBean.get("amount"), charge.getAmount().toString());
-        assertEquals(expectedBean.get("currency"), charge.getCurrency());
+        Map<String, Object> expectedBean = getBeanFromContext("createChargeTestData");
+        CreateChargeParameters params = (CreateChargeParameters) expectedBean.get("createChargeParameters");
+        assertEquals(Integer.toString(params.getAmount()), charge.getAmount().toString());
+        assertEquals(params.getCurrency(), charge.getCurrency());
         assertEquals(true, charge.getCaptured().booleanValue());
     }
     

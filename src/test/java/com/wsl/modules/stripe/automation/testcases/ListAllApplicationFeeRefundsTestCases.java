@@ -20,6 +20,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.util.Map;
 import java.util.UUID;
 
 import com.stripe.model.Account;
@@ -30,6 +31,8 @@ import com.stripe.model.FeeRefundCollection;
 import com.wsl.modules.stripe.automation.RegressionTests;
 import com.wsl.modules.stripe.automation.SmokeTests;
 import com.wsl.modules.stripe.automation.StripeTestParent;
+import com.wsl.modules.stripe.complextypes.CreateAccountParameters;
+import com.wsl.modules.stripe.complextypes.CreateChargeParameters;
 
 import org.junit.After;
 import org.junit.Before;
@@ -51,16 +54,23 @@ public class ListAllApplicationFeeRefundsTestCases
         throws Exception
     {
     	initializeTestRunMessage("createAccountTestData");
-    	String email = "test" + UUID.randomUUID() + "@gmail.com";
-    	upsertOnTestRunMessage("email", email);
+    	Map<String, Object> accountData = getBeanFromContext("createAccountTestData");
+    	CreateAccountParameters accountParams = (CreateAccountParameters) accountData.get("createAccountParameters");
+    	accountParams.setEmail("test"+ UUID.randomUUID() + "@gmail.com");
+    	upsertOnTestRunMessage("createAccountParameters", accountParams);	
+    	
     	Account account = (Account) runFlowAndGetPayload("create-account");
     	initializeTestRunMessage("createChargeTestData");
-    	 
-    	upsertOnTestRunMessage("applicationFee", applicationFee);
-    	upsertOnTestRunMessage("destination", account.getId());
+    	
+    	
+    	Map<String, Object> chargeData = getBeanFromContext("createChargeTestData");
+    	CreateChargeParameters chargeParams = (CreateChargeParameters) chargeData.get("createChargeParameters");
+    	chargeParams.setApplicationFee(Integer.parseInt(applicationFee));
+    	chargeParams.setDestination(account.getId());
+    	upsertOnTestRunMessage("createChargeParameters", chargeParams);	
+    	
     	Object result = runFlowAndGetPayload("create-charge");
     	Charge charge = (Charge) result;
-    	    	
         initializeTestRunMessage("listAllApplicationFeesTestData");        
         result = runFlowAndGetPayload("list-all-application-fees");
         ApplicationFeeCollection coll = (ApplicationFeeCollection)result;

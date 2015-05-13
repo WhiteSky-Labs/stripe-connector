@@ -20,6 +20,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Iterator;
+import java.util.Map;
 
 import com.stripe.model.Customer;
 import com.stripe.model.CustomerCollection;
@@ -28,6 +29,8 @@ import com.stripe.model.PlanCollection;
 import com.wsl.modules.stripe.automation.RegressionTests;
 import com.wsl.modules.stripe.automation.SmokeTests;
 import com.wsl.modules.stripe.automation.StripeTestParent;
+import com.wsl.modules.stripe.complextypes.CreateSubscriptionParameters;
+import com.wsl.modules.stripe.complextypes.ListAllPlansParameters;
 
 import org.junit.After;
 import org.junit.Before;
@@ -89,8 +92,12 @@ public class ListAllPlansTestCases
     public void testListPlansWithLimit()
         throws Exception
     {
-    	upsertOnTestRunMessage("limit", "1");
-    	Object result = runFlowAndGetPayload("list-all-plans");
+    	Map<String, Object> expectedBean = getBeanFromContext("listAllPlansTestData");
+        ListAllPlansParameters params = (ListAllPlansParameters) expectedBean.get("listAllPlansParameters");
+        params.setLimit(1);
+        upsertOnTestRunMessage("listAllPlansParameters", params);
+        
+        Object result = runFlowAndGetPayload("list-all-plans");
         assertNotNull(result);
         PlanCollection coll = (PlanCollection)result;
         
@@ -106,8 +113,12 @@ public class ListAllPlansTestCases
         throws Exception
     {
     	initializeTestRunMessage("listAllPlansCreatedTestData");
-    	upsertOnTestRunMessage("limit", "1");
-    	Object result = runFlowAndGetPayload("list-all-plans");
+    	Map<String, Object> expectedBean = getBeanFromContext("listAllPlansCreatedTestData");
+        ListAllPlansParameters params = (ListAllPlansParameters) expectedBean.get("listAllPlansParameters");
+        params.setLimit(1);
+        upsertOnTestRunMessage("listAllPlansParameters", params);
+        
+        Object result = runFlowAndGetPayload("list-all-plans");
         assertNotNull(result);
         PlanCollection coll = (PlanCollection)result;
         

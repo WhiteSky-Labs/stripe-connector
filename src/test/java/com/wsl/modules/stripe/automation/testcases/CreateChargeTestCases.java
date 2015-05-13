@@ -24,6 +24,7 @@ import com.stripe.model.Customer;
 import com.wsl.modules.stripe.automation.RegressionTests;
 import com.wsl.modules.stripe.automation.SmokeTests;
 import com.wsl.modules.stripe.automation.StripeTestParent;
+import com.wsl.modules.stripe.complextypes.CreateChargeParameters;
 
 import org.junit.After;
 import org.junit.Before;
@@ -53,9 +54,10 @@ public class CreateChargeTestCases
     {
         Object result = runFlowAndGetPayload("create-charge");
         Charge charge = (Charge) result;
-        Map<String, String> expectedBean = getBeanFromContext("createChargeTestData");
-        assertEquals(expectedBean.get("amount"), charge.getAmount().toString());
-        assertEquals(expectedBean.get("currency"), charge.getCurrency());
+        Map<String, Object> expectedBean = getBeanFromContext("createChargeTestData");
+        CreateChargeParameters params = (CreateChargeParameters) expectedBean.get("createChargeParameters");
+        assertEquals(params.getAmount(), charge.getAmount().intValue());
+        assertEquals(params.getCurrency(), charge.getCurrency());
     }
 
     @Category({
@@ -66,7 +68,7 @@ public class CreateChargeTestCases
     public void testCreateInvalidCharge()
         throws Exception
     {
-    	upsertOnTestRunMessage("destination", "InvalidDestination");
+    	initializeTestRunMessage("createChargeInvalidTestData");
         try{
         	runFlowAndGetPayload("create-charge");
     		fail("Error should be thrown");

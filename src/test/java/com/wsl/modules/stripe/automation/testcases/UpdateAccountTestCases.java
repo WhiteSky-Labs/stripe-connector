@@ -25,6 +25,8 @@ import com.stripe.model.Account;
 import com.wsl.modules.stripe.automation.RegressionTests;
 import com.wsl.modules.stripe.automation.SmokeTests;
 import com.wsl.modules.stripe.automation.StripeTestParent;
+import com.wsl.modules.stripe.complextypes.ListAllBalanceHistoryParameters;
+import com.wsl.modules.stripe.complextypes.UpdateAccountParameters;
 
 import org.junit.After;
 import org.junit.Before;
@@ -35,7 +37,6 @@ public class UpdateAccountTestCases
     extends StripeTestParent
 {
 
-	private String email;
 	private String accountId;
 	private Map<String, Object> expectedBean;
 	
@@ -44,16 +45,15 @@ public class UpdateAccountTestCases
         throws Exception
     {    	
     	initializeTestRunMessage("createManagedAccountTestData");
-    	email = "test" + UUID.randomUUID() + "@gmail.com";
-    	upsertOnTestRunMessage("email", email);
     	Object result = runFlowAndGetPayload("create-account");
     	Account account = (Account) result;
     	this.accountId = account.getId();
     	expectedBean = getBeanFromContext("updateAccountTestData");
     	initializeTestRunMessage("updateAccountTestData");
-    	upsertOnTestRunMessage("id", this.accountId);
-    	email = "test" + UUID.randomUUID() + "@gmail.com";
-    	upsertOnTestRunMessage("email", email);    	
+    	
+    	UpdateAccountParameters params = (UpdateAccountParameters) expectedBean.get("updateAccountParameters");
+    	params.setId(this.accountId);
+    	upsertOnTestRunMessage("updateAccountParameters", params);    	
     }
 
     @Category({
@@ -69,6 +69,7 @@ public class UpdateAccountTestCases
         Account account = (Account) result;
         assertNotNull(account.getId());
         assertEquals(this.accountId, account.getId());
-        assertEquals(this.email, account.getEmail());        
+        UpdateAccountParameters params = (UpdateAccountParameters) expectedBean.get("updateAccountParameters");
+        assertEquals(params.getEmail(), account.getEmail());        
     }
 }

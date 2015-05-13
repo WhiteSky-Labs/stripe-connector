@@ -30,6 +30,8 @@ import com.stripe.model.Subscription;
 import com.wsl.modules.stripe.automation.RegressionTests;
 import com.wsl.modules.stripe.automation.SmokeTests;
 import com.wsl.modules.stripe.automation.StripeTestParent;
+import com.wsl.modules.stripe.complextypes.CreateSubscriptionParameters;
+import com.wsl.modules.stripe.complextypes.ListAllBalanceHistoryParameters;
 import com.wsl.modules.stripe.complextypes.Source;
 
 import org.junit.After;
@@ -61,8 +63,12 @@ public class CreateSubscriptionTestCases
         Plan plan = (Plan)result;
         this.planId = plan.getId();
         initializeTestRunMessage("createSubscriptionTestData");
-        upsertOnTestRunMessage("customerId", customerId);
-        upsertOnTestRunMessage("plan", planId);
+        Map<String, Object> tempData = getBeanFromContext("createSubscriptionTestData");
+    	CreateSubscriptionParameters params = (CreateSubscriptionParameters) tempData.get("createSubscriptionParameters");
+    	params.setCustomerId(customerId);
+    	params.setPlan(this.planId);
+    	
+    	upsertOnTestRunMessage("createSubscriptionParameters", params);
     }
 
     @After
@@ -97,7 +103,8 @@ public class CreateSubscriptionTestCases
         assertNotNull(sub.getId());
         this.subscriptionId = sub.getId();
         Map<String, Object> expectedBean = getBeanFromContext("createSubscriptionTestData");
-        assertEquals(expectedBean.get("metadata"), sub.getMetadata());
+        CreateSubscriptionParameters params = (CreateSubscriptionParameters) expectedBean.get("createSubscriptionParameters");
+        assertEquals(params.getMetadata(), sub.getMetadata());
         assertEquals(this.planId, ((Plan) sub.getPlan()).getId());
     }
     
@@ -109,9 +116,8 @@ public class CreateSubscriptionTestCases
     public void testCreateInvalidSubscription()
         throws Exception
     {
+    	initializeTestRunMessage("createSubscriptionInvalidTestData");
     	try{
-    		upsertOnTestRunMessage("id", "InvalidID");
-    		upsertOnTestRunMessage("applicationFeePercent", "1000");
     		Object result = runFlowAndGetPayload("create-subscription");
     		fail("Error should be thrown");
     	} catch (MessagingException e) {

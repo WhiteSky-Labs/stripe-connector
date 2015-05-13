@@ -30,6 +30,8 @@ import com.stripe.model.Subscription;
 import com.wsl.modules.stripe.automation.RegressionTests;
 import com.wsl.modules.stripe.automation.SmokeTests;
 import com.wsl.modules.stripe.automation.StripeTestParent;
+import com.wsl.modules.stripe.complextypes.CreateSubscriptionParameters;
+import com.wsl.modules.stripe.complextypes.UpdateSubscriptionParameters;
 
 import org.junit.After;
 import org.junit.Before;
@@ -61,9 +63,12 @@ public class UpdateSubscriptionTestCases
         Plan plan = (Plan)result;
         this.planId = plan.getId();
         initializeTestRunMessage("createSubscriptionTestData");
-        upsertOnTestRunMessage("customerId", customerId);
-        upsertOnTestRunMessage("plan", planId);
-        result = runFlowAndGetPayload("create-subscription");
+        Map<String, Object> tempData = getBeanFromContext("createSubscriptionTestData");
+    	CreateSubscriptionParameters params = (CreateSubscriptionParameters) tempData.get("createSubscriptionParameters");
+    	params.setCustomerId(customerId);
+    	params.setPlan(this.planId);
+    	upsertOnTestRunMessage("createSubscriptionParameters", params);
+    	result = runFlowAndGetPayload("create-subscription");
         Subscription sub = (Subscription) result;
 		this.subscriptionId = sub.getId();
 		initializeTestRunMessage("createPlanTestData");
@@ -73,9 +78,12 @@ public class UpdateSubscriptionTestCases
         this.updatedPlanId = plan.getId();
         
 		initializeTestRunMessage("updateSubscriptionTestData");
-		upsertOnTestRunMessage("customerId", this.customerId);
-		upsertOnTestRunMessage("subscriptionId", this.subscriptionId);
-		upsertOnTestRunMessage("plan", this.updatedPlanId);
+		Map<String, Object> tempSubscriptionData = getBeanFromContext("updateSubscriptionTestData");
+    	UpdateSubscriptionParameters updateParams = (UpdateSubscriptionParameters) tempSubscriptionData.get("updateSubscriptionParameters");
+    	updateParams.setCustomerId(this.customerId);
+    	updateParams.setSubscriptionId(this.subscriptionId);
+    	updateParams.setPlan(this.updatedPlanId);
+    	upsertOnTestRunMessage("updateSubscriptionParameters", updateParams);		
 		
     }
 
@@ -109,7 +117,7 @@ public class UpdateSubscriptionTestCases
         Object result = runFlowAndGetPayload("update-subscription");
         Map<String, String> expectedBean = getBeanFromContext("updateSubscriptionTestData");
         Subscription sub = (Subscription) result; 
-        assertEquals(this.updatedPlanId, sub.getPlan().getId());        
+        assertEquals(this.updatedPlanId, sub.getPlan().getId());     
     }
 
     @Category({
@@ -121,9 +129,13 @@ public class UpdateSubscriptionTestCases
         throws Exception
     {
     	try {
-    		upsertOnTestRunMessage("plan", "InvalidPlan");
-        	upsertOnTestRunMessage("subscriptionId", "InvalidID");
-            Object result = runFlowAndGetPayload("update-subscription");
+    		Map<String, Object> tempSubscriptionData = getBeanFromContext("updateSubscriptionTestData");
+        	UpdateSubscriptionParameters updateParams = (UpdateSubscriptionParameters) tempSubscriptionData.get("updateSubscriptionParameters");
+        	updateParams.setPlan("InvalidPlan");
+        	updateParams.setSubscriptionId("InvalidId");
+        	upsertOnTestRunMessage("updateSubscriptionParameters", updateParams);		
+    		
+        	Object result = runFlowAndGetPayload("update-subscription");
             fail("Updating a subscription that doesn't exist should throw an error.");
     	} catch (MessagingException e){
     		assertTrue(e.getCause().getMessage().contains("Could not update the Subscription"));
@@ -142,9 +154,14 @@ public class UpdateSubscriptionTestCases
         throws Exception
     {
 		initializeTestRunMessage("updateSubscriptionWithoutSourceTestData");
-		upsertOnTestRunMessage("customerId", this.customerId);
-		upsertOnTestRunMessage("subscriptionId", this.subscriptionId);
-		upsertOnTestRunMessage("plan", this.updatedPlanId);
+		
+		Map<String, Object> tempSubscriptionData = getBeanFromContext("updateSubscriptionWithoutSourceTestData");
+    	UpdateSubscriptionParameters updateParams = (UpdateSubscriptionParameters) tempSubscriptionData.get("updateSubscriptionParameters");
+    	updateParams.setCustomerId(this.customerId);
+    	updateParams.setSubscriptionId(this.subscriptionId);
+    	updateParams.setPlan(this.updatedPlanId);
+    	upsertOnTestRunMessage("updateSubscriptionParameters", updateParams);		
+		
 		Object result = runFlowAndGetPayload("update-subscription");
         Subscription sub = (Subscription)result;
         assertNotNull(sub.getId());        

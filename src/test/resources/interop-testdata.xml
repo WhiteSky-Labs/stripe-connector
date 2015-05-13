@@ -136,30 +136,43 @@
                 <auto-paging>false</auto-paging>
                 <query-support>false</query-support>
             </properties>
-            <attributes>
-                <attribute name="createdTimestamp" use="optional" caption="Created Timestamp" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="endingBefore" use="optional" caption="Ending Before" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="limit" use="optional" caption="Limit" group="General" type="integer" javaType="int" default="0" category="General"></attribute>
-                <attribute name="startingAfter" use="optional" caption="Starting After" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-            </attributes>
             <childElements>
-                <childElement name="created" use="optional" group="General" category="General">
+                <childElement name="list-all-plans-parameters" use="optional" group="General" category="General">
                     <attributes>
                         <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
                             <attributes>
-<attribute name="greaterThan" use="optional" caption="Greater Than" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
-<attribute name="lessThan" use="optional" caption="Less Than" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
-<attribute name="lessThanOrEqualTo" use="optional" caption="Less Than Or Equal To" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
-<attribute name="greaterThanOrEqualTo" use="optional" caption="Greater Than Or Equal To" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+<attribute name="createdTimestamp" use="optional" caption="Created Timestamp" type="string" javaType="java.lang.String" base="list-all-plans-parameters" category="General"></attribute>
+<attribute name="endingBefore" use="optional" caption="Ending Before" type="string" javaType="java.lang.String" base="list-all-plans-parameters" category="General"></attribute>
+<attribute name="limit" use="optional" caption="Limit" type="integer" javaType="int" base="list-all-plans-parameters" category="General"></attribute>
+<attribute name="startingAfter" use="optional" caption="Starting After" type="string" javaType="java.lang.String" base="list-all-plans-parameters" category="General"></attribute>
                             </attributes>
                         </controller>
                         <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
                             <attributes>
-<attribute name="ref" use="optional" caption="Created Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+<attribute name="ref" use="optional" caption="List All Plans Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
                             </attributes>
                         </controller>
                     </attributes>
-                    <childElements/>
+                    <childElements>
+                        <childElement name="created" use="optional" category="General">
+                            <attributes>
+<controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="greaterThan" use="optional" caption="Greater Than" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+        <attribute name="lessThan" use="optional" caption="Less Than" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+        <attribute name="lessThanOrEqualTo" use="optional" caption="Less Than Or Equal To" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+        <attribute name="greaterThanOrEqualTo" use="optional" caption="Greater Than Or Equal To" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+    </attributes>
+</controller>
+<controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="ref" use="optional" caption="List All Plans Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+    </attributes>
+</controller>
+                            </attributes>
+                            <childElements/>
+                        </childElement>
+                    </childElements>
                 </childElement>
             </childElements>
         </processor>
@@ -218,30 +231,43 @@
                 <auto-paging>false</auto-paging>
                 <query-support>false</query-support>
             </properties>
-            <attributes>
-                <attribute name="createdTimestamp" use="optional" caption="Created Timestamp" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="endingBefore" use="optional" caption="Ending Before" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="limit" use="optional" caption="Limit" group="General" type="integer" javaType="int" default="0" category="General"></attribute>
-                <attribute name="startingAfter" use="optional" caption="Starting After" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-            </attributes>
             <childElements>
-                <childElement name="created" use="optional" group="General" category="General">
+                <childElement name="list-all-coupons-parameters" use="optional" group="General" category="General">
                     <attributes>
                         <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
                             <attributes>
-<attribute name="greaterThan" use="optional" caption="Greater Than" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
-<attribute name="lessThan" use="optional" caption="Less Than" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
-<attribute name="lessThanOrEqualTo" use="optional" caption="Less Than Or Equal To" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
-<attribute name="greaterThanOrEqualTo" use="optional" caption="Greater Than Or Equal To" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+<attribute name="createdTimestamp" use="optional" caption="Created Timestamp" type="string" javaType="java.lang.String" base="list-all-coupons-parameters" category="General"></attribute>
+<attribute name="endingBefore" use="optional" caption="Ending Before" type="string" javaType="java.lang.String" base="list-all-coupons-parameters" category="General"></attribute>
+<attribute name="limit" use="optional" caption="Limit" type="integer" javaType="int" base="list-all-coupons-parameters" category="General"></attribute>
+<attribute name="startingAfter" use="optional" caption="Starting After" type="string" javaType="java.lang.String" base="list-all-coupons-parameters" category="General"></attribute>
                             </attributes>
                         </controller>
                         <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
                             <attributes>
-<attribute name="ref" use="optional" caption="Created Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+<attribute name="ref" use="optional" caption="List All Coupons Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
                             </attributes>
                         </controller>
                     </attributes>
-                    <childElements/>
+                    <childElements>
+                        <childElement name="created" use="optional" category="General">
+                            <attributes>
+<controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="greaterThan" use="optional" caption="Greater Than" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+        <attribute name="lessThan" use="optional" caption="Less Than" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+        <attribute name="lessThanOrEqualTo" use="optional" caption="Less Than Or Equal To" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+        <attribute name="greaterThanOrEqualTo" use="optional" caption="Greater Than Or Equal To" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+    </attributes>
+</controller>
+<controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="ref" use="optional" caption="List All Coupons Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+    </attributes>
+</controller>
+                            </attributes>
+                            <childElements/>
+                        </childElement>
+                    </childElements>
                 </childElement>
             </childElements>
         </processor>
@@ -268,53 +294,66 @@
                 <auto-paging>false</auto-paging>
                 <query-support>false</query-support>
             </properties>
-            <attributes>
-                <attribute name="availableOnTimestamp" use="optional" caption="Available On Timestamp" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="createdTimestamp" use="optional" caption="Created Timestamp" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="currency" use="optional" caption="Currency" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="endingBefore" use="optional" caption="Ending Before" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="limit" use="optional" caption="Limit" group="General" type="integer" javaType="int" default="0" category="General"></attribute>
-                <attribute name="sourceId" use="optional" caption="Source Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="startingAfter" use="optional" caption="Starting After" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="transfer" use="optional" caption="Transfer" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="type" use="optional" caption="Type" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-            </attributes>
             <childElements>
-                <childElement name="available-on" use="optional" group="General" category="General">
+                <childElement name="list-all-balance-history-parameters" use="optional" group="General" category="General">
                     <attributes>
                         <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
                             <attributes>
-<attribute name="greaterThan" use="optional" caption="Greater Than" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
-<attribute name="lessThan" use="optional" caption="Less Than" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
-<attribute name="lessThanOrEqualTo" use="optional" caption="Less Than Or Equal To" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
-<attribute name="greaterThanOrEqualTo" use="optional" caption="Greater Than Or Equal To" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+<attribute name="availableOnTimestamp" use="optional" caption="Available On Timestamp" type="string" javaType="java.lang.String" base="list-all-balance-history-parameters" category="General"></attribute>
+<attribute name="createdTimestamp" use="optional" caption="Created Timestamp" type="string" javaType="java.lang.String" base="list-all-balance-history-parameters" category="General"></attribute>
+<attribute name="currency" use="optional" caption="Currency" type="string" javaType="java.lang.String" base="list-all-balance-history-parameters" category="General"></attribute>
+<attribute name="endingBefore" use="optional" caption="Ending Before" type="string" javaType="java.lang.String" base="list-all-balance-history-parameters" category="General"></attribute>
+<attribute name="limit" use="optional" caption="Limit" type="integer" javaType="int" base="list-all-balance-history-parameters" category="General"></attribute>
+<attribute name="sourceId" use="optional" caption="Source Id" type="string" javaType="java.lang.String" base="list-all-balance-history-parameters" category="General"></attribute>
+<attribute name="startingAfter" use="optional" caption="Starting After" type="string" javaType="java.lang.String" base="list-all-balance-history-parameters" category="General"></attribute>
+<attribute name="transfer" use="optional" caption="Transfer" type="string" javaType="java.lang.String" base="list-all-balance-history-parameters" category="General"></attribute>
+<attribute name="type" use="optional" caption="Type" type="string" javaType="java.lang.String" base="list-all-balance-history-parameters" category="General"></attribute>
                             </attributes>
                         </controller>
                         <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
                             <attributes>
-<attribute name="ref" use="optional" caption="Available On Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+<attribute name="ref" use="optional" caption="List All Balance History Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
                             </attributes>
                         </controller>
                     </attributes>
-                    <childElements/>
-                </childElement>
-                <childElement name="created" use="optional" group="General" category="General">
-                    <attributes>
-                        <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+                    <childElements>
+                        <childElement name="available-on" use="optional" category="General">
                             <attributes>
-<attribute name="greaterThan" use="optional" caption="Greater Than" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
-<attribute name="lessThan" use="optional" caption="Less Than" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
-<attribute name="lessThanOrEqualTo" use="optional" caption="Less Than Or Equal To" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
-<attribute name="greaterThanOrEqualTo" use="optional" caption="Greater Than Or Equal To" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+<controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="greaterThan" use="optional" caption="Greater Than" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+        <attribute name="lessThan" use="optional" caption="Less Than" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+        <attribute name="lessThanOrEqualTo" use="optional" caption="Less Than Or Equal To" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+        <attribute name="greaterThanOrEqualTo" use="optional" caption="Greater Than Or Equal To" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+    </attributes>
+</controller>
+<controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="ref" use="optional" caption="List All Balance History Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+    </attributes>
+</controller>
                             </attributes>
-                        </controller>
-                        <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+                            <childElements/>
+                        </childElement>
+                        <childElement name="created" use="optional" category="General">
                             <attributes>
-<attribute name="ref" use="optional" caption="Created Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+<controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="greaterThan" use="optional" caption="Greater Than" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+        <attribute name="lessThan" use="optional" caption="Less Than" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+        <attribute name="lessThanOrEqualTo" use="optional" caption="Less Than Or Equal To" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+        <attribute name="greaterThanOrEqualTo" use="optional" caption="Greater Than Or Equal To" type="string" javaType="java.lang.String" base="created" category="General"></attribute>
+    </attributes>
+</controller>
+<controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="ref" use="optional" caption="List All Balance History Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+    </attributes>
+</controller>
                             </attributes>
-                        </controller>
-                    </attributes>
-                    <childElements/>
+                            <childElements/>
+                        </childElement>
+                    </childElements>
                 </childElement>
             </childElements>
         </processor>
@@ -417,43 +456,119 @@
                 <auto-paging>false</auto-paging>
                 <query-support>false</query-support>
             </properties>
-            <attributes>
-                <attribute name="amount" use="required" caption="Amount" group="General" type="integer" javaType="int" category="General"></attribute>
-                <attribute name="currency" use="required" caption="Currency" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="customerId" use="optional" caption="Customer Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="description" use="optional" caption="Description" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="capture" use="optional" caption="Capture" group="General" type="boolean" javaType="boolean" default="true" category="General"></attribute>
-                <attribute name="statementDescriptor" use="optional" caption="Statement Descriptor" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="receiptEmail" use="optional" caption="Receipt Email" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="destination" use="optional" caption="Destination" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="applicationFee" use="optional" caption="Application Fee" group="General" type="integer" javaType="int" default="0" category="General"></attribute>
-                <attribute name="metadata" use="optional" caption="Metadata" group="General" type="element-controller-map" javaType="java.util.Map&lt;java.lang.String,java.lang.Object&gt;" category="General"></attribute>
-                <attribute name="shipping" use="optional" caption="Shipping" group="General" type="element-controller-map" javaType="java.util.Map&lt;java.lang.String,java.lang.String&gt;" category="General"></attribute>
-            </attributes>
             <childElements>
-                <childElement name="source" use="optional" group="General" category="General">
+                <childElement name="create-charge-parameters" use="optional" group="General" category="General">
                     <attributes>
                         <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
                             <attributes>
-<attribute name="number" use="optional" caption="Number" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
-<attribute name="expMonth" use="optional" caption="Exp Month" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
-<attribute name="expYear" use="optional" caption="Exp Year" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
-<attribute name="cvc" use="optional" caption="Cvc" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
-<attribute name="addressLine1" use="optional" caption="Address Line1" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
-<attribute name="addressLine2" use="optional" caption="Address Line2" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
-<attribute name="addressCity" use="optional" caption="Address City" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
-<attribute name="addressState" use="optional" caption="Address State" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
-<attribute name="addressZip" use="optional" caption="Address Zip" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
-<attribute name="addressCountry" use="optional" caption="Address Country" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
+<attribute name="key" use="optional" type="" javaType="" base="create-charge-parameters" category="General"></attribute>
+<attribute name="amount" use="optional" caption="Amount" type="integer" javaType="int" base="create-charge-parameters" category="General"></attribute>
+<attribute name="currency" use="optional" caption="Currency" type="string" javaType="java.lang.String" base="create-charge-parameters" category="General"></attribute>
+<attribute name="customerId" use="optional" caption="Customer Id" type="string" javaType="java.lang.String" base="create-charge-parameters" category="General"></attribute>
+<attribute name="description" use="optional" caption="Description" type="string" javaType="java.lang.String" base="create-charge-parameters" category="General"></attribute>
+<attribute name="capture" use="optional" caption="Capture" type="boolean" javaType="boolean" base="create-charge-parameters" category="General"></attribute>
+<attribute name="statementDescriptor" use="optional" caption="Statement Descriptor" type="string" javaType="java.lang.String" base="create-charge-parameters" category="General"></attribute>
+<attribute name="destination" use="optional" caption="Destination" type="string" javaType="java.lang.String" base="create-charge-parameters" category="General"></attribute>
+<attribute name="receiptEmail" use="optional" caption="Receipt Email" type="string" javaType="java.lang.String" base="create-charge-parameters" category="General"></attribute>
+<attribute name="applicationFee" use="optional" caption="Application Fee" type="integer" javaType="int" base="create-charge-parameters" category="General"></attribute>
                             </attributes>
                         </controller>
                         <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
                             <attributes>
-<attribute name="ref" use="optional" caption="Source Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+<attribute name="ref" use="optional" caption="Create Charge Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
                             </attributes>
                         </controller>
                     </attributes>
-                    <childElements/>
+                    <childElements>
+                        <childElement name="source" use="optional" category="General">
+                            <attributes>
+<controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="number" use="optional" caption="Number" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
+        <attribute name="expMonth" use="optional" caption="Exp Month" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
+        <attribute name="expYear" use="optional" caption="Exp Year" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
+        <attribute name="cvc" use="optional" caption="Cvc" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
+        <attribute name="addressLine1" use="optional" caption="Address Line1" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
+        <attribute name="addressLine2" use="optional" caption="Address Line2" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
+        <attribute name="addressCity" use="optional" caption="Address City" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
+        <attribute name="addressState" use="optional" caption="Address State" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
+        <attribute name="addressZip" use="optional" caption="Address Zip" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
+        <attribute name="addressCountry" use="optional" caption="Address Country" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
+    </attributes>
+</controller>
+<controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="ref" use="optional" caption="Create Charge Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+    </attributes>
+</controller>
+                            </attributes>
+                            <childElements/>
+                        </childElement>
+                        <childElement name="metadata" use="optional" category="General">
+                            <attributes>
+<controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="key" use="optional" type="" javaType="" base="create-charge-parameters" category="General"></attribute>
+        <attribute name="ref" use="optional" caption="Create Charge Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+    </attributes>
+</controller>
+<controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="ref" use="optional" caption="Create Charge Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+    </attributes>
+</controller>
+                            </attributes>
+                            <childElements>
+<childElement name="metadatum" use="optional" category="General">
+    <attributes>
+        <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+            <attributes>
+                <attribute name="key" use="optional" type="" javaType="" base="create-charge-parameters" category="General"></attribute>
+            </attributes>
+        </controller>
+        <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+            <attributes>
+                <attribute name="ref" use="optional" caption="Create Charge Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </controller>
+    </attributes>
+    <childElements/>
+</childElement>
+                            </childElements>
+                        </childElement>
+                        <childElement name="shipping" use="optional" category="General">
+                            <attributes>
+<controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="key" use="optional" type="" javaType="" base="create-charge-parameters" category="General"></attribute>
+        <attribute name="ref" use="optional" caption="Create Charge Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+    </attributes>
+</controller>
+<controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="ref" use="optional" caption="Create Charge Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+    </attributes>
+</controller>
+                            </attributes>
+                            <childElements>
+<childElement name="shipping" use="optional" category="General">
+    <attributes>
+        <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+            <attributes>
+                <attribute name="key" use="optional" type="" javaType="" base="create-charge-parameters" category="General"></attribute>
+            </attributes>
+        </controller>
+        <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+            <attributes>
+                <attribute name="ref" use="optional" caption="Create Charge Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </controller>
+    </attributes>
+    <childElements/>
+</childElement>
+                            </childElements>
+                        </childElement>
+                    </childElements>
                 </childElement>
             </childElements>
         </processor>
@@ -535,41 +650,86 @@
                 <auto-paging>false</auto-paging>
                 <query-support>false</query-support>
             </properties>
-            <attributes>
-                <attribute name="customerId" use="required" caption="Customer Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="plan" use="required" caption="Plan" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="coupon" use="optional" caption="Coupon" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="trialEnd" use="optional" caption="Trial End" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="sourceToken" use="optional" caption="Source Token" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="quantity" use="optional" caption="Quantity" group="General" type="integer" javaType="int" default="1" category="General"></attribute>
-                <attribute name="applicationFeePercent" use="optional" caption="Application Fee Percent" group="General" type="string" javaType="double" default="0" category="General"></attribute>
-                <attribute name="taxPercent" use="optional" caption="Tax Percent" group="General" type="string" javaType="double" default="0" category="General"></attribute>
-                <attribute name="metadata" use="optional" caption="Metadata" group="General" type="element-controller-map" javaType="java.util.Map&lt;java.lang.String,java.lang.Object&gt;" category="General"></attribute>
-            </attributes>
             <childElements>
-                <childElement name="source" use="optional" group="General" category="General">
+                <childElement name="create-subscription-parameters" use="optional" group="General" category="General">
                     <attributes>
                         <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
                             <attributes>
-<attribute name="number" use="optional" caption="Number" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
-<attribute name="expMonth" use="optional" caption="Exp Month" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
-<attribute name="expYear" use="optional" caption="Exp Year" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
-<attribute name="cvc" use="optional" caption="Cvc" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
-<attribute name="addressLine1" use="optional" caption="Address Line1" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
-<attribute name="addressLine2" use="optional" caption="Address Line2" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
-<attribute name="addressCity" use="optional" caption="Address City" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
-<attribute name="addressState" use="optional" caption="Address State" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
-<attribute name="addressZip" use="optional" caption="Address Zip" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
-<attribute name="addressCountry" use="optional" caption="Address Country" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
+<attribute name="key" use="optional" type="" javaType="" base="create-subscription-parameters" category="General"></attribute>
+<attribute name="customerId" use="optional" caption="Customer Id" type="string" javaType="java.lang.String" base="create-subscription-parameters" category="General"></attribute>
+<attribute name="plan" use="optional" caption="Plan" type="string" javaType="java.lang.String" base="create-subscription-parameters" category="General"></attribute>
+<attribute name="coupon" use="optional" caption="Coupon" type="string" javaType="java.lang.String" base="create-subscription-parameters" category="General"></attribute>
+<attribute name="trialEnd" use="optional" caption="Trial End" type="string" javaType="java.lang.String" base="create-subscription-parameters" category="General"></attribute>
+<attribute name="sourceToken" use="optional" caption="Source Token" type="string" javaType="java.lang.String" base="create-subscription-parameters" category="General"></attribute>
+<attribute name="quantity" use="optional" caption="Quantity" type="integer" javaType="int" base="create-subscription-parameters" category="General"></attribute>
+<attribute name="applicationFeePercent" use="optional" caption="Application Fee Percent" type="string" javaType="double" base="create-subscription-parameters" category="General"></attribute>
+<attribute name="taxPercent" use="optional" caption="Tax Percent" type="string" javaType="double" base="create-subscription-parameters" category="General"></attribute>
                             </attributes>
                         </controller>
                         <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
                             <attributes>
-<attribute name="ref" use="optional" caption="Source Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+<attribute name="ref" use="optional" caption="Create Subscription Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
                             </attributes>
                         </controller>
                     </attributes>
-                    <childElements/>
+                    <childElements>
+                        <childElement name="source" use="optional" category="General">
+                            <attributes>
+<controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="number" use="optional" caption="Number" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
+        <attribute name="expMonth" use="optional" caption="Exp Month" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
+        <attribute name="expYear" use="optional" caption="Exp Year" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
+        <attribute name="cvc" use="optional" caption="Cvc" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
+        <attribute name="addressLine1" use="optional" caption="Address Line1" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
+        <attribute name="addressLine2" use="optional" caption="Address Line2" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
+        <attribute name="addressCity" use="optional" caption="Address City" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
+        <attribute name="addressState" use="optional" caption="Address State" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
+        <attribute name="addressZip" use="optional" caption="Address Zip" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
+        <attribute name="addressCountry" use="optional" caption="Address Country" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
+    </attributes>
+</controller>
+<controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="ref" use="optional" caption="Create Subscription Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+    </attributes>
+</controller>
+                            </attributes>
+                            <childElements/>
+                        </childElement>
+                        <childElement name="metadata" use="optional" category="General">
+                            <attributes>
+<controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="key" use="optional" type="" javaType="" base="create-subscription-parameters" category="General"></attribute>
+        <attribute name="ref" use="optional" caption="Create Subscription Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+    </attributes>
+</controller>
+<controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="ref" use="optional" caption="Create Subscription Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+    </attributes>
+</controller>
+                            </attributes>
+                            <childElements>
+<childElement name="metadatum" use="optional" category="General">
+    <attributes>
+        <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+            <attributes>
+                <attribute name="key" use="optional" type="" javaType="" base="create-subscription-parameters" category="General"></attribute>
+            </attributes>
+        </controller>
+        <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+            <attributes>
+                <attribute name="ref" use="optional" caption="Create Subscription Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </controller>
+    </attributes>
+    <childElements/>
+</childElement>
+                            </childElements>
+                        </childElement>
+                    </childElements>
                 </childElement>
             </childElements>
         </processor>
@@ -590,43 +750,88 @@
                 <auto-paging>false</auto-paging>
                 <query-support>false</query-support>
             </properties>
-            <attributes>
-                <attribute name="customerId" use="required" caption="Customer Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="subscriptionId" use="required" caption="Subscription Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="plan" use="required" caption="Plan" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="coupon" use="optional" caption="Coupon" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="prorate" use="optional" caption="Prorate" group="General" type="boolean" javaType="boolean" default="true" category="General"></attribute>
-                <attribute name="trialEnd" use="optional" caption="Trial End" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="sourceToken" use="optional" caption="Source Token" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="quantity" use="optional" caption="Quantity" group="General" type="integer" javaType="int" default="1" category="General"></attribute>
-                <attribute name="applicationFeePercent" use="optional" caption="Application Fee Percent" group="General" type="string" javaType="double" default="0" category="General"></attribute>
-                <attribute name="taxPercent" use="optional" caption="Tax Percent" group="General" type="string" javaType="double" default="0" category="General"></attribute>
-                <attribute name="metadata" use="optional" caption="Metadata" group="General" type="element-controller-map" javaType="java.util.Map&lt;java.lang.String,java.lang.Object&gt;" category="General"></attribute>
-            </attributes>
             <childElements>
-                <childElement name="source" use="optional" group="General" category="General">
+                <childElement name="update-subscription-parameters" use="optional" group="General" category="General">
                     <attributes>
                         <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
                             <attributes>
-<attribute name="number" use="optional" caption="Number" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
-<attribute name="expMonth" use="optional" caption="Exp Month" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
-<attribute name="expYear" use="optional" caption="Exp Year" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
-<attribute name="cvc" use="optional" caption="Cvc" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
-<attribute name="addressLine1" use="optional" caption="Address Line1" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
-<attribute name="addressLine2" use="optional" caption="Address Line2" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
-<attribute name="addressCity" use="optional" caption="Address City" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
-<attribute name="addressState" use="optional" caption="Address State" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
-<attribute name="addressZip" use="optional" caption="Address Zip" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
-<attribute name="addressCountry" use="optional" caption="Address Country" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
+<attribute name="key" use="optional" type="" javaType="" base="update-subscription-parameters" category="General"></attribute>
+<attribute name="customerId" use="optional" caption="Customer Id" type="string" javaType="java.lang.String" base="update-subscription-parameters" category="General"></attribute>
+<attribute name="subscriptionId" use="optional" caption="Subscription Id" type="string" javaType="java.lang.String" base="update-subscription-parameters" category="General"></attribute>
+<attribute name="plan" use="optional" caption="Plan" type="string" javaType="java.lang.String" base="update-subscription-parameters" category="General"></attribute>
+<attribute name="coupon" use="optional" caption="Coupon" type="string" javaType="java.lang.String" base="update-subscription-parameters" category="General"></attribute>
+<attribute name="prorate" use="optional" caption="Prorate" type="boolean" javaType="boolean" base="update-subscription-parameters" category="General"></attribute>
+<attribute name="trialEnd" use="optional" caption="Trial End" type="string" javaType="java.lang.String" base="update-subscription-parameters" category="General"></attribute>
+<attribute name="sourceToken" use="optional" caption="Source Token" type="string" javaType="java.lang.String" base="update-subscription-parameters" category="General"></attribute>
+<attribute name="quantity" use="optional" caption="Quantity" type="integer" javaType="int" base="update-subscription-parameters" category="General"></attribute>
+<attribute name="applicationFeePercent" use="optional" caption="Application Fee Percent" type="string" javaType="double" base="update-subscription-parameters" category="General"></attribute>
+<attribute name="taxPercent" use="optional" caption="Tax Percent" type="string" javaType="double" base="update-subscription-parameters" category="General"></attribute>
                             </attributes>
                         </controller>
                         <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
                             <attributes>
-<attribute name="ref" use="optional" caption="Source Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+<attribute name="ref" use="optional" caption="Update Subscription Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
                             </attributes>
                         </controller>
                     </attributes>
-                    <childElements/>
+                    <childElements>
+                        <childElement name="source" use="optional" category="General">
+                            <attributes>
+<controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="number" use="optional" caption="Number" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
+        <attribute name="expMonth" use="optional" caption="Exp Month" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
+        <attribute name="expYear" use="optional" caption="Exp Year" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
+        <attribute name="cvc" use="optional" caption="Cvc" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
+        <attribute name="addressLine1" use="optional" caption="Address Line1" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
+        <attribute name="addressLine2" use="optional" caption="Address Line2" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
+        <attribute name="addressCity" use="optional" caption="Address City" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
+        <attribute name="addressState" use="optional" caption="Address State" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
+        <attribute name="addressZip" use="optional" caption="Address Zip" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
+        <attribute name="addressCountry" use="optional" caption="Address Country" type="string" javaType="java.lang.String" base="source" category="General"></attribute>
+    </attributes>
+</controller>
+<controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="ref" use="optional" caption="Update Subscription Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+    </attributes>
+</controller>
+                            </attributes>
+                            <childElements/>
+                        </childElement>
+                        <childElement name="metadata" use="optional" category="General">
+                            <attributes>
+<controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="key" use="optional" type="" javaType="" base="update-subscription-parameters" category="General"></attribute>
+        <attribute name="ref" use="optional" caption="Update Subscription Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+    </attributes>
+</controller>
+<controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="ref" use="optional" caption="Update Subscription Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+    </attributes>
+</controller>
+                            </attributes>
+                            <childElements>
+<childElement name="metadatum" use="optional" category="General">
+    <attributes>
+        <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+            <attributes>
+                <attribute name="key" use="optional" type="" javaType="" base="update-subscription-parameters" category="General"></attribute>
+            </attributes>
+        </controller>
+        <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+            <attributes>
+                <attribute name="ref" use="optional" caption="Update Subscription Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </controller>
+    </attributes>
+    <childElements/>
+</childElement>
+                            </childElements>
+                        </childElement>
+                    </childElements>
                 </childElement>
             </childElements>
         </processor>
@@ -867,224 +1072,269 @@
                 <auto-paging>false</auto-paging>
                 <query-support>false</query-support>
             </properties>
-            <attributes>
-                <attribute name="managed" use="optional" caption="Managed" group="General" type="boolean" javaType="boolean" default="false" category="General"></attribute>
-                <attribute name="country" use="optional" caption="Country" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="email" use="optional" caption="Email" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="businessName" use="optional" caption="Business Name" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="businessUrl" use="optional" caption="Business Url" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="supportPhone" use="optional" caption="Support Phone" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="debitNegativeBalances" use="optional" caption="Debit Negative Balances" group="General" type="boolean" javaType="boolean" default="false" category="General"></attribute>
-                <attribute name="defaultCurrency" use="optional" caption="Default Currency" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="productDescription" use="optional" caption="Product Description" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="statementDescriptor" use="optional" caption="Statement Descriptor" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="metadata" use="optional" caption="Metadata" group="General" type="element-controller-map" javaType="java.util.Map&lt;java.lang.String,java.lang.Object&gt;" category="General"></attribute>
-            </attributes>
             <childElements>
-                <childElement name="bank-account" use="optional" group="General" category="General">
+                <childElement name="create-account-parameters" use="optional" group="General" category="General">
                     <attributes>
                         <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
                             <attributes>
-<attribute name="country" use="optional" caption="Country" type="string" javaType="java.lang.String" base="bank-account" category="General"></attribute>
-<attribute name="currency" use="optional" caption="Currency" type="string" javaType="java.lang.String" base="bank-account" category="General"></attribute>
-<attribute name="routingNumber" use="optional" caption="Routing Number" type="string" javaType="java.lang.String" base="bank-account" category="General"></attribute>
-<attribute name="accountNumber" use="optional" caption="Account Number" type="string" javaType="java.lang.String" base="bank-account" category="General"></attribute>
+<attribute name="key" use="optional" type="" javaType="" base="create-account-parameters" category="General"></attribute>
+<attribute name="managed" use="optional" caption="Managed" type="boolean" javaType="boolean" base="create-account-parameters" category="General"></attribute>
+<attribute name="country" use="optional" caption="Country" type="string" javaType="java.lang.String" base="create-account-parameters" category="General"></attribute>
+<attribute name="email" use="optional" caption="Email" type="string" javaType="java.lang.String" base="create-account-parameters" category="General"></attribute>
+<attribute name="businessName" use="optional" caption="Business Name" type="string" javaType="java.lang.String" base="create-account-parameters" category="General"></attribute>
+<attribute name="businessUrl" use="optional" caption="Business Url" type="string" javaType="java.lang.String" base="create-account-parameters" category="General"></attribute>
+<attribute name="supportPhone" use="optional" caption="Support Phone" type="string" javaType="java.lang.String" base="create-account-parameters" category="General"></attribute>
+<attribute name="debitNegativeBalances" use="optional" caption="Debit Negative Balances" type="boolean" javaType="boolean" base="create-account-parameters" category="General"></attribute>
+<attribute name="defaultCurrency" use="optional" caption="Default Currency" type="string" javaType="java.lang.String" base="create-account-parameters" category="General"></attribute>
+<attribute name="productDescription" use="optional" caption="Product Description" type="string" javaType="java.lang.String" base="create-account-parameters" category="General"></attribute>
+<attribute name="statementDescriptor" use="optional" caption="Statement Descriptor" type="string" javaType="java.lang.String" base="create-account-parameters" category="General"></attribute>
                             </attributes>
                         </controller>
                         <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
                             <attributes>
-<attribute name="ref" use="optional" caption="Bank Account Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+<attribute name="ref" use="optional" caption="Create Account Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+                            </attributes>
+                        </controller>
+                    </attributes>
+                    <childElements>
+                        <childElement name="bank-account" use="optional" category="General">
+                            <attributes>
+<controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="country" use="optional" caption="Country" type="string" javaType="java.lang.String" base="create-account-parameters" category="General"></attribute>
+        <attribute name="currency" use="optional" caption="Currency" type="string" javaType="java.lang.String" base="bank-account" category="General"></attribute>
+        <attribute name="routingNumber" use="optional" caption="Routing Number" type="string" javaType="java.lang.String" base="bank-account" category="General"></attribute>
+        <attribute name="accountNumber" use="optional" caption="Account Number" type="string" javaType="java.lang.String" base="bank-account" category="General"></attribute>
+    </attributes>
+</controller>
+<controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="ref" use="optional" caption="Create Account Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+    </attributes>
+</controller>
+                            </attributes>
+                            <childElements/>
+                        </childElement>
+                        <childElement name="legal-entity" use="optional" category="General">
+                            <attributes>
+<controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="type" use="optional" caption="Type" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
+        <attribute name="businessName" use="optional" caption="Business Name" type="string" javaType="java.lang.String" base="update-account-parameters" category="General"></attribute>
+        <attribute name="businessTaxId" use="optional" caption="Business Tax Id" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
+        <attribute name="businessVatId" use="optional" caption="Business Vat Id" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
+        <attribute name="firstName" use="optional" caption="First Name" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
+        <attribute name="lastName" use="optional" caption="Last Name" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
+        <attribute name="personalIdNumber" use="optional" caption="Personal Id Number" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
+        <attribute name="ssnLast4" use="optional" caption="Ssn Last4" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
+        <attribute name="verificationDocumentId" use="optional" caption="Verification Document Id" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
+    </attributes>
+</controller>
+<controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="ref" use="optional" caption="Create Account Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+    </attributes>
+</controller>
+                            </attributes>
+                            <childElements>
+<childElement name="address" use="optional" category="General">
+    <attributes>
+        <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+            <attributes>
+                <attribute name="line1" use="optional" caption="Line1" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+                <attribute name="line2" use="optional" caption="Line2" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+                <attribute name="city" use="optional" caption="City" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+                <attribute name="state" use="optional" caption="State" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+                <attribute name="postalCode" use="optional" caption="Postal Code" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+                <attribute name="country" use="optional" caption="Country" type="string" javaType="java.lang.String" base="create-account-parameters" category="General"></attribute>
+            </attributes>
+        </controller>
+        <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+            <attributes>
+                <attribute name="ref" use="optional" caption="Update Account Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </controller>
+    </attributes>
+    <childElements/>
+</childElement>
+<childElement name="dob" use="optional" category="General">
+    <attributes>
+        <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+            <attributes>
+                <attribute name="day" use="optional" caption="Day" type="integer" javaType="int" base="dob" category="General"></attribute>
+                <attribute name="month" use="optional" caption="Month" type="integer" javaType="int" base="dob" category="General"></attribute>
+                <attribute name="year" use="optional" caption="Year" type="integer" javaType="int" base="dob" category="General"></attribute>
+            </attributes>
+        </controller>
+        <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+            <attributes>
+                <attribute name="ref" use="optional" caption="Update Account Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </controller>
+    </attributes>
+    <childElements/>
+</childElement>
+<childElement name="personal-address" use="optional" category="General">
+    <attributes>
+        <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+            <attributes>
+                <attribute name="line1" use="optional" caption="Line1" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+                <attribute name="line2" use="optional" caption="Line2" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+                <attribute name="city" use="optional" caption="City" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+                <attribute name="state" use="optional" caption="State" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+                <attribute name="postalCode" use="optional" caption="Postal Code" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+                <attribute name="country" use="optional" caption="Country" type="string" javaType="java.lang.String" base="create-account-parameters" category="General"></attribute>
+            </attributes>
+        </controller>
+        <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+            <attributes>
+                <attribute name="ref" use="optional" caption="Update Account Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </controller>
+    </attributes>
+    <childElements/>
+</childElement>
+<childElement name="additional-owners" use="optional" category="General">
+    <attributes>
+        <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+            <attributes>
+                <attribute name="ref" use="optional" caption="Update Account Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </controller>
+        <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+            <attributes>
+                <attribute name="ref" use="optional" caption="Update Account Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </controller>
+    </attributes>
+    <childElements>
+        <childElement name="additional-owner" use="optional" category="General">
+            <attributes>
+                <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+                    <attributes>
+                        <attribute name="firstName" use="optional" caption="First Name" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
+                        <attribute name="lastName" use="optional" caption="Last Name" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
+                        <attribute name="verificationDocumentId" use="optional" caption="Verification Document Id" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
+                    </attributes>
+                </controller>
+                <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+                    <attributes>
+                        <attribute name="ref" use="optional" caption="Update Account Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+                    </attributes>
+                </controller>
+            </attributes>
+            <childElements>
+                <childElement name="address" use="optional" category="General">
+                    <attributes>
+                        <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+                            <attributes>
+<attribute name="line1" use="optional" caption="Line1" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+<attribute name="line2" use="optional" caption="Line2" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+<attribute name="city" use="optional" caption="City" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+<attribute name="state" use="optional" caption="State" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+<attribute name="postalCode" use="optional" caption="Postal Code" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+<attribute name="country" use="optional" caption="Country" type="string" javaType="java.lang.String" base="create-account-parameters" category="General"></attribute>
+                            </attributes>
+                        </controller>
+                        <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+                            <attributes>
+<attribute name="ref" use="optional" caption="Update Account Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
                             </attributes>
                         </controller>
                     </attributes>
                     <childElements/>
                 </childElement>
-                <childElement name="legal-entity" use="optional" group="General" category="General">
+                <childElement name="dob" use="optional" category="General">
                     <attributes>
                         <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
                             <attributes>
-<attribute name="type" use="optional" caption="Type" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
-<attribute name="businessName" use="optional" caption="Business Name" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
-<attribute name="businessTaxId" use="optional" caption="Business Tax Id" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
-<attribute name="businessVatId" use="optional" caption="Business Vat Id" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
-<attribute name="firstName" use="optional" caption="First Name" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
-<attribute name="lastName" use="optional" caption="Last Name" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
-<attribute name="personalIdNumber" use="optional" caption="Personal Id Number" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
-<attribute name="ssnLast4" use="optional" caption="Ssn Last4" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
-<attribute name="verificationDocumentId" use="optional" caption="Verification Document Id" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
+<attribute name="day" use="optional" caption="Day" type="integer" javaType="int" base="dob" category="General"></attribute>
+<attribute name="month" use="optional" caption="Month" type="integer" javaType="int" base="dob" category="General"></attribute>
+<attribute name="year" use="optional" caption="Year" type="integer" javaType="int" base="dob" category="General"></attribute>
                             </attributes>
                         </controller>
                         <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
                             <attributes>
-<attribute name="ref" use="optional" caption="Legal Entity Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+<attribute name="ref" use="optional" caption="Update Account Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
                             </attributes>
                         </controller>
                     </attributes>
-                    <childElements>
-                        <childElement name="address" use="optional" category="General">
-                            <attributes>
-<controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
-    <attributes>
-        <attribute name="line1" use="optional" caption="Line1" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-        <attribute name="line2" use="optional" caption="Line2" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-        <attribute name="city" use="optional" caption="City" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-        <attribute name="state" use="optional" caption="State" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-        <attribute name="postalCode" use="optional" caption="Postal Code" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-        <attribute name="country" use="optional" caption="Country" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-    </attributes>
-</controller>
-<controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
-    <attributes>
-        <attribute name="ref" use="optional" caption="Legal Entity Reference" type="string" javaType="java.lang.String" category="General"></attribute>
-    </attributes>
-</controller>
-                            </attributes>
-                            <childElements/>
-                        </childElement>
-                        <childElement name="dob" use="optional" category="General">
-                            <attributes>
-<controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
-    <attributes>
-        <attribute name="day" use="optional" caption="Day" type="integer" javaType="int" base="dob" category="General"></attribute>
-        <attribute name="month" use="optional" caption="Month" type="integer" javaType="int" base="dob" category="General"></attribute>
-        <attribute name="year" use="optional" caption="Year" type="integer" javaType="int" base="dob" category="General"></attribute>
-    </attributes>
-</controller>
-<controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
-    <attributes>
-        <attribute name="ref" use="optional" caption="Legal Entity Reference" type="string" javaType="java.lang.String" category="General"></attribute>
-    </attributes>
-</controller>
-                            </attributes>
-                            <childElements/>
-                        </childElement>
-                        <childElement name="personal-address" use="optional" category="General">
-                            <attributes>
-<controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
-    <attributes>
-        <attribute name="line1" use="optional" caption="Line1" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-        <attribute name="line2" use="optional" caption="Line2" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-        <attribute name="city" use="optional" caption="City" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-        <attribute name="state" use="optional" caption="State" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-        <attribute name="postalCode" use="optional" caption="Postal Code" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-        <attribute name="country" use="optional" caption="Country" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-    </attributes>
-</controller>
-<controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
-    <attributes>
-        <attribute name="ref" use="optional" caption="Legal Entity Reference" type="string" javaType="java.lang.String" category="General"></attribute>
-    </attributes>
-</controller>
-                            </attributes>
-                            <childElements/>
-                        </childElement>
-                        <childElement name="additional-owners" use="optional" category="General">
-                            <attributes>
-<controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
-    <attributes>
-        <attribute name="ref" use="optional" caption="Legal Entity Reference" type="string" javaType="java.lang.String" category="General"></attribute>
-    </attributes>
-</controller>
-<controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
-    <attributes>
-        <attribute name="ref" use="optional" caption="Legal Entity Reference" type="string" javaType="java.lang.String" category="General"></attribute>
-    </attributes>
-</controller>
-                            </attributes>
-                            <childElements>
-<childElement name="additional-owner" use="optional" category="General">
-    <attributes>
-        <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
-            <attributes>
-                <attribute name="firstName" use="optional" caption="First Name" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
-                <attribute name="lastName" use="optional" caption="Last Name" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
-                <attribute name="verificationDocumentId" use="optional" caption="Verification Document Id" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
-            </attributes>
-        </controller>
-        <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
-            <attributes>
-                <attribute name="ref" use="optional" caption="Legal Entity Reference" type="string" javaType="java.lang.String" category="General"></attribute>
-            </attributes>
-        </controller>
-    </attributes>
-    <childElements>
-        <childElement name="address" use="optional" category="General">
-            <attributes>
-                <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
-                    <attributes>
-                        <attribute name="line1" use="optional" caption="Line1" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-                        <attribute name="line2" use="optional" caption="Line2" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-                        <attribute name="city" use="optional" caption="City" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-                        <attribute name="state" use="optional" caption="State" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-                        <attribute name="postalCode" use="optional" caption="Postal Code" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-                        <attribute name="country" use="optional" caption="Country" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-                    </attributes>
-                </controller>
-                <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
-                    <attributes>
-                        <attribute name="ref" use="optional" caption="Legal Entity Reference" type="string" javaType="java.lang.String" category="General"></attribute>
-                    </attributes>
-                </controller>
-            </attributes>
-            <childElements/>
-        </childElement>
-        <childElement name="dob" use="optional" category="General">
-            <attributes>
-                <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
-                    <attributes>
-                        <attribute name="day" use="optional" caption="Day" type="integer" javaType="int" base="dob" category="General"></attribute>
-                        <attribute name="month" use="optional" caption="Month" type="integer" javaType="int" base="dob" category="General"></attribute>
-                        <attribute name="year" use="optional" caption="Year" type="integer" javaType="int" base="dob" category="General"></attribute>
-                    </attributes>
-                </controller>
-                <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
-                    <attributes>
-                        <attribute name="ref" use="optional" caption="Legal Entity Reference" type="string" javaType="java.lang.String" category="General"></attribute>
-                    </attributes>
-                </controller>
-            </attributes>
-            <childElements/>
+                    <childElements/>
+                </childElement>
+            </childElements>
         </childElement>
     </childElements>
 </childElement>
                             </childElements>
                         </childElement>
+                        <childElement name="tos-acceptance" use="optional" category="General">
+                            <attributes>
+<controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="date" use="optional" caption="Date" type="string" javaType="java.lang.String" base="tos-acceptance" category="General"></attribute>
+        <attribute name="ip" use="optional" caption="Ip" type="string" javaType="java.lang.String" base="tos-acceptance" category="General"></attribute>
+        <attribute name="userAgent" use="optional" caption="User Agent" type="string" javaType="java.lang.String" base="tos-acceptance" category="General"></attribute>
+    </attributes>
+</controller>
+<controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="ref" use="optional" caption="Create Account Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+    </attributes>
+</controller>
+                            </attributes>
+                            <childElements/>
+                        </childElement>
+                        <childElement name="transfer-schedule" use="optional" category="General">
+                            <attributes>
+<controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="delayDays" use="optional" caption="Delay Days" type="string" javaType="java.lang.String" base="transfer-schedule" category="General"></attribute>
+        <attribute name="interval" use="optional" caption="Interval" type="string" javaType="java.lang.String" base="transfer-schedule" category="General"></attribute>
+        <attribute name="monthlyAnchor" use="optional" caption="Monthly Anchor" type="string" javaType="java.lang.String" base="transfer-schedule" category="General"></attribute>
+        <attribute name="weeklyAnchor" use="optional" caption="Weekly Anchor" type="string" javaType="java.lang.String" base="transfer-schedule" category="General"></attribute>
+    </attributes>
+</controller>
+<controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="ref" use="optional" caption="Create Account Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+    </attributes>
+</controller>
+                            </attributes>
+                            <childElements/>
+                        </childElement>
+                        <childElement name="metadata" use="optional" category="General">
+                            <attributes>
+<controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="key" use="optional" type="" javaType="" base="create-account-parameters" category="General"></attribute>
+        <attribute name="ref" use="optional" caption="Create Account Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+    </attributes>
+</controller>
+<controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="ref" use="optional" caption="Create Account Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+    </attributes>
+</controller>
+                            </attributes>
+                            <childElements>
+<childElement name="metadatum" use="optional" category="General">
+    <attributes>
+        <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+            <attributes>
+                <attribute name="key" use="optional" type="" javaType="" base="create-account-parameters" category="General"></attribute>
+            </attributes>
+        </controller>
+        <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+            <attributes>
+                <attribute name="ref" use="optional" caption="Create Account Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </controller>
+    </attributes>
+    <childElements/>
+</childElement>
+                            </childElements>
+                        </childElement>
                     </childElements>
-                </childElement>
-                <childElement name="tos-acceptance" use="optional" group="General" category="General">
-                    <attributes>
-                        <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
-                            <attributes>
-<attribute name="date" use="optional" caption="Date" type="string" javaType="java.lang.String" base="tos-acceptance" category="General"></attribute>
-<attribute name="ip" use="optional" caption="Ip" type="string" javaType="java.lang.String" base="tos-acceptance" category="General"></attribute>
-<attribute name="userAgent" use="optional" caption="User Agent" type="string" javaType="java.lang.String" base="tos-acceptance" category="General"></attribute>
-                            </attributes>
-                        </controller>
-                        <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
-                            <attributes>
-<attribute name="ref" use="optional" caption="Tos Acceptance Reference" type="string" javaType="java.lang.String" category="General"></attribute>
-                            </attributes>
-                        </controller>
-                    </attributes>
-                    <childElements/>
-                </childElement>
-                <childElement name="transfer-schedule" use="optional" group="General" category="General">
-                    <attributes>
-                        <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
-                            <attributes>
-<attribute name="delayDays" use="optional" caption="Delay Days" type="string" javaType="java.lang.String" base="transfer-schedule" category="General"></attribute>
-<attribute name="interval" use="optional" caption="Interval" type="string" javaType="java.lang.String" base="transfer-schedule" category="General"></attribute>
-<attribute name="monthlyAnchor" use="optional" caption="Monthly Anchor" type="string" javaType="java.lang.String" base="transfer-schedule" category="General"></attribute>
-<attribute name="weeklyAnchor" use="optional" caption="Weekly Anchor" type="string" javaType="java.lang.String" base="transfer-schedule" category="General"></attribute>
-                            </attributes>
-                        </controller>
-                        <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
-                            <attributes>
-<attribute name="ref" use="optional" caption="Transfer Schedule Reference" type="string" javaType="java.lang.String" category="General"></attribute>
-                            </attributes>
-                        </controller>
-                    </attributes>
-                    <childElements/>
                 </childElement>
             </childElements>
         </processor>
@@ -1104,223 +1354,268 @@
                 <auto-paging>false</auto-paging>
                 <query-support>false</query-support>
             </properties>
-            <attributes>
-                <attribute name="id" use="required" caption="Id" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="email" use="optional" caption="Email" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="businessName" use="optional" caption="Business Name" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="businessUrl" use="optional" caption="Business Url" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="supportPhone" use="optional" caption="Support Phone" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="debitNegativeBalances" use="optional" caption="Debit Negative Balances" group="General" type="boolean" javaType="boolean" default="false" category="General"></attribute>
-                <attribute name="defaultCurrency" use="optional" caption="Default Currency" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="productDescription" use="optional" caption="Product Description" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="statementDescriptor" use="optional" caption="Statement Descriptor" group="General" type="string" javaType="java.lang.String" category="General"></attribute>
-                <attribute name="metadata" use="optional" caption="Metadata" group="General" type="element-controller-map" javaType="java.util.Map&lt;java.lang.String,java.lang.Object&gt;" category="General"></attribute>
-            </attributes>
             <childElements>
-                <childElement name="bank-account" use="optional" group="General" category="General">
+                <childElement name="update-account-parameters" use="optional" group="General" category="General">
                     <attributes>
                         <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
                             <attributes>
-<attribute name="country" use="optional" caption="Country" type="string" javaType="java.lang.String" base="bank-account" category="General"></attribute>
-<attribute name="currency" use="optional" caption="Currency" type="string" javaType="java.lang.String" base="bank-account" category="General"></attribute>
-<attribute name="routingNumber" use="optional" caption="Routing Number" type="string" javaType="java.lang.String" base="bank-account" category="General"></attribute>
-<attribute name="accountNumber" use="optional" caption="Account Number" type="string" javaType="java.lang.String" base="bank-account" category="General"></attribute>
+<attribute name="key" use="optional" type="" javaType="" base="update-account-parameters" category="General"></attribute>
+<attribute name="id" use="optional" caption="Id" type="string" javaType="java.lang.String" base="update-account-parameters" category="General"></attribute>
+<attribute name="email" use="optional" caption="Email" type="string" javaType="java.lang.String" base="update-account-parameters" category="General"></attribute>
+<attribute name="businessName" use="optional" caption="Business Name" type="string" javaType="java.lang.String" base="update-account-parameters" category="General"></attribute>
+<attribute name="businessUrl" use="optional" caption="Business Url" type="string" javaType="java.lang.String" base="update-account-parameters" category="General"></attribute>
+<attribute name="supportPhone" use="optional" caption="Support Phone" type="string" javaType="java.lang.String" base="update-account-parameters" category="General"></attribute>
+<attribute name="debitNegativeBalances" use="optional" caption="Debit Negative Balances" type="boolean" javaType="boolean" base="update-account-parameters" category="General"></attribute>
+<attribute name="defaultCurrency" use="optional" caption="Default Currency" type="string" javaType="java.lang.String" base="update-account-parameters" category="General"></attribute>
+<attribute name="productDescription" use="optional" caption="Product Description" type="string" javaType="java.lang.String" base="update-account-parameters" category="General"></attribute>
+<attribute name="statementDescriptor" use="optional" caption="Statement Descriptor" type="string" javaType="java.lang.String" base="update-account-parameters" category="General"></attribute>
                             </attributes>
                         </controller>
                         <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
                             <attributes>
-<attribute name="ref" use="optional" caption="Bank Account Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+<attribute name="ref" use="optional" caption="Update Account Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+                            </attributes>
+                        </controller>
+                    </attributes>
+                    <childElements>
+                        <childElement name="bank-account" use="optional" category="General">
+                            <attributes>
+<controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="country" use="optional" caption="Country" type="string" javaType="java.lang.String" base="create-account-parameters" category="General"></attribute>
+        <attribute name="currency" use="optional" caption="Currency" type="string" javaType="java.lang.String" base="bank-account" category="General"></attribute>
+        <attribute name="routingNumber" use="optional" caption="Routing Number" type="string" javaType="java.lang.String" base="bank-account" category="General"></attribute>
+        <attribute name="accountNumber" use="optional" caption="Account Number" type="string" javaType="java.lang.String" base="bank-account" category="General"></attribute>
+    </attributes>
+</controller>
+<controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="ref" use="optional" caption="Update Account Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+    </attributes>
+</controller>
+                            </attributes>
+                            <childElements/>
+                        </childElement>
+                        <childElement name="legal-entity" use="optional" category="General">
+                            <attributes>
+<controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="type" use="optional" caption="Type" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
+        <attribute name="businessName" use="optional" caption="Business Name" type="string" javaType="java.lang.String" base="update-account-parameters" category="General"></attribute>
+        <attribute name="businessTaxId" use="optional" caption="Business Tax Id" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
+        <attribute name="businessVatId" use="optional" caption="Business Vat Id" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
+        <attribute name="firstName" use="optional" caption="First Name" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
+        <attribute name="lastName" use="optional" caption="Last Name" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
+        <attribute name="personalIdNumber" use="optional" caption="Personal Id Number" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
+        <attribute name="ssnLast4" use="optional" caption="Ssn Last4" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
+        <attribute name="verificationDocumentId" use="optional" caption="Verification Document Id" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
+    </attributes>
+</controller>
+<controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="ref" use="optional" caption="Update Account Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+    </attributes>
+</controller>
+                            </attributes>
+                            <childElements>
+<childElement name="address" use="optional" category="General">
+    <attributes>
+        <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+            <attributes>
+                <attribute name="line1" use="optional" caption="Line1" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+                <attribute name="line2" use="optional" caption="Line2" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+                <attribute name="city" use="optional" caption="City" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+                <attribute name="state" use="optional" caption="State" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+                <attribute name="postalCode" use="optional" caption="Postal Code" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+                <attribute name="country" use="optional" caption="Country" type="string" javaType="java.lang.String" base="create-account-parameters" category="General"></attribute>
+            </attributes>
+        </controller>
+        <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+            <attributes>
+                <attribute name="ref" use="optional" caption="Update Account Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </controller>
+    </attributes>
+    <childElements/>
+</childElement>
+<childElement name="dob" use="optional" category="General">
+    <attributes>
+        <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+            <attributes>
+                <attribute name="day" use="optional" caption="Day" type="integer" javaType="int" base="dob" category="General"></attribute>
+                <attribute name="month" use="optional" caption="Month" type="integer" javaType="int" base="dob" category="General"></attribute>
+                <attribute name="year" use="optional" caption="Year" type="integer" javaType="int" base="dob" category="General"></attribute>
+            </attributes>
+        </controller>
+        <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+            <attributes>
+                <attribute name="ref" use="optional" caption="Update Account Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </controller>
+    </attributes>
+    <childElements/>
+</childElement>
+<childElement name="personal-address" use="optional" category="General">
+    <attributes>
+        <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+            <attributes>
+                <attribute name="line1" use="optional" caption="Line1" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+                <attribute name="line2" use="optional" caption="Line2" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+                <attribute name="city" use="optional" caption="City" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+                <attribute name="state" use="optional" caption="State" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+                <attribute name="postalCode" use="optional" caption="Postal Code" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+                <attribute name="country" use="optional" caption="Country" type="string" javaType="java.lang.String" base="create-account-parameters" category="General"></attribute>
+            </attributes>
+        </controller>
+        <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+            <attributes>
+                <attribute name="ref" use="optional" caption="Update Account Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </controller>
+    </attributes>
+    <childElements/>
+</childElement>
+<childElement name="additional-owners" use="optional" category="General">
+    <attributes>
+        <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+            <attributes>
+                <attribute name="ref" use="optional" caption="Update Account Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </controller>
+        <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+            <attributes>
+                <attribute name="ref" use="optional" caption="Update Account Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </controller>
+    </attributes>
+    <childElements>
+        <childElement name="additional-owner" use="optional" category="General">
+            <attributes>
+                <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+                    <attributes>
+                        <attribute name="firstName" use="optional" caption="First Name" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
+                        <attribute name="lastName" use="optional" caption="Last Name" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
+                        <attribute name="verificationDocumentId" use="optional" caption="Verification Document Id" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
+                    </attributes>
+                </controller>
+                <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+                    <attributes>
+                        <attribute name="ref" use="optional" caption="Update Account Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+                    </attributes>
+                </controller>
+            </attributes>
+            <childElements>
+                <childElement name="address" use="optional" category="General">
+                    <attributes>
+                        <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+                            <attributes>
+<attribute name="line1" use="optional" caption="Line1" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+<attribute name="line2" use="optional" caption="Line2" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+<attribute name="city" use="optional" caption="City" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+<attribute name="state" use="optional" caption="State" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+<attribute name="postalCode" use="optional" caption="Postal Code" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
+<attribute name="country" use="optional" caption="Country" type="string" javaType="java.lang.String" base="create-account-parameters" category="General"></attribute>
+                            </attributes>
+                        </controller>
+                        <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+                            <attributes>
+<attribute name="ref" use="optional" caption="Update Account Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
                             </attributes>
                         </controller>
                     </attributes>
                     <childElements/>
                 </childElement>
-                <childElement name="legal-entity" use="optional" group="General" category="General">
+                <childElement name="dob" use="optional" category="General">
                     <attributes>
                         <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
                             <attributes>
-<attribute name="type" use="optional" caption="Type" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
-<attribute name="businessName" use="optional" caption="Business Name" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
-<attribute name="businessTaxId" use="optional" caption="Business Tax Id" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
-<attribute name="businessVatId" use="optional" caption="Business Vat Id" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
-<attribute name="firstName" use="optional" caption="First Name" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
-<attribute name="lastName" use="optional" caption="Last Name" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
-<attribute name="personalIdNumber" use="optional" caption="Personal Id Number" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
-<attribute name="ssnLast4" use="optional" caption="Ssn Last4" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
-<attribute name="verificationDocumentId" use="optional" caption="Verification Document Id" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
+<attribute name="day" use="optional" caption="Day" type="integer" javaType="int" base="dob" category="General"></attribute>
+<attribute name="month" use="optional" caption="Month" type="integer" javaType="int" base="dob" category="General"></attribute>
+<attribute name="year" use="optional" caption="Year" type="integer" javaType="int" base="dob" category="General"></attribute>
                             </attributes>
                         </controller>
                         <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
                             <attributes>
-<attribute name="ref" use="optional" caption="Legal Entity Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+<attribute name="ref" use="optional" caption="Update Account Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
                             </attributes>
                         </controller>
                     </attributes>
-                    <childElements>
-                        <childElement name="address" use="optional" category="General">
-                            <attributes>
-<controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
-    <attributes>
-        <attribute name="line1" use="optional" caption="Line1" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-        <attribute name="line2" use="optional" caption="Line2" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-        <attribute name="city" use="optional" caption="City" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-        <attribute name="state" use="optional" caption="State" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-        <attribute name="postalCode" use="optional" caption="Postal Code" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-        <attribute name="country" use="optional" caption="Country" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-    </attributes>
-</controller>
-<controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
-    <attributes>
-        <attribute name="ref" use="optional" caption="Legal Entity Reference" type="string" javaType="java.lang.String" category="General"></attribute>
-    </attributes>
-</controller>
-                            </attributes>
-                            <childElements/>
-                        </childElement>
-                        <childElement name="dob" use="optional" category="General">
-                            <attributes>
-<controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
-    <attributes>
-        <attribute name="day" use="optional" caption="Day" type="integer" javaType="int" base="dob" category="General"></attribute>
-        <attribute name="month" use="optional" caption="Month" type="integer" javaType="int" base="dob" category="General"></attribute>
-        <attribute name="year" use="optional" caption="Year" type="integer" javaType="int" base="dob" category="General"></attribute>
-    </attributes>
-</controller>
-<controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
-    <attributes>
-        <attribute name="ref" use="optional" caption="Legal Entity Reference" type="string" javaType="java.lang.String" category="General"></attribute>
-    </attributes>
-</controller>
-                            </attributes>
-                            <childElements/>
-                        </childElement>
-                        <childElement name="personal-address" use="optional" category="General">
-                            <attributes>
-<controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
-    <attributes>
-        <attribute name="line1" use="optional" caption="Line1" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-        <attribute name="line2" use="optional" caption="Line2" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-        <attribute name="city" use="optional" caption="City" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-        <attribute name="state" use="optional" caption="State" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-        <attribute name="postalCode" use="optional" caption="Postal Code" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-        <attribute name="country" use="optional" caption="Country" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-    </attributes>
-</controller>
-<controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
-    <attributes>
-        <attribute name="ref" use="optional" caption="Legal Entity Reference" type="string" javaType="java.lang.String" category="General"></attribute>
-    </attributes>
-</controller>
-                            </attributes>
-                            <childElements/>
-                        </childElement>
-                        <childElement name="additional-owners" use="optional" category="General">
-                            <attributes>
-<controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
-    <attributes>
-        <attribute name="ref" use="optional" caption="Legal Entity Reference" type="string" javaType="java.lang.String" category="General"></attribute>
-    </attributes>
-</controller>
-<controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
-    <attributes>
-        <attribute name="ref" use="optional" caption="Legal Entity Reference" type="string" javaType="java.lang.String" category="General"></attribute>
-    </attributes>
-</controller>
-                            </attributes>
-                            <childElements>
-<childElement name="additional-owner" use="optional" category="General">
-    <attributes>
-        <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
-            <attributes>
-                <attribute name="firstName" use="optional" caption="First Name" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
-                <attribute name="lastName" use="optional" caption="Last Name" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
-                <attribute name="verificationDocumentId" use="optional" caption="Verification Document Id" type="string" javaType="java.lang.String" base="legal-entity" category="General"></attribute>
-            </attributes>
-        </controller>
-        <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
-            <attributes>
-                <attribute name="ref" use="optional" caption="Legal Entity Reference" type="string" javaType="java.lang.String" category="General"></attribute>
-            </attributes>
-        </controller>
-    </attributes>
-    <childElements>
-        <childElement name="address" use="optional" category="General">
-            <attributes>
-                <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
-                    <attributes>
-                        <attribute name="line1" use="optional" caption="Line1" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-                        <attribute name="line2" use="optional" caption="Line2" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-                        <attribute name="city" use="optional" caption="City" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-                        <attribute name="state" use="optional" caption="State" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-                        <attribute name="postalCode" use="optional" caption="Postal Code" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-                        <attribute name="country" use="optional" caption="Country" type="string" javaType="java.lang.String" base="address" category="General"></attribute>
-                    </attributes>
-                </controller>
-                <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
-                    <attributes>
-                        <attribute name="ref" use="optional" caption="Legal Entity Reference" type="string" javaType="java.lang.String" category="General"></attribute>
-                    </attributes>
-                </controller>
-            </attributes>
-            <childElements/>
-        </childElement>
-        <childElement name="dob" use="optional" category="General">
-            <attributes>
-                <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
-                    <attributes>
-                        <attribute name="day" use="optional" caption="Day" type="integer" javaType="int" base="dob" category="General"></attribute>
-                        <attribute name="month" use="optional" caption="Month" type="integer" javaType="int" base="dob" category="General"></attribute>
-                        <attribute name="year" use="optional" caption="Year" type="integer" javaType="int" base="dob" category="General"></attribute>
-                    </attributes>
-                </controller>
-                <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
-                    <attributes>
-                        <attribute name="ref" use="optional" caption="Legal Entity Reference" type="string" javaType="java.lang.String" category="General"></attribute>
-                    </attributes>
-                </controller>
-            </attributes>
-            <childElements/>
+                    <childElements/>
+                </childElement>
+            </childElements>
         </childElement>
     </childElements>
 </childElement>
                             </childElements>
                         </childElement>
+                        <childElement name="tos-acceptance" use="optional" category="General">
+                            <attributes>
+<controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="date" use="optional" caption="Date" type="string" javaType="java.lang.String" base="tos-acceptance" category="General"></attribute>
+        <attribute name="ip" use="optional" caption="Ip" type="string" javaType="java.lang.String" base="tos-acceptance" category="General"></attribute>
+        <attribute name="userAgent" use="optional" caption="User Agent" type="string" javaType="java.lang.String" base="tos-acceptance" category="General"></attribute>
+    </attributes>
+</controller>
+<controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="ref" use="optional" caption="Update Account Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+    </attributes>
+</controller>
+                            </attributes>
+                            <childElements/>
+                        </childElement>
+                        <childElement name="transfer-schedule" use="optional" category="General">
+                            <attributes>
+<controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="delayDays" use="optional" caption="Delay Days" type="string" javaType="java.lang.String" base="transfer-schedule" category="General"></attribute>
+        <attribute name="interval" use="optional" caption="Interval" type="string" javaType="java.lang.String" base="transfer-schedule" category="General"></attribute>
+        <attribute name="monthlyAnchor" use="optional" caption="Monthly Anchor" type="string" javaType="java.lang.String" base="transfer-schedule" category="General"></attribute>
+        <attribute name="weeklyAnchor" use="optional" caption="Weekly Anchor" type="string" javaType="java.lang.String" base="transfer-schedule" category="General"></attribute>
+    </attributes>
+</controller>
+<controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="ref" use="optional" caption="Update Account Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+    </attributes>
+</controller>
+                            </attributes>
+                            <childElements/>
+                        </childElement>
+                        <childElement name="metadata" use="optional" category="General">
+                            <attributes>
+<controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="key" use="optional" type="" javaType="" base="update-account-parameters" category="General"></attribute>
+        <attribute name="ref" use="optional" caption="Update Account Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+    </attributes>
+</controller>
+<controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+    <attributes>
+        <attribute name="ref" use="optional" caption="Update Account Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+    </attributes>
+</controller>
+                            </attributes>
+                            <childElements>
+<childElement name="metadatum" use="optional" category="General">
+    <attributes>
+        <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
+            <attributes>
+                <attribute name="key" use="optional" type="" javaType="" base="update-account-parameters" category="General"></attribute>
+            </attributes>
+        </controller>
+        <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
+            <attributes>
+                <attribute name="ref" use="optional" caption="Update Account Parameters Reference" type="string" javaType="java.lang.String" category="General"></attribute>
+            </attributes>
+        </controller>
+    </attributes>
+    <childElements/>
+</childElement>
+                            </childElements>
+                        </childElement>
                     </childElements>
-                </childElement>
-                <childElement name="tos-acceptance" use="optional" group="General" category="General">
-                    <attributes>
-                        <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
-                            <attributes>
-<attribute name="date" use="optional" caption="Date" type="string" javaType="java.lang.String" base="tos-acceptance" category="General"></attribute>
-<attribute name="ip" use="optional" caption="Ip" type="string" javaType="java.lang.String" base="tos-acceptance" category="General"></attribute>
-<attribute name="userAgent" use="optional" caption="User Agent" type="string" javaType="java.lang.String" base="tos-acceptance" category="General"></attribute>
-                            </attributes>
-                        </controller>
-                        <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
-                            <attributes>
-<attribute name="ref" use="optional" caption="Tos Acceptance Reference" type="string" javaType="java.lang.String" category="General"></attribute>
-                            </attributes>
-                        </controller>
-                    </attributes>
-                    <childElements/>
-                </childElement>
-                <childElement name="transfer-schedule" use="optional" group="General" category="General">
-                    <attributes>
-                        <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
-                            <attributes>
-<attribute name="delayDays" use="optional" caption="Delay Days" type="string" javaType="java.lang.String" base="transfer-schedule" category="General"></attribute>
-<attribute name="interval" use="optional" caption="Interval" type="string" javaType="java.lang.String" base="transfer-schedule" category="General"></attribute>
-<attribute name="monthlyAnchor" use="optional" caption="Monthly Anchor" type="string" javaType="java.lang.String" base="transfer-schedule" category="General"></attribute>
-<attribute name="weeklyAnchor" use="optional" caption="Weekly Anchor" type="string" javaType="java.lang.String" base="transfer-schedule" category="General"></attribute>
-                            </attributes>
-                        </controller>
-                        <controller caption="Reference or expression" controlled="useReference" controllerType="radioBoolean">
-                            <attributes>
-<attribute name="ref" use="optional" caption="Transfer Schedule Reference" type="string" javaType="java.lang.String" category="General"></attribute>
-                            </attributes>
-                        </controller>
-                    </attributes>
-                    <childElements/>
                 </childElement>
             </childElements>
         </processor>
@@ -1375,7 +1670,7 @@
                     <attributes>
                         <controller caption="Define attributes" controlled="complex" controllerType="radioBoolean">
                             <attributes>
-<attribute name="country" use="optional" caption="Country" type="string" javaType="java.lang.String" base="bank-account" category="General"></attribute>
+<attribute name="country" use="optional" caption="Country" type="string" javaType="java.lang.String" base="create-account-parameters" category="General"></attribute>
 <attribute name="currency" use="optional" caption="Currency" type="string" javaType="java.lang.String" base="bank-account" category="General"></attribute>
 <attribute name="routingNumber" use="optional" caption="Routing Number" type="string" javaType="java.lang.String" base="bank-account" category="General"></attribute>
 <attribute name="accountNumber" use="optional" caption="Account Number" type="string" javaType="java.lang.String" base="bank-account" category="General"></attribute>
