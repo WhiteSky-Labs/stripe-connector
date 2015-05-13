@@ -561,7 +561,7 @@ Summary:
             Charge</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/client/StripeChargeClient.html#createCharge(int, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.Source, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, boolean, java.lang.String, java.lang.String, java.lang.String, int, java.util.Map<java.lang.String, java.lang.Object>)">createCharge</a></span>(int amount, String currency, String customerId, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/Source.html">Source</a> source, String description, Map&lt;String,&nbsp;Object&gt; metadata, boolean capture, String statementDescriptor, String receiptEmail, String destination, int applicationFee, Map&lt;String,&nbsp;Object&gt; shipping)</nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/client/StripeChargeClient.html#createCharge(int, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.Source, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, boolean, java.lang.String, java.lang.String, java.lang.String, int, java.util.Map<java.lang.String, java.lang.String>)">createCharge</a></span>(int amount, String currency, String customerId, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/Source.html">Source</a> source, String description, Map&lt;String,&nbsp;Object&gt; metadata, boolean capture, String statementDescriptor, String receiptEmail, String destination, int applicationFee, Map&lt;String,&nbsp;String&gt; shipping)</nobr>
         
         <div class="jd-descrdiv">Create a Charge</div>
   
@@ -579,7 +579,7 @@ Summary:
             ChargeCollection</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/client/StripeChargeClient.html#listAllCharges(java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.lang.String, java.lang.String, int, java.lang.String)">listAllCharges</a></span>(String createdTimestamp, Map&lt;String,&nbsp;String&gt; created, String customer, String endingBefore, int limit, String startingAfter)</nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/client/StripeChargeClient.html#listAllCharges(java.lang.String, com.wsl.modules.stripe.complextypes.TimeRange, java.lang.String, java.lang.String, int, java.lang.String)">listAllCharges</a></span>(String createdTimestamp, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/TimeRange.html">TimeRange</a> created, String customer, String endingBefore, int limit, String startingAfter)</nobr>
         
         <div class="jd-descrdiv">List all Charges</div>
   
@@ -615,7 +615,7 @@ Summary:
             Charge</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/client/StripeChargeClient.html#updateCharge(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">updateCharge</a></span>(String id, String description, Map&lt;String,&nbsp;Object&gt; metadata, String receiptEmail, Map&lt;String,&nbsp;Object&gt; fraudDetails)</nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/client/StripeChargeClient.html#updateCharge(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String, java.util.Map<java.lang.String, java.lang.String>)">updateCharge</a></span>(String id, String description, Map&lt;String,&nbsp;Object&gt; metadata, String receiptEmail, Map&lt;String,&nbsp;String&gt; fraudDetails)</nobr>
         
         <div class="jd-descrdiv">Update a Charge
  Updates the specified charge by setting the values of the parameters passed.</div>
@@ -989,7 +989,7 @@ From class
 </div>
 
 
-<A NAME="createCharge(int, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.Source, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, boolean, java.lang.String, java.lang.String, java.lang.String, int, java.util.Map<java.lang.String, java.lang.Object>)"></A>
+<A NAME="createCharge(int, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.Source, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, boolean, java.lang.String, java.lang.String, java.lang.String, int, java.util.Map<java.lang.String, java.lang.String>)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1002,7 +1002,7 @@ From class
         Charge
       </span>
       <span class="sympad">createCharge</span>
-      <span class="normal">(int amount, String currency, String customerId, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/Source.html">Source</a> source, String description, Map&lt;String,&nbsp;Object&gt; metadata, boolean capture, String statementDescriptor, String receiptEmail, String destination, int applicationFee, Map&lt;String,&nbsp;Object&gt; shipping)</span>
+      <span class="normal">(int amount, String currency, String customerId, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/Source.html">Source</a> source, String description, Map&lt;String,&nbsp;Object&gt; metadata, boolean capture, String statementDescriptor, String receiptEmail, String destination, int applicationFee, Map&lt;String,&nbsp;String&gt; shipping)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1088,7 +1088,7 @@ From class
 </div>
 
 
-<A NAME="listAllCharges(java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.lang.String, java.lang.String, int, java.lang.String)"></A>
+<A NAME="listAllCharges(java.lang.String, com.wsl.modules.stripe.complextypes.TimeRange, java.lang.String, java.lang.String, int, java.lang.String)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1101,7 +1101,7 @@ From class
         ChargeCollection
       </span>
       <span class="sympad">listAllCharges</span>
-      <span class="normal">(String createdTimestamp, Map&lt;String,&nbsp;String&gt; created, String customer, String endingBefore, int limit, String startingAfter)</span>
+      <span class="normal">(String createdTimestamp, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/TimeRange.html">TimeRange</a> created, String customer, String endingBefore, int limit, String startingAfter)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1216,7 +1216,7 @@ From class
 </div>
 
 
-<A NAME="updateCharge(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)"></A>
+<A NAME="updateCharge(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String, java.util.Map<java.lang.String, java.lang.String>)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1229,7 +1229,7 @@ From class
         Charge
       </span>
       <span class="sympad">updateCharge</span>
-      <span class="normal">(String id, String description, Map&lt;String,&nbsp;Object&gt; metadata, String receiptEmail, Map&lt;String,&nbsp;Object&gt; fraudDetails)</span>
+      <span class="normal">(String id, String description, Map&lt;String,&nbsp;Object&gt; metadata, String receiptEmail, Map&lt;String,&nbsp;String&gt; fraudDetails)</span>
     </h4>
       <div class="api-level">
         <div>

@@ -1116,7 +1116,9 @@ From class
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#captureCharge(java.lang.String, int, int, java.lang.String, java.lang.String)">captureCharge</a></span>(String id, int amount, int applicationFee, String statementDescriptor, String receiptEmail)</nobr>
         
-        <div class="jd-descrdiv">Capture a Charge</div>
+        <div class="jd-descrdiv">Capture a Charge
+ 
+ </div>
   
   </td></tr>
 
@@ -1132,7 +1134,7 @@ From class
             Account</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#createAccount(boolean, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.BankAccount, boolean, java.lang.String, com.wsl.modules.stripe.complextypes.LegalEntity, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.Acceptance, com.wsl.modules.stripe.complextypes.TransferSchedule, java.util.Map<java.lang.String, java.lang.Object>)">createAccount</a></span>(boolean managed, String country, String email, String businessName, String businessUrl, String supportPhone, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/BankAccount.html">BankAccount</a> bankAccount, boolean debitNegativeBalances, String defaultCurrency, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/LegalEntity.html">LegalEntity</a> legalEntity, String productDescription, String statementDescriptor, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/Acceptance.html">Acceptance</a> tosAcceptance, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/TransferSchedule.html">TransferSchedule</a> transferSchedule, Map&lt;String,&nbsp;Object&gt; metadata)</nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#createAccount(com.wsl.modules.stripe.complextypes.CreateAccountParameters)">createAccount</a></span>(<a href="../../../../../../java/com/wsl/modules/stripe/complextypes/CreateAccountParameters.html">CreateAccountParameters</a> createAccountParameters)</nobr>
         
         <div class="jd-descrdiv">Create an Account
  
@@ -1248,7 +1250,7 @@ From class
             Charge</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#createCharge(int, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.Source, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, boolean, java.lang.String, java.lang.String, java.lang.String, int, java.util.Map<java.lang.String, java.lang.Object>)">createCharge</a></span>(int amount, String currency, String customerId, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/Source.html">Source</a> source, String description, Map&lt;String,&nbsp;Object&gt; metadata, boolean capture, String statementDescriptor, String receiptEmail, String destination, int applicationFee, Map&lt;String,&nbsp;Object&gt; shipping)</nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#createCharge(com.wsl.modules.stripe.complextypes.CreateChargeParameters)">createCharge</a></span>(<a href="../../../../../../java/com/wsl/modules/stripe/complextypes/CreateChargeParameters.html">CreateChargeParameters</a> createChargeParameters)</nobr>
         
         <div class="jd-descrdiv">Create a Charge
  
@@ -1385,7 +1387,7 @@ From class
             Subscription</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#createSubscription(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.Source, int, double, double, java.util.Map<java.lang.String, java.lang.Object>)">createSubscription</a></span>(String customerId, String plan, String coupon, String trialEnd, String sourceToken, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/Source.html">Source</a> source, int quantity, double applicationFeePercent, double taxPercent, Map&lt;String,&nbsp;Object&gt; metadata)</nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#createSubscription(com.wsl.modules.stripe.complextypes.CreateSubscriptionParameters)">createSubscription</a></span>(<a href="../../../../../../java/com/wsl/modules/stripe/complextypes/CreateSubscriptionParameters.html">CreateSubscriptionParameters</a> createSubscriptionParameters)</nobr>
         
         <div class="jd-descrdiv">Create a Subscription
  
@@ -1540,7 +1542,7 @@ From class
             ApplicationFeeCollection</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#listAllApplicationFees(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.lang.String, int, java.lang.String)">listAllApplicationFees</a></span>(String charge, String createdTimestamp, Map&lt;String,&nbsp;String&gt; created, String endingBefore, int limit, String startingAfter)</nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#listAllApplicationFees(java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.TimeRange, java.lang.String, int, java.lang.String)">listAllApplicationFees</a></span>(String charge, String createdTimestamp, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/TimeRange.html">TimeRange</a> created, String endingBefore, int limit, String startingAfter)</nobr>
         
         <div class="jd-descrdiv">List all Application Fees
  
@@ -1560,7 +1562,7 @@ From class
             BalanceTransactionCollection</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#listAllBalanceHistory(java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.lang.String, java.lang.String, int, java.lang.String, java.lang.String, java.lang.String, java.lang.String)">listAllBalanceHistory</a></span>(String availableOnTimestamp, Map&lt;String,&nbsp;String&gt; availableOn, String createdTimestamp, Map&lt;String,&nbsp;String&gt; created, String currency, String endingBefore, int limit, String sourceId, String startingAfter, String transfer, String type)</nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#listAllBalanceHistory(com.wsl.modules.stripe.complextypes.ListAllBalanceHistoryParameters)">listAllBalanceHistory</a></span>(<a href="../../../../../../java/com/wsl/modules/stripe/complextypes/ListAllBalanceHistoryParameters.html">ListAllBalanceHistoryParameters</a> listAllBalanceHistoryParameters)</nobr>
         
         <div class="jd-descrdiv">List all Balance History
 
@@ -1599,7 +1601,7 @@ From class
             ChargeCollection</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#listAllCharges(java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.lang.String, java.lang.String, int, java.lang.String)">listAllCharges</a></span>(String createdTimestamp, Map&lt;String,&nbsp;String&gt; created, String customer, String endingBefore, int limit, String startingAfter)</nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#listAllCharges(java.lang.String, com.wsl.modules.stripe.complextypes.TimeRange, java.lang.String, java.lang.String, int, java.lang.String)">listAllCharges</a></span>(String createdTimestamp, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/TimeRange.html">TimeRange</a> created, String customer, String endingBefore, int limit, String startingAfter)</nobr>
         
         <div class="jd-descrdiv">List all Charges
  
@@ -1619,7 +1621,7 @@ From class
             CouponCollection</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#listAllCoupons(java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.lang.String, int, java.lang.String)">listAllCoupons</a></span>(String createdTimestamp, Map&lt;String,&nbsp;String&gt; created, String endingBefore, int limit, String startingAfter)</nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#listAllCoupons(com.wsl.modules.stripe.complextypes.ListAllCouponsParameters)">listAllCoupons</a></span>(<a href="../../../../../../java/com/wsl/modules/stripe/complextypes/ListAllCouponsParameters.html">ListAllCouponsParameters</a> listAllCouponsParameters)</nobr>
         
         <div class="jd-descrdiv">List all Coupons
 
@@ -1678,7 +1680,7 @@ From class
             EventCollection</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#listAllEvents(java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.lang.String, int, java.lang.String, java.lang.String)">listAllEvents</a></span>(String createdTimestamp, Map&lt;String,&nbsp;String&gt; created, String endingBefore, int limit, String startingAfter, String type)</nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#listAllEvents(java.lang.String, com.wsl.modules.stripe.complextypes.TimeRange, java.lang.String, int, java.lang.String, java.lang.String)">listAllEvents</a></span>(String createdTimestamp, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/TimeRange.html">TimeRange</a> created, String endingBefore, int limit, String startingAfter, String type)</nobr>
         
         <div class="jd-descrdiv">List All Events
  List events, going back up to 30 days.</div>
@@ -1697,7 +1699,7 @@ From class
             PlanCollection</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#listAllPlans(java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.lang.String, int, java.lang.String)">listAllPlans</a></span>(String createdTimestamp, Map&lt;String,&nbsp;String&gt; created, String endingBefore, int limit, String startingAfter)</nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#listAllPlans(com.wsl.modules.stripe.complextypes.ListAllPlansParameters)">listAllPlans</a></span>(<a href="../../../../../../java/com/wsl/modules/stripe/complextypes/ListAllPlansParameters.html">ListAllPlansParameters</a> listAllPlansParameters)</nobr>
         
         <div class="jd-descrdiv">List All Plans
 
@@ -1776,7 +1778,7 @@ From class
             InvoiceCollection</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#retrieveAllInvoices(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String, int, java.lang.String)">retrieveAllInvoices</a></span>(String customerId, String dateTimestamp, Map&lt;String,&nbsp;Object&gt; date, String endingBefore, int limit, String startingAfter)</nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#retrieveAllInvoices(java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.TimeRange, java.lang.String, int, java.lang.String)">retrieveAllInvoices</a></span>(String customerId, String dateTimestamp, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/TimeRange.html">TimeRange</a> date, String endingBefore, int limit, String startingAfter)</nobr>
         
         <div class="jd-descrdiv">List all Invoices
  
@@ -2148,7 +2150,7 @@ From class
             Account</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#updateAccount(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.BankAccount, boolean, java.lang.String, com.wsl.modules.stripe.complextypes.LegalEntity, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.Acceptance, com.wsl.modules.stripe.complextypes.TransferSchedule, java.util.Map<java.lang.String, java.lang.Object>)">updateAccount</a></span>(String id, String email, String businessName, String businessUrl, String supportPhone, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/BankAccount.html">BankAccount</a> bankAccount, boolean debitNegativeBalances, String defaultCurrency, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/LegalEntity.html">LegalEntity</a> legalEntity, String productDescription, String statementDescriptor, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/Acceptance.html">Acceptance</a> tosAcceptance, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/TransferSchedule.html">TransferSchedule</a> transferSchedule, Map&lt;String,&nbsp;Object&gt; metadata)</nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#updateAccount(com.wsl.modules.stripe.complextypes.UpdateAccountParameters)">updateAccount</a></span>(<a href="../../../../../../java/com/wsl/modules/stripe/complextypes/UpdateAccountParameters.html">UpdateAccountParameters</a> updateAccountParameters)</nobr>
         
         <div class="jd-descrdiv">Update an Account
  You may only update accounts that you manage.</div>
@@ -2205,7 +2207,7 @@ From class
             Charge</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#updateCharge(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>)">updateCharge</a></span>(String id, String description, Map&lt;String,&nbsp;Object&gt; metadata, String receiptEmail, Map&lt;String,&nbsp;Object&gt; fraudDetails)</nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#updateCharge(java.lang.String, java.lang.String, java.util.Map<java.lang.String, java.lang.Object>, java.lang.String, java.util.Map<java.lang.String, java.lang.String>)">updateCharge</a></span>(String id, String description, Map&lt;String,&nbsp;Object&gt; metadata, String receiptEmail, Map&lt;String,&nbsp;String&gt; fraudDetails)</nobr>
         
         <div class="jd-descrdiv">Update a Charge
  Updates the specified charge by setting the values of the parameters passed.</div>
@@ -2320,7 +2322,7 @@ From class
             Subscription</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#updateSubscription(java.lang.String, java.lang.String, java.lang.String, java.lang.String, boolean, java.lang.String, java.lang.String, com.wsl.modules.stripe.complextypes.Source, int, double, double, java.util.Map<java.lang.String, java.lang.Object>)">updateSubscription</a></span>(String customerId, String subscriptionId, String plan, String coupon, boolean prorate, String trialEnd, String sourceToken, <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/Source.html">Source</a> source, int quantity, double applicationFeePercent, double taxPercent, Map&lt;String,&nbsp;Object&gt; metadata)</nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/StripeConnector.html#updateSubscription(com.wsl.modules.stripe.complextypes.UpdateSubscriptionParameters)">updateSubscription</a></span>(<a href="../../../../../../java/com/wsl/modules/stripe/complextypes/UpdateSubscriptionParameters.html">UpdateSubscriptionParameters</a> updateSubscriptionParameters)</nobr>
         
         <div class="jd-descrdiv">Update a Subscription
  Note that Stripe uses a specific policy around prorating changed subscriptions.</div>

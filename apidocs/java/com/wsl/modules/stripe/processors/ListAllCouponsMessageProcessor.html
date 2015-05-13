@@ -631,7 +631,7 @@ Summary:
 
 
 <h2>Class Overview</h2>
-<p>ListAllCouponsMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#listAllCoupons(java.lang.String, java.util.Map<java.lang.String, java.lang.String>, java.lang.String, int, java.lang.String)">listAllCoupons(java.lang.String, java.util.Map, java.lang.String, int, java.lang.String)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>. For each argument there is a field in this processor to match it.  Before invoking the actual method the processor will evaluate and transform where possible to the expected argument type.
+<p>ListAllCouponsMessageProcessor invokes the <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html#listAllCoupons(com.wsl.modules.stripe.complextypes.ListAllCouponsParameters)">listAllCoupons(com.wsl.modules.stripe.complextypes.ListAllCouponsParameters)</a></code> method in <code><a href="../../../../../../java/com/wsl/modules/stripe/StripeConnector.html">StripeConnector</a></code>. For each argument there is a field in this processor to match it.  Before invoking the actual method the processor will evaluate and transform where possible to the expected argument type.
  
 </p>
 
@@ -838,52 +838,8 @@ org.mule.api.lifecycle.Stoppable
           protected
           
           
-          String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/stripe/processors/ListAllCouponsMessageProcessor.html#_createdTimestampType">_createdTimestampType</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          Map&lt;String,&nbsp;String&gt;</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/stripe/processors/ListAllCouponsMessageProcessor.html#_createdType">_createdType</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/stripe/processors/ListAllCouponsMessageProcessor.html#_endingBeforeType">_endingBeforeType</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          int</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/stripe/processors/ListAllCouponsMessageProcessor.html#_limitType">_limitType</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          String</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/stripe/processors/ListAllCouponsMessageProcessor.html#_startingAfterType">_startingAfterType</a></td>
+          <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/ListAllCouponsParameters.html">ListAllCouponsParameters</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/stripe/processors/ListAllCouponsMessageProcessor.html#_listAllCouponsParametersType">_listAllCouponsParametersType</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -894,51 +850,7 @@ org.mule.api.lifecycle.Stoppable
           
           
           Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/stripe/processors/ListAllCouponsMessageProcessor.html#created">created</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/stripe/processors/ListAllCouponsMessageProcessor.html#createdTimestamp">createdTimestamp</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/stripe/processors/ListAllCouponsMessageProcessor.html#endingBefore">endingBefore</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class="alt-color api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/stripe/processors/ListAllCouponsMessageProcessor.html#limit">limit</a></td>
-          <td class="jd-descrcol" width="100%"></td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          protected
-          
-          
-          Object</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/stripe/processors/ListAllCouponsMessageProcessor.html#startingAfter">startingAfter</a></td>
+          <td class="jd-linkcol"><a href="../../../../../../com/wsl/modules/stripe/processors/ListAllCouponsMessageProcessor.html#listAllCouponsParameters">listAllCouponsParameters</a></td>
           <td class="jd-descrcol" width="100%"></td>
       </tr>
       
@@ -1208,81 +1120,9 @@ org.mule.devkit.processor.DevkitBasedMessageProcessor
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/processors/ListAllCouponsMessageProcessor.html#setCreated(java.lang.Object)">setCreated</a></span>(Object value)</nobr>
+        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/processors/ListAllCouponsMessageProcessor.html#setListAllCouponsParameters(java.lang.Object)">setListAllCouponsParameters</a></span>(Object value)</nobr>
         
-        <div class="jd-descrdiv">Sets created</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/processors/ListAllCouponsMessageProcessor.html#setCreatedTimestamp(java.lang.Object)">setCreatedTimestamp</a></span>(Object value)</nobr>
-        
-        <div class="jd-descrdiv">Sets createdTimestamp</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/processors/ListAllCouponsMessageProcessor.html#setEndingBefore(java.lang.Object)">setEndingBefore</a></span>(Object value)</nobr>
-        
-        <div class="jd-descrdiv">Sets endingBefore</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/processors/ListAllCouponsMessageProcessor.html#setLimit(java.lang.Object)">setLimit</a></span>(Object value)</nobr>
-        
-        <div class="jd-descrdiv">Sets limit</div>
-  
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../com/wsl/modules/stripe/processors/ListAllCouponsMessageProcessor.html#setStartingAfter(java.lang.Object)">setStartingAfter</a></span>(Object value)</nobr>
-        
-        <div class="jd-descrdiv">Sets startingAfter</div>
+        <div class="jd-descrdiv">Sets listAllCouponsParameters</div>
   
   </td></tr>
 
@@ -2423,7 +2263,7 @@ From interface
 
 
 
-<A NAME="_createdTimestampType"></A>
+<A NAME="_listAllCouponsParametersType"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2431,9 +2271,9 @@ From interface
         protected 
          
          
-        String
+        <a href="../../../../../../java/com/wsl/modules/stripe/complextypes/ListAllCouponsParameters.html">ListAllCouponsParameters</a>
       </span>
-        _createdTimestampType
+        _listAllCouponsParametersType
     </h4>
       <div class="api-level">
         
@@ -2453,127 +2293,7 @@ From interface
 
 
 
-<A NAME="_createdType"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        Map&lt;String,&nbsp;String&gt;
-      </span>
-        _createdType
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="_endingBeforeType"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        String
-      </span>
-        _endingBeforeType
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="_limitType"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        int
-      </span>
-        _limitType
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="_startingAfterType"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        String
-      </span>
-        _startingAfterType
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="created"></A>
+<A NAME="listAllCouponsParameters"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2583,127 +2303,7 @@ From interface
          
         Object
       </span>
-        created
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="createdTimestamp"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        Object
-      </span>
-        createdTimestamp
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="endingBefore"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        Object
-      </span>
-        endingBefore
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="limit"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        Object
-      </span>
-        limit
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="startingAfter"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        protected 
-         
-         
-        Object
-      </span>
-        startingAfter
+        listAllCouponsParameters
     </h4>
       <div class="api-level">
         
@@ -3018,7 +2618,7 @@ From interface
 </div>
 
 
-<A NAME="setCreated(java.lang.Object)"></A>
+<A NAME="setListAllCouponsParameters(java.lang.Object)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -3030,7 +2630,7 @@ From interface
          
         void
       </span>
-      <span class="sympad">setCreated</span>
+      <span class="sympad">setListAllCouponsParameters</span>
       <span class="normal">(Object value)</span>
     </h4>
       <div class="api-level">
@@ -3043,171 +2643,7 @@ From interface
       </div>
     <div class="jd-details-descr">
       
-  <div class="jd-tagdata jd-tagdescr"><p>Sets created</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Value to set
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setCreatedTimestamp(java.lang.Object)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setCreatedTimestamp</span>
-      <span class="normal">(Object value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets createdTimestamp</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Value to set
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setEndingBefore(java.lang.Object)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setEndingBefore</span>
-      <span class="normal">(Object value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets endingBefore</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Value to set
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setLimit(java.lang.Object)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setLimit</span>
-      <span class="normal">(Object value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets limit</p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>value</td>
-          <td>Value to set
-</td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setStartingAfter(java.lang.Object)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setStartingAfter</span>
-      <span class="normal">(Object value)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>Sets startingAfter</p></div>
+  <div class="jd-tagdata jd-tagdescr"><p>Sets listAllCouponsParameters</p></div>
   <div class="jd-tagdata">
       <h5 class="jd-tagtitle">Parameters</h5>
       <table class="jd-tagtable">
