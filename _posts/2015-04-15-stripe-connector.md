@@ -144,7 +144,6 @@ It's time to build the flows which creates a Customer, retrieves them, and delet
 
 Now add a path to your HTTP receiver: "/createcustomer". This is the URL you will call to start the flow.
 
-![HTTP Receiver Configuration](images/httpreceiverconfiguration.png)
 ![HTTP Receiver Configuration]({{ site.url }}/{{ site.baseurl }}/images/httpreceiverconfiguration.png)
 
 
