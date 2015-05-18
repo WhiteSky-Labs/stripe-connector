@@ -1,8 +1,8 @@
 # Site settings
-title:       Splunk Connector
+title:       Stripe Connector
 email:       support@whiteskylabs.com
 author:      WhiteSky Labs
-description: "MuleSoft Connector for Splunk"
+description: "MuleSoft Connector for Stripe"
 baseurl:     "/stripe-connector"
 url:         "http://whitesky-labs.github.io"
 
