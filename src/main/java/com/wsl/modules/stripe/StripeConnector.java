@@ -21,6 +21,7 @@ import org.mule.api.annotations.Connector;
 import org.mule.api.annotations.MetaDataScope;
 import org.mule.api.annotations.Processor;
 import org.mule.api.annotations.ReconnectOn;
+import org.mule.api.annotations.licensing.RequiresEnterpriseLicense;
 import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.MetaDataKeyParamAffectsType;
 import org.mule.api.annotations.param.Optional;
@@ -96,6 +97,7 @@ import com.wsl.modules.stripe.strategy.ConnectorConnectionStrategy;
  * @author MuleSoft, Inc.
  */
 @Connector(name="stripe", friendlyName="Stripe")
+@RequiresEnterpriseLicense
 public class StripeConnector {
 	
     @ConnectionStrategy
@@ -131,7 +133,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Customer createCustomer(@Default("0") int accountBalance, @Optional String couponCode, @Optional String description, @Optional String email, @Default("#[payload]") Map<String, Object> metadata) 
     		throws StripeConnectorException {
     	return customerClient.createCustomer(accountBalance, couponCode, description, email, metadata);    	
@@ -147,7 +149,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Customer retrieveCustomer(String id) 
     		throws StripeConnectorException {
     	return customerClient.retrieveCustomer(id);
@@ -169,7 +171,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Customer updateCustomer(String id, @Default("0") int accountBalance, @Optional String couponCode, @Optional String description, @Optional String email, @Default("#[payload]") Map<String, Object> metadata, @Optional String sourceToken)  
     		throws StripeConnectorException {
     	return customerClient.updateCustomer(id, accountBalance, couponCode, description, email, metadata, sourceToken);
@@ -185,7 +187,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Object deleteCustomer(String id) 
     		throws StripeConnectorException {
     	return customerClient.deleteCustomer(id);
@@ -204,7 +206,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is an issue listing customers         
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public CustomerCollection listAllCustomers(@Default("0") int limit, @Optional String startingAfter, @Optional String endingBefore) throws StripeConnectorException{
     	return customerClient.listAllCustomers(limit, startingAfter, endingBefore);
     }
@@ -227,7 +229,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is an issue creating a Plan 
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Plan createPlan(String id, int amount, String currency, String interval, @Default("1") int intervalCount, String planName, @Default("0") int trialPeriodDays, @Optional String statementDescriptor, @Default("#[payload]") Map<String, Object> metadata) throws StripeConnectorException{
     	return planClient.createPlan(id, amount, currency, interval, intervalCount, planName, trialPeriodDays, statementDescriptor, metadata);
     }
@@ -242,7 +244,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is an issue retrieving a Plan 
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Plan retrievePlan(String id) throws StripeConnectorException{
     	return planClient.retrievePlan(id);
     }
@@ -260,7 +262,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is an issue updating a Plan 
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Plan updatePlan(String id, @Optional String planName, @Optional String statementDescriptor, @Default("#[payload]") Map<String, Object> metadata) throws StripeConnectorException{
     	return planClient.updatePlan(id, planName, statementDescriptor, metadata);
     }
@@ -275,7 +277,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is an issue deleting a Plan 
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Object deletePlan(String id) throws StripeConnectorException{
     	return planClient.deletePlan(id);
     }
@@ -290,7 +292,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is an issue listing plans
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public PlanCollection listAllPlans(@Default("#[payload]") ListAllPlansParameters listAllPlansParameters) throws StripeConnectorException{
     	return planClient.listAllPlans(listAllPlansParameters.getCreatedTimestamp(), listAllPlansParameters.getCreated(), listAllPlansParameters.getEndingBefore(), listAllPlansParameters.getLimit(), listAllPlansParameters.getStartingAfter());
     }
@@ -313,7 +315,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Coupon createCoupon(@Optional String id, String duration, @Default("0") int amountOff, @Optional String currency, @Default("0") int durationInMonths, @Default("0") int maxRedemptions, @Default("0") int percentOff, @Optional String redeemBy, @Default("#[payload]") Map<String, Object> metadata) 
     		throws StripeConnectorException {
     	return couponClient.createCoupon(id, duration, amountOff, currency, durationInMonths, maxRedemptions, percentOff, redeemBy, metadata);
@@ -329,7 +331,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Coupon retrieveCoupon(String id) 
     		throws StripeConnectorException {
     	return couponClient.retrieveCoupon(id);
@@ -347,7 +349,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Coupon updateCoupon(String id, @Default("#[payload]") Map<String, Object> metadata) 
     		throws StripeConnectorException {
     	return couponClient.updateCoupon(id, metadata);
@@ -363,7 +365,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Object deleteCoupon(String id) 
     		throws StripeConnectorException {
     	return couponClient.deleteCoupon(id);
@@ -379,7 +381,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public CouponCollection listAllCoupons(@Default("#[payload]") ListAllCouponsParameters listAllCouponsParameters) 
     		throws StripeConnectorException {
     	return couponClient.listAllCoupons(listAllCouponsParameters.getCreatedTimestamp(), listAllCouponsParameters.getCreated(), listAllCouponsParameters.getEndingBefore(), listAllCouponsParameters.getLimit(), listAllCouponsParameters.getStartingAfter());
@@ -394,7 +396,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Balance retrieveBalance()    
     		throws StripeConnectorException {
     	return balanceClient.retrieveBalance();
@@ -410,7 +412,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public BalanceTransaction retrieveBalanceTransaction(String id) 
     		throws StripeConnectorException {
     	return balanceClient.retrieveBalanceTransaction(id);
@@ -426,7 +428,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public BalanceTransactionCollection listAllBalanceHistory(@Default("#[payload]") ListAllBalanceHistoryParameters listAllBalanceHistoryParameters)    
     		throws StripeConnectorException {
     	return balanceClient.listAllBalanceHistory(listAllBalanceHistoryParameters.getAvailableOnTimestamp(), listAllBalanceHistoryParameters.getAvailableOn(), listAllBalanceHistoryParameters.getCreatedTimestamp(), listAllBalanceHistoryParameters.getCreated(), listAllBalanceHistoryParameters.getCurrency(), listAllBalanceHistoryParameters.getEndingBefore(), listAllBalanceHistoryParameters.getLimit(), listAllBalanceHistoryParameters.getSourceId(), listAllBalanceHistoryParameters.getStartingAfter(), listAllBalanceHistoryParameters.getTransfer(), listAllBalanceHistoryParameters.getType());
@@ -446,7 +448,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Card createCard(String ownerId, @Optional String sourceToken, @Default("#[payload]") Source source)    
     		throws StripeConnectorException {
     	return cardClient.createCard(ownerId, sourceToken, source);
@@ -465,7 +467,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Card retrieveCard(String ownerId, String id)    
     		throws StripeConnectorException {
     	return cardClient.retrieveCard(ownerId, id);
@@ -495,7 +497,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Card updateCard(String ownerId, String id, @Optional String addressCity, @Optional String addressCountry, @Optional String addressLine1, @Optional String addressLine2, @Optional String addressState, @Optional String addressZip, @Optional String expMonth, @Optional String expYear, @Default("#[payload]") Map<String, Object> metadata, @Optional String cardName)    
     		throws StripeConnectorException {
     	return cardClient.updateCard(ownerId, id, addressCity, addressCountry, addressLine1, addressLine2, addressState, addressZip, expMonth, expYear, metadata, cardName);
@@ -512,7 +514,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public DeletedCard deleteCard(String ownerId, String id)    
     		throws StripeConnectorException {
     	return cardClient.deleteCard(ownerId, id);
@@ -533,7 +535,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public PaymentSourceCollection listAllCustomerCards(String ownerId, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter)    
     		throws StripeConnectorException {
     	return cardClient.listAllCustomerCards(ownerId, endingBefore, limit, startingAfter);
@@ -549,7 +551,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Charge createCharge(@Default("#[payload]") CreateChargeParameters createChargeParameters)    
     		throws StripeConnectorException {
     	return chargeClient.createCharge(createChargeParameters.getAmount(), createChargeParameters.getCurrency(), createChargeParameters.getCustomerId(), createChargeParameters.getSource(), createChargeParameters.getDescription(), createChargeParameters.getMetadata(), createChargeParameters.isCapture(), createChargeParameters.getStatementDescriptor(), createChargeParameters.getReceiptEmail(), createChargeParameters.getDestination(), createChargeParameters.getApplicationFee(), createChargeParameters.getShipping());
@@ -565,7 +567,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Charge retrieveCharge(String id)    
     		throws StripeConnectorException {
     	return chargeClient.retrieveCharge(id);
@@ -587,7 +589,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Charge updateCharge(String id, @Optional String description, @Default("#[payload]") Map<String, Object> metadata, @Optional String receiptEmail, @Optional Map<String, String> fraudDetails)    
     		throws StripeConnectorException {
     	return chargeClient.updateCharge(id, description, metadata, receiptEmail, fraudDetails);
@@ -607,7 +609,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Charge captureCharge(String id, @Default("0") int amount, @Default("0") int applicationFee, @Optional String statementDescriptor, @Optional String receiptEmail)    
     		throws StripeConnectorException {
     	return chargeClient.captureCharge(id, amount, applicationFee, statementDescriptor, receiptEmail);
@@ -628,7 +630,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public ChargeCollection listAllCharges(@Optional String createdTimestamp, @Default("#[payload]") TimeRange created, @Optional String customer, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter)    
     		throws StripeConnectorException {
     	return chargeClient.listAllCharges(createdTimestamp, created, customer, endingBefore, limit, startingAfter);
@@ -644,7 +646,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Subscription createSubscription(@Default("#[payload]") CreateSubscriptionParameters createSubscriptionParameters)    
     		throws StripeConnectorException {
     	return subClient.createSubscription(createSubscriptionParameters.getCustomerId(), createSubscriptionParameters.getPlan(), createSubscriptionParameters.getCoupon(), createSubscriptionParameters.getTrialEnd(), createSubscriptionParameters.getSourceToken(), createSubscriptionParameters.getSource(), createSubscriptionParameters.getQuantity(), createSubscriptionParameters.getApplicationFeePercent(), createSubscriptionParameters.getTaxPercent(), createSubscriptionParameters.getMetadata());
@@ -661,7 +663,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Subscription retrieveSubscription(String customerId, String subscriptionId)    
     		throws StripeConnectorException {
     	return subClient.retrieveSubscription(customerId, subscriptionId);
@@ -678,7 +680,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Subscription updateSubscription(@Default("#[payload]") UpdateSubscriptionParameters updateSubscriptionParameters)    
     		throws StripeConnectorException {
     	return subClient.updateSubscription(updateSubscriptionParameters.getCustomerId(), updateSubscriptionParameters.getSubscriptionId(), updateSubscriptionParameters.getPlan(), updateSubscriptionParameters.getCoupon(), updateSubscriptionParameters.isProrate(), updateSubscriptionParameters.getTrialEnd(), updateSubscriptionParameters.getSourceToken(), updateSubscriptionParameters.getSource(), updateSubscriptionParameters.getQuantity(), updateSubscriptionParameters.getApplicationFeePercent(), updateSubscriptionParameters.getTaxPercent(), updateSubscriptionParameters.getMetadata());
@@ -695,7 +697,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Subscription cancelSubscription(String customerId, String subscriptionId)    
     		throws StripeConnectorException {
     	return subClient.cancelSubscription(customerId, subscriptionId);
@@ -714,7 +716,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public CustomerSubscriptionCollection listActiveSubscriptions(String customerId, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter)    
     		throws StripeConnectorException {
     	return subClient.listActiveSubscriptions(customerId, endingBefore, limit, startingAfter);
@@ -738,7 +740,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Refund createRefund(String id, @Default("0") int amount, @Default("false") boolean refundApplicationFee, @Optional String reason, @Default("#[payload]") Map<String, Object> metadata)    
     		throws StripeConnectorException {
     	return refundClient.createRefund(id, amount, refundApplicationFee, reason, metadata);
@@ -756,7 +758,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Refund retrieveRefund(String id, String chargeId)    
     		throws StripeConnectorException {
     	return refundClient.retrieveRefund(id, chargeId);
@@ -776,7 +778,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Refund updateRefund(String id, String chargeId, @Default("#[payload]") Map<String, Object> metadata)    
     		throws StripeConnectorException {
     	return refundClient.updateRefund(id, chargeId, metadata);
@@ -796,7 +798,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public ChargeRefundCollection listAllRefunds(String chargeId, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter)    
     		throws StripeConnectorException {
     	return refundClient.listAllRefunds(chargeId, endingBefore, limit, startingAfter);
@@ -821,7 +823,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Invoice createInvoice(String customerId, @Default("0") int applicationFee, @Optional String description, @Default("#[payload]") Map<String, Object> metadata, @Optional String statementDescriptor, @Optional String subscription, @Default("0.0") double taxPercent)    
     		throws StripeConnectorException {
     	return invoiceClient.createInvoice(customerId, applicationFee, description, metadata, statementDescriptor, subscription, taxPercent);
@@ -837,7 +839,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Invoice retrieveInvoice(String id)    
     		throws StripeConnectorException {
     	return invoiceClient.retrieveInvoice(id);
@@ -859,7 +861,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public InvoiceLineItemCollection retrieveInvoiceLineItems(String id, @Optional String customer, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter, @Optional String subscription)    
     		throws StripeConnectorException {
     	return invoiceClient.retrieveInvoiceLineItems(id, customer, endingBefore, limit, startingAfter, subscription);
@@ -878,7 +880,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Invoice retrieveUpcomingInvoice(String customerId, @Optional String subscription)    
     		throws StripeConnectorException {
     	return invoiceClient.retrieveUpcomingInvoice(customerId, subscription);
@@ -901,7 +903,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Invoice updateInvoice(String invoiceId, @Default("0") int applicationFee, @Default("false") boolean closed, @Optional String description, @Default("false") boolean forgiven, @Default("#[payload]") Map<String, Object> metadata, @Optional String statementDescriptor, @Default("0.0") double taxPercent)    
     		throws StripeConnectorException {
     	return invoiceClient.updateInvoice(invoiceId, applicationFee, closed, description, forgiven, metadata, statementDescriptor, taxPercent);
@@ -917,7 +919,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Invoice payInvoice(String id)    
     		throws StripeConnectorException {
     	return invoiceClient.payInvoice(id);
@@ -938,7 +940,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public InvoiceCollection retrieveAllInvoices(@Optional String customerId, @Optional String dateTimestamp, @Default("#[payload]") TimeRange date, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter)
     		throws StripeConnectorException {
     	return invoiceClient.retrieveAllInvoices(customerId, dateTimestamp, date, endingBefore, limit, startingAfter);
@@ -954,7 +956,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public ApplicationFee retrieveApplicationFee(String id)
     		throws StripeConnectorException {
     	return feeClient.retrieveApplicationFee(id);
@@ -975,7 +977,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public ApplicationFeeCollection listAllApplicationFees(@Optional String charge, @Optional String createdTimestamp, @Default("#[payload]") TimeRange created, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter)
     		throws StripeConnectorException {
     	return feeClient.listAllApplicationFees(charge, createdTimestamp, created, endingBefore, limit, startingAfter);
@@ -991,7 +993,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Account createAccount(@Default("#[payload]") CreateAccountParameters createAccountParameters)
     		throws StripeConnectorException {
     	return accountClient.createAccount(createAccountParameters.isManaged(), createAccountParameters.getCountry(), createAccountParameters.getEmail(), createAccountParameters.getBusinessName(), createAccountParameters.getBusinessUrl(), createAccountParameters.getSupportPhone(), createAccountParameters.getBankAccount(), createAccountParameters.isDebitNegativeBalances(), createAccountParameters.getDefaultCurrency(), createAccountParameters.getLegalEntity(), createAccountParameters.getProductDescription(), createAccountParameters.getStatementDescriptor(), createAccountParameters.getTosAcceptance(), createAccountParameters.getTransferSchedule(), createAccountParameters.getMetadata());
@@ -1007,7 +1009,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Account retrieveAccount(String id)
     		throws StripeConnectorException {
     	return accountClient.retrieveAccount(id);
@@ -1024,7 +1026,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Account updateAccount(@Default("#[payload]") UpdateAccountParameters updateAccountParameters)
     		throws StripeConnectorException {
     	return accountClient.updateAccount(updateAccountParameters.getId(), updateAccountParameters.getEmail(), updateAccountParameters.getBusinessName(), updateAccountParameters.getBusinessUrl(), updateAccountParameters.getSupportPhone(), updateAccountParameters.getBankAccount(), updateAccountParameters.isDebitNegativeBalances(), updateAccountParameters.getDefaultCurrency(), updateAccountParameters.getLegalEntity(), updateAccountParameters.getProductDescription(), updateAccountParameters.getStatementDescriptor(), updateAccountParameters.getTosAcceptance(), updateAccountParameters.getTransferSchedule(), updateAccountParameters.getMetadata());
@@ -1042,7 +1044,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Token createCardToken(@Optional String cardId, @Default("#[payload]") Source card, @Optional String customer)
     		throws StripeConnectorException {
     	return tokenClient.createCardToken(cardId, card, customer);
@@ -1060,7 +1062,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Token createBankAccountToken(@Optional String bankAccountId, @Default("#[payload]") BankAccount bankAccount)
     		throws StripeConnectorException {
     	return tokenClient.createBankAccountToken(bankAccountId, bankAccount);
@@ -1077,7 +1079,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Token retrieveToken(String id)
     		throws StripeConnectorException {
     	return tokenClient.retrieveToken(id);
@@ -1094,7 +1096,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public Event retrieveEvent(String id)
     		throws StripeConnectorException {
     	return eventClient.retrieveEvent(id);
@@ -1116,7 +1118,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public EventCollection listAllEvents(@Optional String createdTimestamp, @Default("#[payload]") TimeRange created, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter, @Optional String type)
     		throws StripeConnectorException {
     	return eventClient.listAllEvents(createdTimestamp, created, endingBefore, limit, startingAfter, type);
@@ -1136,7 +1138,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public ApplicationFee createApplicationFeeRefund(String id, @Default("0") int amount)
     		throws StripeConnectorException {
     	return feeClient.createApplicationFeeRefund(id, amount);
@@ -1155,7 +1157,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public FeeRefund retrieveApplicationFeeRefund(String id, String fee)
     		throws StripeConnectorException {
     	return feeClient.retrieveApplicationFeeRefund(id, fee);
@@ -1175,7 +1177,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public FeeRefund updateApplicationFeeRefund(String id, String fee, @Default("#[payload]") Map<String, Object> metadata)
     		throws StripeConnectorException {
     	return feeClient.updateApplicationFeeRefund(id, fee, metadata);
@@ -1195,7 +1197,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public FeeRefundCollection listAllApplicationFeeRefunds(String id, @Optional String endingBefore, @Default("0") int limit, @Optional String startingAfter)
     		throws StripeConnectorException {
     	return feeClient.listAllApplicationFeeRefunds(id, endingBefore, limit, startingAfter);
@@ -1217,7 +1219,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public BitcoinReceiver createBitcoinReceiver(int amount, @Default("USD") String currency, String email, @Optional String description, @Default("#[payload]") Map<String, Object> metadata, @Default("false") boolean refundMispayments)
     		throws StripeConnectorException {
     	return bitcoinClient.createBitcoinReceiver(amount, currency, email, description, metadata, refundMispayments);
@@ -1234,7 +1236,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public BitcoinReceiver retrieveBitcoinReceiver(String id)
     		throws StripeConnectorException {
     	return bitcoinClient.retrieveBitcoinReceiver(id);
@@ -1256,7 +1258,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public BitcoinReceiverCollection listAllBitcoinReceivers(@Optional String active, @Optional String endingBefore, @Optional String filled, @Default("0") int limit, @Optional String startingAfter, @Optional String uncapturedFunds)
     		throws StripeConnectorException {
     	return bitcoinClient.listAllBitcoinReceivers(active, endingBefore, filled, limit, startingAfter, uncapturedFunds);
@@ -1274,7 +1276,7 @@ public class StripeConnector {
      * @throws StripeConnectorException when there is a problem with the Connector
      */
     @Processor
-    @ReconnectOn(exceptions = { Exception.class })
+    @ReconnectOn(exceptions = { StripeConnectorException.class })
     public FileUpload createFileUpload(String file, FilePurpose purpose)
     		throws StripeConnectorException {
     	return fileClient.createFileUpload(file, purpose);
