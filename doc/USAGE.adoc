@@ -83,7 +83,7 @@ on the bottom of the page. Then click on "Create" button on the top
 right of the tab. In the "Choose Global Element" type dialog box that
 opens select "Stripe" under "Connector Configuration" and click okay.
 
-image:images/stripecreateconfigref.png[Create Stripe Config]
+image:images/createstripeconfigref.png[Create Stripe Config]
 
 In the Stripe Configuration box that follows, set the API Key to your
 Test or Live API Key. You can also set the API Version, which is not

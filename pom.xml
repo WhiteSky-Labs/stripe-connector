@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.wsl.modules</groupId>
     <artifactId>stripe-connector</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <packaging>mule-module</packaging>
     <name>Mule Stripe Anypoint Connector</name>
 

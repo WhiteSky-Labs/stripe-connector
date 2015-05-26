@@ -48,7 +48,7 @@ Now that you've got your Anypoint Studio up and running, it's time to work on th
 
 The first thing to do in your new app is to configure the connection to Stripe. In the message flow editor, click on the "Global Elements" tab on the bottom of the page. Then click on "Create" button on the top right of the tab. In the "Choose Global Element" type dialog box that opens select "Stripe" under "Connector Configuration" and click okay.
 
-![Create Stripe Config](images/stripecreateconfigref.png)
+![Create Stripe Config](images/createstripeconfigref.png)
 
 In the Stripe Configuration box that follows, set the API Key to your Test or Live API Key. You can also set the API Version, which is not recommended.
 

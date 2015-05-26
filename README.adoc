@@ -21,7 +21,7 @@ Compatibility
 ~~~~~~~~~~~~~
 
 The Stripe Connector is certified to be compatible with: * Mule ESB
-v3.6.0 * CloudHub Runtime v3.6.0
+v3.6.x * CloudHub Runtime v3.6.x
 
 The Splunk Connector has been tested compatible with: * Stripe API
 Version 2015-03-24 * Stripe SDK for Java v1.27.1
