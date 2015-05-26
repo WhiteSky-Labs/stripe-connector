@@ -4,9 +4,6 @@ Stripe Anypoint Connector
 
 By [WhiteSky Labs](http://www.whiteskylabs.com)
 
-
-The Industry-leading Platform for Operational Intelligence
-
 Payments Infrastructure for the internet.
 
 Installation and Usage
