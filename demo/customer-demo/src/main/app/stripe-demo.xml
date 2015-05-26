@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:stripe="http://www.mulesoft.org/schema/mule/stripe" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+<mule xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:stripe="http://www.mulesoft.org/schema/mule/stripe" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
 	xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.6.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"	
+	xsi:schemaLocation="http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-current.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/stripe http://www.mulesoft.org/schema/mule/stripe/current/mule-stripe.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
-http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd">
-    <stripe:config-type name="Stripe__Connection_Management_type_strategy" apiKey="sk_test_WOw8pJhJyOIBgveU9C8lx79l" doc:name="Stripe: Connection Management type strategy"/>
+http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+    <context:property-placeholder location="mule-app.properties"/>
+    
+    <stripe:config-type name="Stripe__Connection_Management_type_strategy" apiKey="${stripe.apiKey}" doc:name="Stripe: Connection Management type strategy" apiVersion="${stripe.apiVersion}"/>
     <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
     <flow name="stripe-createCustomerFlow">
         <http:listener config-ref="HTTP_Listener_Configuration" path="/createcustomer" doc:name="HTTP"/>
         <stripe:create-customer config-ref="Stripe__Connection_Management_type_strategy" email="demo2@demo.com" doc:name="CreateCustomer" description="Testing Customer">
-            <stripe:metadata>
-                <stripe:metadatum key="Entry">test</stripe:metadatum>
-            </stripe:metadata>
         </stripe:create-customer>
         <json:object-to-json-transformer doc:name="Object to JSON"/>
     </flow>

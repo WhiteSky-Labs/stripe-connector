@@ -111,7 +111,6 @@ public class StripeApplicationFeeClient {
 	 * 
      * @param id The ID of the refund to retrieve
      * @param fee ID of the Application Fee refunded
-     * @param metadata A set of key/value pairs that you can attach to a refund object. It can be useful for storing additional information about the refund in a structured format. You can unset an individual key by setting its value to null and then saving.
      * @return Returns the application fee refund object if the refund succeeded. Throws an error if the fee has already been refunded or an invalid fee identifier was provided.
      * @throws StripeConnectorException when there is a problem with the Connector
      */

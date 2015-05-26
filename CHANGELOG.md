@@ -1,9 +1,9 @@
 Stripe Connector Release Notes
 =====================================
 
-Date: 14-April-2015
+Date: 26-May-2015
 
-Version: 1.0.0
+Version: 1.0.2
 
 Supported Mule Runtime Versions: 3.6.x
 

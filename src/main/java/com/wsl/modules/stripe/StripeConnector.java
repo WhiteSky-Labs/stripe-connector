@@ -16,15 +16,19 @@ package com.wsl.modules.stripe;
 
 import java.util.Map;
 
+import org.mule.api.MuleContext;
 import org.mule.api.annotations.ConnectionStrategy;
 import org.mule.api.annotations.Connector;
 import org.mule.api.annotations.MetaDataScope;
 import org.mule.api.annotations.Processor;
 import org.mule.api.annotations.ReconnectOn;
+import org.mule.api.annotations.TransformerResolver;
 import org.mule.api.annotations.licensing.RequiresEnterpriseLicense;
 import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.MetaDataKeyParamAffectsType;
 import org.mule.api.annotations.param.Optional;
+import org.mule.api.transformer.DataType;
+import org.mule.transport.NullPayload;
 
 import com.stripe.model.Account;
 import com.stripe.model.ApplicationFee;
@@ -90,11 +94,12 @@ import com.wsl.modules.stripe.complextypes.UpdateAccountParameters;
 import com.wsl.modules.stripe.complextypes.UpdateSubscriptionParameters;
 import com.wsl.modules.stripe.exceptions.StripeConnectorException;
 import com.wsl.modules.stripe.strategy.ConnectorConnectionStrategy;
+import com.wsl.modules.stripe.utils.NullPayloadToEmptyMapTransformer;
 
 /**
  * Anypoint Connector
  *
- * @author MuleSoft, Inc.
+ * @author WhiteSky Labs
  */
 @Connector(name="stripe", friendlyName="Stripe")
 @RequiresEnterpriseLicense
@@ -1152,7 +1157,6 @@ public class StripeConnector {
      * 
      * @param id The ID of the refund to retrieve
      * @param fee ID of the Application Fee refunded
-     * @param metadata A set of key/value pairs that you can attach to a refund object. It can be useful for storing additional information about the refund in a structured format. You can unset an individual key by setting its value to null and then saving.
      * @return Returns the application fee refund object if the refund succeeded. Throws an error if the fee has already been refunded or an invalid fee identifier was provided.
      * @throws StripeConnectorException when there is a problem with the Connector
      */
@@ -1289,6 +1293,27 @@ public class StripeConnector {
 
     public void setConnectionStrategy(ConnectorConnectionStrategy connectionStrategy) {
         this.connectionStrategy = connectionStrategy;
+    }
+    
+    /**
+     * Resolves a nullpayload
+     * @param source The source datatype
+     * @param result The result datatype
+     * @param muleContext The muleContext at the time
+     * @return the resolver required
+     * @throws Exception
+     */
+    @TransformerResolver
+    public static org.mule.api.transformer.Transformer transformerResolver(DataType source, DataType result,
+                        MuleContext muleContext) throws Exception {
+        if (source.getType().equals(NullPayload.class)) {
+            if (result.getType().equals(Map.class)) {
+                NullPayloadToEmptyMapTransformer nullPayloadToEmptyMapTransformer = new NullPayloadToEmptyMapTransformer();
+                muleContext.getRegistry().applyProcessorsAndLifecycle(nullPayloadToEmptyMapTransformer);
+                return nullPayloadToEmptyMapTransformer;
+            }
+        }
+        return null;
     }
     
 }

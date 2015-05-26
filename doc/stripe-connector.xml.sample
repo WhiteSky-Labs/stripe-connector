@@ -124,8 +124,7 @@
 <!-- END_INCLUDE(stripe:retrieve-subscription) -->
 <!-- BEGIN_INCLUDE(stripe:update-subscription) -->
 	<stripe:update-subscription config-ref="" >
-		<stripe:update-subscription-parameters ref="#[map-payload:updateSubscriptionParameters]"/>
-		<stripe:metadata ref="#[map-payload:metadata]"/>		
+		<stripe:update-subscription-parameters ref="#[map-payload:updateSubscriptionParameters]"/>		
 	</stripe:update-subscription> 
 <!-- END_INCLUDE(stripe:update-subscription) -->
 <!-- BEGIN_INCLUDE(stripe:cancel-subscription) -->
