@@ -218,7 +218,7 @@ There is currently no procedure for upgrading as only one version of the Connect
 
 # Go Further
 
-* [Release Notes](http://whitesky-labs.github.io/splunk-connector/2015/04/15/release-notes/)
+* [Release Notes](http://whitesky-labs.github.io/stripe-connector/2015/04/15/release-notes/)
 * [Stripe SDK for Java Documentation](https://stripe.com/docs/api/java)
 * API Documentation is available at [http://whitesky-labs.github.io/stripe-connector/apidocs](http://whitesky-labs.github.io/stripe-connector/apidocs)
 * Read more about [http://www.mulesoft.org/documentation/display/current/Anypoint+Connectors](AnyPoint Connectors)
