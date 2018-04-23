@@ -16,11 +16,11 @@ This connector developed by WhiteSky Labs is now part of Mulesoft's collection o
 How to Contribute
 ~~~~~~~~~~~~~~~~~
 
-Below are some guidelines on how to submit your changes (patches/fixes/features):
-* Clone the repository (https://github.com/WhiteSky-Labs/stripe-connector).
-* Create a branch from master.
-* Make your changes and commit them.
-* Push up your changes.
+Below are some guidelines on how to submit your changes (patches/fixes/features):+
+* Clone the repository (https://github.com/WhiteSky-Labs/stripe-connector).+
+* Create a branch from master.+
+* Make your changes and commit them.+
+* Push up your changes.+
 * Make a pull request.
 
 [[installation-and-usage]]
