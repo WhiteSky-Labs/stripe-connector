@@ -1,6 +1,5 @@
 # Site settings
 title:       Stripe Connector
-email:       support@whiteskylabs.com
 author:      WhiteSky Labs
 description: "MuleSoft Connector for Stripe"
 baseurl:     "/stripe-connector"

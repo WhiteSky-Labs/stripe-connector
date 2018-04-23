@@ -18,7 +18,7 @@ Installation and Usage
 
 * For information about usage and installation you can review the documentation at [http://whitesky-labs.github.io/stripe-connector/](http://whitesky-labs.github.io/stripe-connector/).
 * API Documentation is available at [http://whitesky-labs.github.io/stripe-connector/apidocs](http://whitesky-labs.github.io/stripe-connector/apidocs)
-* Release notes are available at [http://whitesky-labs.github.io/stripe-connector/2015/04/15/release-notes/](http://whitesky-labs.github.io/stripe-connector/2015/04/15/release-notes/)
+* Release notes are available at [http://whitesky-labs.github.io/stripe-connector/2018/04/23/release-notes/](http://whitesky-labs.github.io/stripe-connector/2015/04/15/release-notes/)
 
 Compatibility
 ----------------------
@@ -33,10 +33,8 @@ The Splunk Connector has been tested compatible with:
 * Stripe API 2015-03-24
 * Stripe SDK for Java 1.27.1
 
-If you are interested in support for other versions of MuleSoft's platforms or Stripe, please contact [support@whiteskylabs.com](mailto:support@whiteskylabs.com).
-
 Reporting Issues
 ----------------
 
-You can report new issues by emailing [support@whiteskylabs.com](mailto:support@whiteskylabs.com).
+Issues will be used to keep track of bugs, enhancements, or other requests. To submit an issue, go to the Issue tab on the Stripe Connector repository and create a new issue.
 
