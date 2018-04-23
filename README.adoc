@@ -8,15 +8,15 @@ Payments Infrastructure for the Internet.
 
 [[community-connector]]
 Community Connector
-~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
 
 This connector developed by WhiteSky Labs is now part of Mulesoft's collection of Community Connectors. As a Community Connector, MuleSoft’s developer community can now contribute in the development and maintenance of the Stripe Connector.
 
 [[how-to-contribute]]
 How to Contribute
-~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
 
-Below are some guidelines on how to submit your changes (patches/fixes/features): 
+Below are some guidelines on how to submit your changes (patches/fixes/features):
 * Clone the repository (https://github.com/WhiteSky-Labs/stripe-connector).
 * Create a branch from master.
 * Make your changes and commit them.
