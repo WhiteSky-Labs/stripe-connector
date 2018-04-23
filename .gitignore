@@ -25,3 +25,4 @@ demo/**/src/test/resources/output/*
 
 # Linux
 /bin
+/.apt_generated/

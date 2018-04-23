@@ -4,7 +4,22 @@ Stripe Anypoint Connector
 
 By [WhiteSky Labs](http://www.whiteskylabs.com)
 
-Payments Infrastructure for the internet.
+Payments Infrastructure for the Internet.
+
+Community Connector
+----------------------
+
+This connector developed by WhiteSky Labs is now part of Mulesoft's collection of Community Connectors. As a Community Connector, MuleSoft’s developer community can now contribute in the development and maintenance of the Stripe Connector.
+
+How to Contribute
+----------------------
+
+Below are some guidelines on how to submit your changes (patches/fixes/features): 
+* Clone the repository (https://github.com/WhiteSky-Labs/stripe-connector).
+* Create a branch from master.
+* Make your changes and commit them.
+* Push up your changes.
+* Make a pull request.
 
 Installation and Usage
 ----------------------
@@ -17,17 +32,10 @@ Compatibility
 ----------------------
 
 The Stripe Connector is certified to be compatible with:
-* Mule ESB v3.6.0
-* CloudHub Runtime v3.6.0
-
-The Splunk Connector has been tested compatible with:
-* Stripe API Version 2015-03-24
-* Stripe SDK for Java v1.27.1
-
-If you are interested in support for other versions of MuleSoft's platforms or Stripe versions, please contact [support@whiteskylabs.com](mailto:support@whiteskylabs.com).
+* Mule ESB v3.6.0 to v3.9.x
+* CloudHub Runtime v3.6.0 to v3.9.x
 
 Reporting Issues
 ----------------
 
-You can report new issues by emailing [support@whiteskylabs.com](mailto:support@whiteskylabs.com).
-
+Issues will be used to keep track of bugs, enhancements, or other requests. To submit an issue, go to the Issue tab on the Stripe Connector repository and create a new issue.
