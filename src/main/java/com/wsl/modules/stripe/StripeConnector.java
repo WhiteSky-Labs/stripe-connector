@@ -93,7 +93,6 @@ import com.wsl.modules.stripe.utils.NullPayloadToEmptyMapTransformer;
  * @author WhiteSky Labs
  */
 @Connector(name="stripe", friendlyName="Stripe", minMuleVersion="3.6")
-@RequiresEnterpriseLicense
 public class StripeConnector {
 	
     @ConnectionStrategy
